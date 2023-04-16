@@ -194,22 +194,51 @@
     </div>
 </div>
 
-<section class="much-seller">
-    <div class="container">
-        <h1>{{__('Best Selling')}}</h1>
-        <div class="row">
-            <div dir="{{$dir}}">
-                 <div class="row">
-                    @foreach ($images as $item)
-                    <div class="d-flex flex-column item col-lg-3 col-6 overflow-hidden mb-3">
-                        <img src="{{asset($item->image)}}" alt="" class="custom-imgg">
-                    </div>
-                    @endforeach
-                </div>
+
+
+        <div class="bg-light">
+            <div class="container">
+                <section class="last-product pb-5">
+                 <h1>{{__('Best Selling')}}</h1>
+                    <!-- Swiper -->
+                    @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                        @php
+                            $dir = 'rtl'
+                        @endphp
+                    @else
+                        @php
+                            $dir = 'ltr'
+                        @endphp
+                    @endif
+                   <div class="" dir="{{$dir}}">
+                     <div class="row">
+                     @foreach( $toppro as $product)
+                     <div class="col-lg-3 col-6 mb-3">
+        
+                         <div class="d-flex flex-column item">
+                            <a href="{{route('viewProperty',$product->id)}}" class="bg-transparent p-0"><img src="{{asset('/storage/property/'.$product->image)}}" alt="" class="custom-imgg"></a>
+                         <div class="text-center p-2">
+                            <h4 class="mt-2">
+                            @if($product->name_en != null)
+                                @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                                {{$product->name}}
+                                @else
+                                {{$product->name_en}}
+                                @endif @else
+                                {{$product->name}}
+                                @endif
+                            </h4>
+                            <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
+                            <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
+                         </div>
+                         </div>
+                       </div>
+                     @endforeach
+                     </div>
+                   </div>
+                 </section>
             </div>
         </div>
-    </div>
-</section>
 
 <!-- 
   <section class="product-banner-statistics">
