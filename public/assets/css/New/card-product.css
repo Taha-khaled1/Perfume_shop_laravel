@@ -1,0 +1,109 @@
+/*************************************************** start product    ******************************************************/
+.product{
+    margin: 80px 0;
+}
+
+.product .images img{
+    height: 150px;
+    width: 100%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: ease 0.5s;
+}
+.product .images img:hover{
+    opacity: 0.6;
+}
+
+.product .main-image img{
+    width: 100%;
+    height: 500px;
+}
+
+
+.product .product-details h1{
+    margin-top: 20px;
+    color: var(--main-color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 26px;
+}
+.product .product-details i{
+    color: rgb(241, 227, 28);
+}
+
+.product .product-details i.review{
+    color: var(--main-color);
+}
+.product .product-details h2{
+    border: 2px solid var(--main-color);
+    display: block;
+    text-align: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 22px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.product .product-details .size a{
+    background-color: transparent;
+    color: var(--main-color);
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid var(--main-color);
+    padding: 3px 10px;
+}
+
+.product .product-details .color ul li a{
+    width: 35px;
+    height: 35px;
+    display: block;
+    border-radius: 0;
+}
+.product .product-details .color ul li:first-child a{
+
+    background-color: var(--main-color);
+}
+
+.product .product-details .color ul li:nth-child(2) a{
+    background-color: #f0c78a ;
+}
+.product .product-details .color ul li:nth-child(3) a{
+    background-color: #367739;
+}
+.product .product-details .color ul li:nth-child(4) a{
+    background-color: #b60000;
+}
+.product .product-details .color ul li:nth-child(5) a{
+    background-color: #47abb3;
+}
+
+
+.product .product-details a.sala{
+    background-color: var(--main-color);
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid var(--main-color);
+    border-radius: 35px;
+    padding: 5px 15px;
+    transition: ease 0.5s;
+}
+
+
+.product .product-details a.sala:hover{
+    background-color: transparent;
+    color: var(--main-color);
+    padding: 5px 25px;
+}
+
+
+
+@media (max-width:480px) {
+    .product .images img{
+        height: 80px;
+    }
+    .product .main-image img{
+        height: 280px;
+    }
+}
+/***************************************************  end product   ******************************************************/

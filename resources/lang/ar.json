@@ -1,0 +1,172 @@
+{
+    "Home": "الرئيسية",
+    "Hello ": "مرحبا",
+    "Sign In": "تسجيل الدخول",
+    "Register": "الاشتراك",
+    "Sign Out": "تسجيل الخروج",
+    "About Us": "من نحن",
+    "Products": "منتجاتنا",
+
+    "Contact Us": "اتصل بنا",
+    "My account": "حسابي",
+    "Favorite": "المفضلة",
+    "Cart": "السلة",
+    "Customers service":"خدمة العملاء",
+    "We are available on WhatsApp / Facebook or phone to help you":"نحن متواجدون على واتساب/ فيسبوك او تلفون لمساعدتك",
+    "Paying online is very safe":"الدفع عبر الإنترنت بطريقة امنة جدا",
+    "Payment service is safe":"خدمة الدفع أمنه",
+    "Delivery Service":"خدمة التوصيل",
+    "All orders will be delivered as soon as possible":"يتم تسليم جميع الطلبات في اقرب وقت",
+    "Unique products":"منتجات فريدة",
+    "We have many different products":"لدينا العديد من المنتجات المختلفة",
+    "Categories":"الأقسام",
+    "Best Selling": "الأفضل مبيعاََ",
+    "Welcome To": "مرحبا الساع في",
+    "Shop Laha .. À ELLE BOUTIQUE": "متجر لهآ .. À ELLE BOUTIQUE",
+    "Our boutique is a diverse Emirati brand.. We specialize in designing various dresses, abayas, etc.. We also provide bags and shoes that suit all different occasions, and we strive to provide everything that is new and distinguished. needs..":"بوتيكنا براند إماراتي متنوع .. مختصين في تصميم الفساتين المتنوعه والعبايات وغيرهه.. أيضاً نوفر شنط و أحذية تناسب جميع المناسبات المختلفة ونسعى لتوفير كل ماهو جديد ومتميز .. لنا لاين ميكب خاص فينا .. وأيضاً لاين عطور .. متجرنا متنوع ومتميز نوفر فيه أغلب الإحتياجات ..",
+    "We seek to serve you with love.. 🤍":"نسعى لخدمتكم بكل حب .. 🤍",
+    "Important links":"روابط هامة",
+    "Common questions":"الأسئلة الشائعة",
+    "Privacy policy":" سياسة الخصوصية",
+    "Shipping and receiving":" الشحن والاستلام",
+    "Terms and Conditions":" الشروط والأحكام",
+    "Newsletter subscription":"الاشتراك بالنشرة البريدية" ,
+    "Enter email":"أدخل البريد الإلكتروني ",
+    "Email":"  البريد الإلكتروني ",
+    "Subscribe":"اشترك الان",
+    "Copyright NTS":"جميع الحقوق محفوظة لدي NTS",
+    "Password":"كلمة المرور",
+    "The password or email does not match our records.":" كلمة المرور او الايميل لا تتطابق مع سجلاتنا.",
+    "Create an account":"إنشاء حساب",
+    "Mobile number":"رقم الموبايل ",
+    "Confirm password":"تاكيد كلمة المرور",
+    "Return to the login page":"العودة لصفحة تسجيل الدخول",
+    "By registering to create an account I accept the Terms and Conditions":"من خلال التسجيل لإنشاء حساب أنا أقبل الشروط والأحكام ",
+    "The cart is empty":"السلة فارغة",
+    "Shopping cart":"سلة المشتريات",
+    "Are you sure to empty the cart!":"هل انت متاكد من افراغ السلة!",
+    "Empty the cart":"افراغ السلة",
+    "Total cart":"مجموع السلة",
+    "Partial total":" سعر المنتجات/المنتج",
+    "Shipping":"الشحن",
+    "Choose the region":"اختر المنطقة",
+    "Total summation":"المجموع الكلي ",
+    "Continue to complete the purchase":" المتابعة لاتمام الشراء" ,
+    "AED":"د.إ", 
+    "Sort by":"فرز حسب ", 
+    "Sort by price":" فرز حسب السعر", 
+    "keyword":"الكلمة المفتاحية ", 
+    "Send":"إرسال", 
+    "This section does not currently contain items.":"لا يحتوي هذا القسم على سلع حاليا.", 
+    "Latest products":" احدث المنتجات", 
+    "Shop now on great offers":" تسوق الان لتحصل علي عروض كبيرة", 
+
+    "Read more":" قراءة المزيد", 
+    "Show more":" عرض المزيد", 
+    "Shop now":"تسوق الان", 
+    "Shop by category":"تسوق حسب الفئة", 
+    "Payment details":"تفاصيل الدفع", 
+    "Checkout":"إتمام الشراء", 
+    "Full Name":"الاسم كامل", 
+    "Region":"المنطقة", 
+    "Apartment/House":"المنزل/الشقة", 
+    "Street":"الشارع", 
+    "Notes with the order":" ملاحظات مع الطلب ", 
+    "I agree to the terms and conditions":"أوافق على الشروط والأحكام", 
+    "Discount":"الخصم",  
+    "Cash on delivery":" نقدا عند التوصيل", 
+    "Do you have a discount code?":"لديك كود خصم؟ ", 
+    "Discount code":"كود الخصم ", 
+    "Use the code":" استخدام الكود ", 
+    "Enter the discount code":"أدخل كود الخصم",
+    "Confirmation":"تأكيد الطلب",
+    "Order tracking":" تتبع الطلب",
+    "Order details":"تفاصيل الطلب",
+    "Order number":" رقم الطلب",
+    "Total":"المجموع",
+    "Producer":"منتج",
+    "Order status":"حالة الطلب",
+    "The request is cancelled":"تم توصيل الطلب",
+    "The order has been shipped":" تم  شحن الطلب ",
+    "The receipt of the request":"تم استلام الطلب ",
+    "Reques has been rejected":" تم رفض الطلب",
+    "Product name":" اسم المنتج",
+    "Product code":" رمز المنتج ",
+    "Product Image":"صورة المنتج",
+    "Product quantity":" كمية المنتج ",
+    "Price":"السعر",
+    "Description":"الوصف",
+    "Color":"اللون",
+    "Add option":" اضافة ملحقات ",
+    "size":"الحجم",
+    "Add to cart":" إضافة الى السلة",
+    "Item code":" رمز السلعة",
+    "Guarantee":"ضمان",
+    "Category":"قسم ",
+    "Sharing":"مشاركة",
+    "Linked products":" منتجات مرتبطة ",
+    "Research results":" نتائج البحث ",
+    "No results found.":"لم يتم العثور على نتائج.",
+    "Control Board":"لوحة التحكم",
+    "Requests":"الطلبات",
+    "Addresses":"العناوين",
+    "Address":"العنوان",
+    "Add an address":" اضافة عنوان",
+    "Account details":" تفاصيل الحساب ",
+    "Verify the information entered":"تأكد من المعلومات المدخلة ",
+    "Hello!":"مرحبًا!" ,
+    "From your account dashboard, you can view and manage your recent orders, shipping and billing addresses, and edit your password and account details.":"من لوحة معلومات حسابك ، يمكنك عرض ملف الطلبات الأخيرة و ادارة ، عناوين الشحن والفواتير و تعديل كلمة المرور وتفاصيل الحساب.",
+    "Status":"الحالة",
+    "Cancel order":" الغاء الطلب",
+    "Rejected":"مرفوض",
+    "Requested":"تم الارسال",
+    "is shipped":"تم شحنه",
+    "Delivered":"تم التوصيل",
+    "cancel":"إلغاء",
+    "Name":"الاسم",
+    "Blvd":"الجادة",
+    "delete":"حذف",
+    "The following addresses will be used on the checkout page by default":"العناوين التالية سيتم استخدامها في صفحة إتمام الطلب بشكل افتراضي",
+    "First name":"الاسم الاول",
+    "Second name":"الاسم الثاني",
+    "Change Password":"تغيير كلمة المرور",
+    "Old Password":" كلمة المرور القديمة",
+    "Save changes":"حفظ التغيرات",
+    "View":"عرض الطلب",
+    "First name is required":"الاسم الاول مطلوب",
+    "Email is required":"البريد الالكتروني مطلوب",
+    "Quantity not available":" الكمية غير متوفرة! ",
+    "Added successfully":"تم الاضافة بنجاح ",
+    "Message saved successfully.":" تم حفظ الرسالة بنجاح.",
+    "The request has been sent, and you are logged in, please check the email for details":"  تم ارسال الطلب ,وتسجيل الدخول ,  رجاءاً افحص البريد الالكتروني للتفاصيل ",
+    "The request has been sent, please check the email for details":"  تم ارسال الطلب, رجاءاً افحص البريد الالكتروني للتفاصيل ",
+    "Request received":"تم تاكيد استلام الطلب!",
+    "The cart has been emptied":"تم افراغ السلة!",
+    "Verify the order number":"تاكد من رقم الطلب!",
+    "has been sent!":"تم الإرسال!" ,
+    "Credit card":"بطاقة ائتمان",
+    "Pay by credit card":"الدفع بواسطة بطاقة ائتمان",
+    "Pay now":"ادفع الآن",
+    "quantity":"عدد المنتجات ",
+    "show":"عرض",
+    "Payment status":"حاله الدفع",
+    "Follow us on your favorite platforms. Check out new launch teasers, how-to videos, and share your favorite looks.":"تابعنا على منصاتك المفضلة. اطلع على إعلانات تشويقية جديدة للإطلاق ، ومقاطع فيديو إرشادية ، وشارك مظهرك المفضل.",
+    "menu":"القائمة",
+    "Enter your search key ...":"أدخل كلمة البحث ...",
+    "Added to cart":"تم الاضافة الى السلة",
+    "There are currently no favorite products":"لا يوجد حاليا أي منتجات مفضلة",
+    "Add to favorite":"اضافة الى المفضلة",
+    "or":"او",
+    "Addresses saved by the user":"عناوين تم حفظها بواسطة المستخدم",
+    "Discount done":"تم الخصم",
+    "After the price of products exceeds":" بعد تجاوز سعر المنتجات    ",
+    "Free shipping":"التوصيل مجانا" ,
+    "Our products":"منتجاتنا",
+    "Follow Us":"تابعنا",
+    "Search entire store hire":"ادخل كلمة البحث هنا",
+    "Image":"الصورة",
+    "Product":"المنتج",
+    "Quantity":"الكمية",
+    "Remove":"ازالة", 
+    "user":"المستخدم"
+}

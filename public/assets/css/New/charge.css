@@ -1,0 +1,11 @@
+
+
+.charge{
+    margin: 120px 0;
+}
+
+.charge h1{
+    color: var(--main-color);
+    font-family: sans-serif;
+    font-size: 26px;
+}
