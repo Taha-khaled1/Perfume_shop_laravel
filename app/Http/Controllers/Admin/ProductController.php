@@ -177,13 +177,19 @@ class ProductController extends Controller
            $product->quantity = $request->quantity;
            $product->code =  $request->code;
            $product->size =$request->size;
-            $product->featured =$request->featured;
+           $product->featured =$request->featured;
            $product->guarantee = $request->guarantee;
            $product->sku = $request->sku;
            $product->price = $request->price	; 
            $product->price_alternative = $request->price_alternative; 
            $product->quantity = $request->quantity; 
-           $product->status =  $request->status; 
+           $product->status =  $request->status;
+           if ($request->topproduct=='1') {
+            $product->istop=1;
+           } else {
+            $product->istop=0;
+           }
+            
            $product->save();  
 
            
