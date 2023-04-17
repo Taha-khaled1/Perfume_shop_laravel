@@ -39,7 +39,13 @@
 <body>
 	<div class="container">
 		<img src="dd.gif" alt="Example Image" width="200" height="300">
-		<p>{{$val->Description_ar}}. </p>
+		<p>
+			@if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+			{{$val->Description_ar}}
+			@else
+			{{$val->Description_en}}
+			@endif
+		</p>
 	</div>
 </body>
 </html>

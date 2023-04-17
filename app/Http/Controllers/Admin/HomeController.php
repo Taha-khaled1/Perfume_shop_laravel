@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;
+use App\Models\Website;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,15 +22,16 @@ class HomeController extends Controller
         $prducts = Product::get()->count();
         $prductsem = Product::where('quantity',0.00)->get()->count();
         $users = User::get()->count();
-
+        $webclose=Website::first(); 
         return view('admin.home.index', [
             'orders' => $orders,       
             'orderstoday' => $orderstoday,       
             'orderssh' => $orderssh,       
             'prducts' => $prducts,       
             'users' => $users,
-            'prductsem' => $prductsem,       
-        ]);
+            'prductsem' => $prductsem,  
+            'webclose'=>$webclose     
+        ]); 
     }
     public function contact(){
         
@@ -53,4 +55,19 @@ class HomeController extends Controller
             ]);
         } 
  }
+
+
+ public function updatewebsite(Request $request)
+{
+    $website = Website::first();
+    if ($request->maintenance_mode == "true") {
+        $website->actv = 1;
+    } else {
+        $website->actv = 0;
+    }
+    $website->Description_ar = $request->description_ar;
+    $website->Description_en = $request->description_en;
+    $website->save();
+    return redirect()->route('admin.home');
+}
 }

@@ -50,7 +50,7 @@ require __DIR__.'/auth.php';
         return '<h1>cache cleared</h1>';
     // return what you want
 })->name('clear');
-
+Route::group(['middleware'=>'maintenance'],function (){
 Route::group(['middleware'=>'auth'],function (){
     Route::get('/account', [SiteController::class,'viewMyAccountPage'])->name('viewMyAccount');
     Route::get('/sale-property', [PropertyController::class,'viewSaleProperty'])->name('saleProperty');
@@ -115,7 +115,7 @@ Route::get('qtyproduct', [\App\Http\Controllers\PolicyController::class, 'qtypro
 Route::post('/numberorder', [App\Http\Controllers\Site\OrderController::class,'numberorder'])->name('numberorder');
 Route::get('get_shipping/{name}', [App\Http\Controllers\Site\OrderController::class, 'get_shipping'])->name('get.shipping');
 Route::get('get_discount/{code}', [App\Http\Controllers\Site\OrderController::class, 'get_discount'])->name('get.discount');
-
+});
 // Admin Routes
 Route::prefix("admin")->group(function () {
 
@@ -125,6 +125,7 @@ Route::prefix("admin")->group(function () {
     Route::group(['namespace' => 'Admin', 'middleware' => ['auth:web','is_admin']], function () {
         Route::get('/' , [App\Http\Controllers\Admin\HomeController::class , 'index'])->name('admin.home');
         Route::get('home' , [App\Http\Controllers\Admin\HomeController::class , 'index'])->name('admin.home');
+        Route::post('updatewebsite' , [App\Http\Controllers\Admin\HomeController::class , 'updatewebsite'])->name('admin.updatewebsite');
         Route::get('logout' , [App\Http\Controllers\Admin\AuthController::class , 'logout'])->name('admin.logout');
         
         Route::get('contact' , [App\Http\Controllers\Admin\HomeController::class , 'contact'])->name('admin.contact');
