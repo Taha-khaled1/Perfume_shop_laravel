@@ -85,8 +85,8 @@
                             </div>
                             <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
                                 <div class="u-info me-2">
-                                    <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Admin Admin</span></p>
-                                    <small>Admin Admin</small>
+                                    <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">{{auth()->user()->fname ?? 'LIMOGES'}} </span></p>
+                                  
                                 </div>
                                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
                                     <img class="avatar lg rounded-circle img-thumbnail" src="{{ url('/') }}/cp/assets/images/profile_av.svg" alt="profile">

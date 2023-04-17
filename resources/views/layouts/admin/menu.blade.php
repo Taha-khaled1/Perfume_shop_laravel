@@ -69,7 +69,7 @@
                     </li>
                     
 
-
+{{-- 
                     <li class="collapsed">
                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-slide" href="#">
                             <i class="icofont-truck-loaded fs-5"></i> <span>عرض الشرائح</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
@@ -79,7 +79,7 @@
                  
                             <li><a class="ms-link" href="{{route('slideedit')}}">اضافة الشرائح</a></li>
                             </ul>
-                    </li>
+                    </li> --}}
 
 
 

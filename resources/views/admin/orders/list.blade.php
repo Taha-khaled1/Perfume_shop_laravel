@@ -46,8 +46,10 @@
                                     </a>
                                     <a href="{{ route('shs.admin.orders') }}">
                                         <button class="button tertiary">طلبات تم الغائها</button>
+                                    </a> 
+                                    <a href="{{ route('orderss.exportProducts') }}">
+                                        <button class="button primary">تصدير المنتجات</button>
                                     </a>
-
 
                                 </div>
                                 <div class="tab-content">

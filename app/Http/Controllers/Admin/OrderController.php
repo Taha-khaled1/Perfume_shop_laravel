@@ -5,20 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
  use App\Models\Order;
 use App\Models\OrderAddress;
-use App\Models\OrderItem;
 use App\Models\Product;
 use App\Notifications\AcceptRequest;
 use App\Notifications\CancelRequest;
-
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
-use App\Repositories\Cart\CartModelRepository;
-use App\Repositories\Cart\CartRepository;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Http;
-
-
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 class OrderController extends Controller
 {
     public function orders_list()
@@ -76,6 +75,32 @@ class OrderController extends Controller
          }
         return redirect()->back();
     }
+
+
+
+
+
+
+    public function exportProducts()
+    {
+        $products = Product::select('products.name', DB::raw('SUM(order_items.quantity) as total_quantity'))
+            ->join('order_items', 'products.id', '=', 'order_items.product_id')
+            ->join('orders', 'order_items.order_id', '=', 'orders.id')
+            ->where('orders.status', 1)
+            ->groupBy('products.name')
+            ->get();
+
+        return Excel::download(new ProductsExport($products), 'products.xlsx');
+    }
+
+
+
+
+
+
+
+
+
     public function shipping($id)
     {
          
@@ -139,4 +164,66 @@ class OrderController extends Controller
             ]);
         } 
  }
+}
+
+
+
+
+
+
+
+
+
+class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithColumnFormatting
+{
+    private $products;
+
+    public function __construct( $products)
+    {
+        $this->products = $products;
+    }
+
+    public function collection()
+    {
+        return $this->products;
+    }
+
+    public function headings(): array
+    {
+        return [
+            'اسم المنتج',
+            'الكمية',
+        ];
+    }
+
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            1 => [
+                'font' => [
+                    'bold' => true,
+                ],
+                'alignment' => [
+                    'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                ],
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                    'rotation' => 90,
+                    'startColor' => [
+                        'argb' => 'FFA0A0A0',
+                    ],
+                    'endColor' => [
+                        'argb' => 'FFFFFFFF',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function columnFormats(): array
+    {
+        return [
+            'B' => '#,##0',
+        ];
+    }
 }
