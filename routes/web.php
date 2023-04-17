@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Site\PaymentsController;
 use App\Http\Controllers\SlideController;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,59 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+
+
+Route::post('/update.orderpay/{id}/{status}', function($id, $status) {
+    $order = Order::find($id);
+
+    echo '------------------------------------------------------------------------------';
+    echo $status; 
+    echo $id; 
+    echo '------------------------------------------------------------------------------';
+    $order->payment_method = $status;
+    $order->save();
+
+    return back();
+})->name('update.orderpay');
+
+
+
+Route::post('/update.payment-method/{id}/{value}', function($id, $value) {
+    $order = Order::find($id);
+    $order->payment_method = $value;
+    $order->save();
+
+    return response('Success', 200);
+})->name('update.payment-method');
+
+
+
+
+
+Route::post('/update.order/{id}/{status}', function($id, $status) {
+    $order = Order::find($id);
+
+    $order->status = $status;
+    $order->save();
+
+    return back();
+})->name('update.order');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 require __DIR__.'/auth.php';
 
@@ -220,7 +274,21 @@ Route::prefix("admin")->group(function () {
  Route::post('editqty' , [App\Http\Controllers\Admin\ProductController::class , 'editqty'])->name('editqty');
 
 
- Route::get('orders/list' , [App\Http\Controllers\Admin\OrderController::class , 'orders_list'])->name('admin.orders');
+  Route::get('orders/list' , [App\Http\Controllers\Admin\OrderController::class , 'orders_list'])->name('admin.orders');
+ Route::get('sh/orders/list' , [App\Http\Controllers\Admin\OrderController::class , 'sh_orders_list'])->name('sh.admin.orders');
+ Route::get('shs.admin.orders' , [App\Http\Controllers\Admin\OrderController::class , 'shs_orders_list'])->name('shs.admin.orders');
+ Route::get('orderss.list' , [App\Http\Controllers\Admin\OrderController::class , 'orderss_list'])->name('orderss.list');
+
+
+
+
+
+
+
+
+
+
+
  Route::get('order/profile/{id}' , [App\Http\Controllers\Admin\OrderController::class , 'order_profile'])->name('admin.order.profile');
  Route::get('order/shipping/{id}' , [App\Http\Controllers\Admin\OrderController::class , 'shipping'])->name('admin.order.shipping');
  Route::get('order/cancel/{id}' , [App\Http\Controllers\Admin\OrderController::class , 'cancel'])->name('admin.order.cancel');

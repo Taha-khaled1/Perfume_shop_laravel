@@ -23,7 +23,7 @@ class OrderController extends Controller
 {
     public function orders_list()
     {
-        $orders = Order::where('status','1')->orwhere('status','2')->with('address')->latest()->get();
+        $orders = Order::where('status','1')->with('address')->latest()->get();
         $a = 0;
         if($orders ){
         return view('admin.orders.list')->with('orders', $orders)->with('a', $a);
@@ -33,7 +33,7 @@ class OrderController extends Controller
 
     public function sh_orders_list()
     {
-        $orders = Order::where('status','3')->orwhere('status','0')->with('address')->orderBy('id','desc')->get();
+        $orders = Order::where('status','3')->with('address')->orderBy('id','desc')->get();
         $a = 1;
 
         if($orders ){
@@ -41,6 +41,27 @@ class OrderController extends Controller
                 }
                 return redirect()->back();
     }
+ 
+    public function shs_orders_list()
+    {
+        $orders = Order::where('status','0')->with('address')->orderBy('id','desc')->get();
+        $a = 1;
+
+        if($orders ){
+        return view('admin.orders.list')->with('orders', $orders)->with('a', $a);
+                }
+                return redirect()->back();
+    }
+    public function orderss_list()
+    {
+        $orders = Order::where('status','2')->with('address')->latest()->get();
+        $a = 0;
+        if($orders ){
+        return view('admin.orders.list')->with('orders', $orders)->with('a', $a);
+                }
+                return redirect()->back();
+    }
+
 
     public function order_profile($id)
     {

@@ -38,16 +38,34 @@
 
                     <li class="collapsed">
                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-order" href="#">
-                        <i class="icofont-notepad fs-5"></i> <span>الطلبات</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                        <!-- Menu: Sub menu ul -->
+                            <i class="icofont-notepad fs-5"></i> <span>الطلبات</span> <span
+                                class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+  
+                        {{-- <ul class="sub-menu collapse" id="menu-order">
+                              <li><a class="ms-link" href="{{route('admin.sorders')}}">طلبات خاصة</a></li>
+                             
+                          </ul> --}}
                         <ul class="sub-menu collapse" id="menu-order">
-                            <li><a class="ms-link" href="{{route('admin.orders')}}">الطلبات الجديدة</a></li>
-                           
+                            <li><a class="ms-link" href="{{ route('admin.orders') }}">الطلبات الجديدة</a></li>
+  
                         </ul>
+  
                         <ul class="sub-menu collapse" id="menu-order">
-                            <li><a class="ms-link" href="{{route('sh.admin.orders')}}">طلبات تم استلامها او الغاءها</a></li>
-                           
+                            <li><a class="ms-link" href="{{ route('orderss.list') }}">الطلبات تم شحنها</a></li>
+  
                         </ul>
+  
+  
+                        <ul class="sub-menu collapse" id="menu-order">
+                            <li><a class="ms-link" href="{{ route('sh.admin.orders') }}">طلبات تم استلامها</a></li>
+  
+                        </ul>
+  
+                        <ul class="sub-menu collapse" id="menu-order">
+                            <li><a class="ms-link" href="{{ route('shs.admin.orders') }}">طلبات تم الغائها </a></li>
+  
+                        </ul>
+  
                     </li>
                     
 
