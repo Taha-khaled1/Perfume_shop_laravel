@@ -106,7 +106,6 @@
                             <li><a class="ms-link" href="{{route('admin.countries')}}">عرض الدول\المدن</a></li>
                          </ul>
                     </li>
-                     <li><a class="m-link" href="{{route('payments.index')}}"><i class="icofont-bill-alt fs-5"></i> <span> عمليات الدفع  </span></a></li> 
 
                        @if(Auth::user()->id == 1)
                     <li class="collapsed">

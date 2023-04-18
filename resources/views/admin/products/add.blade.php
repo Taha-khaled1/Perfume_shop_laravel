@@ -83,7 +83,36 @@
                                        
                                            <input class="form-control" id="namee" name="name_en" type="text" value="{{old('name_en')}}" id="example-text-input"  maxlength="100">
                                        </div>
-                                   </div>
+                                       </div>
+
+
+
+
+                                       <div class="mb-3 row">
+                                       
+                                        <label for="example-text-input" class="col-sm-3 col-form-label text-end">اسم المحل(يظهر للمالك فقط)</label>
+                                        <div class="col-sm-9">
+                                        
+                                            <input class="form-control" id="namee" name="shope" type="text" value="" id="example-text-input"  maxlength="100">
+                                        </div>
+                                        </div>
+
+
+                                        <div class="mb-3 row">
+                                       
+                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end">سعر المشتري به(يظهر للمالك فقط)</label>
+                                            <div class="col-sm-9">
+                                            
+                                                <input class="form-control" id="namee" name="price_oragin" type="text" value="" id="example-text-input"  maxlength="100">
+                                            </div>
+                                            </div>
+
+
+
+
+
+
+
                                        
                                         <div class="mb-3 row">
                                         

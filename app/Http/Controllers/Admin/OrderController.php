@@ -83,11 +83,11 @@ class OrderController extends Controller
 
     public function exportProducts()
     {
-        $products = Product::select('products.name', DB::raw('SUM(order_items.quantity) as total_quantity'))
+        $products = Product::select('products.name',DB::raw('SUM(order_items.quantity) as total_quantity') , 'products.shope_name','products.price_oragin')
             ->join('order_items', 'products.id', '=', 'order_items.product_id')
             ->join('orders', 'order_items.order_id', '=', 'orders.id')
             ->where('orders.status', 1)
-            ->groupBy('products.name')
+            ->groupBy('products.name','products.price_oragin' , 'products.shope_name')
             ->get();
 
         return Excel::download(new ProductsExport($products), 'products.xlsx');
@@ -193,6 +193,8 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         return [
             'اسم المنتج',
             'الكمية',
+            'اسم المحل',
+            'سعر شراء المنتج'
         ];
     }
 

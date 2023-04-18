@@ -181,6 +181,15 @@ class ProductController extends Controller
            $product->guarantee = $request->guarantee;
            $product->sku = $request->sku;
            $product->price = $request->price	; 
+
+
+           $product->shope_name = $request->shope;
+           $product->price_oragin = $request->price_oragin	; 
+
+
+
+
+
            $product->price_alternative = $request->price_alternative; 
            $product->quantity = $request->quantity; 
            $product->status =  $request->status;
