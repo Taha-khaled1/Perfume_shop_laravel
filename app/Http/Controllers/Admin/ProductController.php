@@ -219,75 +219,75 @@ class ProductController extends Controller
              
         
 
-            // foreach ($request->color as $xc) {
-            //     if( $xc != null){   
-            //         $c =new Color();
-            //         $c->product_id = $product->id;              
-            //         $c->color =$request->color[$i];         
-            //         $c->save();
-            //     }
-            // }
+        //     // foreach ($request->color as $xc) {
+        //     //     if( $xc != null){   
+        //     //         $c =new Color();
+        //     //         $c->product_id = $product->id;              
+        //     //         $c->color =$request->color[$i];         
+        //     //         $c->save();
+        //     //     }
+        //     // }
 
 
-          for($i = 0; $i < count($request->color); $i++)
-             {
-                $c =new Color();
-                $c->product_id = $product->id;              
-                $c->color =$request->color[$i];
-                if ($request->priceco[$i] !=null) {
-                    $c->price =$request->priceco[$i];  
-                }else{
-                    $c->price =0;
-                }       
-                $c->save();
+        //   for($i = 0; $i < count($request->color); $i++)
+        //      {
+        //         $c =new Color();
+        //         $c->product_id = $product->id;              
+        //         $c->color =$request->color[$i];
+        //         if ($request->priceco[$i] !=null) {
+        //             $c->price =$request->priceco[$i];  
+        //         }else{
+        //             $c->price =0;
+        //         }       
+        //         $c->save();
 
 
-             }
-
-
-
-             for($i = 0; $i < count($request->option); $i++)
-             {
-                $op =new Option();
-                $op->product_id = $product->id;             
-                $op->name =$request->option[$i]; 
-                if ($request->priceop[$i] !=null) {
-                    $op->price =$request->priceop[$i];  
-                }else{
-                    $op->price =0;
-                }       
-                $op->save();
-
-
-             }
+        //      }
 
 
 
+        //      for($i = 0; $i < count($request->option); $i++)
+        //      {
+        //         $op =new Option();
+        //         $op->product_id = $product->id;             
+        //         $op->name =$request->option[$i]; 
+        //         if ($request->priceop[$i] !=null) {
+        //             $op->price =$request->priceop[$i];  
+        //         }else{
+        //             $op->price =0;
+        //         }       
+        //         $op->save();
+
+
+        //      }
 
 
 
 
-             for($i = 0; $i < count($request->opti); $i++)
-             {
 
-                if ($request->opti[$i] !=null) {
-                    $op =new Option();
-                    $c =new Color();
-                    $op->product_id = $product->id;             
-                    $op->name =$request->opti[$i]; 
-                    $c->product_id = $product->id;
-                    $c->color =$request->colo[$i];
 
-                    if ($request->pricoloandopti[$i] !=null) {
-                        $op->price =$request->pricoloandopti[$i];  
-                    }else{
-                        $op->price =0;
-                    }       
-                    $op->save();
-                    $c->save();
-                }
 
-             }
+        //      for($i = 0; $i < count($request->opti); $i++)
+        //      {
+
+        //         if ($request->opti[$i] !=null) {
+        //             $op =new Option();
+        //             $c =new Color();
+        //             $op->product_id = $product->id;             
+        //             $op->name =$request->opti[$i]; 
+        //             $c->product_id = $product->id;
+        //             $c->color =$request->colo[$i];
+
+        //             if ($request->pricoloandopti[$i] !=null) {
+        //                 $op->price =$request->pricoloandopti[$i];  
+        //             }else{
+        //                 $op->price =0;
+        //             }       
+        //             $op->save();
+        //             $c->save();
+        //         }
+
+        //      }
 
 
            if($product) {

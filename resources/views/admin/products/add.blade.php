@@ -247,7 +247,7 @@
                                                
                                             </div> 
                                              
-                                            <div class="mb-3 row">
+                                            {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end"> الالوان</label>
                                             <div id="myRepeatingFields_co" class="col-sm-9"> 
                                                     <div class="entry_co input-group col-xs-3">
@@ -267,10 +267,10 @@
                                                     </div>
                                                 </div>
                                                
-                                            </div> 
+                                            </div>  --}}
 
 
-
+{{-- 
                                             <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">   الاحجام</label>
                                             <div id="myRepeatingFields_op" class="col-sm-9"> 
@@ -292,7 +292,7 @@
                                                 </div>
                                                
                                             </div>
-
+ --}}
 
 
 
@@ -309,7 +309,7 @@
 
 
                           {{--     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                  --}}  
-                                            <div class="mb-3 row">
+                                            {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">   الاحجام</label>
                                             <div id="myRepeatingFields_opp" class="col-sm-9"> 
                                                     <div class="entry_opp input-group col-xs-3">
@@ -318,7 +318,6 @@
                                                                     <td><input type="text" name="opti[]"  placeholder="الحجم" class="btn theme-btn-2 form-control"/></td> 
                                                                     <td><input type="color" name="colo[]" /></td>  
                                                                     <td><input type="number" name="pricoloandopti[]" class="btn theme-btn-2 form-control" placeholder="السعر"></td>
-                                                                     {{-- <td><input type="color" name="" id=""></td>  --}}
                                                                      
                                                                     <td>  <button type="button" class="btn btn-lg btn-add-opp">
                                                                         
@@ -332,7 +331,7 @@
                                                     </div>
                                                 </div>
                                                
-                                            </div>
+                                            </div> --}}
 
                           {{--     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                  --}}  
 

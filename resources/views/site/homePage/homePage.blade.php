@@ -45,10 +45,10 @@
         @endforeach
     </div>
 </section> -->
-<div class="hero text-center rounded m-1" style="background-image:url({{asset('storage/property/'.$carousel->image)}});">
-    {{-- <h1 class="mb-5">{{__('Shop now on great offers')}}</h1> 
-    <a href="{{route('products')}}" class="text-decoration-none">{{__('Shop now')}}</a> --}}
+<div class="hero text-center rounded m-1" style="background-image: url({{asset('storage/property/'.$carousel->image)}}); background-size: cover;">
+
 </div>
+
 
  <div class="bg-light">
     <div class="container">
