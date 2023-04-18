@@ -1,11 +1,14 @@
 :root{
-    --main-color:#563E32;
+    --main-color:#1f3976;
 }
 
 /************************************************ start header ***********************************************************/
 .header{
-    background-color: #E9E6E4;
+    background-color: #fff;
     padding: 0px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 11;
 }
 .nav{
     height: 130px;
@@ -15,7 +18,7 @@
 .header .icons ul li a i{
     background-color: transparent;
     color: var(--main-color);
-    font-size: 20px;
+    font-size: 26px;
 }
 .custom-imgg{
   width:100%;
@@ -29,9 +32,9 @@
 
 .nav .logo img{
     width: 163px;
-    position: absolute;
+    /* position: absolute;
     top: -27px;
-    right: 0;
+    right: 0; */
 }
 .logo-sm{
     display: none;
@@ -50,18 +53,19 @@
 .header .nav input{
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid var(--main-color);
+    border: 1px solid var(--main-color);
     height: 30px;
+    width: 500px;
     outline: none;
-    padding: 0px 4px;
+    padding: 20px;
     font-size: 12px;
 }
 .header .nav i{
-    font-size: 16px;
+    font-size: 25px;
     cursor: pointer;
-    color: #fff;
+    color: #000;
     padding: 5px;
-    background-color: var(--main-color);
+    /* background-color: var(--main-color); */
 }
 .header .nav .search i{
     font-size: 20px;
@@ -149,17 +153,20 @@ text-decoration: underline;
 .links{
     height: 50px;
     line-height: 50px;
-    background-color: #f4f4f4;
+    background-color: #fff;
     z-index: 11;
-    position: sticky;
-    top: 0;
+
+    border-top: 1px solid #0000001f;
+    border-bottom: 1px solid #0000001f;
+    /* position: sticky; */
+    /* top: 0; */
 }
 .links ul li a{
-    padding: 15px;
+    padding: 10px;
     color: #333;
-    font-size: 18px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: bold;
+    font-size: 15px;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    /* font-weight: bold; */
     transition: ease 0.5s;
 }
 .links ul li a:hover{
@@ -251,7 +258,7 @@ text-decoration: underline;
     background-position: center;
     padding: 150px 0;
     color: #fff;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
 }
 .hero a{
     background-color: var(--main-color);
@@ -304,7 +311,7 @@ text-decoration: underline;
 
 /****************************************************  end last-product seller  **********************************************************/
 .last-product .item{
-    border: 2px solid #333;
+    /* border: 2px solid #333; */
     overflow: hidden;
     padding-bottom: 15px;
 }
@@ -389,11 +396,13 @@ text-decoration: underline;
 
 /****************************************************  start footer  **********************************************************/
 footer {
-    background-color: #E9E6E4;
+    background-color: #f5f5f5;
     padding: 30px 0px 1px;
     color: #000;
 }
-
+.custom-hr{
+  background-color: #00000028;
+}
 footer .who-us{
     color: var(--main-color);
     font-family: serif;
@@ -435,22 +444,25 @@ footer .Subscribe{
     margin: auto;
 }
 footer .foot  img{
-    width: 300px;
+    width: 200px;
+}
+footer .foot  ul li{
+  margin-bottom: 10px;
 }
 footer .foot  ul li a{
     text-decoration: none;
     transition: ease 0.5s;
-    color: var(--main-color);
-    font-weight: bold;
+    color: #000;
+    font-weight: 500;
 }
 footer .foot  ul li a:hover{
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 
 @media (max-width:992px) {
     footer .Subscribe{
-        width: 250px;
+        width: 100%;
     }
     footer .foot  img{
         width: 250px;
@@ -460,7 +472,7 @@ footer .foot  ul li a:hover{
     }
     .custom{
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
     .foot .row{
       flex-direction: column-reverse;
@@ -720,7 +732,7 @@ body {
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Lato", sans-serif;
+    /* font-family: "Lato", sans-serif; */
     color: #222222;
     font-weight: 700;
     margin: 0;
@@ -1716,8 +1728,23 @@ body {
     border-color: transparent transparent #fff  transparent;
     border-width: 7px;
   }
+  .subscribe-field{
+    padding: 17px 30px;
+    width: 100%;
+    border: none;
+    background-color: #f5f5f5;
+    color: #0f0f0f;
+    border: 1px solid #cac8c8;
+  }
+  .subscribe-field-btn{
+    border: 1px solid #cdcdcd;
+    margin-right: 5px;
+    background-color: #f5f5f5;
+    color: #111;
+    padding: 17px 30px;
+  }
   .header-top-settings ul li .dropdown-list {
-    top: 50px;
+    top: 28px;
     right: 0;
     position: absolute;
     opacity: 0;
@@ -2589,7 +2616,8 @@ body {
   }
   .search-box-offcanvas form input {
     color: #666;
-    font-size: 13px;
+    font-size: 25px;
+    text-align: right;
     width: 100%;
     height: 40px;
     border: none;
@@ -2597,8 +2625,8 @@ body {
     background-color: #f2f2f2;
   }
   .search-box-offcanvas form .search-btn {
-    bottom: 34px;
-    right: -7px;
+    bottom: 28px;
+    left: 0px;
     width: 40px;
     height: 40px;
     line-height: 42px;
@@ -3151,7 +3179,7 @@ body {
     padding-bottom: 6px;
     overflow-wrap: break-word;
     text-transform: uppercase;
-    font-family: "Lato", sans-serif;
+    /* font-family: "Lato", sans-serif; */
   }
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .slider-item-content h2 {
@@ -3169,7 +3197,7 @@ body {
     font-weight: 400;
     line-height: 1.2;
     text-transform: capitalize;
-    font-family: "Lato", sans-serif;
+    /* font-family: "Lato", sans-serif; */
   }
   @media only screen and (max-width: 479.98px) {
     .slider-item-content h3 {

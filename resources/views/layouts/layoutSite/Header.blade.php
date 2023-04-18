@@ -225,31 +225,73 @@
         </aside>
     </header> 
 
-<div class="header shadow">
+<div class="tob-header bg-light">
+    <div class="container">
+        <div class="row align-items-center py-2">
+            <div class="col-6">
+                <ul class="d-flex p-0 m-0">
+                    <li><a href="{{route('about')}}" class="text-decoration-none text-dark me-3">عنا</a></li>
+                    <li><a href="{{route('viewMyAccount')}}" class="text-decoration-none text-dark">حسابي</a></li>
+    
+                </ul>
+            </div>
+            <div class="text-end col-6">
+                <div class="header-top-settings">
+                    <ul class="m-0">
+                        <li class="language">
+                            @if ( Config::get('app.locale') == 'en')
+                            English
+                            <img src="{{asset('assets/img/English.png' )}}" width="25" alt="logo">
+                            
+                            @elseif ( Config::get('app.locale') == 'ar' )
+                            العربية
+                            <img src="{{asset('assets/img/العربية.png' )}}" width="25" alt="logo">
+                            
+                            @endif
+                         
+                            {{-- {{ LaravelLocalization::getCurrentLocaleNative() }} --}}
+                            {{-- <i class="fa fa-angle-down"></i> --}}
+                            <ul class="dropdown-list curreny-list">
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                <img src="{{asset('assets/img/'. $properties['native'] .'.png' )}}" width="25" class="m-0" alt="logo"> {{ $properties['native'] }} 
+                                </a>
+                            </li>
+                            @endforeach
+                             </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header">
+    <div class="container">
         <div class="nav">
             <div class="d-flex justify-content-between w-100">
                 <div class="icons d-flex">
                     <ul class="list-unstyled d-flex gap-1">
                         <li>
-                            <img src="{{asset('assets/img/New/0147-removebg-preview.png' )}}" class="custom-img" alt=" logo">
+                            <a href="{{route('cart.index')}}">
+                                <i class="text-dark pe-7s-shopbag"></i>
+                            </a>
+                        </li>
+                        <li>
+                            
                             <a href="{{route('wishlist')}}">
                                 <i class="text-dark pe-7s-like"></i>
                             </a>
                         </li>
                         <li>
-                            <img src="{{asset('assets/img/New/0147-removebg-preview.png' )}}" class="custom-img" alt="logo">
-                            <a href="{{route('cart.index')}}">
-                                <img src="{{asset('assets/img/New/icons__Recovered__7-removebg-preview.png' )}}" alt=" logo">
-                            </a>
-                        </li>
-                        <li>
-                            <img src="{{asset('assets/img/New/0147-removebg-preview.png' )}}" class="custom-img" alt=" logo">
+                            
                             <a href="{{route('viewMyAccount')}}">
-                                <img src="{{asset('assets/img/New/icons__Recovered___5_-removebg-preview (1).png' )}}" alt=" logo">
+                                <i class="text-dark pe-7s-user"></i>
                             </a>
                         </li>
                     </ul>
-                    <div class="header-top-settings">
+                    {{-- <div class="header-top-settings">
                         <ul>
                             <li class="language">
                                 @if ( Config::get('app.locale') == 'en')
@@ -262,8 +304,8 @@
                              
                                 @endif
                              
-                                {{-- {{ LaravelLocalization::getCurrentLocaleNative() }} --}}
-                                {{-- <i class="fa fa-angle-down"></i> --}}
+                                {{ LaravelLocalization::getCurrentLocaleNative() }}
+                                <i class="fa fa-angle-down"></i>
                                 <ul class="dropdown-list curreny-list">
                                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                 <li>
@@ -275,18 +317,17 @@
                                  </ul>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
                 <div>
                     <div class="d-flex ">
                            <div class="search-box-offcanvas position-relative">
-                           <img src="{{asset('assets/img/New/0147-removebg-preview.png' )}}" class="custom-img end-0" width="25" alt="logo">
                                <form action="{{ route('search_property')}}" method="GET">
                                    <input type="text"  name="title" placeholder="{{__('Search entire store hire')}}">
                                    <button type="submit" class="search-btn"><i class="pe-7s-search"></i></button>
                                </form>
                            </div>
-                           @if(Auth::user())
+                           {{-- @if(Auth::user())
                            @else
              
                            <div class="login login-lg">
@@ -296,7 +337,7 @@
                            </ul>
                            </div>
                       
-                           @endif
+                           @endif --}}
                          
                        <div class="menu-icon">
                            <i class="fas fa-bars ms-3 fs-2"></i>
@@ -305,14 +346,15 @@
                </div>
                 <div class="logo logo-lg text-center">
                     <!-- <img src="{{asset('storage/users/'. $header_logo )}}" alt=" logo"> -->
-                    <img src="{{asset('storage/users/logo.png' )}}" width="150" class="img-fluid" alt=" logo">
+                    <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid" alt=" logo">
                 </div>
             </div>
         </div>
+    </div>
 </div>
-<div class="logo-sm text-center">
+<div class="logo-sm text-center my-3">
     <!-- <img src="{{asset('storage/users/'. $header_logo )}}" width="250" class="img-fluid" alt=" logo"> -->
-    <img src="{{asset('storage/users/logo.png' )}}" width="150" class="img-fluid" alt=" logo">
+    <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid" alt=" logo">
 </div>
 {{-- <div class="hiden-menu text-center py-2">
     <i class="fa fa-window-close	position-absolute close"></i>
@@ -336,27 +378,29 @@
 
 
 <!--=========================================================== start links ==============================================-->
-<div class="links">
-    <ul class="list-unstyled d-flex justify-content-center">
-        <li><a href="{{route('products')}}" class="text-decoration-none">{{__('Products')}}</a></li>
-        <li><a href="{{route('about')}}" class="text-decoration-none">{{__('About Us')}}</a></li>
-        <li>
-            <a href="" class="text-decoration-none">{{__('Categories')}}</a>
-            <ul class="hiden-links list-unstyled text-center">
-                @foreach($categories as $category)
-                <li><a href="{{route('category_property',$category->id)}}">@if($category->name_en != null)
-                @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                {{$category->name}}
-                @else
-                {{$category->name_en}}
-                @endif @else
-                {{$category->name}}
-                @endif</a></li>
-                @endforeach             
-            </ul>
-        </li>
-        <li><a href="{{route('viewHomePage')}}" class="text-decoration-none">
-            <i class="fa fa-home"></i>
-        </a></li>
-    </ul>
+<div class="links mb-5">
+    <div class="container">
+        <ul class="list-unstyled d-flex justify-content-between">
+            <li><a href="{{route('products')}}" class="text-decoration-none">{{__('Products')}}</a></li>
+            <li><a href="{{route('about')}}" class="text-decoration-none">{{__('About Us')}}</a></li>
+            <li>
+                <a href="" class="text-decoration-none">{{__('Categories')}}</a>
+                <ul class="hiden-links list-unstyled text-center">
+                    @foreach($categories as $category)
+                    <li><a href="{{route('category_property',$category->id)}}">@if($category->name_en != null)
+                    @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                    {{$category->name}}
+                    @else
+                    {{$category->name_en}}
+                    @endif @else
+                    {{$category->name}}
+                    @endif</a></li>
+                    @endforeach             
+                </ul>
+            </li>
+            <li><a href="{{route('viewHomePage')}}" class="text-decoration-none">
+                {{__('Home')}}
+            </a></li>
+        </ul>
+    </div>
 </div>

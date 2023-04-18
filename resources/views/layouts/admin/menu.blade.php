@@ -5,7 +5,8 @@
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                      
                     <span> 
-                        <img src="{{ url('/') }}\logoq.png" alt="logo-small" width="155px" height="105px" >
+                        <img src="{{asset('/assets/img/logom.png' )}}" alt="logo-small" width="155px" height="105px" >
+                        {{-- {asset('storage/users/'. $header_logo )}} --}}
                     </span>                </a>
                 <!-- Menu: main ul -->
                 <ul class="menu-list flex-grow-1 mt-3">

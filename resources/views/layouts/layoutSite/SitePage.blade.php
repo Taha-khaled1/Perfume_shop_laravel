@@ -41,12 +41,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
     <!--== Main Style CSS ==--> 
-    <!-- @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-    <link href="{{asset('/assets/css/stylertl.css?'.time() )}}" rel="stylesheet" />
+     @if( LaravelLocalization::getCurrentLocaleDirection() == 'ltr')
+    {{-- <link href="{{asset('/assets/css/stylertl.css?'.time() )}}" rel="stylesheet" /> --}}
      @else
-    <link href="{{asset('/assets/css/style.css?'.time() )}}" rel="stylesheet" />
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+<style>
+    body{
+        font-family: 'Cairo', sans-serif !important;
+
+    }
+</style>
+    {{-- <link href="{{asset('/assets/css/style.css?'.time() )}}" rel="stylesheet" /> --}}
     @endif
-    -->
+   
 
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -59,7 +68,7 @@
     <main>
      <x:notify-messages/>
       @yield('content')
-      <div class="services">
+      {{-- <div class="services">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-6 mb-2">
@@ -92,7 +101,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
       <!-- <div class="service-policy " dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" style="background-color:#50090e">
             <div class="container">
                 <div class="policy-block section-padding">

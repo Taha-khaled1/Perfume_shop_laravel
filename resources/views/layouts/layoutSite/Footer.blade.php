@@ -139,47 +139,56 @@
 <footer>
     <div class="container">
         <div class="custom">
-            <div class="social-icons d-flex justify-content-center">
-                <ul class="list-unstyled d-flex gap-2">
-                    <li class="text-center">
-                        <img src="{{asset('assets/img/New/0147-removebg-preview.png')}}" alt="">
-                        <a href="{{$facebook_link}}"><i class="fs-4 fa fa-facebook"></i></a>
-                    </li>
-                    <li class="text-center">
-                        <img src="{{asset('assets/img/New/0147-removebg-preview.png')}}" alt="">
-                        <a href="{{$twitter_link}}"><i class="fs-4 fa fa-twitter"></i></a>&nbsp; 
-                    </li>
-                    <li class="text-center">
-                        <img src="{{asset('assets/img/New/0147-removebg-preview.png')}}" alt="">
-                        <a href="{{$instagram_link}}"><i class="fs-4 fa fa-instagram"></i></a>
-                    </li>
-                </ul>
-            </div>
-    
-            <div class="Subscribe input-group mb-3">
+            <h3 class="text-center mb-5">انضم لنشرتنا و تابع كل ماهو جديد</h3>
+            <div class="Subscribe mb-3 d-flex">
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary" type="button">Subscribe</button>
+                  <button class="subscribe-field-btn" type="button">Subscribe</button>
                 </div>
-                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                <input type="text" class="subscribe-field" placeholder="أدخل الايميل" aria-label="" aria-describedby="basic-addon1">
             </div>
-    
+            <hr class="my-5 custom-hr">
             <div class="foot">
                 <div class="row">
-                    <div class="col-lg-4 text-center">
+                    <div class="col-lg-3 text-end">
+                        <h4>اودز</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
-                            <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
-                            <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
-                            <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>
-                            <li><a href="{{route('Shipping')}}">{{__('Shipping and receiving')}}</a></li>
+                            <li><a href="{{route('about')}}">{{__('About Us')}}</a></li> 
                             <li><a href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
                             <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-4 text-center customm">
-                        <img src="{{asset('storage/users/logo.png' )}}" alt="">
+                    <div class="col-lg-3 text-end">
+                        <h4>خدمات العملاء</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
+                        </ul>
                     </div>
-                    <div class="col-lg-4 text-md-center text-sm-center text-lg-end text-center">
+                    <div class="col-lg-3 text-end">
+                        <h4>لك</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
+                            <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 text-end">
+                        <img src="{{asset('storage/users/'. $header_logo )}}" width="80" class="img-fluid" alt=" logo">
+                        <p class="my-3">بإدخال عنوان بريدك الإلكتروني أدناه ، فإنك توافق على تلقي رسائلنا الإخبارية مع إمكانية الوصول إلى أحدث مجموعاتنا وفعالياتنا ومبادراتنا. يتم توفير مزيد من التفاصيل حول هذا في سياسة الخصوصية الخاصة بنا.
+                        </p>
+                        <div class="social-icons d-flex justify-content-between">
+                            <ul class="list-unstyled d-flex gap-2 justify-content-between w-100">
+                                <li class="text-center">
+                                    <a href="{{$facebook_link}}"><i class="fs-4 fa fa-facebook"></i></a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="{{$twitter_link}}"><i class="fs-4 fa fa-twitter"></i></a>&nbsp; 
+                                </li>
+                                <li class="text-center">
+                                    <a href="{{$instagram_link}}"><i class="fs-4 fa fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{-- <div class="col-lg-4 text-md-center text-sm-center text-lg-end text-center">
                         <a href="{{route('about')}}" class="who-us text-decoration-none">{{__('About Us')}}</a>
                         <p class="text-dark fs-4">  {{__('Welcome To')}}  </p>
                         <p class="text-dark" dir="rtl">  
@@ -189,12 +198,12 @@
                         <span class="fw-bold mt-2 d-block">{{__('We seek to serve you with love.. 🤍')}}
                         </span>
                         </p>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
 
-        <div>
+        <div class="bg-light p-2">
             <p class="text-center mt-2">{{__('Copyright NTS')}} &copy;</p> 
         </div>
     </div>

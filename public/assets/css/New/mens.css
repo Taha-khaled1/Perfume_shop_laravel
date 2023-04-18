@@ -5,7 +5,6 @@
 }
 
 .products .product{
-    border: 3px solid var(--main-color);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -31,5 +30,11 @@
 .products a:hover{
     background-color: transparent;
     color: var(--main-color);   
+}
+.search-box-offcanvas form .search-btn{
+    bottom: 0 !important;
+}
+.search-box-offcanvas,.logo{
+    margin-top: 40px !important;
 }
 /********************************************** end  products ***********************************************************************/
