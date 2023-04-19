@@ -135,7 +135,53 @@
         <p class="text-center mt-2">Copyright &copy; NTS</p>
     </div>
 </footer> --}}
-
+<div class="accordion footer-accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" dir="rtl" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          خدمات العملاء
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <ul class="list-unstyled mb-0" dir="rtl">
+                <li><a class="text-dark" href="{{route('questions')}}">{{__('Common questions')}}</a></li>
+            </ul>       
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          لك
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body" dir="rtl">
+            <ul class="list-unstyled mb-0">
+                <li class="mb-3"><a class="text-dark" href="{{route('register')}}">{{__('Register')}}</a></li>
+                <li><a class="text-dark" href="{{route('login')}}">{{__('Sign In')}}</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          اودز
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body" dir="rtl">
+            <ul class="list-unstyled mb-0">
+                <li class="mb-3"><a class="text-dark" href="{{route('about')}}">{{__('About Us')}}</a></li> 
+                <li class="mb-3"><a class="text-dark" href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
+                <li><a class="text-dark" href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 <footer>
     <div class="container">
         <div class="custom">
@@ -149,7 +195,7 @@
             {{-- <hr class="my-5 custom-hr"> --}}
             <div class="foot">
                 <div class="row">
-                    <div class="col-lg-3 col-6 text-end order-lg-1 order-3">
+                    <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
                         <h4>اودز</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('about')}}">{{__('About Us')}}</a></li> 
@@ -157,13 +203,13 @@
                             <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-6 text-end order-lg-3 order-2">
+                    <div class="col-lg-3 col-6 text-end order-lg-3 order-2 sm-footer">
                         <h4>خدمات العملاء</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-12 text-end order-lg-2 order-4">
+                    <div class="col-lg-3 col-12 text-end order-lg-2 order-4 sm-footer">
                         <h4>لك</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
@@ -171,19 +217,22 @@
                         </ul>
                     </div>
                     <div class="col-lg-3 text-end order-lg-4 order-1">
-                        <div class="text-center text-sm-end"><img src="{{asset('storage/users/'. $header_logo )}}" width="80" class="img-fluid" alt=" logo"></div>
+                        <div class="text-center"><img src="{{asset('storage/users/'. $header_logo )}}" width="80" class="img-fluid" alt=" logo"></div>
                         <p class="my-3">بإدخال عنوان بريدك الإلكتروني أدناه ، فإنك توافق على تلقي رسائلنا الإخبارية مع إمكانية الوصول إلى أحدث مجموعاتنا وفعالياتنا ومبادراتنا. يتم توفير مزيد من التفاصيل حول هذا في سياسة الخصوصية الخاصة بنا.
                         </p>
                         <div class="social-icons d-flex justify-content-between">
-                            <ul class="list-unstyled d-flex gap-2 justify-content-between w-100">
-                                <li class="text-center">
+                            <ul class="list-unstyled d-flex gap-2 justify-content-center w-100">
+                                {{-- <li class="text-center">
                                     <a href="{{$facebook_link}}"><i class="fs-4 fa fa-facebook"></i></a>
                                 </li>
                                 <li class="text-center">
                                     <a href="{{$twitter_link}}"><i class="fs-4 fa fa-twitter"></i></a>&nbsp; 
-                                </li>
+                                </li> --}}
                                 <li class="text-center">
                                     <a href="{{$instagram_link}}"><i class="fs-4 fa fa-instagram"></i></a>
+                                </li>
+                                <li class="text-center">
+                                    <a href=""><i class="fs-4 fa fa-snapchat"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -204,7 +253,7 @@
         </div>
 
         <div class="bg-light p-2">
-            <p class="text-center mt-2">{{__('Copyright NTS')}} &copy;</p> 
+            <a href="https://instagram.com/nanots.ae?igshid=YmMyMTA2M2Y=" class="text-decoration-none text-dark" target="_blank"><p class="text-center mt-2">{{__('Copyright NTS')}} &copy;</p> </a>
         </div>
     </div>
 </footer>

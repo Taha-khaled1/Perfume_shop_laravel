@@ -114,12 +114,17 @@
                                         <span class="d-block text-light">{{__('user')}}</span>
                                     </a>
                                     <a href="{{route('cart.index')}}">
-                                        <i class="text-light pe-7s-cart"></i>
+                                        <i class="text-light pe-7s-cart bg-white text-dark rounded-circle p-2 cart-icon"></i>
                                         <span class="d-block text-light">{{__('Cart')}}</span>
                                      </a>
                                     <a href="{{route('wishlist')}}">
                                         <i class="text-light pe-7s-like"></i>
                                         <span class="d-block text-light">{{__('Favorite')}}</span>
+                                    </a>
+                                    <a href="{{route('wishlist')}}">
+                                        {{-- <i class="text-light pe-7s-lintern"></i> --}}
+                                        <i class="text-light fa fa-list fs-5" style="transform: translateY(-5px);"></i>
+                                        <span class="d-block text-light">{{__('Categories')}}</span>
                                     </a>
                                     {{-- <div class="header-top-settings text-end">
                                         <ul class="p-0 m-0">

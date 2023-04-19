@@ -1,6 +1,6 @@
 @extends('layouts.layoutSite.SitePage')
  
-<link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('/assets/css/style.css')}}"> --}}
 @section('content')
 
 <!-- breadcrumb area start --><br>

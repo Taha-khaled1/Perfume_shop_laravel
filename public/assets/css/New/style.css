@@ -459,7 +459,14 @@ footer .foot  ul li a:hover{
     /* text-decoration: underline; */
 }
 
-
+.footer-accordion{
+  display: none;
+}
+.cart-icon{
+  transform: translateY(-21px);
+  margin-bottom: -40px;
+  border: 3px solid var(--main-color);
+}
 @media (max-width:992px) {
     footer .Subscribe{
         width: 100%;
@@ -469,6 +476,12 @@ footer .foot  ul li a:hover{
     }
     footer{
       padding-bottom: 80px;
+    }
+    .sm-footer{
+      display: none;
+    }
+    .footer-accordion{
+      display: block;
     }
     .custom{
       display: flex;
@@ -511,7 +524,7 @@ footer .foot  ul li a:hover{
 }
 
 .mobile-main-header {
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -522,17 +535,17 @@ footer .foot  ul li a:hover{
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+          justify-content: space-between; */
 }
 .mobile-main-header .mobile-menu-toggler {
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          align-items: center;
+          align-items: center; */
 }
 .mobile-main-header .mobile-menu-toggler .mini-cart-wrap {
   line-height: 1;
@@ -2287,8 +2300,8 @@ body {
   .mobile-header {
     padding: 10px 0;
     background: var(--main-color);
-    margin: 12px 30px;
-    border-radius: 39px;
+    /* margin: 12px 30px; */
+    /* border-radius: 39px; */
   }
   
   .mobile-header-top {
@@ -2304,7 +2317,7 @@ body {
   }
   
   .mobile-main-header {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -2313,26 +2326,30 @@ body {
         -ms-flex-align: center;
             align-items: center;
     -webkit-box-pack: justify;
-    -webkit-justify-content: center;
+    -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
-            justify-content: center;
+            justify-content: space-between; */
   }
   .mobile-main-header .mobile-menu-toggler {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
-            align-items: center;
+            align-items: center; */
   }
   .mobile-main-header .mobile-menu-toggler .mini-cart-wrap {
     line-height: 1;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 18px;
+  }
+  .accordion-button::after{
+    margin-left: unset !important;
+    margin-right: auto !important;
   }
   .mobile-main-header .mobile-menu-toggler .mini-cart-wrap a {
     font-size: 25px;
