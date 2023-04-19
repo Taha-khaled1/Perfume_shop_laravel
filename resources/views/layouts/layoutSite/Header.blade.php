@@ -121,7 +121,7 @@
                                         <i class="text-light pe-7s-like"></i>
                                         <span class="d-block text-light">{{__('Favorite')}}</span>
                                     </a>
-                                    <div class="header-top-settings text-end">
+                                    {{-- <div class="header-top-settings text-end">
                                         <ul class="p-0 m-0">
                                             <li class="language">
                                                 @if ( Config::get('app.locale') == 'en')
@@ -134,8 +134,8 @@
                                              
                                                 @endif
                                              
-                                                {{-- {{ LaravelLocalization::getCurrentLocaleNative() }} --}}
-                                                {{-- <i class="fa fa-angle-down"></i> --}}
+                                                {{ LaravelLocalization::getCurrentLocaleNative() }}
+                                                <i class="fa fa-angle-down"></i>
                                                 <ul class="dropdown-list curreny-list">
                                                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                                 <li>
@@ -147,7 +147,7 @@
                                                  </ul>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -378,7 +378,7 @@
 
 
 <!--=========================================================== start links ==============================================-->
-<div class="links mb-5">
+<div class="links">
     <div class="container">
         <ul class="list-unstyled d-flex justify-content-between">
             <li><a href="{{route('products')}}" class="text-decoration-none">{{__('Products')}}</a></li>

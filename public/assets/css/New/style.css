@@ -31,7 +31,7 @@
 }
 
 .nav .logo img{
-    width: 163px;
+    width: 200px;
     /* position: absolute;
     top: -27px;
     right: 0; */
@@ -93,7 +93,7 @@
 .nav ul{
   margin-top: 16px;
 }
-.search-box-offcanvas{
+.search-box-offcanvas,.logo{
   margin-top: 12px;
 }
 .header .nav .icons .butterfly{
@@ -474,9 +474,9 @@ footer .foot  ul li a:hover{
       display: flex;
       flex-direction: column;
     }
-    .foot .row{
+    /* .foot .row{
       flex-direction: column-reverse;
-    }
+    } */
     .customm{
       order: 1;
     }
@@ -484,7 +484,7 @@ footer .foot  ul li a:hover{
       font-size: 10px !important;
     }
     .header-top-settings ul li .dropdown-list{
-      top: -58px !important;
+      top: 25px !important;
     }
     .header-top-settings ul li .dropdown-list:after{
       bottom: -12px !important;

@@ -139,17 +139,17 @@
 <footer>
     <div class="container">
         <div class="custom">
-            <h3 class="text-center mb-5">انضم لنشرتنا و تابع كل ماهو جديد</h3>
+            {{-- <h3 class="text-center mb-5">انضم لنشرتنا و تابع كل ماهو جديد</h3>
             <div class="Subscribe mb-3 d-flex">
                 <div class="input-group-prepend">
                   <button class="subscribe-field-btn" type="button">Subscribe</button>
                 </div>
                 <input type="text" class="subscribe-field" placeholder="أدخل الايميل" aria-label="" aria-describedby="basic-addon1">
-            </div>
-            <hr class="my-5 custom-hr">
+            </div> --}}
+            {{-- <hr class="my-5 custom-hr"> --}}
             <div class="foot">
                 <div class="row">
-                    <div class="col-lg-3 text-end">
+                    <div class="col-lg-3 col-6 text-end order-lg-1 order-3">
                         <h4>اودز</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('about')}}">{{__('About Us')}}</a></li> 
@@ -157,21 +157,21 @@
                             <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 text-end">
+                    <div class="col-lg-3 col-6 text-end order-lg-3 order-2">
                         <h4>خدمات العملاء</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 text-end">
+                    <div class="col-lg-3 col-12 text-end order-lg-2 order-4">
                         <h4>لك</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
                             <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 text-end">
-                        <img src="{{asset('storage/users/'. $header_logo )}}" width="80" class="img-fluid" alt=" logo">
+                    <div class="col-lg-3 text-end order-lg-4 order-1">
+                        <div class="text-center text-sm-end"><img src="{{asset('storage/users/'. $header_logo )}}" width="80" class="img-fluid" alt=" logo"></div>
                         <p class="my-3">بإدخال عنوان بريدك الإلكتروني أدناه ، فإنك توافق على تلقي رسائلنا الإخبارية مع إمكانية الوصول إلى أحدث مجموعاتنا وفعالياتنا ومبادراتنا. يتم توفير مزيد من التفاصيل حول هذا في سياسة الخصوصية الخاصة بنا.
                         </p>
                         <div class="social-icons d-flex justify-content-between">
