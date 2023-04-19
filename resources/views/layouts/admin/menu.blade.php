@@ -4,7 +4,7 @@
                 <a href="index.html" class="mb-0 brand-icon">
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                      
-                    <span> 
+                    <span class="my-3"> 
                         <img src="{{asset('/assets/img/logom.png' )}}" alt="logo-small" width="155px" height="105px" >
                         {{-- {asset('storage/users/'. $header_logo )}} --}}
                     </span>                </a>
