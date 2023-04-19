@@ -115,7 +115,7 @@
                                     </a>
                                     <a href="{{route('cart.index')}}">
                                         <i class="text-light pe-7s-cart bg-white text-dark rounded-circle p-2 cart-icon"></i>
-                                        <span class="d-block text-light">{{__('Cart')}}</span>
+                                        <span class="d-block text-light" style="transform: translateY(-2px);">{{__('Cart')}}</span>
                                      </a>
                                     <a href="{{route('wishlist')}}">
                                         <i class="text-light pe-7s-like"></i>
