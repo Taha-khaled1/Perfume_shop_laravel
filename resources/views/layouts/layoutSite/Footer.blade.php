@@ -1,8 +1,10 @@
 
-<div class="scroll-top not-visible">
-    <i class="fa fa-angle-up"></i>
-</div>
 
+  <div class="floating-whatsapp">
+    <a href="https://wa.me/0501009004">
+        <img src="{{asset('whatsapp.png')}}" alt="WhatsApp Icon">
+    </a>
+  </div>
 <!-- 
     <div class="scroll-top not-visible">
         <i class="fa fa-angle-up"></i>

@@ -331,7 +331,18 @@ font-size: 16px;
 color: #111;
 transition: all 0.3s ease;
 }
+  .floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
 
+
+  .floating-whatsapp img {
+    width: 50px; /* Set the width of the icon */
+    height: 50px; /* Set the height of the icon */
+  }
 .input-item input:focus,
 .input-item textarea:focus {
 outline: none;
