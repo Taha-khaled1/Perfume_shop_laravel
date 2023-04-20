@@ -47,7 +47,7 @@ class SiteController extends Controller
         $img = $setting->where('key', 'section1_image')->first()->value;
         $url = $setting->where('key', 'section1_url')->first()->value;
         $data=  Slide::all();
-$toppro=Product::where('istop', 1)->limit(12)->get();
+        $toppro=Product::where('istop', 1)->limit(12)->get();
         return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data,'toppro'=>$toppro] , ['products'=> $products])->with('categores',$categores)
         ->with('title',$title)
         ->with('text',$text)

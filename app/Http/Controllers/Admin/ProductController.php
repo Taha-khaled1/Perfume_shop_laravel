@@ -184,6 +184,7 @@ class ProductController extends Controller
 
 
            $product->shope_name = $request->shope;
+           $product->shope_name_en = $request->shope_en;
            $product->price_oragin = $request->price_oragin	; 
 
 
@@ -246,20 +247,20 @@ class ProductController extends Controller
 
 
 
-        //      for($i = 0; $i < count($request->option); $i++)
-        //      {
-        //         $op =new Option();
-        //         $op->product_id = $product->id;             
-        //         $op->name =$request->option[$i]; 
-        //         if ($request->priceop[$i] !=null) {
-        //             $op->price =$request->priceop[$i];  
-        //         }else{
-        //             $op->price =0;
-        //         }       
-        //         $op->save();
+             for($i = 0; $i < count($request->option); $i++)
+             {
+                $op =new Option();
+                $op->product_id = $product->id;             
+                $op->name =$request->option[$i]; 
+                if ($request->priceop[$i] !=null) {
+                    $op->price =$request->priceop[$i];  
+                }else{
+                    $op->price =0;
+                }       
+                $op->save();
 
 
-        //      }
+             }
 
 
 

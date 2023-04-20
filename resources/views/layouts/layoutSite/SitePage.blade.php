@@ -18,7 +18,351 @@
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}</style>
+}
+
+
+
+
+
+
+
+
+
+/* Style for the breadcrumb area */
+.ltn__breadcrumb-area {
+    padding: 100px 0;
+    background-position: center center;
+    background-size: cover;
+    text-align: center;
+}
+
+.ltn__breadcrumb-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ltn__breadcrumb-inner h1 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.ltn__breadcrumb-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.ltn__breadcrumb-list li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.ltn__breadcrumb-list li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ltn__breadcrumb-list li a:hover {
+    color: #f2a413;
+}
+
+/* Style for the contact address area */
+.ltn__contact-address-area {
+    margin-top: 100px;
+}
+
+.ltn__contact-address-item {
+    text-align: center;
+    padding: 30px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.ltn__contact-address-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.ltn__contact-address-icon {
+    font-size: 50px;
+    color: #f2a413;
+    margin-bottom: 20px;
+}
+
+.ltn__contact-address-item h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.ltn__contact-address-item p {
+    font-size: 16px;
+    color: #777;
+    margin: 0;
+}
+
+/* Style for the contact message area */
+.ltn__form-box {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ltn__form-box h4 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #111;
+}
+
+.ltn__form-box .form-group label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.ltn__form-box .form-control {
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #111;
+    padding: 0 20px;
+    border: 1px solid #ccc;
+}
+
+.ltn__form-box .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #f2a413;
+}
+
+.ltn__form-box .form-control::-webkit-input-placeholder {
+    color: #999;
+}
+
+.ltn__form-box .form-control::-moz-placeholder {
+    color: #999;
+}
+
+.ltn__form-box .form-control:-ms-input-placeholder {
+    color: #999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Style for the breadcrumb area /
+.ltn__breadcrumb-area {
+position: relative; / Add position */
+padding: 100px 0;
+background-position: center center;
+background-size: cover;
+text-align: center;
+}
+
+.ltn__breadcrumb-inner {
+max-width: 800px;
+margin: 0 auto;
+}
+
+.ltn__breadcrumb-inner h1 {
+color: #fff;
+font-size: 40px;
+font-weight: 700;
+margin-bottom: 20px;
+text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+.ltn__breadcrumb-list {
+display: flex;
+justify-content: center;
+align-items: center;
+color: #fff;
+font-size: 16px;
+font-weight: 500;
+}
+
+.ltn__breadcrumb-list li {
+list-style: none;
+margin: 0 10px;
+}
+
+.ltn__breadcrumb-list li a {
+color: #fff;
+text-decoration: none;
+}
+
+.ltn__breadcrumb-list li a:hover {
+color: #f2a413;
+}
+
+/* Style for the contact address area */
+.ltn__contact-address-area {
+margin-top: 100px;
+}
+
+.ltn__contact-address-item {
+text-align: center;
+padding: 30px;
+border-radius: 5px;
+transition: all 0.3s ease;
+background-color: #fff;
+margin-bottom: 30px;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.ltn__contact-address-item:hover {
+transform: translateY(-10px);
+box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.ltn__contact-address-icon {
+font-size: 50px;
+color: #f2a413;
+margin-bottom: 20px;
+}
+
+.ltn__contact-address-item h3 {
+font-size: 24px;
+font-weight: 700;
+color: #111;
+margin-bottom: 10px;
+}
+
+.ltn__contact-address-item p {
+font-size: 16px;
+color: #777;
+margin: 0;
+}
+
+
+.ltn__form-box {
+background-color: #fff;
+padding: 50px;
+border-radius: 5px;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); / Add box shadow */
+}
+
+.ltn__form-box h4 {
+font-size: 28px;
+font-weight: 700;
+margin-bottom: 30px;
+color: #111;
+text-align: center; /* Center the heading /
+text-transform: uppercase; / Add text transform */
+}
+
+.ltn__form-box .form-group label {
+font-size: 16px;
+font-weight: 500;
+color: #777;
+margin-bottom: 10px;
+}
+
+.ltn__form-box .form-control {
+height: 50px;
+border-radius: 5px;
+margin-bottom: 20px;
+font-size: 16px;
+color: #111;
+padding: 0 20px;
+border: 1px solid #ccc;
+}
+
+/* Style for the submit button */
+.theme-btn-1 {
+background-color: blue;
+color: #fff;
+font-size: 18px;
+font-weight: 700;
+padding: 15px 30px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.theme-btn-1:hover {
+background-color: #0066cc;
+}
+
+/* Style for the input fields */
+.input-item {
+margin-bottom: 20px;
+}
+
+.input-item input,
+.input-item textarea {
+width: 100%;
+padding: 15px;
+border-radius: 5px;
+border: 1px solid #ccc;
+font-size: 16px;
+color: #111;
+transition: all 0.3s ease;
+}
+
+.input-item input:focus,
+.input-item textarea:focus {
+outline: none;
+border-color: blue;
+}
+
+.input-item input::-webkit-input-placeholder,
+.input-item textarea::-webkit-input-placeholder {
+color: #999;
+}
+
+.input-item input::-moz-placeholder,
+.input-item textarea::-moz-placeholder {
+color: #999;
+}
+
+.input-item input:-ms-input-placeholder,
+.input-item textarea:-ms-input-placeholder {
+color: #999;
+}
+
+/* Style for the email input field */
+.input-item input[type="email"] {
+direction: ltr;
+}
+
+.input-item input[type="email"]:focus {
+direction: ltr;
+text-align: left;
+}
+</style>
     <!-- CSS
 	============================================ -->
     <!-- google fonts -->

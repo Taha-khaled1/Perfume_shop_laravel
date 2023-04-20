@@ -96,7 +96,14 @@
                                             <input class="form-control" id="namee" name="shope" type="text" value="" id="example-text-input"  maxlength="100">
                                         </div>
                                         </div>
-
+                                        <div class="mb-3 row">
+                                       
+                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end">اسم المحل باللغه الانجليزيه(يظهر للمالك فقط)</label>
+                                            <div class="col-sm-9">
+                                            
+                                                <input class="form-control" id="namee" name="shope_en" type="text" value="" id="example-text-input"  maxlength="100">
+                                            </div>
+                                            </div>
 
                                         <div class="mb-3 row">
                                        

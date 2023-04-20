@@ -349,10 +349,10 @@
                   </div>
               </div>
           </div>
-           <div class="logo logo-lg text-center">
+           {{-- <div class="logo logo-lg text-center">
                <!-- <img src="{{asset('storage/users/'. $header_logo )}}" alt=" logo"> -->
                <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid" alt=" logo">
-           </div>
+           </div> --}}
        </div>
    </div>
 </div>
