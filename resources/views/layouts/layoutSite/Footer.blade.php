@@ -69,7 +69,6 @@
                         <div class="widget-item">
                              <div class="widget-body social-link">
                                  <a href="{{$facebook_link}}"><i class="fa fa-facebook"></i></a>
-                                 <a href="{{$twitter_link}}"><i class="fa fa-twitter"></i></a>&nbsp; 
                                 <a href="{{$instagram_link}}"><i class="fa fa-instagram"></i></a>
                             </div>
                         </div>
