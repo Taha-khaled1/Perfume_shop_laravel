@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
             $facebook_link = $setting->where('key', 'facebook_link')->first()->value;
             $instagram_link = $setting->where('key', 'instagram_link')->first()->value;
             $youtube_link = $setting->where('key', 'youtube_link')->first()->value;
-            $twitter_link = $setting->where('key', 'twitter_link')->first()->value;
+            $snap_link = $setting->where('key', 'snap_link')->first()->value;
             $categories = Category::limit(15)->get();
 
         // $setting['setting'] = $collection->flatMap(function ($collection) {
@@ -56,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
             ->with('$instagram_link',$instagram_link)
             ->with('youtube_link',$youtube_link)
             ->with('categories',$categories)
-            ->with('twitter_link',$twitter_link) ;  // this is line 22 
+            ->with('snap_link',$snap_link) ;  // this is line 22 
         });
 
         view()->composer('layouts.layoutSite.Header', function ($view) {
@@ -72,14 +72,14 @@ class AppServiceProvider extends ServiceProvider
 
             $facebook_link = $setting->where('key', 'facebook_link')->first()->value;
             $instagram_link = $setting->where('key', 'instagram_link')->first()->value;
-            $twitter_link = $setting->where('key', 'twitter_link')->first()->value;
+            $snap_link = $setting->where('key', 'snap_link')->first()->value;
             $setting = Setting::all();
             $header_logo = $setting->where('key', 'header_logo')->first()->value;         
         
             $view->with('header_logo',$header_logo)->with('order',$order) ->with('facebook_link',$facebook_link)
             ->with('instagram_link',$instagram_link)
             ->with('categories',$categories)
-            ->with('whatsapp_link',$twitter_link);   // this is line 22 
+            ->with('snap_link',$snap_link);   // this is line 22 
         });
 
         view()->composer('layouts.layoutSite.SitePage', function ($view) {

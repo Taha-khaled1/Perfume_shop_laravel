@@ -267,12 +267,17 @@
                                             </div>
                                         </div> 
                                         <div class="mb-3 row">
-                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end"> رابط تويتر   </label>
+                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end"> رابط سناب شات   </label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" name="twitter_link" type="text" value="{{$setting['twitter_link']}}" id="example-text-input">
+                                                <input class="form-control" name="twitter_link" type="text" value="{{$setting['snap_link']}}" id="example-text-input">
                                             </div>
                                         </div>
-                     
+                                        <div class="mb-3 row">
+                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end"> رابط تيك توك   </label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="twitter_link" type="text" value="{{$setting['tiktok_link']}}" id="example-text-input">
+                                            </div>
+                                        </div>
 
                                         <div class="mb-3 row">
                                             <label for="example-text-input" class="col-sm-3 col-form-label text-end"> public_key  </label>
