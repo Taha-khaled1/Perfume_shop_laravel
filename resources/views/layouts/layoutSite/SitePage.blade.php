@@ -11,7 +11,14 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/logom.png' )}}">
     @notifyCss
-
+<style>.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}</style>
     <!-- CSS
 	============================================ -->
     <!-- google fonts -->

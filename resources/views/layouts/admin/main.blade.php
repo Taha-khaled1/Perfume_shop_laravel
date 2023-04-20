@@ -184,6 +184,15 @@ margin: 20px 0;
         transform: translateY(0px);
         box-shadow: none;
       }
+
+      .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
       </style>
 
 {{-- 

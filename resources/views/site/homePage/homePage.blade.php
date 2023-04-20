@@ -1,6 +1,7 @@
 @extends('layouts.layoutSite.SitePage')
 
 @section('content')
+
 <!-- hero slider area start -->
 <!-- <section class="slider-area">
             <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">

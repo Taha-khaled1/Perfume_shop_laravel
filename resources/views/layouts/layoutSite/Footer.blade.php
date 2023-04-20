@@ -1,3 +1,8 @@
+
+<div class="scroll-top not-visible">
+    <i class="fa fa-angle-up"></i>
+</div>
+
 <!-- 
     <div class="scroll-top not-visible">
         <i class="fa fa-angle-up"></i>
@@ -135,6 +140,9 @@
         <p class="text-center mt-2">Copyright &copy; NTS</p>
     </div>
 </footer> --}}
+
+
+
 <div class="accordion footer-accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
