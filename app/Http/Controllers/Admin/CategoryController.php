@@ -45,7 +45,10 @@ class CategoryController extends Controller
            $category->name =  $request->name;
            $category->name_en =  $request->name_en;
             $category->ord =  $request->ord;
-        $category->featured =  $request->featured;
+            if ($request->featured != null) {
+                $category->featured =  $request->featured;
+            }
+       
         $category->category_id =  $request->category_id;
 
         $category->save();
