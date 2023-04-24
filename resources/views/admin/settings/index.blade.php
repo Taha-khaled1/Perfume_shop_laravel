@@ -52,7 +52,10 @@
                                         <a class="nav-link" data-bs-toggle="tab" href="#a" role="tab"
                                            aria-selected="false">تواصل الاجتماعي</a>
                                     </li>
-                                     
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#h" role="tab"
+                                           aria-selected="false">بوابة الدفع</a>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#c" role="tab"
                                            aria-selected="false">Seo</a>
@@ -245,6 +248,9 @@
                                         </div>
                                     </form>
                                      </div>
+
+
+
                                      <div class="tab-pane p-3" id="a" role="tabpanel">
                                      <form enctype="multipart/form-data" method="post" action="{{route('settings.update','test')}}">
                                     @csrf 
@@ -253,7 +259,7 @@
                                         <div class="col-lg-6">
                                        
                                         <div class="mb-3 row">
-                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end">رابط الفيس بوك</label>
+                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end">رابط سناب شات </label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="facebook_link" type="text" value="{{$setting['facebook_link']}}" id="example-text-input">
                                             </div>
@@ -266,7 +272,7 @@
                                                 <input class="form-control" name="instagram_link" type="text" value="{{$setting['instagram_link']}}" id="example-text-input">
                                             </div>
                                         </div> 
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                             <label for="example-text-input" class="col-sm-3 col-form-label text-end"> رابط سناب شات   </label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="twitter_link" type="text" value="{{$setting['snap_link']}}" id="example-text-input">
@@ -277,8 +283,8 @@
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="twitter_link" type="text" value="{{$setting['tiktok_link']}}" id="example-text-input">
                                             </div>
-                                        </div>
-
+                                        </div> --}}
+{{-- 
                                         <div class="mb-3 row">
                                             <label for="example-text-input" class="col-sm-3 col-form-label text-end"> public_key  </label>
                                             <div class="col-sm-9">
@@ -293,7 +299,7 @@
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="Secrt_key" type="text" value="{{$setting['Secrt_key']}}" id="example-text-input">
                                             </div>
-                                        </div>
+                                        </div> --}}
 
 
 
@@ -312,6 +318,96 @@
                                         </div>
                                     </form>
                                         </div>
+
+
+
+
+
+
+
+
+
+                                        <div class="tab-pane p-3" id="h" role="tabpanel">
+                                            <form enctype="multipart/form-data" method="post" action="{{route('settings.update','test')}}">
+                                           @csrf 
+                                               <div class="row">
+                                               
+                                               <div class="col-lg-6">
+                                              
+                                               {{-- <div class="mb-3 row">
+                                                   <label for="example-text-input" class="col-sm-3 col-form-label text-end">رابط سناب شات </label>
+                                                   <div class="col-sm-9">
+                                                       <input class="form-control" name="facebook_link" type="text" value="{{$setting['facebook_link']}}" id="example-text-input">
+                                                   </div>
+                                               </div>
+                                                
+                                              
+                                               <div class="mb-3 row">
+                                                   <label for="example-text-input" class="col-sm-3 col-form-label text-end"> رابط الانستغرام   </label>
+                                                   <div class="col-sm-9">
+                                                       <input class="form-control" name="instagram_link" type="text" value="{{$setting['instagram_link']}}" id="example-text-input">
+                                                   </div>
+                                               </div>  --}}
+                                               {{-- <div class="mb-3 row">
+                                                   <label for="example-text-input" class="col-sm-3 col-form-label text-end"> رابط سناب شات   </label>
+                                                   <div class="col-sm-9">
+                                                       <input class="form-control" name="twitter_link" type="text" value="{{$setting['snap_link']}}" id="example-text-input">
+                                                   </div>
+                                               </div>
+                                               <div class="mb-3 row">
+                                                   <label for="example-text-input" class="col-sm-3 col-form-label text-end"> رابط تيك توك   </label>
+                                                   <div class="col-sm-9">
+                                                       <input class="form-control" name="twitter_link" type="text" value="{{$setting['tiktok_link']}}" id="example-text-input">
+                                                   </div>
+                                               </div> --}}
+       
+                                               <div class="mb-3 row">
+                                                   <label for="example-text-input" class="col-sm-3 col-form-label text-end"> public_key  </label>
+                                                   <div class="col-sm-9">
+                                                       <input class="form-control" name="public_key" type="text" value="{{$setting['public_key']}}" id="example-text-input">
+                                                   </div>
+                                               </div>
+       
+       
+       
+                                               <div class="mb-3 row">
+                                                   <label for="example-text-input" class="col-sm-3 col-form-label text-end"> Secrt_key   </label>
+                                                   <div class="col-sm-9">
+                                                       <input class="form-control" name="Secrt_key" type="text" value="{{$setting['Secrt_key']}}" id="example-text-input">
+                                                   </div>
+                                               </div>
+       
+       
+       
+                                               </div>
+       
+                                            
+                                           
+                                           </div><!--end row-->
+                                               <div class="form-group mb-3 row">
+                                               <div class="col-lg-9 col-xl-8 offset-lg-3">
+                                                   <button type="submit" class="btn btn-primary">
+                                                   تحديث
+                                                   </button>
+                                                    
+                                               </div>
+                                               </div>
+                                           </form>
+                                               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         <div class="tab-pane p-3" id="b" role="tabpanel">
                                          
                                      </div>
