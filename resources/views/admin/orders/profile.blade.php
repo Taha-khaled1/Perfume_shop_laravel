@@ -170,7 +170,7 @@
                                                 </div>
                                             </div> 
                                             <div class="form-group mb-6 row">
-                                                <label class="col-xl-1 col-lg-1 mb-lg-0 form-label">المنطقة  </label>
+                                                <label class="col-xl-1 col-lg-1 mb-lg-0 form-label">الاماره  </label>
                                                 <div class="col-lg-9 col-xl-8">
                                                 <label  > {{$address->area}} </label>
 
@@ -183,13 +183,13 @@
 
                                                 </div>
                                             </div> 
-                                            <div class="form-group mb-6 row">
+                                            {{-- <div class="form-group mb-6 row">
                                                 <label class="col-xl-1 col-lg-1 mb-lg-0 form-label">الجادة  </label>
                                                 <div class="col-lg-9 col-xl-8">
                                                 <label  > {{$address->Blvd}} </label>
 
                                                 </div>
-                                            </div> 
+                                            </div>  --}}
                                             <div class="form-group mb-6 row">
                                                 <label class="col-xl-2 col-lg-2 mb-lg-0 form-label">الشقة\المنزل  </label>
                                                 <div class="col-lg-9 col-xl-8">

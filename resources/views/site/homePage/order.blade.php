@@ -43,21 +43,21 @@
                     @endforeach
                   </select> <br>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="street"   > {{__('Street')}}</label>
                     @error('street')
                             <small class="form-text text-danger">{{$message}}</small>
                             @enderror
                     <input type="text" name="street" class="form-control" id="street" placeholder="أدخل اسم الشارع" value="@if($add == 1) {{$address->street}} @else {{old('street')}} @endif" maxlength="100"   >
-                  </div>
-                  <div class="mb-3">
+                  </div> --}}
+                  {{-- <div class="mb-3">
                     <label for="District"  > {{__('Blvd')}}</label>
                     <input type="text" name="Blve" class="form-control" id="أدخل رقم الجادة" value="@if($add == 1) {{$address->Blve}} @else {{old('Blve')}}  @endif">
-                  </div>
-                  <div class="mb-3">
+                  </div> --}}
+                  {{-- <div class="mb-3">
                     <label for="flat"  > {{__('Apartment/House')}}</label>
                     <input type="text" name="house" class="form-control" id="flat" placeholder="أدخل رقم/اسم الشقة/المنزل" value="@if($add == 1) {{$address->house}} @else {{old('house')}}  @endif" maxlength="100"  >
-                  </div>
+                  </div> --}}
                   <div class="mb-3">
                     <label for="mobile-number"  > {{__('Mobile number')}}</label>
                     @error('phone')
@@ -177,7 +177,7 @@
                 
                 </div>
                 
-                {{-- <div class="mb-3 form-check">
+                <div class="mb-3 form-check">
                     @error('payment_method')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
@@ -186,7 +186,7 @@
                         <img src="{{asset('images/cach.png')}}" width="50px" height="20px" alt="buy cash">
                              {{__('Cash on delivery')}}
                     </label>
-                  </div> --}}
+                  </div>
                   <div class="mb-3 form-check">
                     @error('payment_method')
                         <small class="form-text text-danger">{{$message}}</small>

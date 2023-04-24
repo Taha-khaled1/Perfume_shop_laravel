@@ -27,6 +27,25 @@ class AdminsController extends Controller
     {  
          return view('admin.admins.add') ;
     }
+
+    public function sendsms()
+    {  
+        $basic  = new \Vonage\Client\Credentials\Basic("043ad9c4", "ewmivBx91rr93yqg");
+        $client = new \Vonage\Client($basic);
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("201113051656", 'OUDZ', 'HI TAHA HI HI ')
+        );
+        
+        $message = $response->current();
+        
+        if ($message->getStatus() == 0) {
+            echo "The message was sent successfully\n";
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
+    }
+
     public function admin_store(Request $request)
     {
         $request->validate([ 

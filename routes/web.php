@@ -194,6 +194,7 @@ Route::prefix("admin")->group(function () {
 
       
         //////////////// admins /////////////////
+        Route::get('sendsms' , [App\Http\Controllers\Admin\AdminsController::class , 'sendsms'])->name('sendsms');
         Route::get('add/admin' , [App\Http\Controllers\Admin\AdminsController::class , 'add'])->name('admin.admin.add');
         Route::get('admin/list' , [App\Http\Controllers\Admin\AdminsController::class , 'admins_list'])->name('admin.admin');
         Route::get('admin/profile/{id}' , [App\Http\Controllers\Admin\AdminsController::class , 'admin_profile'])->name('admin.admin.profile');

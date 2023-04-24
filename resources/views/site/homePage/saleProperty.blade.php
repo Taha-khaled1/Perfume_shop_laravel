@@ -251,7 +251,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="input-item input-item-textarea ltn__custom-icon">
-                                                <input type="text" maxlength="100" name="street" placeholder="المنطقة">
+                                                <input type="text" maxlength="100" name="street" placeholder="الاماره">
                                             </div>
                                         </div>
                                         

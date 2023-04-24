@@ -54,7 +54,7 @@
  <div class="bg-light">
     <div class="container">
         <section class="last-product pb-5">
-            <h1>{{__('Latest products')}}</h1>
+            <h1>عطور رجال</h1>
             <!-- Swiper -->
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                 @php
@@ -197,7 +197,7 @@
 
 
 
-        <div class="bg-light">
+        {{-- <div class="bg-light">
             <div class="container">
                 <section class="last-product pb-5">
                  <h1>{{__('Best Selling')}}</h1>
@@ -239,7 +239,7 @@
                    </div>
                  </section>
             </div>
-        </div>
+        </div> --}}
 
 <!-- 
   <section class="product-banner-statistics">

@@ -194,7 +194,7 @@ class UserController extends Controller
             'email.required' => ' الايميل مطلوب !',
             'house.required.' => ' الشقة\المنزل مطلوب   !',
             'phone.required' => ' رقم الهاتف مطلوب   !',
-            'area.required' => ' المنطقة مطلوب   !',
+            'area.required' => ' الاماره مطلوب   !',
             'name.required' => ' الاسم مطلوب   !', ]);
             try{
                 $user = \auth()->user()->id;

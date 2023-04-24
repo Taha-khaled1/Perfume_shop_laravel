@@ -254,7 +254,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="input-item input-item-textarea ltn__custom-icon">
-                                                <input type="text" name="street" placeholder="المنطقة" maxlength="100" value="{{$property->street}}">
+                                                <input type="text" name="street" placeholder="الاماره" maxlength="100" value="{{$property->street}}">
                                             </div>
                                         </div>
                                         

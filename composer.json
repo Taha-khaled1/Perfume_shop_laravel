@@ -16,9 +16,9 @@
         "laravel/socialite": "^5.3",
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
-
         "mcamara/laravel-localization": "^1.7",
-        "stripe/stripe-php": "^10.4"
+        "stripe/stripe-php": "^10.4",
+        "vonage/client": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -39,7 +39,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {    
         if($this->cart->total() == 0){
-            notify()->error(__('The cart is empty'));
+            // notify()->error(__('The cart is empty'));
 
             return redirect()->route('viewHomePage');
         }
@@ -78,15 +78,15 @@ class OrderController extends Controller
         $this->validate($request, [
             'email' => ['required'],
             'name' => ['required'],
-            'area' => ['required'],
+            // 'area' => ['required'],
             'phone' => ['required' , 'numeric'],
-            'street' => ['required'],
+            // 'street' => ['required'],
            'payment_method' => ['required'],
 
         ] );
             
             if($this->cart->total() == 0){
-                notify()->error( __('The cart is empty'));
+                // notify()->error( __('The cart is empty'));
     
                 return redirect()->route('viewHomePage');
             }
@@ -133,10 +133,10 @@ class OrderController extends Controller
                 $address->order_id = $data1->id;
                 $address->name = $request->name;
                 $address->email = $request->email;
-                $address->area = $request->area;
-                $address->street = $request->street;
-                $address->Blvd = $request->Blvd;
-                $address->house = $request->house;
+                // $address->area = $request->area;
+                // $address->street = $request->street;
+                // $address->Blvd = $request->Blvd;
+                // $address->house = $request->house;
                 $address->phone = $request->phone;
                     $address->save();
                 // return $this->cart->get();
@@ -162,7 +162,7 @@ class OrderController extends Controller
                 
                 if($request->payment_method == "check"){
                     $order= $data1;
-                    notify()->success( __('The request has been sent, please check the email for details'));
+                    // notify()->success( __('The request has been sent, please check the email for details'));
 
                     return redirect()->route('orders.payments.create', $order->id);
                 }
@@ -170,7 +170,7 @@ class OrderController extends Controller
                  if(isset($user)){ 
                     event(new Registered($user));
                     Auth::login($user);
-                    notify()->success( __('The request has been sent, and you are logged in, please check the email for details'));
+                    // notify()->success( __('The request has been sent, and you are logged in, please check the email for details'));
                     return redirect(RouteServiceProvider::HOME);
                 }else{
             notify()->success( __('The request has been sent, please check the email for details'));
