@@ -67,7 +67,7 @@ class CarouselController extends Controller
         $id =  $request->id;
         $carousel = carousel::find($id);
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
 
         ]); 
         if (request()->image != null) {
