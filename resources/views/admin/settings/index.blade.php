@@ -54,7 +54,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#h" role="tab"
-                                           aria-selected="false">بوابة الدفع</a>
+                                           aria-selected="false">بوابة الدفع و بوابة الرسائل</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#c" role="tab"
@@ -379,6 +379,34 @@
        
        
        
+
+
+
+                                               <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-sm-3 col-form-label text-end"> public_key_sms  </label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" name="public_sms" type="text" value="{{$setting['public_sms']}}" id="example-text-input">
+                                                </div>
+                                            </div>
+    
+    
+    
+                                            <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-sm-3 col-form-label text-end"> Secrt_key_sms   </label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" name="secrt_sms" type="text" value="{{$setting['secrt_sms']}}" id="example-text-input">
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
                                                </div>
        
                                             

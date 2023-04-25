@@ -81,7 +81,7 @@
             @error('phone')
                 <small class="form-text text-danger">{{$message}}</small>
                 @enderror
-            <input type="text" name="phone"  class="form-control" id="user-mobile"  value="{{old('phone')}}">
+            <input type="text" name="phone"  class="form-control" id="user-mobile"  value="{{old('phone')}}"> 
           </div>
           <div class="mb-3">
             <label for="user-password" class="form-label"> {{__('Password')}}</label>

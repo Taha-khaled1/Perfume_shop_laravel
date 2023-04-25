@@ -222,7 +222,7 @@ Route::prefix("admin")->group(function () {
         Route::get('category/profile/{id}' , [App\Http\Controllers\Admin\CategoryController::class , 'category_profile'])->name('admin.category.profile');
         Route::post('category/save' , [App\Http\Controllers\Admin\CategoryController::class , 'category_save'])->name('admin.category.save');
         Route::post('category/edit' , [App\Http\Controllers\Admin\CategoryController::class , 'category_edit'])->name('admin.category.edit');
-        Route::post('category/delete' , [App\Http\Controllers\Admin\CategoryController::class , 'delete_category'])->name('delete_category');
+        Route::post('category/delete' , [App\Http\Controllers\Admin\CategoryController::class , 'delete_category'])->name('delete_category'); 
 
 
         //////////////// types /////////////////

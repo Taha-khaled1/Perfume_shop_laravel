@@ -9,97 +9,107 @@
 <section class="container py-3 section-continue" dir="{{LaravelLocalization::getCurrentLocaleDirection()}}" >
     <div class="row">
         <div class="col-md-6 payment-details">
-            <p class="h4"> 
+          @auth
+          <p class="h4"> 
             {{__('Payment details')}}  
              </p>
+          @endauth
+          @guest
+          <p class="h4"> 
+            يجب تسجيل الدخولا اولا لاتمام الطلب 
+             </p>
+          @endguest
             <br>
             <form action="{{route('storeorder')}}" method="post">
             @csrf
-                <div class="mb-3">
-                    <label for="full-name" class="form-label"> {{__('Full Name')}}</label>
-                    @error('name')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
-                    <input type="text" name="name" class="form-control" id="full-name" value="@if($add == 1) {{$address->name}} @else {{old('name')}} @endif" maxlength="100" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="email-address" class="form-label"> {{__('Email')}}</label>
-                    @error('email')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
-                    <input type="email" name="email" class="form-control" id="email-address" value="@if($add == 1) {{$address->email}} @else {{old('email')}}  @endif" maxlength="100" required>
-                  </div>
-                  <div class="my-3">
-                    <label for="choose-region"  > {{__('Region')}}</label><br>
-                    @error('area')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
-                  <select name="area" class="form-control" id="choose-region" aria-label="Default select example" maxlength="100" required 
-                  @if(isset($rate))  @if(isset($address)) total= "{{$cart->total() - ($cart->total() * $rate) + $address->Shipping }}" shipping="{{$address->Shipping }}" @else total=" {{$cart->total() - ($cart->total() * $rate) }}" shipping="0" @endif @else @if(isset($address)) total=" {{$cart->total() + $address->Shipping }}" shipping="{{$address->Shipping }}" @else total="{{$cart->total() }}" shipping="0" @endif @endif>
-                  <option value=""> {{__('Choose the region')}}</option>  
-                  <option selected value="@if($add == 1) {{$address->area}} @else {{old('area')}} @endif">    @if($add == 1) {{$address->area}} @else {{old('area')}}  @endif </option>
-                    @foreach($cities as $ca)
-                    <option value="{{$ca->name}}"> {{$ca->name}}</option>
-                    @endforeach
-                  </select> <br>
-                </div>
-                {{-- <div class="mb-3">
-                    <label for="street"   > {{__('Street')}}</label>
-                    @error('street')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
-                    <input type="text" name="street" class="form-control" id="street" placeholder="أدخل اسم الشارع" value="@if($add == 1) {{$address->street}} @else {{old('street')}} @endif" maxlength="100"   >
-                  </div> --}}
-                  {{-- <div class="mb-3">
-                    <label for="District"  > {{__('Blvd')}}</label>
-                    <input type="text" name="Blve" class="form-control" id="أدخل رقم الجادة" value="@if($add == 1) {{$address->Blve}} @else {{old('Blve')}}  @endif">
-                  </div> --}}
-                  {{-- <div class="mb-3">
-                    <label for="flat"  > {{__('Apartment/House')}}</label>
-                    <input type="text" name="house" class="form-control" id="flat" placeholder="أدخل رقم/اسم الشقة/المنزل" value="@if($add == 1) {{$address->house}} @else {{old('house')}}  @endif" maxlength="100"  >
-                  </div> --}}
-                  <div class="mb-3">
-                    <label for="mobile-number"  > {{__('Mobile number')}}</label>
-                    @error('phone')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
-                    <input type="text" name="phone" class="form-control" id="mobile-number" value="@if($add == 1) {{$address->phone}} @else {{old('phone')}}  @endif" maxlength="100" required>
-                  </div> 
-                   @if(Auth::user())@else
-                  <div class="mb-1 ">
-                    <input class="form-check-input" type="checkbox" value="1" name="make_user"  id="accept">
-                    <label class="form-check-label" for="accept">
-                       {{__('Create an account')}}
-                     </label>
-                  </div>
-                  <div class="mb-3">
-                  <label for="user-password"  > {{__('Password')}}</label>
-                      @error('password')
+            @auth
+            <div class="mb-3">
+                <label for="full-name" class="form-label"> {{__('Full Name')}}</label>
+                @error('name')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
-                        <div class="input-group">
-                         <input type="password" class="form-control" name="password" aria-label="user-password" aria-describedby="user-password">
-                    </div></div>
-                  <div class="mb-3">
-                  <label for="user-password"  > {{__('Confirm password')}}</label>
-                     @error('password_confirmation')
+                <input type="text" name="name" class="form-control" id="full-name" value="@if($add == 1) {{$address->name}} @else {{old('name')}} @endif" maxlength="100" required>
+              </div>
+              <div class="mb-3">
+                <label for="email-address" class="form-label"> {{__('Email')}}</label>
+                @error('email')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                <input type="email" name="email" class="form-control" id="email-address" value="@if($add == 1) {{$address->email}} @else {{old('email')}}  @endif" maxlength="100" required>
+              </div>
+              <div class="my-3">
+                <label for="choose-region"  > {{__('Region')}}</label><br>
+                @error('area')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+              <select name="area" class="form-control" id="choose-region" aria-label="Default select example" maxlength="100" required 
+              @if(isset($rate))  @if(isset($address)) total= "{{$cart->total() - ($cart->total() * $rate) + $address->Shipping }}" shipping="{{$address->Shipping }}" @else total=" {{$cart->total() - ($cart->total() * $rate) }}" shipping="0" @endif @else @if(isset($address)) total=" {{$cart->total() + $address->Shipping }}" shipping="{{$address->Shipping }}" @else total="{{$cart->total() }}" shipping="0" @endif @endif>
+              <option value=""> {{__('Choose the region')}}</option>  
+              <option selected value="@if($add == 1) {{$address->area}} @else {{old('area')}} @endif">    @if($add == 1) {{$address->area}} @else {{old('area')}}  @endif </option>
+                @foreach($cities as $ca)
+                <option value="{{$ca->name}}"> {{$ca->name}}</option>
+                @endforeach
+              </select> <br>
+            </div>
+            {{-- <div class="mb-3">
+                <label for="street"   > {{__('Street')}}</label>
+                @error('street')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                <input type="text" name="street" class="form-control" id="street" placeholder="أدخل اسم الشارع" value="@if($add == 1) {{$address->street}} @else {{old('street')}} @endif" maxlength="100"   >
+              </div> --}}
+              {{-- <div class="mb-3">
+                <label for="District"  > {{__('Blvd')}}</label>
+                <input type="text" name="Blve" class="form-control" id="أدخل رقم الجادة" value="@if($add == 1) {{$address->Blve}} @else {{old('Blve')}}  @endif">
+              </div> --}}
+              {{-- <div class="mb-3">
+                <label for="flat"  > {{__('Apartment/House')}}</label>
+                <input type="text" name="house" class="form-control" id="flat" placeholder="أدخل رقم/اسم الشقة/المنزل" value="@if($add == 1) {{$address->house}} @else {{old('house')}}  @endif" maxlength="100"  >
+              </div> --}}
+              <div class="mb-3">
+                <label for="mobile-number"  > {{__('Mobile number')}}</label>
+                @error('phone')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                <input type="text" name="phone" class="form-control" id="mobile-number" value="@if($add == 1) {{$address->phone}} @else {{old('phone')}}  @endif" maxlength="100" required>
+              </div> 
+               {{-- @if(Auth::user())@else
+              <div class="mb-1 ">
+                <input class="form-check-input" type="checkbox" value="1" name="make_user"  id="accept">
+                <label class="form-check-label" for="accept">
+                   {{__('Create an account')}}
+                 </label>
+              </div>
+              <div class="mb-3">
+              <label for="user-password"  > {{__('Password')}}</label>
+                  @error('password')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                     <div class="input-group">
-                     <input type="password" class="form-control" name="password_confirmation" aria-label="user-password" aria-describedby="user-password">
-                    </div></div>
-                    @endif
-                  <div class="mb-3">
-                    <label for="add-nots"  > {{__('Notes with the order')}}</label>
-                    <textarea class="form-control" name="nots" id="add-nots" cols="10" maxlength="300"  rows="5"></textarea>
-                  </div>
+                     <input type="password" class="form-control" name="password" aria-label="user-password" aria-describedby="user-password">
+                </div></div>
+              <div class="mb-3">
+              <label for="user-password"  > {{__('Confirm password')}}</label>
+                 @error('password_confirmation')
+                <small class="form-text text-danger">{{$message}}</small>
+                @enderror
+                <div class="input-group">
+                 <input type="password" class="form-control" name="password_confirmation" aria-label="user-password" aria-describedby="user-password">
+                </div></div>
+                @endif --}}
+              <div class="mb-3">
+                <label for="add-nots"  > {{__('Notes with the order')}}</label>
+                <textarea class="form-control" name="nots" id="add-nots" cols="10" maxlength="300"  rows="5"></textarea>
+              </div>
 
-                  <div class="mb-1  ">
-                    <input class="form-check-input" type="checkbox" value="" id="accept-terms"  required >
-                    <label for="accept-terms">
-                             {{__('I agree to the terms and conditions')}}
-                    </label>
-                  </div>
+              <div class="mb-1  ">
+                <input class="form-check-input" type="checkbox" value="" id="accept-terms"  required >
+                <label for="accept-terms">
+                         {{__('I agree to the terms and conditions')}}
+                </label>
+              </div>
+            @endauth
+               
            
         </div>
         <div class="col-md-2 payment-details"></div>
@@ -177,7 +187,7 @@
                 
                 </div>
                 
-                {{-- <div class="mb-3 form-check">
+                <div class="mb-3 form-check">
                     @error('payment_method')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
@@ -187,7 +197,7 @@
                              {{__('Cash on delivery')}}
                     </label>
                   </div>
-                  @if ()
+                  {{-- @if ()
                       
                   @endif --}}
 
@@ -212,17 +222,11 @@
 
                   <hr class="my-4 hr-blue">
                   
-                  @foreach($cart->get() as $item)
-                  <tr id="a{{$item->id }}">
-                      <td class="pro-thumbnail"><a href="{{route('viewProperty',$item->product->id)}}"><img class="img-fluid" src="{{asset('/storage/property/'.$item->product->image)}}" alt="Product" width="100"/></a></td>
-                      <td class="pro-title"><a href="{{route('viewProperty',$item->product->id)}}"> {{$item->product->name }}  </a></td>
-                      <td class="pro-price"><span>{{ $item->product->price }}  {{__('AED')}}</span></td>
-                      <td class="pro-price"><span>{{$item->quantity}}</span></td>
+          
 
-                   </tr>
-                  @endforeach
-
+                @auth
                 <input type="submit" class="btn text-white d-block" style="background-color:#563e32;" value=" {{__('Confirmation')}} ">
+                @endauth
 
         </div> </form> 
     </div>
