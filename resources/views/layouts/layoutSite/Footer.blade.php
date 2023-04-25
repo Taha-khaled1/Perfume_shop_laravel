@@ -257,7 +257,7 @@
         <div class="bg-light p-2">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12 text-center text-md-start">
-                    <p class="mb-0">{{ 'All rights reserved' }} © {{ date('Y') }} {{ 'OUDZ' }}</p>
+                    <p class="mb-0">{{ 'All rights reserved' }} © {{ date('Y') }} {{ 'NTS' }}</p>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 text-center text-md-end">
                     {{-- <p class="mb-0">{{('Developed by')}} <a href="#" target="_blank">{{('ODZ Tech')}}</a></p> --}}
