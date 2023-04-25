@@ -21955,11 +21955,12 @@ body.rtl_mode .owl-carousel .ms-2 {
 }
 
 body.rtl_mode .sidebar {
+  background-color: blue;
   margin-left: 0px !important;
   margin-right: 25px !important
 }
 
-body.rtl_mode .sidebar.sidebar-mini .form-switch.theme-rtl {
+body.rtl_mode .sidebar.sidebar-mini .form-switch.theme-rtl {  background-color: blue;
   padding-left: 0px;
   padding-right: 1.5em
 }
