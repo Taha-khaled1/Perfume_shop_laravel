@@ -73,7 +73,7 @@
           
 
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-            <a href="{{route('category_property',$category->id)}}"><h1 class="fs-1">{{$category->name }}</h1></a>
+            <a href="{{route('category_property',$category->id)}}" class="text-decoration-none"><h1 class="fs-2">{{$category->name }}</h1></a>
 
             
         @else

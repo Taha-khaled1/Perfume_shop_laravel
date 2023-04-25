@@ -415,11 +415,16 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 d-flex align-items-center">
-                <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid" alt=" logo">
-                <ul class="list-unstyled d-flex m-0 custom-links">
+                <img src="{{asset('storage/users/'. $header_logo )}}" width="190" class="img-fluid" alt=" logo">
+                {{-- <ul class="list-unstyled d-flex m-0 custom-links">
                     <li class="me-4"><a href="{{ route('viewHomePage')}}" class="text-decoration-none fs-5">{{ __('Home') }}</a></li>
+                    <li class="me-4"><a href="" class="text-decoration-none fs-5">{{ __('Categories') }}</a></li>
+                    @if(Auth::user())
+                    <li class=""><a href="{{ route('Logout')}}" class="text-decoration-none fs-5">{{ __('Sign Out') }}</a></li>
+                    @else
                     <li class=""><a href="" class="text-decoration-none fs-5">{{ __('Categories') }}</a></li>
-                </ul>
+                    @endif
+                </ul> --}}
             </div>
             <div class="col-lg-6">
                 <ul class="list-unstyled d-flex justify-content-end align-items-center m-0 custom-list ">

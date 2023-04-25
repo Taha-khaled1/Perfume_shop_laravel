@@ -27,7 +27,42 @@
         <div class="col-md-4 m-auto my-5">
         <form method="POST" action="{{ route('register') }}" class="ltn__form-box contact-form-box">
                             @csrf
-
+                <div class="mb-3">
+                    <label for="user-name-or-email" class="form-label">  {{__('First name')}} </label>
+                    @error('email')
+                                <small class="form-text text-danger">{{$message}}</small>
+                                @enderror
+                                @if (\Session::has('error'))
+                                <small class="form-text text-danger">
+                                    {{ \Session::get('error')}}
+                                </small>
+                                @endif
+                    <input type="text" name="fname" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="user-name-or-email" class="form-label">  {{__('Second name')}} </label>
+                        @error('email')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                    @enderror
+                                    @if (\Session::has('error'))
+                                    <small class="form-text text-danger">
+                                        {{ \Session::get('error')}}
+                                    </small>
+                                    @endif
+                        <input type="text" name="lname" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-name-or-email" class="form-label">  {{__('الإمارة')}} </label>
+                            @error('email')
+                                        <small class="form-text text-danger">{{$message}}</small>
+                                        @enderror
+                                        @if (\Session::has('error'))
+                                        <small class="form-text text-danger">
+                                            {{ \Session::get('error')}}
+                                        </small>
+                                        @endif
+                            <input type="text" name="lname" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
+                            </div>
             <div class="mb-3">
                 <label for="user-name-or-email" class="form-label">  {{__('Email')}} </label>
                 @error('email')

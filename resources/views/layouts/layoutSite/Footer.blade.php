@@ -183,7 +183,7 @@
       <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
         <div class="accordion-body" dir="rtl">
             <ul class="list-unstyled mb-0">
-                <li class="mb-3"><a class="text-dark" href="{{route('about')}}">{{__('About Us')}}</a></li> 
+                {{-- <li class="mb-3"><a class="text-dark" href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
                 <li class="mb-3"><a class="text-dark" href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
                 <li><a class="text-dark" href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
             </ul>
@@ -207,7 +207,7 @@
                     <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
                         <h4>اودز</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('about')}}">{{__('About Us')}}</a></li> 
+                            {{-- <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
                             <li><a href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
                             <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
                         </ul>

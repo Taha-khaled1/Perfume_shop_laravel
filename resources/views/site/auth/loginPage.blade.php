@@ -28,7 +28,7 @@
         <form method="POST" action="{{route('login')}}" class="ltn__form-box contact-form-box">
                             @csrf
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="user-name-or-email" class="form-label"> {{__('Email')}}</label>
                 
                 @error('email')
@@ -47,6 +47,15 @@
             </div><br>
             <div class="text-center">
             <input type="submit"  class="btn btn-primary border-0 rounded-0 w-100" value="  {{__('Sign In')}} " style="background-color: var(--main-color);">
+        </div> --}}
+        <div class="mb-3">
+            <label for="user-name-or-email" class="form-label"> {{__('Phone Number')}}</label>
+                
+            @error('phone')
+                        <small class="form-text text-danger">{{__('The password or email does not match our records.')}} </small>
+                        @enderror
+            <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="user-name-or-email" placeholder="xxxxxxxxxxxxxx">
+
         </div>
              <div class="text-center"><p class="h6 pb-10 my-4"> {{__('or')}} </p></div>
             <div class="text-center">
