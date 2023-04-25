@@ -333,7 +333,7 @@ transition: all 0.3s ease;
 }
   .floating-whatsapp {
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     z-index: 9999;
   }

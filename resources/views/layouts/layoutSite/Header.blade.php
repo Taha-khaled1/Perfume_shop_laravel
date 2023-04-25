@@ -230,7 +230,7 @@
    </aside>
 </header> 
 
-<div class="tob-header bg-light">
+{{-- <div class="tob-header bg-light">
 <div class="container">
    <div class="row align-items-center py-2">
        <div class="col-6">
@@ -254,8 +254,8 @@
                        
                        @endif
                     
-                       {{-- {{ LaravelLocalization::getCurrentLocaleNative() }} --}}
-                       {{-- <i class="fa fa-angle-down"></i> --}}
+                       {{ LaravelLocalization::getCurrentLocaleNative() }}
+                       <i class="fa fa-angle-down"></i>
                        <ul class="dropdown-list curreny-list">
                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                        <li>
@@ -296,7 +296,7 @@
                        </a>
                    </li>
                </ul>
-               {{-- <div class="header-top-settings">
+               <div class="header-top-settings">
                    <ul>
                        <li class="language">
                            @if ( Config::get('app.locale') == 'en')
@@ -322,7 +322,7 @@
                             </ul>
                        </li>
                    </ul>
-               </div> --}}
+               </div>
            </div>
            <div>
                <div class="d-flex ">
@@ -332,7 +332,7 @@
                               <button type="submit" class="search-btn"><i class="pe-7s-search"></i></button>
                           </form>
                       </div>
-                      {{-- @if(Auth::user())
+                      @if(Auth::user())
                       @else
         
                       <div class="login login-lg">
@@ -342,7 +342,7 @@
                       </ul>
                       </div>
                  
-                      @endif --}}
+                      @endif
                     
                   <div class="menu-icon">
                       <i class="fas fa-bars ms-3 fs-2"></i>
@@ -356,7 +356,7 @@
        </div>
    </div>
 </div>
-</div>
+</div> --}}
 <div class="logo-sm text-center my-3">
 <!-- <img src="{{asset('storage/users/'. $header_logo )}}" width="250" class="img-fluid" alt=" logo"> -->
 <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid" alt=" logo">
@@ -383,7 +383,7 @@
 
 
 <!--=========================================================== start links ==============================================-->
-<div class="links">
+{{-- <div class="links">
 <div class="container">
    <ul class="list-unstyled d-flex justify-content-between">
        <li><a href="{{route('products')}}" class="text-decoration-none">{{__('Products')}}</a></li>
@@ -409,4 +409,62 @@
        </a></li>
    </ul>
 </div>
-</div>
+</div> --}}
+
+<header class="header-xl bg-white d-lg-block d-none">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 d-flex align-items-center">
+                <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid" alt=" logo">
+                <ul class="list-unstyled d-flex m-0 custom-links">
+                    <li class="me-4"><a href="{{ route('viewHomePage')}}" class="text-decoration-none fs-5">{{ __('Home') }}</a></li>
+                    <li class=""><a href="" class="text-decoration-none fs-5">{{ __('Categories') }}</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <ul class="list-unstyled d-flex justify-content-end align-items-center m-0 custom-list ">
+                    <li>
+                        <form action="{{ route('search_property')}}" method="GET">
+                            <input type="text" name="title" placeholder="{{ __('Enter your search key ...') }}" class="text-end">
+                            <button type="submit" class="search-btn"><i class="pe-7s-search"></i></button>
+                        </form>
+                    </li>
+                    <li class="">
+                        <div class="header-top-settings">
+                            <ul class="m-0">
+                                <li class="language">
+                                    @if ( Config::get('app.locale') == 'en')
+                                    English
+                                    <img src="{{asset('assets/img/English.png' )}}" width="25" alt="logo">
+                                    
+                                    @elseif ( Config::get('app.locale') == 'ar' )
+                                    العربية
+                                    <img src="{{asset('assets/img/العربية.png' )}}" width="25" alt="logo">
+                                    
+                                    @endif
+                                 
+                                    {{-- {{ LaravelLocalization::getCurrentLocaleNative() }} --}}
+                                    {{-- <i class="fa fa-angle-down"></i> --}}
+                                    <ul class="dropdown-list curreny-list">
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    <li>
+                                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        <img src="{{asset('assets/img/'. $properties['native'] .'.png' )}}" width="25" class="m-0" alt="logo"> {{ $properties['native'] }} 
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                     </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{{route('cart.index')}}">
+                            <i class="text-dark pe-7s-shopbag fs-4 ms-4"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

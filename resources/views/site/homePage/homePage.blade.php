@@ -46,15 +46,16 @@
         @endforeach
     </div>
 </section> -->
-<div class="hero text-center rounded m-1" style="background-image: url({{asset('storage/property/'.$carousel->image)}}); background-size: cover;">
-
+<div class="hero text-center rounded m-1">
+    <video src="{{asset('storage/property/'.$carousel->image)}}" muted autoplay loop class="w-100 h-100" style="object-fit: cover;"></video>
 </div>
 
 
 
 
-
-
+{{-- <div class="hero text-center rounded m-1">
+    <video src="{{asset('storage/property/'.$carousel->image)}}"></video>
+</div> --}}
 
 
 
@@ -72,7 +73,7 @@
           
 
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-            <h1>{{$category->name }}</h1>
+            <h1 class="fs-1">{{$category->name }}</h1>
         @else
         <h1>{{$category->name_en }}</h1>
         @endif
