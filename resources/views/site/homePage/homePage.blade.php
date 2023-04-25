@@ -73,9 +73,13 @@
           
 
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-            <h1 class="fs-1">{{$category->name }}</h1>
+            <a href="{{route('category_property',$category->id)}}"><h1 class="fs-1">{{$category->name }}</h1></a>
+
+            
         @else
-        <h1>{{$category->name_en }}</h1>
+        
+        <a href="{{route('category_property',$category->id)}}"><h1>{{$category->name_en }}</h1></a>
+
         @endif
             <!-- Swiper -->
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
