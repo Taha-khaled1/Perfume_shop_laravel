@@ -177,7 +177,7 @@
                 
                 </div>
                 
-                <div class="mb-3 form-check">
+                {{-- <div class="mb-3 form-check">
                     @error('payment_method')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
@@ -187,6 +187,10 @@
                              {{__('Cash on delivery')}}
                     </label>
                   </div>
+                  @if ()
+                      
+                  @endif --}}
+
                   <div class="mb-3 form-check">
                     @error('payment_method')
                         <small class="form-text text-danger">{{$message}}</small>
@@ -207,6 +211,16 @@
                       @endif
 
                   <hr class="my-4 hr-blue">
+                  
+                  @foreach($cart->get() as $item)
+                  <tr id="a{{$item->id }}">
+                      <td class="pro-thumbnail"><a href="{{route('viewProperty',$item->product->id)}}"><img class="img-fluid" src="{{asset('/storage/property/'.$item->product->image)}}" alt="Product" width="100"/></a></td>
+                      <td class="pro-title"><a href="{{route('viewProperty',$item->product->id)}}"> {{$item->product->name }}  </a></td>
+                      <td class="pro-price"><span>{{ $item->product->price }}  {{__('AED')}}</span></td>
+                      <td class="pro-price"><span>{{$item->quantity}}</span></td>
+
+                   </tr>
+                  @endforeach
 
                 <input type="submit" class="btn text-white d-block" style="background-color:#563e32;" value=" {{__('Confirmation')}} ">
 

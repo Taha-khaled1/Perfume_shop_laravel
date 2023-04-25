@@ -51,10 +51,31 @@
 </div>
 
 
- <div class="bg-light">
+
+
+
+
+
+
+
+
+
+
+
+@foreach ($categories as $category)
+  
+
+
+<div class="bg-light">
     <div class="container">
         <section class="last-product pb-5">
-            <h1>عطور رجال</h1>
+          
+
+            @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+            <h1>{{$category->name }}</h1>
+        @else
+        <h1>{{$category->name_en }}</h1>
+        @endif
             <!-- Swiper -->
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                 @php
@@ -67,33 +88,58 @@
             @endif
            <div class="" dir="{{$dir}}">
              <div class="row">
-             @foreach( $products as $product)
-             <div class="col-lg-3 col-6 mb-3">
 
-                 <div class="d-flex flex-column item">
-                    <a href="{{route('viewProperty',$product->id)}}" class="bg-transparent p-0"><img src="{{asset('/storage/property/'.$product->image)}}" alt="" class="custom-imgg"></a>
-                 <div class="text-center p-2">
-                    <h4 class="mt-2">
-                    @if($product->name_en != null)
-                        @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                        {{$product->name}}
-                        @else
-                        {{$product->name_en}}
-                        @endif @else
-                        {{$product->name}}
-                        @endif
-                    </h4>
-                    <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
-                    <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
-                 </div>
-                 </div>
-               </div>
-             @endforeach
+                @foreach ($category->product as $product)
+                <div class="col-lg-3 col-6 mb-3">
+
+                    <div class="d-flex flex-column item">
+                       <a href="{{route('viewProperty',$product->id)}}" class="bg-transparent p-0"><img src="{{asset('/storage/property/'.$product->image)}}" alt="" class="custom-imgg"></a>
+                    <div class="text-center p-2">
+                       <h4 class="mt-2">
+                       @if($product->name_en != null)
+                           @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                           {{$product->name}}
+                           @else
+                           {{$product->name_en}}
+                           @endif @else
+                           {{$product->name}}
+                           @endif
+                       </h4>
+                       <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
+                       <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
+                    </div>
+                    </div>
+                  </div>
+            @endforeach
+
+
+             {{-- @foreach( $products as $product)
+          
+             @endforeach --}}
              </div>
            </div>
          </section>
     </div>
 </div>
+
+
+
+@endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  {{-- <!-- <section class="product-area section-padding bg-gray"  >
             <div class="container">
                 <div class="row">
@@ -158,7 +204,7 @@
       </div>
     </section> --> --}}
 
-<div class="shopping">
+{{-- <div class="shopping">
     <h1>{{__('Shop by category')}}</h1>
     <div class="container">
         <div class="row">
@@ -193,7 +239,7 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 
 
 

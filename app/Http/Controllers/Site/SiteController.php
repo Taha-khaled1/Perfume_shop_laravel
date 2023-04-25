@@ -41,6 +41,7 @@ class SiteController extends Controller
         $carousels = Carousel::latest()->get();
         $products = Product::where('featured', 1)->latest()->limit(10)->get();
         $categores = Category::where('featured', 1)->orderBy('ord', 'ASC')->get();
+        $categories  = Category::with('product')->get();
         $setting = Setting::all();
         $title = $setting->where('key', 'section1_header')->first()->value;
         $text = $setting->where('key', 'section2_header')->first()->value;
@@ -48,12 +49,32 @@ class SiteController extends Controller
         $url = $setting->where('key', 'section1_url')->first()->value;
         $data=  Slide::all();
         // $toppro=Product::where('istop', 1)->limit(12)->get();
-        return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data] , ['products'=> $products])->with('categores',$categores)
+        return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
         ->with('title',$title)
         ->with('text',$text)
         ->with('img',$img)
         ->with('url',$url);
     }
+
+    // public function viewHomePage()
+    // {
+    //     $carousels = Carousel::latest()->get();
+    //     $products = Product::where('featured', 1)->latest()->limit(10)->get();
+    //     $categories  = Category::with('products')->get();
+    //     // return  $categores ;
+    //     $setting = Setting::all();
+    //     $title = $setting->where('key', 'section1_header')->first()->value;
+    //     $text = $setting->where('key', 'section2_header')->first()->value;
+    //     $img = $setting->where('key', 'section1_image')->first()->value;
+    //     $url = $setting->where('key', 'section1_url')->first()->value;
+    //     $data=  Slide::all();
+    //     // $toppro=Product::where('istop', 1)->limit(12)->get();
+    //     return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
+    //     ->with('title',$title)
+    //     ->with('text',$text)
+    //     ->with('img',$img)
+    //     ->with('url',$url);
+    // }
 
    
 
