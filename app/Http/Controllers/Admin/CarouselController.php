@@ -33,7 +33,7 @@ class CarouselController extends Controller
     public function carousel_save(Request $request)
     {
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
 
         ]);
         $carousel =new Carousel();
