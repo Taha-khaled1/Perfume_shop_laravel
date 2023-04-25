@@ -241,10 +241,10 @@
                                     <a href=""><i class="fs-4 fa fa-snapchat"></i></a>
                                 </li>
                                 <li class="text-center">
-                                    <a href=""><img src="cash-on-delivery.png" alt="image1"></a>
+                                    <a href=""><img src="{{asset('cash-on-delivery.png')}}" alt="image1"></a>
                                 </li>
                                 <li class="text-center">
-                                    <a href=""><img src="visa.png" alt="image2"></a>
+                                    <a href=""><img src="{{asset('visa.png')}}" alt="image2"></a>
                                 </li>
                             </ul>
                         </div>
