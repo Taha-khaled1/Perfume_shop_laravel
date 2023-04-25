@@ -1,11 +1,9 @@
-
-
-  <div class="floating-whatsapp">
+<div class="floating-whatsapp">
     <a href="https://wa.me/0501009004">
-        <img src="{{asset('whatsapp.png')}}" alt="WhatsApp Icon">
+        <img src="{{ asset('whatsapp.png') }}" alt="WhatsApp Icon">
     </a>
-  </div>
-<!-- 
+</div>
+<!--
     <div class="scroll-top not-visible">
         <i class="fa fa-angle-up"></i>
     </div>
@@ -18,8 +16,8 @@
                         <div class="widget-item">
                             <div class="widget-title">
                                 <div class="widget-logo">
-                                    <a href="{{route('viewHomePage')}}">
-                                        <img src="{{asset('storage/users/'. $header_logo )}}" alt=" logo">
+                                    <a href="{{ route('viewHomePage') }}">
+                                        <img src="{{ asset('storage/users/' . $header_logo) }}" alt=" logo">
                                     </a>
                                 </div>
                             </div>
@@ -31,11 +29,11 @@
                         <div class="widget-item">
                              <div class="widget-body">
                                 <address class="contact-block">
-                                @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                    {!!$address!!}
-                        @else
-                        {!!$addressen!!}
-                      @endif
+                                @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+{!! $address !!}
+@else
+{!! $addressen !!}
+@endif
                                 </address>
                             </div>
                         </div>
@@ -44,24 +42,24 @@
                         <div class="widget-item">
                              <div class="widget-body">
                                 <ul class="info-list">
-                                  <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
-                                  <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
-                                  <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
-                                  <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>
-                                  <li><a href="{{route('Shipping')}}">{{__('Shipping and receiving')}}</a></li>
-                                  <li><a href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
-                                  <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
+                                  <li><a href="{{ route('questions') }}">{{ __('Common questions') }}</a></li>
+                                  <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                                  <li><a href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
+                                  <li><a href="{{ route('about') }}">{{ __('About Us') }}</a></li>
+                                  <li><a href="{{ route('Shipping') }}">{{ __('Shipping and receiving') }}</a></li>
+                                  <li><a href="{{ route('policy') }}">{{ __('Privacy policy') }}</a></li>
+                                  <li><a href="{{ route('conditions') }}">{{ __('Terms and Conditions') }}</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="newsletter-wrapper">
-                            <h6 class="widget-title-text">{{__('Newsletter subscription')}}</h6>
+                            <h6 class="widget-title-text">{{ __('Newsletter subscription') }}</h6>
 
                             <form name="subscriber" id="subscriber" enctype="multipart/form-data" method="post" action="" class="newsletter-inner"  >
                             @csrf
-                              <input type="email" class="news-field" id="mc-email" type="email" name="email" maxlength="90" id="a1" placeholder="{{__('Enter email')}}">
+                              <input type="email" class="news-field" id="mc-email" type="email" name="email" maxlength="90" id="a1" placeholder="{{ __('Enter email') }}">
                                 <button class="news-btn" type="button"  id="subscriber_btn">Subscribe</button>
                             </form>
                             <div id="success_message_subscriber"></div>
@@ -70,8 +68,8 @@
                         </div><br>
                         <div class="widget-item">
                              <div class="widget-body social-link">
-                                 <a href="{{$facebook_link}}"><i class="fa fa-facebook"></i></a>
-                                <a href="{{$instagram_link}}"><i class="fa fa-instagram"></i></a>
+                                 <a href="{{ $facebook_link }}"><i class="fa fa-facebook"></i></a>
+                                <a href="{{ $instagram_link }}"><i class="fa fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -79,7 +77,7 @@
                 <div class="row align-items-center mt-20">
                       
                     <div class="copyright-text text-end">
-                        <p class="copyright">Copyright © <a target="_blank" href="https://instagram.com/nanots.ae?igshid=Yzg5MTU1MDY=" >{{__('Copyright reserved to Nano Technology Solutions')}} </a></p>
+                        <p class="copyright">Copyright © <a target="_blank" href="https://instagram.com/nanots.ae?igshid=Yzg5MTU1MDY=" >{{ __('Copyright reserved to Nano Technology Solutions') }} </a></p>
  
                     </div>
                 </div>
@@ -146,86 +144,98 @@
 
 <div class="accordion footer-accordion" id="accordionExample">
     <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" dir="rtl" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            {{__('Customer Service')}}
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <ul class="list-unstyled mb-0" dir="rtl">
-                <li><a class="text-dark" href="{{route('questions')}}">{{__('Common questions')}}</a></li>
-            </ul>       
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" dir="rtl" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                {{ __('Customer Service') }}
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <ul class="list-unstyled mb-0" dir="rtl">
+                    <li><a class="text-dark" href="{{ route('questions') }}">{{ __('Common questions') }}</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
     <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            {{__('For you')}}
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body" dir="rtl">
-            <ul class="list-unstyled mb-0">
-                <li class="mb-3"><a class="text-dark" href="{{route('register')}}">{{__('Register')}}</a></li>
-                <li><a class="text-dark" href="{{route('login')}}">{{__('Sign In')}}</a></li>
-            </ul>
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                {{ __('For you') }}
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body" dir="rtl">
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-3"><a class="text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    <li><a class="text-dark" href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
     <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            {{__('Oudz')}}
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body" dir="rtl">
-            <ul class="list-unstyled mb-0">
-                {{-- <li class="mb-3"><a class="text-dark" href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
-                <li class="mb-3"><a class="text-dark" href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
-                <li><a class="text-dark" href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
-            </ul>
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                {{ __('Oudz') }}
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body" dir="rtl">
+                <ul class="list-unstyled mb-0">
+                    {{-- <li class="mb-3"><a class="text-dark" href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
+                    <li class="mb-3"><a class="text-dark"
+                            href="{{ route('policy') }}">{{ __('Privacy policy') }}</a></li>
+                    <li><a class="text-dark" href="{{ route('conditions') }}">{{ __('Terms and Conditions') }}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <footer>
+</div>
+<footer>
     <div class="container">
         <div class="custom">
-      
+
             <div class="foot">
                 <div class="row">
                     <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
                         <h4>اودز</h4>
                         <ul class="list-unstyled">
                             {{-- <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
-                            <li><a href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
-                            <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
+                            <li><a href="{{ route('policy') }}">{{ __('Privacy policy') }}</a></li>
+                            <li><a href="{{ route('conditions') }}">{{ __('Terms and Conditions') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-6 text-end order-lg-3 order-2 sm-footer">
                         <h4>خدمات العملاء</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
+                            <li><a href="{{ route('questions') }}">{{ __('Common questions') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-12 text-end order-lg-2 order-4 sm-footer">
                         <h4>لك</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
-                            <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
+                            <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 text-end order-lg-4 order-1">
-                        <div class="text-center"><img src="{{asset('storage/users/'. $header_logo )}}" width="80" class="img-fluid" alt=" logo"></div>
-                        <p class="my-3">بإدخال عنوان بريدك الإلكتروني أدناه ، فإنك توافق على تلقي رسائلنا الإخبارية مع إمكانية الوصول إلى أحدث مجموعاتنا وفعالياتنا ومبادراتنا. يتم توفير مزيد من التفاصيل حول هذا في سياسة الخصوصية الخاصة بنا.
+                        <div class="text-center"><img src="{{ asset('storage/users/' . $header_logo) }}"
+                                width="80" class="img-fluid" alt=" logo"></div>
+                        <p class="my-3">بإدخال عنوان بريدك الإلكتروني أدناه ، فإنك توافق على تلقي رسائلنا الإخبارية
+                            مع إمكانية الوصول إلى أحدث مجموعاتنا وفعالياتنا ومبادراتنا. يتم توفير مزيد من التفاصيل حول
+                            هذا في سياسة الخصوصية الخاصة بنا.
                         </p>
                         <div class="social-icons d-flex justify-content-between">
                             <ul class="list-unstyled d-flex gap-2 justify-content-center w-100">
                                 <li class="text-center">
-                                    <a href="{{$instagram_link}}"><i class="fs-4 fa fa-instagram"></i></a>
+                                    <a href="{{ $instagram_link }}"><i class="fs-4 fa fa-instagram"></i></a>
                                 </li>
                                 <li class="text-center">
                                     <a href=""><i class="fs-4 fa fa-snapchat"></i></a>
@@ -239,22 +249,22 @@
                             </ul>
                         </div>
                     </div>
-                 
+
                 </div>
             </div>
         </div>
 
         <div class="bg-light p-2">
             <div class="row">
-<div class="col-lg-6 col-md-6 col-12 text-center text-md-start">
-<p class="mb-0">{{('All rights reserved')}} © {{date('Y')}} {{('OUDZ')}}</p>
-</div>
-<div class="col-lg-6 col-md-6 col-12 text-center text-md-end">
-{{-- <p class="mb-0">{{('Developed by')}} <a href="#" target="_blank">{{('ODZ Tech')}}</a></p> --}}
-</div>
-</div>
-</div>
-</div>
+                <div class="col-lg-6 col-md-6 col-12 text-center text-md-start">
+                    <p class="mb-0">{{ 'All rights reserved' }} © {{ date('Y') }} {{ 'OUDZ' }}</p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12 text-center text-md-end">
+                    {{-- <p class="mb-0">{{('Developed by')}} <a href="#" target="_blank">{{('ODZ Tech')}}</a></p> --}}
+                </div>
+            </div>
+        </div>
+    </div>
 
 </footer>
 
