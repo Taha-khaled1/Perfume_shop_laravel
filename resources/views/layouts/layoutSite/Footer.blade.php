@@ -191,17 +191,10 @@
       </div>
     </div>
   </div>
-<footer>
+  <footer>
     <div class="container">
         <div class="custom">
-            {{-- <h3 class="text-center mb-5">انضم لنشرتنا و تابع كل ماهو جديد</h3>
-            <div class="Subscribe mb-3 d-flex">
-                <div class="input-group-prepend">
-                  <button class="subscribe-field-btn" type="button">Subscribe</button>
-                </div>
-                <input type="text" class="subscribe-field" placeholder="أدخل الايميل" aria-label="" aria-describedby="basic-addon1">
-            </div> --}}
-            {{-- <hr class="my-5 custom-hr"> --}}
+      
             <div class="foot">
                 <div class="row">
                     <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
@@ -231,38 +224,38 @@
                         </p>
                         <div class="social-icons d-flex justify-content-between">
                             <ul class="list-unstyled d-flex gap-2 justify-content-center w-100">
-                                {{-- <li class="text-center">
-                                    <a href="{{$facebook_link}}"><i class="fs-4 fa fa-facebook"></i></a>
-                                </li>
-                                <li class="text-center">
-                                    <a href="{{$twitter_link}}"><i class="fs-4 fa fa-twitter"></i></a>&nbsp; 
-                                </li> --}}
                                 <li class="text-center">
                                     <a href="{{$instagram_link}}"><i class="fs-4 fa fa-instagram"></i></a>
                                 </li>
                                 <li class="text-center">
                                     <a href=""><i class="fs-4 fa fa-snapchat"></i></a>
                                 </li>
+                                <li class="text-center">
+                                    <a href=""><img src="cash-on-delivery.png" alt="image1"></a>
+                                </li>
+                                <li class="text-center">
+                                    <a href=""><img src="visa.png" alt="image2"></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-4 text-md-center text-sm-center text-lg-end text-center">
-                        <a href="{{route('about')}}" class="who-us text-decoration-none">{{__('About Us')}}</a>
-                        <p class="text-dark fs-4">  {{__('Welcome To')}}  </p>
-                        <p class="text-dark" dir="rtl">  
-
-                        <span class="fw-bold mb-2 d-block"> {{__('Shop Laha .. À ELLE BOUTIQUE')}} </span>
-                        {{__('Our boutique is a diverse Emirati brand.. We specialize in designing various dresses, abayas, etc.. We also provide bags and shoes that suit all different occasions, and we strive to provide everything that is new and distinguished. needs..')}}
-                        <span class="fw-bold mt-2 d-block">{{__('We seek to serve you with love.. 🤍')}}
-                        </span>
-                        </p>
-                    </div> --}}
+                 
                 </div>
             </div>
         </div>
 
         <div class="bg-light p-2">
-            <a href="https://instagram.com/nanots.ae?igshid=YmMyMTA2M2Y=" class="text-decoration-none text-dark" target="_blank"><p class="text-center mt-2">{{__('Copyright NTS')}} &copy;</p> </a>
-        </div>
-    </div>
+            <div class="row">
+<div class="col-lg-6 col-md-6 col-12 text-center text-md-start">
+<p class="mb-0">{{('All rights reserved')}} © {{date('Y')}} {{('OUDZ')}}</p>
+</div>
+<div class="col-lg-6 col-md-6 col-12 text-center text-md-end">
+{{-- <p class="mb-0">{{('Developed by')}} <a href="#" target="_blank">{{('ODZ Tech')}}</a></p> --}}
+</div>
+</div>
+</div>
+</div>
+
 </footer>
+
+<!-- End of Footer -->
