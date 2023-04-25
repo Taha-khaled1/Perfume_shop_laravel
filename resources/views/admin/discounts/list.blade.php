@@ -70,6 +70,8 @@
                                  </table>
                                  </div>
                                  </div>
+
+
                                  <div class="tab-pane p-3" id="Settings" role="tabpanel">
                                         <div class="row">
                                         <div class="card">
@@ -90,6 +92,18 @@
                                             </div>
                                         </div>
                                          
+                                        
+                                        <div class="select-wrapper">
+                                            <select>
+                                                <option value="" disabled selected>اختار القسم</option>
+                                             @foreach ($catogerys as $item)
+                                             <option value="option1">{{$item->name}}</option>
+                                             @endforeach
+                                             
+                                            </select>
+                                            <div class="select-arrow"></div>
+                                        </div>
+                                        
                                         </div><!--end row-->
                                         <div class="form-group mb-3 row">
                                         <div class="col-lg-9 col-xl-8 offset-lg-3">
@@ -104,6 +118,9 @@
 
                                             </div><!--end col-->
                                         </div><!--end row-->
+
+
+
                                     </div>
                                 </div>
                             </div>
