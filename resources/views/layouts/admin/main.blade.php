@@ -408,7 +408,46 @@ input[type="text"], input[type="file"] {
     font-size: 16px;
     text-decoration: none;
 }
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  color: #333;
+}
 
+/* Add a custom background and border to the input field */
+input[type="date"]:focus {
+  background-color: #fff;
+  box-shadow: inset 0 0 0 2px #0080ff;
+}
+.form-grouppp {
+  width: 300px; /* adjust as needed */
+}
+
+.form-grouppp label, .form-grouppp input {
+  display: block;
+  width: 100%;
+}
+/* Style the datepicker dropdown */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #333;
+  font-size: 16px;
+  padding: 4px;
+}
+
+/* Style the datepicker dropdown icon */
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+/* Optional: Style the label for the input field */
+label[for="date"] {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+}
 .image-actions a:hover {
     color: #f00;
 }
@@ -418,7 +457,9 @@ input[type="text"], input[type="file"] {
     <!-- plugin css file  -->
     <link rel="stylesheet" href="{{ url('/') }}/cp/assets/plugin/datatables/responsive.dataTables.min.css">
     <link rel="stylesheet" href="{{ url('/') }}/cp/assets/plugin/datatables/dataTables.bootstrap5.min.css">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   
+    
     <!-- project css file  -->
     <link rel="stylesheet" href="{{ url('/') }}/cp/assets/css/ebazar.style.min.css">
 </head>

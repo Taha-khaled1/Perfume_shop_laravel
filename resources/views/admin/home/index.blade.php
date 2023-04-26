@@ -94,6 +94,12 @@
                                                         <label class="form-check-label" for="maintenance_mode">
                                                             الغاء تفعيل المنتجات
                                                         </label>
+                                                        <br><br>
+                                                        <div class="form-grouppp">
+                                                            <label for="date">اختار الوقت {{$webclose->data_time}}</label>
+                                                            <input type="date" id="date" name="date" value="{{$webclose->data_time}}" placeholder="{{$webclose->data_time}}">
+                                                          </div>
+                                                        <br><br>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="maintenance_description">الوصف ب اللغه العربيه</label>
@@ -129,4 +135,6 @@
 @push('js')
     <script src="{{ url('/') }}/cp/assets/plugins/apexcharts/apexcharts.min.js"></script>
     <script src="{{ url('/') }}/cp/assets/pages/analytics-index.init.js"></script>
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     @endpush
