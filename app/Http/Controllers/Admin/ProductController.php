@@ -143,22 +143,22 @@ class ProductController extends Controller
             $request->validate([
             'name' => 'required|max:100',
             'code' => 'required|unique:products|max:100',
-            'description' => 'required|max:300',
+            // 'description' => 'required|max:300',
             'category_id' => 'required',
             'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
-            'quantity' => 'required',
+            // 'quantity' => 'required',
             'price' => 'required|numeric',
-            'price_alternative' => 'numeric',
+            // 'price_alternative' => 'numeric',
               ],$messages = [
                 'name.required' => 'اسم المنتج مطلوب!',
                 'code.unique' => ' المنتج موجود !',
                 'code.required' => 'رمز المنتج مطلوب!',
-                'description.required' => '  الوصف مطلوب!',
+                // 'description.required' => '  الوصف مطلوب!',
                 'category_id.required' => ' النوع مطلوبة',
                 'main_image.required' => ' الصورة مطلوبة',
                 'description.max' => '   عدد الاحرف المسموح به 300 حرف',
                 'price.required' => ' السعر مطلوبة',
-                'quantity.required' => ' الكمية مطلوبة',
+                // 'quantity.required' => ' الكمية مطلوبة',
 
             ]);
 
@@ -172,26 +172,26 @@ class ProductController extends Controller
            $product->name =  $request->name??'';
            $product->name_en=  $request->name_en??'';
            $product->description = $request->description??'';
-           $product->description_en = $request->description_en??'';
+        //    $product->description_en = $request->description_en??'';
            $product->category_id = $request->category_id[0]??'36';
            $product->quantity = $request->quantity??0;
            $product->code =  $request->code??rand(1,100000);
            $product->size =$request->size??0;
            $product->featured =$request->featured??1;
-           $product->guarantee = $request->guarantee??'ds';
-           $product->sku = $request->sku??'asd';
+     
+       
            $product->price = $request->price??0	; 
 
 
            $product->shope_name = $request->shope??'لايوجد اسم';
-           $product->shope_name_en = $request->shope_en??'not name';
-           $product->price_oragin = $request->price_oragin ??0	; 
+        //    $product->shope_name_en = $request->shope_en??'not name';
+        //    $product->price_oragin = $request->price_oragin ??0	; 
 
 
 
 
 
-           $product->price_alternative = $request->price_alternative??1; 
+        //    $product->price_alternative = $request->price_alternative??1; 
            $product->quantity = $request->quantity??0; 
            $product->status =  $request->status??1;
            if ($request->topproduct=='1') {
@@ -204,18 +204,18 @@ class ProductController extends Controller
 
            
            
-           $name[] = $request->file('album');
-           $a= $request->a;
-           for($i = 0; $i < count($a); $i++)
-             {
-              if( isset($request->file('album')[$i])) {
-              $album =new Album();
-              $album->product_id = $product->id;
-              $name = $this->uploadImage('property', $request->file('album')[$i]);
-              $album->name =$name;         
-              $album->save();
-               }
-             }
+        //    $name[] = $request->file('album');
+        //    $a= $request->a;
+        //    for($i = 0; $i < count($a); $i++)
+        //      {
+        //       if( isset($request->file('album')[$i])) {
+        //       $album =new Album();
+        //       $album->product_id = $product->id;
+        //       $name = $this->uploadImage('property', $request->file('album')[$i]);
+        //       $album->name =$name;         
+        //       $album->save();
+        //        }
+        //      }
            
              
         
@@ -247,20 +247,20 @@ class ProductController extends Controller
 
 
 
-             for($i = 0; $i < count($request->option); $i++)
-             {
-                $op =new Option();
-                $op->product_id = $product->id;             
-                $op->name =$request->option[$i]; 
-                if ($request->priceop[$i] !=null) {
-                    $op->price =$request->priceop[$i];  
-                }else{
-                    $op->price =0;
-                }       
-                $op->save();
+            //  for($i = 0; $i < count($request->option); $i++)
+            //  {
+            //     $op =new Option();
+            //     $op->product_id = $product->id;             
+            //     $op->name =$request->option[$i]; 
+            //     if ($request->priceop[$i] !=null) {
+            //         $op->price =$request->priceop[$i];  
+            //     }else{
+            //         $op->price =0;
+            //     }       
+            //     $op->save();
 
 
-             }
+            //  }
 
 
 

@@ -96,7 +96,7 @@
                                             <input class="form-control" id="namee" name="shope" type="text" value="" id="example-text-input"  maxlength="100">
                                         </div>
                                         </div>
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                        
                                             <label for="example-text-input" class="col-sm-3 col-form-label text-end">اسم المحل باللغه الانجليزيه(يظهر للمالك فقط)</label>
                                             <div class="col-sm-9">
@@ -112,7 +112,7 @@
                                             
                                                 <input class="form-control" id="namee" name="price_oragin" type="text" value="" id="example-text-input"  maxlength="100">
                                             </div>
-                                            </div>
+                                            </div> --}}
 
 
 
@@ -130,12 +130,14 @@
                                             @enderror
                                             <textarea class="form-control" name="description" rows="5" maxlength="500" >{{old('description')}}</textarea>                                            </div>
                                         </div>
-                                        <div class="mb-3 row">
+
+
+                                        {{-- <div class="mb-3 row">
                                         
                                         <label   class="col-sm-3 col-form-label text-end">وصف المنتج بالانجليزي</label>
                                         <div class="col-sm-9"> 
                                         <textarea class="form-control" name="description_en" rows="5" maxlength="500" >{{old('description_en')}}</textarea>                                            </div>
-                                    </div>
+                                    </div> --}}
                                         
                                         <div class="mb-3 row">
                                         
@@ -202,18 +204,21 @@
                                                 <input class="form-control" name="size" type="text"  maxlength="100" value="{{old('size')}}" >
                                             </div>
                                         </div>
-                                        <div class="mb-3 row">
+
+                                        {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">  الضمان </label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="guarantee" type="text"  maxlength="100" value="{{old('guarantee')}}" >
                                             </div>
                                         </div>
+
                                         <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">SKU</label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="sku" type="text"  maxlength="100" value="{{old('sku')}}" >
                                             </div>
-                                        </div>     
+                                        </div>  --}}
+
                                     </div>
                                     
                                     <div class="col-lg-6">
@@ -232,7 +237,7 @@
                                             <input type="file" name="main_image" class="form-control" value="{{old('main_image')}}" />   
                                              </div>
                                         </div> 
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">صور اضافية</label>
                                             <div id="myRepeatingFields" class="col-sm-9"> 
                                                     <div class="entry input-group col-xs-3">
@@ -253,7 +258,7 @@
                                                 </div>
                                                
                                             </div> 
-                                             
+                                              --}}
                                             {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end"> الالوان</label>
                                             <div id="myRepeatingFields_co" class="col-sm-9"> 
@@ -278,7 +283,7 @@
 
 
 
-                                            <div class="mb-3 row">
+                                            {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">   الاحجام</label>
                                             <div id="myRepeatingFields_op" class="col-sm-9"> 
                                                     <div class="entry_op input-group col-xs-3">
@@ -298,7 +303,7 @@
                                                     </div>
                                                 </div>
                                                
-                                            </div>
+                                            </div> --}}
 
 
 

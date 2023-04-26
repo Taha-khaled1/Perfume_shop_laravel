@@ -104,7 +104,7 @@ require __DIR__.'/auth.php';
         return '<h1>cache cleared</h1>';
     // return what you want
 })->name('clear');
-Route::group(['middleware'=>'auth'],function (){
+// Route::group(['middleware'=>'auth'],function (){
 Route::group(['middleware'=>'auth'],function (){
     Route::get('/account', [SiteController::class,'viewMyAccountPage'])->name('viewMyAccount');
     Route::get('/sale-property', [PropertyController::class,'viewSaleProperty'])->name('saleProperty');
@@ -308,4 +308,6 @@ Route::prefix("admin")->group(function () {
 
     });
 
-});});
+});
+
+// });
