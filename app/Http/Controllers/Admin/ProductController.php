@@ -346,7 +346,7 @@ class ProductController extends Controller
         'category_id' => 'required',
         'main_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
         'price' => 'required|numeric',
-        'price_alternative' => 'numeric',
+       
           ],$messages = [
             'name.required' => 'اسم المنتج مطلوب!',
             'code.required' => 'رمز المنتج مطلوب!',
@@ -366,61 +366,61 @@ class ProductController extends Controller
        $product->name =  $request->name;
        $product->description = $request->description;
        $product->name_en=  $request->name_en;
-       $product->description_en = $request->description_en;
+    //    $product->description_en = $request->description_en;
        $product->category_id = implode(' ',$request->category_id);
        $product->quantity = $request->quantity;
        $product->code =  $request->code;
        $product->size =$request->size;
        $product->featured =$request->featured;
-       $product->guarantee = $request->guarantee;
-       $product->sku = $request->sku;
+    //    $product->guarantee = $request->guarantee;
+    //    $product->sku = $request->sku;
        $product->price = $request->price	; 
-       $product->price_alternative = $request->price_alternative; 
+    //    $product->price_alternative = $request->price_alternative; 
        $product->quantity = $request->quantity; 
        $product->status =  $request->status; 
        $product->save(); 
 
        
-       $name[] = $request->file('album');
-       $a= $request->a;
-       for($i = 0; $i < count($a); $i++)
-         {
-              if( isset($request->file('album')[$i])) {
-          $album =new Album();
-          $album->product_id = $product->id;
-          $name = $this->uploadImage('property', $request->file('album')[$i]);
-          $album->name =$name;         
-          $album->save();
-           }
-         }
+    //    $name[] = $request->file('album');
+    //    $a= $request->a;
+    //    for($i = 0; $i < count($a); $i++)
+    //      {
+    //           if( isset($request->file('album')[$i])) {
+    //       $album =new Album();
+    //       $album->product_id = $product->id;
+    //       $name = $this->uploadImage('property', $request->file('album')[$i]);
+    //       $album->name =$name;         
+    //       $album->save();
+    //        }
+    //      }
        
          
-      $col[] = $request->input('color');
-        $cc= $request->co;
-      for($i = 0; $i < count($cc); $i++)
-         {
-            if( $request->input('color')[$i] =="#000000"){}else{
-          $c =new Color();
-          $c->product_id = $product->id;              
-          $c->color =$request->color[$i];         
-          $c->save();
+    //   $col[] = $request->input('color');
+    //     $cc= $request->co;
+    //   for($i = 0; $i < count($cc); $i++)
+    //      {
+    //         if( $request->input('color')[$i] =="#000000"){}else{
+    //       $c =new Color();
+    //       $c->product_id = $product->id;              
+    //       $c->color =$request->color[$i];         
+    //       $c->save();
            
-         }}
+    //      }}
 
-         $option[] = $request->input('option');
-         $price[] = $request->price;
-         $oo= $request->op;
-         for($i = 0; $i < count($oo); $i++)
-          {
+    //      $option[] = $request->input('option');
+    //      $price[] = $request->price;
+    //      $oo= $request->op;
+    //      for($i = 0; $i < count($oo); $i++)
+    //       {
            
-            if($request->input('option')[$i] == null ){}else{
-            $op =new Option();
-            $op->product_id = $product->id;              
-            $op->name =$request->option[$i];  
-             $op->save();
+    //         if($request->input('option')[$i] == null ){}else{
+    //         $op =new Option();
+        //     $op->product_id = $product->id;              
+        //     $op->name =$request->option[$i];  
+        //      $op->save();
              
-          }
-        }
+        //   }
+        // }
 
        if($product) {
         notify()->success('تم التعديل  !');

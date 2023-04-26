@@ -81,14 +81,14 @@
                                             <div class="col-sm-9">
                                             <textarea class="form-control" name="description" rows="5" maxlength="500">{{$product->description}} </textarea>                                            </div>
                                         </div>
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                         @error('description')
                                             <small class="form-text text-danger">{{$message}}</small>
                                             @enderror
                                             <label   class="col-sm-3 col-form-label text-end">وصف المنتج باللغة الانجليزية</label>
                                             <div class="col-sm-9">
                                             <textarea class="form-control" name="description_en" rows="5" maxlength="500">{{$product->description_en}} </textarea>                                            </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="mb-3 row">
                                         @error('price')
                                             <small class="form-text text-danger">{{$message}}</small>
@@ -147,7 +147,7 @@
                                                 <input class="form-control" name="size" type="text"  maxlength="100" value="{{$product->size}}  " >
                                             </div>
                                         </div>
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">  الضمان </label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="guarantee" type="text"  maxlength="100" value="{{$product->guarantee}} " >
@@ -158,7 +158,7 @@
                                             <div class="col-sm-9">
                                                 <input class="form-control" name="sku" type="text"  maxlength="100" value="{{$product->sku}} " >
                                             </div>
-                                        </div>     
+                                        </div>      --}}
                                     </div>
                                     
                                     <div class="col-lg-6">
@@ -179,7 +179,7 @@
                                             <input type="file" name="main_image" class="form-control " />   
                                              </div>
                                         </div> 
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">صور اضافية</label>
                                             <div id="myRepeatingFields" class="col-sm-9"> 
                                                     <div class="entry input-group col-xs-3">
@@ -199,8 +199,8 @@
                                                     </div>
                                                 </div>
                                                
-                                            </div> 
-                                            <div class="mb-3 row">
+                                            </div>  --}}
+                                            {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">   </label>
                                             <div class="col-sm-9">
                                         <table >@foreach($product->album as $a)
@@ -210,9 +210,9 @@
                                                                    
                                                             </tr> @endforeach
                                                         </table></div>
-                                        </div><br>
+                                        </div><br> --}}
                                         
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end"> الالوان</label>
                                             <div id="myRepeatingFields_co" class="col-sm-9"> 
                                                     <div class="entry_co input-group col-xs-3">
@@ -232,8 +232,8 @@
                                                     </div>
                                                 </div>
                                                
-                                            </div> 
-                                            <div class="mb-3 row">
+                                            </div>  --}}
+                                            {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">   </label>
                                             <div class="col-sm-9">
                                         <table >@foreach($product->color as $a)
@@ -243,9 +243,9 @@
                                                                    
                                                             </tr> @endforeach
                                                         </table></div>
-                                        </div><br>
+                                        </div><br> --}}
                                             
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">   الاحجام</label>
                                             <div id="myRepeatingFields_op" class="col-sm-9"> 
                                                     <div class="entry_op input-group col-xs-3">
@@ -264,8 +264,8 @@
                                                     </div>
                                                 </div>
                                                
-                                            </div>
-                                            <div class="mb-3 row">
+                                            </div> --}}
+                                            {{-- <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">   </label>
                                             <div class="col-sm-9">
                                         <table >@foreach($product->option as $a)
@@ -276,7 +276,7 @@
                                                                    
                                                             </tr> @endforeach
                                                         </table></div>
-                                        </div> 
+                                        </div>  --}}
                                         <br>
                                          <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">الحالة</label>
