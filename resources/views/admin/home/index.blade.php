@@ -95,9 +95,14 @@
                                                             الغاء تفعيل المنتجات
                                                         </label>
                                                         <br><br>
+
+                                                       
+                                                          
+
+
                                                         <div class="form-grouppp">
                                                             <label for="date">اختار الوقت {{$webclose->data_time}}</label>
-                                                            <input type="date" id="date" name="date" value="{{$webclose->data_time}}" placeholder="{{$webclose->data_time}}">
+                                                            <input type="date" id="date" name="data_time" value="{{$webclose->data_time}}" placeholder="{{$webclose->data_time}}">
                                                           </div>
                                                         <br><br>
                                                     </div>

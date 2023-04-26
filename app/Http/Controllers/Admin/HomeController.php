@@ -67,7 +67,7 @@ class HomeController extends Controller
     }
     $website->Description_ar = $request->description_ar;
     $website->Description_en = $request->description_en;
-    $website->data_time = $request->data;
+    $website->data_time = $request->data_time;
     $website->save();
     return redirect()->route('admin.home');
 }
