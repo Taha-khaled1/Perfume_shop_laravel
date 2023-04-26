@@ -169,31 +169,31 @@ class ProductController extends Controller
                $main_image = $this->uploadImage('property', $request->file('main_image'));
                $product->image =  $main_image;
            }
-           $product->name =  $request->name;
-           $product->name_en=  $request->name_en;
-           $product->description = $request->description;
-           $product->description_en = $request->description_en;
-           $product->category_id = implode(' ',$request->category_id);
-           $product->quantity = $request->quantity;
-           $product->code =  $request->code;
-           $product->size =$request->size;
-           $product->featured =$request->featured;
-           $product->guarantee = $request->guarantee;
-           $product->sku = $request->sku;
-           $product->price = $request->price	; 
+           $product->name =  $request->name??'';
+           $product->name_en=  $request->name_en??'';
+           $product->description = $request->description??'';
+           $product->description_en = $request->description_en??'';
+           $product->category_id = $request->category_id[0]??'36';
+           $product->quantity = $request->quantity??0;
+           $product->code =  $request->code??rand(1,100000);
+           $product->size =$request->size??0;
+           $product->featured =$request->featured??1;
+           $product->guarantee = $request->guarantee??'ds';
+           $product->sku = $request->sku??'asd';
+           $product->price = $request->price??0	; 
 
 
-           $product->shope_name = $request->shope;
-           $product->shope_name_en = $request->shope_en;
-           $product->price_oragin = $request->price_oragin	; 
+           $product->shope_name = $request->shope??'لايوجد اسم';
+           $product->shope_name_en = $request->shope_en??'not name';
+           $product->price_oragin = $request->price_oragin ??0	; 
 
 
 
 
 
-           $product->price_alternative = $request->price_alternative; 
-           $product->quantity = $request->quantity; 
-           $product->status =  $request->status;
+           $product->price_alternative = $request->price_alternative??1; 
+           $product->quantity = $request->quantity??0; 
+           $product->status =  $request->status??1;
            if ($request->topproduct=='1') {
             $product->istop=1;
            } else {
