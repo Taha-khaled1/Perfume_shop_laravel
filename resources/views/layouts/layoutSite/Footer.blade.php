@@ -223,7 +223,7 @@
                     <div class="col-lg-3 col-12 text-end order-lg-2 order-4 sm-footer">
                         <h4>{{__('For you') }}</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
+                            <li><a href="{{route('register')}}">{{__('Registration')}}</a></li>
                             <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
                         </ul>
                     </div>
