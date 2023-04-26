@@ -147,7 +147,7 @@
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button collapsed" type="button" dir="rtl" data-bs-toggle="collapse"
                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                {{ __('Customer Service') }}
+                {{__('Customer Service') }}
             </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -163,7 +163,7 @@
         <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                {{ __('For you') }}
+                {{__('For you') }}
             </button>
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -181,7 +181,7 @@
         <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                {{ __('Oudz') }}
+                {{__('Oudz') }}
             </button>
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
@@ -207,7 +207,7 @@
             <div class="foot">
                 <div class="row">
                     <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
-                        <h4>اودز</h4>
+                        <h4>{{__('Oudz') }}</h4>
                         <ul class="list-unstyled">
                             {{-- <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
                             <li><a href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
@@ -215,21 +215,21 @@
                         </ul>
                     </div>
                     <div class="col-lg-3 col-6 text-end order-lg-3 order-2 sm-footer">
-                        <h4>خدمات العملاء</h4>
+                        <h4>{{__('Customer Service') }}</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-12 text-end order-lg-2 order-4 sm-footer">
-                        <h4>لك</h4>
+                        <h4>{{__('For you') }}</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
                             <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 text-end order-lg-4 order-1">
-                        <div class="text-center"><img src="{{ asset('storage/users/' . $header_logo) }}"
-                                width="80" class="img-fluid" alt=" logo"></div>
+                        <div class="text-center"><a href="{{ route('viewHomePage')}}"><img src="{{ asset('storage/users/' . $header_logo) }}"
+                                width="80" class="img-fluid" alt=" logo"></a></div>
                         <p class="my-3">بإدخال عنوان بريدك الإلكتروني أدناه ، فإنك توافق على تلقي رسائلنا الإخبارية
                             مع إمكانية الوصول إلى أحدث مجموعاتنا وفعالياتنا ومبادراتنا. يتم توفير مزيد من التفاصيل حول
                             هذا في سياسة الخصوصية الخاصة بنا.
