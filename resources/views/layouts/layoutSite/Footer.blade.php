@@ -30,10 +30,10 @@
                              <div class="widget-body">
                                 <address class="contact-block">
                                 @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-{!! $address !!}
-@else
-{!! $addressen !!}
-@endif
+                            {!! $address !!}
+                            @else
+                            {!! $addressen !!}
+                            @endif
                                 </address>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
                                     <a href="{{ $instagram_link }}"><i class="fs-4 fa fa-instagram"></i></a>
                                 </li>
                                 <li class="text-center">
-                                    <a href=""><i class="fs-4 fa fa-snapchat"></i></a>
+                                    <a href="{{ $facebook_link }}"><i class="fs-4 fa fa-snapchat"></i></a>
                                 </li>
                                 <li class="text-center">
                                     <a href=""><img src="{{asset('cash-on-delivery.png')}}" alt="image1"></a>
