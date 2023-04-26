@@ -28,7 +28,25 @@ class SiteController extends Controller
         $mailings = Mailing::where('user_id', $id)->latest()->get() ;
         return view('site.userPages.myAccount', ['properties'=> $properties , 'cities'=> $cities , 'mailings'=> $mailings]);
     }
-
+    public function viewMyAccountcatogery()
+    {
+        $carousels = Carousel::latest()->get();
+        $products = Product::where('featured', 1)->latest()->limit(10)->get();
+        $categores = Category::where('featured', 1)->orderBy('ord', 'ASC')->get();
+        $categories  = Category::with('product')->get();
+        $setting = Setting::all();
+        $title = $setting->where('key', 'section1_header')->first()->value;
+        $text = $setting->where('key', 'section2_header')->first()->value;
+        $img = $setting->where('key', 'section1_image')->first()->value;
+        $url = $setting->where('key', 'section1_url')->first()->value;
+        $data=  Slide::all();
+        // $toppro=Product::where('istop', 1)->limit(12)->get();
+        return view('site.homePage.catogery_view', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
+        ->with('title',$title)
+        ->with('text',$text)
+        ->with('img',$img)
+        ->with('url',$url);
+    }
     public function wishlist()
     {
         $products[] = auth()->user()->products;

@@ -121,38 +121,12 @@
                                    <i class="text-light pe-7s-like"></i>
                                    <span class="d-block text-light">{{__('Favorite')}}</span>
                                </a>
-                               <a href="{{route('wishlist')}}">
+                               <a href="{{route('viewMyAccountcatogery')}}">
                                    {{-- <i class="text-light pe-7s-lintern"></i> --}}
                                    <i class="text-light fa fa-list fs-5" style="transform: translateY(-5px);"></i>
                                    <span class="d-block text-light">{{__('Categories')}}</span>
                                </a>
-                               {{-- <div class="header-top-settings text-end">
-                                   <ul class="p-0 m-0">
-                                       <li class="language">
-                                           @if ( Config::get('app.locale') == 'en')
                            
-                                           <img src="{{asset('assets/img/English.png' )}}" width="25" alt="logo">
-                                        
-                                           @elseif ( Config::get('app.locale') == 'ar' )
-                                        
-                                           <img src="{{asset('assets/img/العربية.png' )}}" width="25" alt="logo">
-                                        
-                                           @endif
-                                        
-                                           {{ LaravelLocalization::getCurrentLocaleNative() }}
-                                           <i class="fa fa-angle-down"></i>
-                                           <ul class="dropdown-list curreny-list">
-                                           @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                           <li>
-                                               <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                               <img src="{{asset('assets/img/'. $properties['native'] .'.png' )}}" width="25" class="m-0" alt="logo"> {{ $properties['native'] }} 
-                                               </a>
-                                           </li>
-                                           @endforeach
-                                            </ul>
-                                       </li>
-                                   </ul>
-                               </div> --}}
                            </div>
                        </div>
                    </div>
