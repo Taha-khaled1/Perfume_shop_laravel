@@ -1,5 +1,5 @@
 <div class="floating-whatsapp">
-    <a href="https://wa.me/0501009004">
+    <a href="https://wa.me/9710501009004">
         <img src="{{ asset('whatsapp.png') }}" alt="WhatsApp Icon">
     </a>
 </div>
