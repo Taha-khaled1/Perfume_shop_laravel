@@ -35,7 +35,7 @@
 
         @if ($ispro->actv != 1)
 
-        @foreach ($categories as $category)
+       
             <div class="bg-light">
                 <div class="container">
                     <section class="last-product pb-5">
@@ -63,7 +63,7 @@
                         <div class="" dir="{{ $dir }}">
                             <div class="row">
 
-                                @foreach ($category->product as $product)
+                              
                                 <div class="container">
                                     <div class="products">
                                         <div class="row justify-content-center">
@@ -90,14 +90,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                @endforeach
+                        
                             </div>
                         </div>
                     </section>
                 </div>
             </div>
-        @endforeach
+       
     @else
         @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
         <h1 class="centered-text">{{ $ispro->Description_ar }}</h1>

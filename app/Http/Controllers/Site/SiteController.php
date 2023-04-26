@@ -42,7 +42,7 @@ class SiteController extends Controller
         $url = $setting->where('key', 'section1_url')->first()->value;
         $data=  Slide::all();
         // $toppro=Product::where('istop', 1)->limit(12)->get();
-        return view('site.homePage.catogery_view', ['carousels'=> $carousels,'ispro'=>$p,'images'=>$data,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
+        return view('site.homePage.catogery_view', ['ispro'=>$p,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
         ->with('title',$title)
         ->with('text',$text)
         ->with('img',$img)
