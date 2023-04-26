@@ -84,7 +84,7 @@
 
                                         <div class="card">
                                             <div class="card-header">
-                                                وضع الصيانة
+                                                تفعيل و تعطيل المنتجات
                                             </div>
                                             <div class="card-body">
                                                 <form method="POST" action="{{ route('admin.updatewebsite') }}">
@@ -92,7 +92,7 @@
                                                     <div class="form-group form-check">
                                                         <input class="form-check-input" type="checkbox" value="true" name="maintenance_mode" id="maintenance_mode" {{ $webclose->actv==1  ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="maintenance_mode">
-                                                            تمكين وضع الصيانة
+                                                            الغاء تفعيل المنتجات
                                                         </label>
                                                     </div>
                                                     <div class="form-group">
@@ -110,11 +110,11 @@
                                                 <div class="text-center">
                                                     @if($webclose->actv==1)
                                                         <div class="alert alert-danger">
-                                                            الموقع لا يعمل الان                                                        
+                                                            المنتجات غير متوفره الان                                                      
                                                             </div>
                                                     @else
                                                         <div class="alert alert-success">
-                                                            الموقع يعمل الان
+                                               المنتجات متوفره الان
                                                         </div>
                                                     @endif
                                                 </div>

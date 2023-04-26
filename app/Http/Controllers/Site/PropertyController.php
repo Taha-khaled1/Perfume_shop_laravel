@@ -13,6 +13,7 @@ use App\Models\City;
 use App\Models\Album;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -64,7 +65,7 @@ class PropertyController extends Controller
     public function category_property($id)
     {
       $categories = Category::get();
-
+      $ispro=DB::table('websits')->first();
        $category = Category::find($id);
       if($category){
         $a =1.00;
@@ -76,7 +77,7 @@ class PropertyController extends Controller
                   }) 
                  ->paginate(12);
              
-        return view('site.homePage.category_product', compact('products','category','categories'));
+        return view('site.homePage.category_product', compact('products','category','categories','ispro'));
       }else{
         return redirect()->back();
       }

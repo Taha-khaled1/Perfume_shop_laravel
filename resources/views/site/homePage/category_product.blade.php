@@ -29,32 +29,90 @@
         <!-- breadcrumb area end -->
 
 
-<div class="container">
-    <div class="products">
-        <div class="row justify-content-center">
-        @if( $products->count() == 0 ) <h3 class="mb-30 text-center">    {{__('This section does not currently contain items.')}} </h3>@endif
-            @foreach($products as $product)
-                <div class="col-lg-3 col-md-6 mb-3 col-6 text-center">
-                    <div class="product">
-                        <img class="mb-3" src="{{asset('/storage/property/'.$product->image)}}">
-                        <a href="{{route('viewProperty',$product->id)}}" style="background-color:transparent" class="border-0 text-dark">
-                        @if($product->name_en != null)
-                                                @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                                                {{$product->name}}
-                                                @else
-                                                {{$product->name_en}}
-                                                @endif @else
-                                                {{$product->name}}
-                                                @endif
-                        </a>
-                        <p class="fs-5 mt-2">120$</p>
-                        <a class="btn btn-cart add_cart mb-2" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</a>
-                    </div>
+
+
+
+
+        @if ($ispro->actv != 1)
+
+        @foreach ($categories as $category)
+            <div class="bg-light">
+                <div class="container">
+                    <section class="last-product pb-5">
+
+
+                        @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                            <a href="{{ route('category_property', $category->id) }}" class="text-decoration-none">
+                                <h1 class="fs-2">{{ $category->name }}</h1>
+                            </a>
+                        @else
+                            <a href="{{ route('category_property', $category->id) }}">
+                                <h1>{{ $category->name_en }}</h1>
+                            </a>
+                        @endif
+                        <!-- Swiper -->
+                        @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                            @php
+                                $dir = 'rtl';
+                            @endphp
+                        @else
+                            @php
+                                $dir = 'ltr';
+                            @endphp
+                        @endif
+                        <div class="" dir="{{ $dir }}">
+                            <div class="row">
+
+                                @foreach ($category->product as $product)
+                                <div class="container">
+                                    <div class="products">
+                                        <div class="row justify-content-center">
+                                        @if( $products->count() == 0 ) <h3 class="mb-30 text-center">    {{__('This section does not currently contain items.')}} </h3>@endif
+                                            @foreach($products as $product)
+                                                <div class="col-lg-3 col-md-6 mb-3 col-6 text-center">
+                                                    <div class="product">
+                                                        <img class="mb-3" src="{{asset('/storage/property/'.$product->image)}}">
+                                                        <a href="{{route('viewProperty',$product->id)}}" style="background-color:transparent" class="border-0 text-dark">
+                                                        @if($product->name_en != null)
+                                                                                @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                                                                                {{$product->name}}
+                                                                                @else
+                                                                                {{$product->name_en}}
+                                                                                @endif @else
+                                                                                {{$product->name}}
+                                                                                @endif
+                                                        </a>
+                                                        <p class="fs-5 mt-2">120$</p>
+                                                        <a class="btn btn-cart add_cart mb-2" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                @endforeach
+                            </div>
+                        </div>
+                    </section>
                 </div>
-            @endforeach
-        </div>
-    </div>
-</div>
+            </div>
+        @endforeach
+    @else
+        @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+        <h1 class="centered-text">{{ $ispro->Description_ar }}</h1>
+        @else
+        <h1 class="centered-text">{{ $ispro->Description_en }}</h1>  
+        @endif
+
+    @endif
+
+
+
+
+
+
+
 
     
 <!-- <div class="shop-main-wrapper section-padding">

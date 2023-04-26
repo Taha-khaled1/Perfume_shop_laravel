@@ -16,6 +16,7 @@ use App\Models\Mailing;
 
 use App\Models\Properity;
 use App\Models\Slide;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
@@ -29,7 +30,7 @@ class SiteController extends Controller
         return view('site.userPages.myAccount', ['properties'=> $properties , 'cities'=> $cities , 'mailings'=> $mailings]);
     }
     public function viewMyAccountcatogery()
-    {
+    {   $p=DB::table('websits')->first();
         $carousels = Carousel::latest()->get();
         $products = Product::where('featured', 1)->latest()->limit(10)->get();
         $categores = Category::where('featured', 1)->orderBy('ord', 'ASC')->get();
@@ -41,7 +42,7 @@ class SiteController extends Controller
         $url = $setting->where('key', 'section1_url')->first()->value;
         $data=  Slide::all();
         // $toppro=Product::where('istop', 1)->limit(12)->get();
-        return view('site.homePage.catogery_view', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
+        return view('site.homePage.catogery_view', ['carousels'=> $carousels,'ispro'=>$p,'images'=>$data,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
         ->with('title',$title)
         ->with('text',$text)
         ->with('img',$img)
@@ -55,7 +56,7 @@ class SiteController extends Controller
     }
     
     public function viewHomePage()
-    {
+    {   $p=DB::table('websits')->first();
         $carousels = Carousel::latest()->get();
         $products = Product::where('featured', 1)->latest()->limit(10)->get();
         $categores = Category::where('featured', 1)->orderBy('ord', 'ASC')->get();
@@ -67,7 +68,7 @@ class SiteController extends Controller
         $url = $setting->where('key', 'section1_url')->first()->value;
         $data=  Slide::all();
         // $toppro=Product::where('istop', 1)->limit(12)->get();
-        return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
+        return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories,'ispro'=>$p ] , ['products'=> $products])->with('categores',$categores)
         ->with('title',$title)
         ->with('text',$text)
         ->with('img',$img)

@@ -337,7 +337,15 @@ transition: all 0.3s ease;
     right: 20px;
     z-index: 9999;
   }
-
+  .centered-text {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 24px; /* Example font size */
+    font-weight: bold; /* Example font weight */
+    color: #333; /* Example text color */
+    /* Add any other styles you want to apply to the text here */
+  }
 
   .floating-whatsapp img {
     width: 50px; /* Set the width of the icon */
