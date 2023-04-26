@@ -331,9 +331,39 @@
    </div>
 </div>
 </div> --}}
-<div class="logo-sm text-center my-3">
-<!-- <img src="{{asset('storage/users/'. $header_logo )}}" width="250" class="img-fluid" alt=" logo"> -->
-<img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid" alt=" logo">
+<div class="container logo-sm bg-white py-2 shadow-sm">
+    <div class=" text-center my-3 row align-items-center">
+        <!-- <img src="{{asset('storage/users/'. $header_logo )}}" width="250" class="img-fluid" alt=" logo"> -->
+        <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid col-6" alt=" logo">
+        <div class="header-top-settings col-6">
+            <ul class="m-0">
+                <li class="language">
+                    @if ( Config::get('app.locale') == 'en')
+                    English
+                    <img src="{{asset('assets/img/English.png' )}}" width="25" alt="logo">
+                    
+                    @elseif ( Config::get('app.locale') == 'ar' )
+                    العربية
+                    <img src="{{asset('assets/img/العربية.png' )}}" width="25" alt="logo">
+                    
+                    @endif
+                 
+                    {{-- {{ LaravelLocalization::getCurrentLocaleNative() }} --}}
+                    {{-- <i class="fa fa-angle-down"></i> --}}
+                    <ul class="dropdown-list curreny-list">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li>
+                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        <img src="{{asset('assets/img/'. $properties['native'] .'.png' )}}" width="25" class="m-0" alt="logo"> {{ $properties['native'] }} 
+                        </a>
+                    </li>
+                    @endforeach
+                     </ul>
+                </li>
+            </ul>
+        </div>
+        
+        </div>
 </div>
 {{-- <div class="hiden-menu text-center py-2">
 <i class="fa fa-window-close	position-absolute close"></i>
@@ -385,11 +415,11 @@
 </div>
 </div> --}}
 
-<header class="header-xl bg-white d-lg-block d-none">
+<header class="header-xl bg-white d-lg-block d-none py-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 d-flex align-items-center">
-                <img src="{{asset('storage/users/'. $header_logo )}}" width="190" class="img-fluid" alt=" logo">
+                <a href="{{ route('viewHomePage')}}"><img src="{{asset('storage/users/'. $header_logo )}}" width="190" class="img-fluid" alt=" logo"></a>
                 {{-- <ul class="list-unstyled d-flex m-0 custom-links">
                     <li class="me-4"><a href="{{ route('viewHomePage')}}" class="text-decoration-none fs-5">{{ __('Home') }}</a></li>
                     <li class="me-4"><a href="" class="text-decoration-none fs-5">{{ __('Categories') }}</a></li>

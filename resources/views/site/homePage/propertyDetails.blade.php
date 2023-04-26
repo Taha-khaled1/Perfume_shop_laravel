@@ -100,7 +100,7 @@
                         <h2 class="minus">-</h2>
                     </div>
                     <div class="align-self-center">
-                        <h3>العدد</h3>
+                        <h3>{{__('Number') }}</h3>
                     </div>
                 </div>
                 <button class="btn btn-danger add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>
