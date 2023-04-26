@@ -198,31 +198,33 @@
         </div>
     </div>
 </div>
+
+<!-- End of Footer -->
 <footer>
     <div class="container">
         <div class="custom">
-
+      
             <div class="foot">
                 <div class="row">
                     <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
                         <h4>اودز</h4>
                         <ul class="list-unstyled">
                             {{-- <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
-                            <li><a href="{{ route('policy') }}">{{ __('Privacy policy') }}</a></li>
-                            <li><a href="{{ route('conditions') }}">{{ __('Terms and Conditions') }}</a></li>
+                            <li><a href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
+                            <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-6 text-end order-lg-3 order-2 sm-footer">
                         <h4>خدمات العملاء</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{ route('questions') }}">{{ __('Common questions') }}</a></li>
+                            <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-12 text-end order-lg-2 order-4 sm-footer">
                         <h4>لك</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                            <li><a href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
+                            <li><a href="{{route('register')}}">{{__('Register')}}</a></li>
+                            <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 text-end order-lg-4 order-1">
@@ -249,23 +251,13 @@
                             </ul>
                         </div>
                     </div>
-
+                 
                 </div>
             </div>
         </div>
 
         <div class="bg-light p-2">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12 text-center text-md-start">
-                    <p class="mb-0">{{ 'All rights reserved' }} © {{ date('Y') }} {{ 'NTS' }}</p>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12 text-center text-md-end">
-                    {{-- <p class="mb-0">{{('Developed by')}} <a href="#" target="_blank">{{('ODZ Tech')}}</a></p> --}}
-                </div>
-            </div>
+            <a href="https://instagram.com/nanots.ae?igshid=YmMyMTA2M2Y=" class="text-decoration-none text-dark" target="_blank"><p class="text-center mt-2">{{__('Copyright NTS')}} &copy;</p> </a>
         </div>
     </div>
-
 </footer>
-
-<!-- End of Footer -->
