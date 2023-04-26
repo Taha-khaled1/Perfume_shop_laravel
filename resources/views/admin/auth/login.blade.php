@@ -57,9 +57,9 @@
                                         </div><!--end col-->
                                     </div> <!--end form-group-->
                                 </form><!--end form-->
-                                <div class="m-3 text-center text-muted">
+                                {{-- <div class="m-3 text-center text-muted">
                                     <p class="mb-0"> العودة الى الموقع     ?  <a href="../" class="text-primary ms-2">alwan website</a></p>
-                                </div>
+                                </div> --}}
 
                             </div><!--end card-body-->
                         </div><!--end card-->
