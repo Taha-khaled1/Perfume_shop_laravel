@@ -75,7 +75,15 @@
                             @endif
                 <input type="text" name="email" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
               </div>
-        
+              @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+              @php
+                  $dir = 'start-0';
+              @endphp
+          @else
+              @php
+                  $dir = 'end-0';
+              @endphp
+          @endif
         <div class="mb-3">
             <label for="user-mobile" class="form-label"> {{__('Mobile number')}}</label>
             @error('phone')
@@ -83,7 +91,13 @@
                 @enderror
             <input type="text" name="phone"  class="form-control" id="user-mobile"  value="{{old('phone')}}"> 
           </div>
-          <div class="mb-3">
+          <label for="user-mobile" class="form-label">{{ __('Code') }}</label>
+          <div class="form-group position-relative">
+            <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
+        >
+            <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" type="button" style="background-color: var(--main-color);">{{ __('Submit') }}</button>
+        </div>
+          {{-- <div class="mb-3">
             <label for="user-password" class="form-label"> {{__('Password')}}</label>
             @error('password')
                             <small class="form-text text-danger">{{$message}}</small>
@@ -99,7 +113,7 @@
                             <small class="form-text text-danger">{{$message}}</small>
                             @enderror
                  <input type="password" class="form-control" name="password_confirmation" aria-label="user-password" aria-describedby="user-password">
-            </div></div>
+            </div></div> --}}
              <div class="text-center">
             <input type="submit"  class="btn btn-sqr text-light w-100" value="{{__('Create an account')}} " style="background-color: var(--main-color);"></div>
           </form>
