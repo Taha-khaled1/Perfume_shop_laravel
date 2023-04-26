@@ -34,8 +34,8 @@
     <section class="container section-creat-account" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
         <div class="row">
             <p class="h4 text-center">{{ __('Sign In') }}</p>
-            <div class="col-md-4  m-auto my-5">
-                <form method="POST" action="#" class="ltn__form-box contact-form-box">
+            <div class="col-lg-4 col-md-12  m-auto my-5">
+                <form method="POST" action="#" class="ltn__form-box contact-form-box p-3">
                     @csrf
                     <div class="mb-3">
                         <label for="phone" class="form-label">{{ __('Phone Number') }}</label>

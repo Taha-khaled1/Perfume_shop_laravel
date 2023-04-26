@@ -337,7 +337,7 @@
         <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid col-6" alt=" logo">
         <div class="header-top-settings col-6">
             <ul class="m-0">
-                <li class="language">
+                <li class="language d-inline-block">
                     @if ( Config::get('app.locale') == 'en')
                     English
                     <img src="{{asset('assets/img/English.png' )}}" width="25" alt="logo">
