@@ -29,11 +29,11 @@
 <div class="container">
     <div class="product">
         <div class="row">
-            <div class="images col-lg-2 col-md-2 col-sm-4 col-4">
+            {{-- <div class="images col-lg-2 col-md-2 col-sm-4 col-4">
                 @foreach($product->album as $a)
                     <img src="{{asset('/storage/property/'.$a->name)}}" alt="">
                 @endforeach
-            </div>
+            </div> --}}
             <div class="main-image col-lg-5 col-md-6 col-sm-8 col-8">
                 <img src="{{asset('/storage/property/'.$product->image)}}" alt="product-details" />
             </div>

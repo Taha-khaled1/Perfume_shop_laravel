@@ -22,6 +22,15 @@
         </div>
     </div>
     <br>
+    @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+        @php
+            $dir = 'start-0';
+        @endphp
+    @else
+        @php
+            $dir = 'end-0';
+        @endphp
+    @endif
     <section class="container section-creat-account" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
         <div class="row">
             <p class="h4 text-center">{{ __('Sign In') }}</p>
@@ -33,26 +42,36 @@
                         @error('phone')
                         <small class="form-text text-danger">{{ __('The phone number is invalid.') }}</small>
                         @enderror
-                        <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
-                            placeholder="رقم الهاتف">
+                        <div class="form-group position-relative">
                             <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
-                            placeholder="اكتب الكود">
+                            placeholder="{{ __('Phone Number') }}">
+                            <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" style="background-color: var(--main-color);">{{ __('Send Code') }}</button>
+                        </div>
+                        <label for="phone" class="form-label">{{ __('Code') }}</label>
+                        <div class="form-group position-relative">
+                            <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
+                            placeholder="{{ __('Code') }}">
+                            <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" style="background-color: var(--main-color);">{{ __('Submit') }}</button>
+                        </div>
+                        
+                            
                     </div>
-                    <button type="submit" class="btn btn-sqr text-light w-100" style="background-color: var(--main-color);">
+                    {{-- <button type="submit" class="btn btn-sqr text-light w-100" style="background-color: var(--main-color);">
                         {{ __('Send Code') }}
-                    </button>
+                    </button> --}}
+                    <div class="text-center">
+                        {{-- <a href="{{ route('login') }}" class="h5 text-dark">{{ __('Sign In') }}</a> --}}
+                        <a href="{{ route('register') }}" class="h5 text-dark">{{ __('Register') }}</a>
+                    </div>
                 </form>
 
-                <form action="{{ route('login') }}">
+                {{-- <form action="{{ route('login') }}">
                     <button type="submit" class="btn btn-sqr text-light w-100" style="background-color: var(--main-color);">
                         {{ __('Sign In') }}
                     </button>
-                </form>
+                </form> --}}
             </div>
-            <div class="text-center">
-                {{-- <a href="{{ route('login') }}" class="h5 text-dark">{{ __('Sign In') }}</a> --}}
-                <a href="{{ route('register') }}" class="h5 text-dark">{{ __('Register') }}</a>
-            </div>
+
         </div>
     </section>
     
