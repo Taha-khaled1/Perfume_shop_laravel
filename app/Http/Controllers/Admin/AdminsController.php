@@ -61,9 +61,9 @@ class AdminsController extends Controller
         $response = $client->request('POST', 'https://api.smsglobal.com/http-api.php', [
             'query' => [
                 'action' => 'sendsms',
-                'user' => 'YOUR_USERNAME',
-                'password' => 'YOUR_PASSWORD',
-                'from' => 'YOUR_SENDER_ID',
+                'user' => 'g7ldlt0x',
+                'password' => 'wgE5eXyj',
+                'from' => 'OUDZ',
                 'to' => '201113051656',
                 'text' => 'YOUR_MESSAGE',
                 'maxsplit' => 5,
