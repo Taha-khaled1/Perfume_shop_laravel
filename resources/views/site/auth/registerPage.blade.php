@@ -97,7 +97,7 @@
         >
             <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" type="button" style="background-color: var(--main-color);">{{ __('Submit') }}</button>
         </div>
-          {{-- <div class="mb-3">
+          <div class="mb-3">
             <label for="user-password" class="form-label"> {{__('Password')}}</label>
             @error('password')
                             <small class="form-text text-danger">{{$message}}</small>
@@ -113,7 +113,7 @@
                             <small class="form-text text-danger">{{$message}}</small>
                             @enderror
                  <input type="password" class="form-control" name="password_confirmation" aria-label="user-password" aria-describedby="user-password">
-            </div></div> --}}
+            </div></div>
              <div class="text-center">
             <input type="submit"  class="btn btn-sqr text-light w-100" value="{{__('Create an account')}} " style="background-color: var(--main-color);"></div>
           </form>
