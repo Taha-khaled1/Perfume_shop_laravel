@@ -175,12 +175,7 @@
                                                 </div>
                                                 @endforeach
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1" name="topproduct" id="sizechek9">
-                                                    <label class="form-check-label" for="sizechek9">
-                                                       تفعيل الدفع اونلاين فقط
-                                                    </label>
-                                                </div>
+                                             
                                                 
 
                                             </div>      
@@ -356,6 +351,46 @@
                                           {{-- 
                                             <td><input type="number"  class="btn theme-btn-2 form-control" placeholder="السعر"></td>
                                             <td><input type="color" name="" id=""></td> --}}  
+{{-- 
+   <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="topproduct" id="sizechek9">
+                                                    <label class="form-check-label" for="sizechek9">
+                                                       تفعيل الدفع اونلاين 
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="topproduct" id="sizechek9">
+                                                    <label class="form-check-label" for="sizechek9">
+                                                       تفعيل الدفع كاش
+                                                    </label>
+                                                </div>
+ --}}
+
+
+
+
+                                                <div class="mb-3 row">
+                                                    <label   class="col-sm-3 col-form-label text-end">حالة الدفع</label>
+                                                    <div class="col-sm-9">
+                                                  
+                                                        <select class="form-control"  name="topproduct">
+                                                             
+                                                             
+                                                              <option value="2" selected>تفعيل الدفع كاش</option>
+                                                              <option value="1"> تفعيل الدفع اونلاين </option>
+                                                             <option value="2">تفعيل الدفع كاش</option>
+                                                             <option value="2">تفعيل الدفع اونلاين وكاش</option>
+                                                         </select>        
+                                                   </div>
+                                                </div>
+
+
+
+
+
+
+
 
 
 
