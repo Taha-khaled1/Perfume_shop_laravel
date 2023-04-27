@@ -84,12 +84,14 @@
                   $dir = 'end-0';
               @endphp
           @endif
-        <div class="mb-3">
-            <label for="user-mobile" class="form-label"> {{__('Mobile number')}}</label>
+          <label for="user-mobile" class="form-label"> {{__('Mobile number')}}</label>
+
+        <div class="mb-3 position-relative">
             @error('phone')
                 <small class="form-text text-danger">{{$message}}</small>
                 @enderror
             <input type="text" name="phone"  class="form-control" id="user-mobile"  value="{{old('phone')}}"> 
+            <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" type="button" style="background-color: var(--main-color);">{{ __('Send') }}</button>
           </div>
           <label for="user-mobile" class="form-label">{{ __('Code') }}</label>
           <div class="form-group position-relative">

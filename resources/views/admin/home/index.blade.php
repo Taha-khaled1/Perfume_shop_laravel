@@ -89,7 +89,7 @@
                                             <div class="card-body">
                                                 <form method="POST" action="{{ route('admin.updatewebsite') }}">
                                                     @csrf
-                                                    <div class="form-group form-check">
+                                                    <div class="form-group">
                                                         <input class="form-check-input" type="checkbox" value="true" name="maintenance_mode" id="maintenance_mode" {{ $webclose->actv==1  ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="maintenance_mode">
                                                             الغاء تفعيل المنتجات
@@ -102,7 +102,7 @@
 
                                                         <div class="form-grouppp">
                                                             <label for="date">اختار التاريخ </label>
-                                                            <input type="datetime-local" id="datetime" name="data_time" value="{{$webclose->data_time}}" placeholder="{{$webclose->data_time}}">
+                                                            <input type="datetime-local" id="datetime" name="data_time" class="form-control" value="{{$webclose->data_time}}" placeholder="{{$webclose->data_time}}">
 
                                                         </div>
                                                     
