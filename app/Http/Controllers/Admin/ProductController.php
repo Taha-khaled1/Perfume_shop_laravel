@@ -4,16 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Type;
 use App\Models\Category;
 use App\Models\City;
 use Illuminate\Http\Request;
-use App\Models\Album;
 use App\Models\Color;
 use App\Models\Option;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
-
+use Image;
 
 
 class ProductController extends Controller
@@ -166,48 +163,34 @@ class ProductController extends Controller
            $product = new Product();
    
            if (request()->main_image != null) {
-               $main_image = $this->uploadImage('property', $request->file('main_image'));
-               $product->image =  $main_image;
+            $image = $request->file('main_image');
+            $input['main_image'] = time().'.'.$image->getClientOriginalExtension();
+            $imgFile = Image::make($image->getRealPath());
+            $watermark = Image::make(public_path('assets/img/logom.png'))->resize(100, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+       
 
-
-
-
-
-
-
-
-
-
-
-
-
-            //    $this->validate($request, [
-            //     'file' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:4096',
-            // ]);
-            // $image = $request->file('file');
-            // $input['file'] = time().'.'.$image->getClientOriginalExtension();
-            // $imgFile = Image::make($image->getRealPath());
-            $imgFile->text('© 2016-2020 positronX.io - All Rights Reserved', 120, 100, function($font) { 
+            
+            $imgFile->insert($watermark, 'bottom-right', 10, 10)
+            ->text('© 2016-2023 OUDZ.ae - All Rights Reserved', 120, 100, function($font) { 
                 $font->size(35);  
                 $font->color('#ffffff');  
                 $font->align('center');  
                 $font->valign('bottom');  
                 $font->angle(90);  
-            })->save(public_path('/uploads').'/'.$input['file']);
+            })->save(public_path('storage/property').'/'.$input['main_image']);
+          //  $imgFile->save(public_path('property').'/'.$input['main_image']); 
+          
 
 
 
-
-
-
-
-
-
-
-
-
+            //    $main_image = $this->uploadImage('property', $request->file('main_image'));
+               $product->image = $input['main_image'];
 
            }
+
+
            $product->name =  $request->name??'';
            $product->name_en=  $request->name_en??'';
            $product->description = $request->description??'';
@@ -370,9 +353,24 @@ class ProductController extends Controller
 
     function uploadImage($folder, $image)
     {
-        $image->store('/', $folder);
-        $filename = $image->hashName();
-        $path = $filename;
+        // $image->store('/', $folder);
+     
+        
+            //    $this->validate($request, [
+            //     'file' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:4096',
+            // ]);
+            // $image = $request->file('file');
+            // $input['file'] = time().'.'.$image->getClientOriginalExtension();
+            // $imgFile = Image::make($image->getRealPath());
+             $image->text('© 2016-2020 positronX.io - All Rights Reserved', 120, 100, function($font) { 
+                $font->size(35);  
+                $font->color('#ffffff');  
+                $font->align('center');  
+                $font->valign('bottom');  
+                $font->angle(90);  
+            })->store('/', $folder);
+            $filename = $image->hashName();
+            $path = $filename;
         return $path;
     }
 
