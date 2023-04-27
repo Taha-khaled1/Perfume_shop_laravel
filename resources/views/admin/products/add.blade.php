@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="mb-3 row">
                                        
-                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end">اسم المنتج بالعربي</label>
+                                            <label for="example-text-input" class="col-sm-3 col-form-label text-end">اسم  بالعربي</label>
                                             <div class="col-sm-9">
                                             @error('name')
                                             <small class="form-text text-danger">{{$message}}</small>
@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="mb-3 row">
                                        
-                                       <label for="example-text-input" class="col-sm-3 col-form-label text-end">اسم المنتج بالانجليزية</label>
+                                       <label for="example-text-input" class="col-sm-3 col-form-label text-end">اسم  بالانجليزية</label>
                                        <div class="col-sm-9">
                                        
                                            <input class="form-control" id="namee" name="name_en" type="text" value="{{old('name_en')}}" id="example-text-input"  maxlength="100">
@@ -123,7 +123,7 @@
                                        
                                         <div class="mb-3 row">
                                         
-                                            <label   class="col-sm-3 col-form-label text-end">وصف المنتج بالعربي</label>
+                                            <label   class="col-sm-3 col-form-label text-end">وصف</label>
                                             <div class="col-sm-9">
                                             @error('description')
                                             <small class="form-text text-danger">{{$message}}</small>
@@ -141,7 +141,7 @@
                                         
                                         <div class="mb-3 row">
                                         
-                                            <label   class="col-sm-3 col-form-label text-end">السعر بالدرهم الامراتي</label>
+                                            <label   class="col-sm-3 col-form-label text-end">السعر</label>
                                             <div class="col-sm-9">
                                             @error('price')
                                             <small class="form-text text-danger">{{$message}}</small>
@@ -184,7 +184,7 @@
                                         
                                         <div class="mb-3 row">
                                        
-                                            <label   class="col-sm-3 col-form-label text-end">كمية المنتج</label>
+                                            <label   class="col-sm-3 col-form-label text-end">الكمية</label>
                                             <div class="col-sm-9">
                                             @error('quantity')
                                             <small class="form-text text-danger">{{$message}}</small>
@@ -199,21 +199,6 @@
                                                 <input class="form-control" name="size" type="text"  maxlength="100" value="{{old('size')}}" >
                                             </div>
                                         </div>
-
-                                        {{-- <div class="mb-3 row">
-                                            <label   class="col-sm-3 col-form-label text-end">  الضمان </label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control" name="guarantee" type="text"  maxlength="100" value="{{old('guarantee')}}" >
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-3 row">
-                                            <label   class="col-sm-3 col-form-label text-end">SKU</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control" name="sku" type="text"  maxlength="100" value="{{old('sku')}}" >
-                                            </div>
-                                        </div>  --}}
-
                                     </div>
                                     
                                     <div class="col-lg-6">
@@ -377,10 +362,10 @@
                                                         <select class="form-control"  name="topproduct">
                                                              
                                                              
-                                                              <option value="2" selected>تفعيل الدفع كاش</option>
-                                                              <option value="1"> تفعيل الدفع اونلاين </option>
-                                                             <option value="2">تفعيل الدفع كاش</option>
-                                                             <option value="2">تفعيل الدفع اونلاين وكاش</option>
+                                                            <option value="1"> تفعيل الدفع الكتروني </option>
+                                                 
+                                                             <option value="2">تفعيل الدفع نقدا</option>
+                                                             <option value="2">تفعيل الدفع نقدا و الكتروني</option>
                                                          </select>        
                                                    </div>
                                                 </div>
