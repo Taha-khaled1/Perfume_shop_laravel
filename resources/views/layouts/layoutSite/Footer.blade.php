@@ -235,12 +235,35 @@
                                 width="80" class="img-fluid" alt=" logo"></a></div>
                         @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                         <p class="my-3" dir="rtl">
+
+
+                  
+                        {{$section5_details}}
+
                             تعد شركة OUDZ من أشهر وأكبر الشركات في مجال تصميم الأزياء، وتصنيع الاكسسوارات، والعطور، قامت بتأسيسها كوكو شانيل في عام 1910 م، ويملك هذه الشركة ” ألان فرتهايمر وجيرار فيرتهايمر ” في الوقت الحالي، وتعتبر ماركة شانيل من أشهر الماركات العالمية وأغلاها .
+                        
+                        
+                        
+                        
                         </p>
                         @else
                         <p class="my-3" dir="rtl">
+<<<<<<< HEAD
+
+
+
+
+                            OUDZ is one of the most famous and largest companies in the field of fashion design, accessories, and perfumes. It was founded by Coco Chanel in 1910 AD, and this company is owned by “Alan Wertheimer and Gerard Wertheimer” at the present time, and the Chanel brand is considered one of the most famous and expensive international brands.                        </p>
+                       
+                       
+                       
+                       
+                       
+                            @endif
+=======
                         OUDZ is one of the most famous and largest companies in the field of fashion design, accessories, and perfumes. It was founded by Coco Chanel in 1910 AD, and this company is owned by “Alan Wertheimer and Gerard Wertheimer” at the present time, and the Chanel brand is considered one of the most famous and expensive international brands.                        </p>
                         @endif
+>>>>>>> a7574d1ad0903faa9dd58cc041fbfe0c5482dcac
                        
                         <div class="social-icons d-flex justify-content-between">
                             <ul class="list-unstyled d-flex gap-2 justify-content-center w-100">

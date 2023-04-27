@@ -189,7 +189,7 @@
                                         </div>
                                          <hr>
                                         <div class="mb-1 row">
-                                            <h3> من نحن باللغة الانجليزية</h3>
+                                            <h3>About US</h3>
                                             <div class="col-sm-12">
                                             <textarea class="form-control" id="textarea4_en" name="section5_details_en" rows="5" >{{$setting['section5_details_en']}}</textarea>                                      
                                            </div>

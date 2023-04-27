@@ -38,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
             $footer_about = $setting->where('key', 'footer_about')->first()->value;
             $facebook_link = $setting->where('key', 'facebook_link')->first()->value;
             $instagram_link = $setting->where('key', 'instagram_link')->first()->value;
+            $youtube_link = $setting->where('key', 'youtube_link')->first()->value; 
+            $section5_details = $setting->where('key', 'section5_details')->first()->value??"man";
             $youtube_link = $setting->where('key', 'youtube_link')->first()->value;
             $snap_link = $setting->where('key', 'snap_link')->first()->value;
             $categories = Category::limit(15)->get();
@@ -55,6 +57,8 @@ class AppServiceProvider extends ServiceProvider
             ->with('facebook_link',$facebook_link)
             ->with('$instagram_link',$instagram_link)
             ->with('youtube_link',$youtube_link)
+            ->with('section5_details',$section5_details)
+            ->with('youtube_link',$youtube_link)
             ->with('categories',$categories)
             ->with('snap_link',$snap_link) ;  // this is line 22 
         });
@@ -71,13 +75,14 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::orderBy('ord', 'ASC')->get();
 
             $facebook_link = $setting->where('key', 'facebook_link')->first()->value;
-            $instagram_link = $setting->where('key', 'instagram_link')->first()->value;
+            $instagram_link = $setting->where('key', 'instagram_link')->first()->value;   
+            $section5_details = $setting->where('key', 'section5_details')->first()->value;
             $snap_link = $setting->where('key', 'snap_link')->first()->value;
             $setting = Setting::all();
             $header_logo = $setting->where('key', 'header_logo')->first()->value;         
         
             $view->with('header_logo',$header_logo)->with('order',$order) ->with('facebook_link',$facebook_link)
-            ->with('instagram_link',$instagram_link)
+            ->with('instagram_link',$instagram_link)->with('$section5_details',$section5_details)
             ->with('categories',$categories)
             ->with('snap_link',$snap_link);   // this is line 22 
         });
@@ -89,13 +94,15 @@ class AppServiceProvider extends ServiceProvider
             $facebook_link = $setting->where('key', 'facebook_link')->first()->value;
             $instagram_link = $setting->where('key', 'instagram_link')->first()->value;
             $youtube_link = $setting->where('key', 'youtube_link')->first()->value;
+               $section5_details = $setting->where('key', 'section5_details')->first()->value;
             $site_name = $setting->where('key', 'site_name')->first()->value;
        
         
             $view->with('address',$address)
             ->with('email',$email)
              ->with('facebook_link',$facebook_link)
-            ->with('instagram_link',$instagram_link)
+            ->with('instagram_link',$instagram_link)  
+            ->with('$section5_details',$section5_details)
             ->with('youtube_link',$youtube_link)
             ->with('site_name',$site_name) ;  // this is line 22 
         });

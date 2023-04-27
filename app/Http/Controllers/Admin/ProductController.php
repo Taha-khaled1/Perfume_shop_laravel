@@ -168,6 +168,45 @@ class ProductController extends Controller
            if (request()->main_image != null) {
                $main_image = $this->uploadImage('property', $request->file('main_image'));
                $product->image =  $main_image;
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //    $this->validate($request, [
+            //     'file' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:4096',
+            // ]);
+            // $image = $request->file('file');
+            // $input['file'] = time().'.'.$image->getClientOriginalExtension();
+            // $imgFile = Image::make($image->getRealPath());
+            $imgFile->text('© 2016-2020 positronX.io - All Rights Reserved', 120, 100, function($font) { 
+                $font->size(35);  
+                $font->color('#ffffff');  
+                $font->align('center');  
+                $font->valign('bottom');  
+                $font->angle(90);  
+            })->save(public_path('/uploads').'/'.$input['file']);
+
+
+
+
+
+
+
+
+
+
+
+
+
            }
            $product->name =  $request->name??'';
            $product->name_en=  $request->name_en??'';
