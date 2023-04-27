@@ -23,7 +23,7 @@ use App\Models\Order;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-require __DIR__.'/auth.php';
+
 Route::get('sendWhatsAppMessage' , [App\Http\Controllers\Admin\AdminsController::class , 'sendWhatsAppMessage'])->name('sendWhatsAppMessage');
 Route::get('slide' , [SlideController::class , 'index'])->name('admin.slide');
 Route::get('slidedestroy{id}' , [SlideController::class , 'destroy'])->name('admin.destroy');
@@ -92,7 +92,7 @@ Route::post('/update.order/{id}/{status}', function($id, $status) {
 
 
 
-
+require __DIR__.'/auth.php';
 
  Route::get('/clear-cache', function() {
          Artisan::call('cache:clear');
