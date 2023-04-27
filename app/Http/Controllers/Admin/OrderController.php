@@ -18,6 +18,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PDF;
 class OrderController extends Controller
 {
     public function orders_list()
@@ -51,16 +52,32 @@ class OrderController extends Controller
                 }
                 return redirect()->back();
     }
-    public function orderss_print()
+    public function orderss_print_all()
     {
-        $orders = Order::where('status','2')->with('address')->get();
-      
-
-
-
+        $order = Order::where('status', '2')->with('address')->get();
+    
+        // Initialize an empty PDF object
+        $pdf = PDF::loadView('admin.print', compact('order'));
+    
+        // Optional: Set paper size and orientation
+        $pdf->setPaper('A4', 'portrait');
         
+        // Loop through the orders and append them to the PDF object
+        foreach ($order as $order) {
+            $pdf->addPage(view('admin.print', compact('order')));
+        }
+        
+        // Optional: Set the download filename and disposition
+        $filename = 'invoices.pdf';
+        $headers = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+        ];
+            // Return the PDF as a response
+            return  $pdf->download($filename, $headers);
+        
+        // return "done";
     }
-
     public function orderss_list()
     {
         $orders = Order::where('status','2')->with('address')->latest()->get();

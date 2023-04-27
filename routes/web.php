@@ -278,7 +278,7 @@ Route::prefix("admin")->group(function () {
  Route::get('sh/orders/list' , [App\Http\Controllers\Admin\OrderController::class , 'sh_orders_list'])->name('sh.admin.orders');
  Route::get('shs.admin.orders' , [App\Http\Controllers\Admin\OrderController::class , 'shs_orders_list'])->name('shs.admin.orders');
  Route::get('orderss.list' , [App\Http\Controllers\Admin\OrderController::class , 'orderss_list'])->name('orderss.list');
-
+ Route::get('orderss_print_all' , [App\Http\Controllers\Admin\OrderController::class , 'orderss_print_all'])->name('orderss_print_all');
 
  Route::get('orderss.exportProducts' , [App\Http\Controllers\Admin\OrderController::class , 'exportProducts'])->name('orderss.exportProducts');
 

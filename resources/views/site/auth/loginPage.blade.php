@@ -35,48 +35,37 @@
         <div class="row">
             <p class="h4 text-center">{{ __('Sign In') }}</p>
             <div class="col-lg-4 col-md-12  m-auto my-5">
-                <form method="POST" action="{{ route('auth.login', ['phone' => old('phone'), 'password' => old('password')]) }}" class="ltn__form-box contact-form-box p-3">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">{{ __('Phone Number') }}</label>
-                        @error('phone')
-                        <small class="form-text text-danger">{{ __('The phone number is invalid.') }}</small>
-                        @enderror
-
-
-                        <div class="form-group position-relative">
-                            <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
-                            placeholder="{{ __('Phone Number') }}">
-                       
-                        <form  method="POST" action="{{ route('auth.otp_pass_change')}}">
+                        <form method="POST" action="{{route('login')}}" class="ltn__form-box contact-form-box">
                             @csrf
-                            <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" style="background-color: var(--main-color);">{{ __('Send Code') }}</button>
-                        </form>
 
-                        
-                        </div>
-                        <label for="phone" class="form-label">{{ __('Code') }}</label>
-                        <div class="form-group position-relative">
-                            <input type="text" name="password" value="{{ old('password') }}" class="form-control" id="password"
-                            placeholder="{{ __('Code') }}">
-                            {{-- <form  method="POST" action="{{route('auth.login','','')}}">
-                                @csrf --}}
-                                <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" style="background-color: var(--main-color);">{{ __('Submit') }}</button>
-                            {{-- </form> --}}
-                           
-                        </div>
-                        
-                            
-                    </div>
-                    {{-- <button type="submit" class="btn btn-sqr text-light w-100" style="background-color: var(--main-color);">
-                        {{ __('Send Code') }}
-                    </button> --}}
-                    <div class="text-center">
-                        {{-- <a href="{{ route('login') }}" class="h5 text-dark">{{ __('Sign In') }}</a> --}}
-                        <a href="{{ route('register') }}" class="h5 text-dark">{{ __('Register') }}</a>
-                    </div>
-                </form>
-
+            <div class="mb-3">
+                <label for="user-name-or-email" class="form-label"> {{__('Email')}}</label>
+                
+                @error('email')
+                            <small class="form-text text-danger">{{__('The password or email does not match our records.')}} </small>
+                            @enderror
+                <input type="text" name="email" value="{{old('email')}}" class="form-control" id="user-name-or-email" >
+            </div>
+        
+        <div class="mb-3">
+            <label for="user-password" class="form-label">{{__('Password')}}</label>
+            <div class="input-group">
+                @error('password')
+                            <small class="form-text text-danger">{{$message}}</small>
+                            @enderror
+                <input type="password" name="password" class="form-control" aria-label="user-password" aria-describedby="user-password">
+            </div><br>
+            <div class="text-center">
+            <input type="submit"  class="btn btn-primary border-0 rounded-0 w-100" value="  {{__('Sign In')}} " style="background-color: var(--main-color);">
+        </div>
+            <div class="text-center"><p class="h6 pb-10 my-4"> {{__('or')}} </p></div>
+            <div class="text-center">
+            <a href="{{route('register')}}" class="h5 text-dark"> {{__('Register')}}</a>
+            
+                </div>
+            
+        </div>
+        </form>
                 {{-- <form action="{{ route('login') }}">
                     <button type="submit" class="btn btn-sqr text-light w-100" style="background-color: var(--main-color);">
                         {{ __('Sign In') }}
