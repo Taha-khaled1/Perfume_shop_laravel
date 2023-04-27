@@ -157,8 +157,8 @@ $('.deletem_b').on("click", function (e) {
         text: "لن تتمكن من التراجع عن هذا!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: 'حذف!',
         cancelButtonText: 'إلفاء!',
         }).then((result) => {
