@@ -82,13 +82,15 @@
                                                 <input class="form-control" name="name" type="text" maxlength="100"  id="example-text-input">
                                             </div>
                                         </div>
+
                                         <div class="col-sm-9 col-lg-9">
                                              <label for="example-text-input" class="col-sm-1 col-form-label text-end">اضافة مناطق</label>
                                                 <div id="myRepeatingFields">
                                                     <div class="entry input-group col-xs-3">
                                                         <table class="table meeting-table class-table">
                                                             <tr>
-                                                                    <td><input type="text" name="city[]" maxlength="100" class="form-control" placeholder="اسم المدينة"/></td> 
+                                                                    <td><input type="text" name="city[]" maxlength="100" class="form-control" placeholder="اسم المدينة بالعربي"/></td> 
+                                                                    <td><input type="text" name="cityen[]" maxlength="100" class="form-control" placeholder="اسم المدينة بلانجليزي"/></td>
                                                                     <td><input type="number" name="price[]" maxlength="10" class="form-control" placeholder="سعر المدينة"/></td> 
 
                                                                     <td>  <button type="button" class="btn btn-lg btn-add">

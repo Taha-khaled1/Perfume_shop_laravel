@@ -51,6 +51,16 @@ class OrderController extends Controller
                 }
                 return redirect()->back();
     }
+    public function orderss_print()
+    {
+        $orders = Order::where('status','2')->with('address')->get();
+      
+
+
+
+        
+    }
+
     public function orderss_list()
     {
         $orders = Order::where('status','2')->with('address')->latest()->get();
@@ -60,7 +70,6 @@ class OrderController extends Controller
                 }
                 return redirect()->back();
     }
-
 
     public function order_profile($id)
     {
