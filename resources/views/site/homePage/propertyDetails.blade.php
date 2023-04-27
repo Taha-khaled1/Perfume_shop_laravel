@@ -80,18 +80,7 @@
 
 
 
-                  
-                <h6 class="option-title">{{__('color')}}</h6>
-                <div class="color d-flex">
-                    @if($product->color->count() >= 1)
-                      @foreach($product->color as $a)
-                        <div class="d-flex me-3">
-                          <input type="radio" name="color" class="me-2 color-input" value="{{$a->color}}" data-price="{{$a->price}}" id="color-{{$a->id}}">
-                          <div style="background-color:{{$a->color}}; color:{{$a->color}};width:15px" >a</div>
-                        </div>
-                      @endforeach
-                    @endif
-                  </div>
+          
                 <div class="d-flex gap-4 mb-3">
                     <input type="hidden" name="quantity" id="quantity" value="1">
                     <div class="d-flex">

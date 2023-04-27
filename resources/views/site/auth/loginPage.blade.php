@@ -35,23 +35,35 @@
         <div class="row">
             <p class="h4 text-center">{{ __('Sign In') }}</p>
             <div class="col-lg-4 col-md-12  m-auto my-5">
-                <form method="POST" action="#" class="ltn__form-box contact-form-box p-3">
+                <form method="POST" action="{{ route('auth.login', ['phone' => old('phone'), 'password' => old('password')]) }}" class="ltn__form-box contact-form-box p-3">
                     @csrf
                     <div class="mb-3">
                         <label for="phone" class="form-label">{{ __('Phone Number') }}</label>
                         @error('phone')
                         <small class="form-text text-danger">{{ __('The phone number is invalid.') }}</small>
                         @enderror
+
+
                         <div class="form-group position-relative">
                             <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
                             placeholder="{{ __('Phone Number') }}">
+                       
+                        <form  method="POST" action="{{ route('auth.otp_pass_change')}}">
+                            @csrf
                             <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" style="background-color: var(--main-color);">{{ __('Send Code') }}</button>
+                        </form>
+
+                        
                         </div>
                         <label for="phone" class="form-label">{{ __('Code') }}</label>
                         <div class="form-group position-relative">
-                            <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
+                            <input type="text" name="password" value="{{ old('password') }}" class="form-control" id="password"
                             placeholder="{{ __('Code') }}">
-                            <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" style="background-color: var(--main-color);">{{ __('Submit') }}</button>
+                            {{-- <form  method="POST" action="{{route('auth.login','','')}}">
+                                @csrf --}}
+                                <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" style="background-color: var(--main-color);">{{ __('Submit') }}</button>
+                            {{-- </form> --}}
+                           
                         </div>
                         
                             

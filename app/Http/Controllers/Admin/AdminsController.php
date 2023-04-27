@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rules;
 
 class AdminsController extends Controller
@@ -48,47 +49,69 @@ class AdminsController extends Controller
 
 
 
-
     public function sendWhatsAppMessage()
     {
-        // Set the required parameters
-        $senderID = '102950242754753'; // Your WhatsApp Business Account phone number, including the country code
-        $receiver = '201113051656'; // The recipient's phone number, including the country code
-        $data = array( // An array of message components
-            array(
-                'type' => 'text',
-                'text' => array('Hello, this is a WhatsApp message!')
-            )
-        );
-        $template = 'sample_template'; // The name of the message template you want to use
-        $language = 'en'; // The language code for the template, e.g. 'en' for English
-
-        // Create a new instance of the Whatsapp class
-        $whatsapp = new Whatsapp($senderID, $receiver, $data, $template, $language);
-
-        // Set your Facebook Graph API access token
-        //  $whatsapp->setToken('your_access_token');
-
-        // Send the WhatsApp message
-        $response = $whatsapp->sendWithParameters();
-
-        // Check the response for errors
-        if (isset($response['error'])) {
-            // Handle the error
-            return response()->json([
-                'status' => 'error',
-                'message' => $response['error']['message']
-            ]);
-        }
-
-        // If the message was sent successfully, return a success response
-        return response()->json([
-            'status' => 'success',
-            'message' => 'WhatsApp message sent successfully'
+      
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . '121|TDdDdLoQ3TQlHpXmx21cHDtzhky0pcYmLPq7lUw5',
+            'Accept' => 'application/json',
+        ])->timeout(5)->post('https://whatsapp.aq-apps.xyz/api/v2/messages/send-message', [
+            'session_uuid' => '9907f8d1-e548-44f5-887d-a7fa06bb22c6',
+            'phone' => '201288964270',
+            'message' => 'YOUR OTP IS 1234',
+            'schedule_at' => now(),
+            'type' => 'TEXT',
         ]);
+        
+        // Handle the response here
+        
+        return $response;
+        // // Set the required parameters
+        // $senderID = '102950242754753'; // Your WhatsApp Business Account phone number, including the country code
+        // $receiver = '201113051656'; // The recipient's phone number, including the country code
+        // $data = array( // An array of message components
+        //     array(
+        //         'type' => 'text',
+        //         'text' => 'Hello, this is a WhatsApp message!'
+        //     )
+        // );
+        // $template = array( // An array representing the message template
+        //     'name' => 'my_template',
+        //     'components' => array(
+        //         array(
+        //             'type' => 'text',
+        //             'text' => 'Hello, {{1}}! This is a message from {{2}}.'
+        //         )
+        //     )
+        // );
+        // $language = 'en'; // The language code for the template, e.g. 'en' for English
+    
+        // // Create a new instance of the Whatsapp class
+        // $whatsapp = new Whatsapp($senderID, $receiver, $data, $template, $language);
+    
+        // // Set your Facebook Graph API access token
+        // //  $whatsapp->setToken('your_access_token');
+    
+        // // Send the WhatsApp message
+        // $response = $whatsapp->sendWithParameters();
+    
+        // // Check the response for errors
+        // if (isset($response['error'])) {
+        //     // Handle the error
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'message' => $response['error']['message']
+        //     ]);
+        // }
+    
+        // // If the message was sent successfully, return a success response
+        // return response()->json([
+        //     'status' => 'success',
+        //     'message' => 'WhatsApp message sent successfully'
+        // ]);
     }
-
-
+    
 
 
 

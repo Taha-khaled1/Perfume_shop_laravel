@@ -1,11 +1,7 @@
 <?php
 
-use App\Http\Controllers\Site\AuthController;
-use App\Http\Controllers\Site\BuyPropertyController;
 use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\PropertyController;
-use App\Http\Controllers\Site\RentPropertyController;
-use App\Http\Controllers\Site\SalePropertyController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -27,6 +23,8 @@ use App\Models\Order;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+require __DIR__.'/auth.php';
+Route::get('sendWhatsAppMessage' , [App\Http\Controllers\Admin\AdminsController::class , 'sendWhatsAppMessage'])->name('sendWhatsAppMessage');
 Route::get('slide' , [SlideController::class , 'index'])->name('admin.slide');
 Route::get('slidedestroy{id}' , [SlideController::class , 'destroy'])->name('admin.destroy');
 Route::get('slideshow{id}' , [SlideController::class , 'show'])->name('admin.show');
@@ -43,7 +41,7 @@ Route::get('/dashboard', function () {
 
 
 
-
+ 
 Route::post('/update.orderpay/{id}/{status}', function($id, $status) {
     $order = Order::find($id);
 
@@ -94,7 +92,7 @@ Route::post('/update.order/{id}/{status}', function($id, $status) {
 
 
 
-require __DIR__.'/auth.php';
+
 
  Route::get('/clear-cache', function() {
          Artisan::call('cache:clear');
@@ -195,7 +193,7 @@ Route::prefix("admin")->group(function () {
       
         //////////////// admins /////////////////
         Route::get('sendsms' , [App\Http\Controllers\Admin\AdminsController::class , 'sendsms'])->name('sendsms');
-        Route::get('sendWhatsAppMessage' , [App\Http\Controllers\Admin\AdminsController::class , 'sendWhatsAppMessage'])->name('sendWhatsAppMessage');
+
         Route::get('add/admin' , [App\Http\Controllers\Admin\AdminsController::class , 'add'])->name('admin.admin.add');
         Route::get('admin/list' , [App\Http\Controllers\Admin\AdminsController::class , 'admins_list'])->name('admin.admin');
         Route::get('admin/profile/{id}' , [App\Http\Controllers\Admin\AdminsController::class , 'admin_profile'])->name('admin.admin.profile');
