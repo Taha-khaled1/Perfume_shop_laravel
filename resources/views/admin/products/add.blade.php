@@ -362,10 +362,10 @@
                                                         <select class="form-control"  name="topproduct">
                                                              
                                                              
-                                                              <option value="2" selected>تفعيل الدفع نقدا</option>
-                                                              <option value="1"> تفعيل الدفع اونلاين </option>
-                                                             <option value="2">تفعيل الدفع كاش</option>
-                                                             <option value="2">تفعيل الدفع اونلاين وكاش</option>
+                                                            <option value="1"> تفعيل الدفع الكتروني </option>
+                                                 
+                                                             <option value="2">تفعيل الدفع نقدا</option>
+                                                             <option value="2">تفعيل الدفع نقدا و الكتروني</option>
                                                          </select>        
                                                    </div>
                                                 </div>
