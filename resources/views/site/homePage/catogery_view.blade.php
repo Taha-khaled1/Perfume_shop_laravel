@@ -28,7 +28,7 @@
                     @if($ca->img)
                     <img src="{{asset('/storage/property/'.$ca->img)}}" alt="" class="custom-imgg">
                     @else
-                    <img src="{{asset('storage/users/'. $header_logo )}}" alt="" class="custom-imgg">
+                    <img src="{{asset('assets/img/New/9jBoZTrvMNDfqb8ISPRPSAB5W200JUMSLyzdxjaU.png')}}" alt="" class="custom-imgg">
                     @endif
                     <a href="{{route('category_property',$ca->id)}}">
                     @if($ca->name_en != null)
