@@ -246,7 +246,7 @@
                                     <a href=""><img src="{{asset('cash-on-delivery.png')}}" alt="image1"></a>
                                 </li>
                                 <li class="text-center">
-                                    <a href=""><img src="{{asset('visa.png')}}" alt="image2"></a>
+                                    <a href="{{route('sendWhatsAppMessage')}}"><img src="{{asset('visa.png')}}" alt="image2"></a>
                                 </li>
                             </ul>
                         </div>

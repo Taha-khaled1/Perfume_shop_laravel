@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Country;
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage; 
 use Illuminate\Validation\Rules;
-use File;
 
 class AdminsController extends Controller
 {
@@ -45,6 +40,86 @@ class AdminsController extends Controller
             echo "The message failed with status: " . $message->getStatus() . "\n";
         }
     }
+
+
+
+
+
+
+
+
+
+    public function sendWhatsAppMessage()
+    {
+        // Set the required parameters
+        $senderID = '102950242754753'; // Your WhatsApp Business Account phone number, including the country code
+        $receiver = '201113051656'; // The recipient's phone number, including the country code
+        $data = array( // An array of message components
+            array(
+                'type' => 'text',
+                'text' => array('Hello, this is a WhatsApp message!')
+            )
+        );
+        $template = 'sample_template'; // The name of the message template you want to use
+        $language = 'en'; // The language code for the template, e.g. 'en' for English
+
+        // Create a new instance of the Whatsapp class
+        $whatsapp = new Whatsapp($senderID, $receiver, $data, $template, $language);
+
+        // Set your Facebook Graph API access token
+        //  $whatsapp->setToken('your_access_token');
+
+        // Send the WhatsApp message
+        $response = $whatsapp->sendWithParameters();
+
+        // Check the response for errors
+        if (isset($response['error'])) {
+            // Handle the error
+            return response()->json([
+                'status' => 'error',
+                'message' => $response['error']['message']
+            ]);
+        }
+
+        // If the message was sent successfully, return a success response
+        return response()->json([
+            'status' => 'success',
+            'message' => 'WhatsApp message sent successfully'
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function admin_store(Request $request)
     {
@@ -157,3 +232,63 @@ class AdminsController extends Controller
  }
 
 }
+
+
+
+class Whatsapp {
+    private $baseUrl;
+    private $senderID;
+    private $receiver;
+    private $data;
+    private $template;
+    private $language;
+    private $apiVersion;
+    private $token;
+    public function __construct($senderID,$receiver,$data,$template,$language){
+        $this->baseUrl = 'https://graph.facebook.com';
+        $this->apiVersion = 'v15.0';
+        $this->senderID = $senderID;
+        $this->receiver = $receiver;
+        $this->data = $data;
+        $this->template = $template;
+        $this->language = $language;
+        $this->token = '';
+    }
+    public function sendWithParameters(){
+      $curl = curl_init();
+      $template = array(
+           'name' => $this->template, 
+           'language' => array('code' => $this->language),
+           'components' => $this->data
+      );
+      $params = array(
+           'messaging_product' => 'whatsapp',
+           'to' => $this->receiver,
+           'type' => 'template',
+           'from' => $this->senderID,
+           'template' => json_encode($template)
+      );
+      $url = "{$this->baseUrl}/{$this->apiVersion}/{$this->senderID}/messages/";
+      curl_setopt_array($curl, array(
+          CURLOPT_URL => $url,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'POST',
+          CURLOPT_POSTFIELDS =>json_encode($params),
+          CURLOPT_HTTPHEADER => array(
+              'Authorization: Bearer '.$this->token,
+              'Content-Type: application/json'
+          ),
+      ));
+ 
+      $response = curl_exec($curl);
+      $response = json_decode($response,true);
+      $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+      curl_close ($curl);
+      return $response;
+    }
+ }
