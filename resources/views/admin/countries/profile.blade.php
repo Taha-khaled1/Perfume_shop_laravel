@@ -62,7 +62,8 @@
                                                     <div class="entry input-group col-xs-3">
                                                         <table class="table meeting-table class-table">
                                                             <tr>
-                                                                    <td><input type="text" name="city[]" class="form-control" placeholder="اسم المدينة"/></td> 
+                                                                td><input type="text" name="city[]" maxlength="100" class="form-control" placeholder="اسم المدينة بالعربي"/></td> 
+                                                                <td><input type="text" name="cityen[]" maxlength="100" class="form-control" placeholder="اسم المدينة بلانجليزي"/></td>
                                                                     <td><input type="number" name="price[]" maxlength="10" class="form-control" placeholder="سعر المدينة"/></td> 
                                                                     <td>  <button type="button" class="btn btn-lg btn-add">
                                                                 <span class="glyphicon glyphicon-plus" aria-hidden="true">+</span>

@@ -1,11 +1,11 @@
   <!-- sidebar -->
   <div class="sidebar px-4 py-4 py-md-4 me-0">
             <div class="d-flex flex-column h-100">
-                <a href="index.html" class="mb-0 brand-icon">
+                <a href="{{ route('admin.home') }}" class="mb-0 brand-icon">
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                      
                     <span class="my-3"> 
-                        <img src="{{asset('/assets/img/logom.png' )}}" alt="logo-small" width="155px" height="105px" >
+                        <img href="{{ route('admin.home') }}" src="{{asset('/assets/img/logom.png' )}}" alt="logo-small" width="155px" height="105px" >
                         {{-- {asset('storage/users/'. $header_logo )}} --}}
                     </span>                </a>
                 <!-- Menu: main ul -->

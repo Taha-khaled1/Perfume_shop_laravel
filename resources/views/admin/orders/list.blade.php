@@ -50,7 +50,12 @@
                                     <a href="{{ route('orderss.exportProducts') }}">
                                         <button class="button primary">تصدير المنتجات</button>
                                     </a>
-
+                                    <a href="#">
+                                        <button class="button primary">تحديد الجميع والطباعه</button>
+                                    </a>
+                                    <a href="#">
+                                        <button class="button secondary">طباعة الذي تم تحديده</button>
+                                    </a>
                                 </div>
                                 <div class="tab-content">
                                     <div class="tab-pane p-3 active" id="Post" role="tabpanel">
@@ -67,7 +72,7 @@
                                                         <th>حالة الدفع</th>
                                                         <th>التاريخ</th>
                                                         <th>تفاصيل</th>
-
+                                                        <th>اختيار</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -233,6 +238,7 @@
 
 
                                                         </td>
+                                                        <td><input type="checkbox" class="form-check-input" name="order[]" value="{{ $c->id }}"></td>
                                                     </tr>
                                                 @endforeach
                                                     @else
