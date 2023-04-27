@@ -159,7 +159,8 @@ $('.deletem_b').on("click", function (e) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'حذف!'
+        confirmButtonText: 'حذف!',
+        cancelButtonText: 'إلفاء!',
         }).then((result) => {
         if (result.isConfirmed) {
             var id = $(this).attr('deletem_b');
