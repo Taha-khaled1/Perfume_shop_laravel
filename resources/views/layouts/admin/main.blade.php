@@ -298,8 +298,11 @@ main {
 	background-color: #fff;
 }
 
-.form-group {
+/* .form-group {
 	margin-bottom: 20px;
+} */
+.swal2-container{
+  z-index: 1000000 !important;
 }
 .container {
 			max-width: 800px;

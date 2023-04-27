@@ -239,7 +239,7 @@
                         </p>
                         @else
                         <p class="my-3" dir="rtl">
-                            OUDZ is one of the most famous and largest companies in the field of fashion design, accessories, and perfumes. It was founded by Coco Chanel in 1910 AD, and this company is owned by “Alan Wertheimer and Gerard Wertheimer” at the present time, and the Chanel brand is considered one of the most famous and expensive international brands.                        </p>
+                        OUDZ is one of the most famous and largest companies in the field of fashion design, accessories, and perfumes. It was founded by Coco Chanel in 1910 AD, and this company is owned by “Alan Wertheimer and Gerard Wertheimer” at the present time, and the Chanel brand is considered one of the most famous and expensive international brands.                        </p>
                         @endif
                        
                         <div class="social-icons d-flex justify-content-between">
