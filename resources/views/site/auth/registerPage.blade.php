@@ -24,8 +24,8 @@
 <section class="container section-creat-account" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
     <div class="row">
         <p class="h4 text-center"> {{__('Create an account')}}</p>
-        <div class="col-md-4 m-auto my-5">
-        <form method="POST" action="{{ route('register') }}" class="ltn__form-box contact-form-box">
+        <div class="col-lg-6 col-md-12 m-auto my-5">
+        <form method="POST" action="{{ route('register') }}" class="ltn__form-box contact-form-box p-3">
                             @csrf
                 <div class="mb-3">
                     <label for="user-name-or-email" class="form-label">  {{__('First name')}} </label>
