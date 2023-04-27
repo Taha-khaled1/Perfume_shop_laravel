@@ -30,10 +30,10 @@
                              <div class="widget-body">
                                 <address class="contact-block">
                                 @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                            {!! $address !!}
-                            @else
-                            {!! $addressen !!}
-                            @endif
+{!! $address !!}
+@else
+{!! $addressen !!}
+@endif
                                 </address>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button collapsed" type="button" dir="rtl" data-bs-toggle="collapse"
                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                {{__('Customer Service') }}
+                {{ __('Customer Service') }}
             </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -163,7 +163,7 @@
         <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                {{__('For you') }}
+                {{ __('For you') }}
             </button>
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -172,8 +172,10 @@
                 <ul class="list-unstyled mb-0">
                     <li class="mb-3"><a class="text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
-                    <li class="mb-3"><a class="text-dark" href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
-                    <li><a class="text-dark" href="{{ route('viewMyAccountcatogery') }}">{{ __('Categories') }}</a></li>
+                    <li class="mb-3"><a class="text-dark" href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                    </li>
+                    <li><a class="text-dark" href="{{ route('viewMyAccountcatogery') }}">{{ __('Categories') }}</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -182,7 +184,7 @@
         <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                {{__('Oudz') }}
+                {{ __('Oudz') }}
             </button>
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
@@ -204,67 +206,51 @@
 <footer>
     <div class="container">
         <div class="custom">
-      
+
             <div class="foot">
                 <div class="row">
                     <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
-                        <h4>{{__('Oudz') }}</h4>
+                        <h4>{{ __('Oudz') }}</h4>
                         <ul class="list-unstyled">
                             {{-- <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
-                            <li><a href="{{route('policy')}}">{{__('Privacy policy')}}</a></li>
-                            <li><a href="{{route('conditions')}}">{{__('Terms and Conditions')}}</a></li>
+                            <li><a href="{{ route('policy') }}">{{ __('Privacy policy') }}</a></li>
+                            <li><a href="{{ route('conditions') }}">{{ __('Terms and Conditions') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-6 text-end order-lg-3 order-2 sm-footer">
-                        <h4>{{__('Customer Service') }}</h4>
+                        <h4>{{ __('Customer Service') }}</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('questions')}}">{{__('Common questions')}}</a></li>
+                            <li><a href="{{ route('questions') }}">{{ __('Common questions') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-12 text-end order-lg-2 order-4 sm-footer">
-                        <h4>{{__('For you') }}</h4>
+                        <h4>{{ __('For you') }}</h4>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('register')}}">{{__('Registration')}}</a></li>
-                            <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
-                            <li><a href="{{route('viewMyAccountcatogery')}}">{{__('Categories')}}</a></li>
+                            <li><a href="{{ route('register') }}">{{ __('Registration') }}</a></li>
+                            <li><a href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
+                            <li><a href="{{ route('viewMyAccountcatogery') }}">{{ __('Categories') }}</a></li>
 
                         </ul>
                     </div>
                     <div class="col-lg-3 text-end order-lg-4 order-1">
-                        <div class="text-center"><a href="{{ route('viewHomePage')}}"><img src="{{ asset('storage/users/' . $header_logo) }}"
-                                width="80" class="img-fluid" alt=" logo"></a></div>
+                        <div class="text-center"><a href="{{ route('viewHomePage') }}"><img
+                                    src="{{ asset('storage/users/' . $header_logo) }}" width="80"
+                                    class="img-fluid" alt=" logo"></a></div>
                         @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                        <p class="my-3" dir="rtl">
-
-
-                  
-                        {{$section5_details}}
-
-                            تعد شركة OUDZ من أشهر وأكبر الشركات في مجال تصميم الأزياء، وتصنيع الاكسسوارات، والعطور، قامت بتأسيسها كوكو شانيل في عام 1910 م، ويملك هذه الشركة ” ألان فرتهايمر وجيرار فيرتهايمر ” في الوقت الحالي، وتعتبر ماركة شانيل من أشهر الماركات العالمية وأغلاها .
-                        
-                        
-                        
-                        
-                        </p>
+                            <p class="my-3" dir="rtl">
+                                {{ strip_tags($section5_details) }}
+                            </p>
                         @else
-                        <p class="my-3" dir="rtl">
-<<<<<<< HEAD
+                            <p class="my-3" dir="rtl">
 
 
 
 
-                            OUDZ is one of the most famous and largest companies in the field of fashion design, accessories, and perfumes. It was founded by Coco Chanel in 1910 AD, and this company is owned by “Alan Wertheimer and Gerard Wertheimer” at the present time, and the Chanel brand is considered one of the most famous and expensive international brands.                        </p>
-                       
-                       
-                       
-                       
-                       
-                            @endif
-=======
-                        OUDZ is one of the most famous and largest companies in the field of fashion design, accessories, and perfumes. It was founded by Coco Chanel in 1910 AD, and this company is owned by “Alan Wertheimer and Gerard Wertheimer” at the present time, and the Chanel brand is considered one of the most famous and expensive international brands.                        </p>
+
+
+                                {{ strip_tags($section5_details_en) }}  
                         @endif
->>>>>>> a7574d1ad0903faa9dd58cc041fbfe0c5482dcac
-                       
+
                         <div class="social-icons d-flex justify-content-between">
                             <ul class="list-unstyled d-flex gap-2 justify-content-center w-100">
                                 <li class="text-center">
@@ -282,7 +268,7 @@
                             </ul>
                         </div>
                     </div>
-                 
+
                 </div>
             </div>
         </div>
@@ -291,11 +277,14 @@
 <div class="bg-light copyright">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-            <a href="https://instagram.com/nanots.ae?igshid=YmMyMTA2M2Y=" class="text-decoration-none text-dark" target="_blank"><p class="text-center">{{__('Copyright NTS')}} &copy;</p> </a>    
+            <a href="https://instagram.com/nanots.ae?igshid=YmMyMTA2M2Y=" class="text-decoration-none text-dark"
+                target="_blank">
+                <p class="text-center">{{ __('Copyright NTS') }} &copy;</p>
+            </a>
             <div class="imgs-copyright">
-                <img src="{{asset('assets/img/cash-color.svg')}}" width="50">
-                <img src="{{asset('assets/img/mastercard-color.svg')}}" width="50">
-                <img src="{{asset('assets/img/visa-color-v2.png')}}" width="50">
+                <img src="{{ asset('assets/img/cash-color.svg') }}" width="50">
+                <img src="{{ asset('assets/img/mastercard-color.svg') }}" width="50">
+                <img src="{{ asset('assets/img/visa-color-v2.png') }}" width="50">
             </div>
         </div>
     </div>

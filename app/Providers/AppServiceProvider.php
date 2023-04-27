@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $instagram_link = $setting->where('key', 'instagram_link')->first()->value;
             $youtube_link = $setting->where('key', 'youtube_link')->first()->value; 
             $section5_details = $setting->where('key', 'section5_details')->first()->value??"man";
+            $section5_details_en = $setting->where('key', 'section5_details_en')->first()->value??"man";
             $youtube_link = $setting->where('key', 'youtube_link')->first()->value;
             $snap_link = $setting->where('key', 'snap_link')->first()->value;
             $categories = Category::limit(15)->get();
@@ -57,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
             ->with('facebook_link',$facebook_link)
             ->with('$instagram_link',$instagram_link)
             ->with('youtube_link',$youtube_link)
-            ->with('section5_details',$section5_details)
+            ->with('section5_details',$section5_details) ->with('section5_details_en',$section5_details_en)
             ->with('youtube_link',$youtube_link)
             ->with('categories',$categories)
             ->with('snap_link',$snap_link) ;  // this is line 22 
