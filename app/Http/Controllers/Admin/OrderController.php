@@ -113,7 +113,7 @@ class OrderController extends Controller
             ->join('order_items', 'products.id', '=', 'order_items.product_id')
             ->join('orders', 'order_items.order_id', '=', 'orders.id')
             ->where('orders.status', 1)
-            ->groupBy('products.name', 'products.shope_name')
+            ->groupBy('products.name', 'products.shope_name')     ->orderBy('products.shope_name') 
             ->get();
 
         return Excel::download(new ProductsExport($products), 'products.xlsx');
