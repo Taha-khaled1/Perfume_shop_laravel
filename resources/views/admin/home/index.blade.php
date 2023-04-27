@@ -101,10 +101,13 @@
 
 
                                                         <div class="form-grouppp">
-                                                            <label for="date">اختار الوقت {{$webclose->data_time}}</label>
-                                                            <input type="date" id="date" name="data_time" value="{{$webclose->data_time}}" placeholder="{{$webclose->data_time}}">
-                                                          </div>
-                                                        <br><br>
+                                                            <label for="date">اختار التاريخ </label>
+                                                            <input type="datetime-local" id="datetime" name="data_time" value="{{$webclose->data_time}}" placeholder="{{$webclose->data_time}}">
+
+                                                        </div>
+                                                    
+                                                        <br>
+                                                        <br>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="maintenance_description">الوصف ب اللغه العربيه</label>
