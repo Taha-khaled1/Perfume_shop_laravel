@@ -333,8 +333,8 @@ transition: all 0.3s ease;
 }
   .floating-whatsapp {
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 117px;
+    right: 31px;
     z-index: 9999;
   }
   .centered-text {

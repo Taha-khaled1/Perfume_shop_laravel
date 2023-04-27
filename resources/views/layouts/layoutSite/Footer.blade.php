@@ -172,7 +172,8 @@
                 <ul class="list-unstyled mb-0">
                     <li class="mb-3"><a class="text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
-                    <li><a class="text-dark" href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
+                    <li class="mb-3"><a class="text-dark" href="{{ route('login') }}">{{ __('Sign In') }}</a></li>
+                    <li><a class="text-dark" href="{{ route('viewMyAccountcatogery') }}">{{ __('Categories') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -225,6 +226,8 @@
                         <ul class="list-unstyled">
                             <li><a href="{{route('register')}}">{{__('Registration')}}</a></li>
                             <li><a href="{{route('login')}}">{{__('Sign In')}}</a></li>
+                            <li><a href="{{route('viewMyAccountcatogery')}}">{{__('Categories')}}</a></li>
+
                         </ul>
                     </div>
                     <div class="col-lg-3 text-end order-lg-4 order-1">
@@ -242,12 +245,12 @@
                                 <li class="text-center">
                                     <a href="{{ $facebook_link }}"><i class="fs-4 fa fa-snapchat"></i></a>
                                 </li>
-                                <li class="text-center">
+                                {{-- <li class="text-center">
                                     <a href=""><img src="{{asset('cash-on-delivery.png')}}" alt="image1"></a>
                                 </li>
                                 <li class="text-center">
                                     <a href="{{route('sendWhatsAppMessage')}}"><img src="{{asset('visa.png')}}" alt="image2"></a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
@@ -255,9 +258,17 @@
                 </div>
             </div>
         </div>
-
-        <div class="bg-light p-2">
-            <a href="https://instagram.com/nanots.ae?igshid=YmMyMTA2M2Y=" class="text-decoration-none text-dark" target="_blank"><p class="text-center mt-2">{{__('Copyright NTS')}} &copy;</p> </a>
-        </div>
     </div>
 </footer>
+<div class="bg-light copyright">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <a href="https://instagram.com/nanots.ae?igshid=YmMyMTA2M2Y=" class="text-decoration-none text-dark" target="_blank"><p class="text-center">{{__('Copyright NTS')}} &copy;</p> </a>    
+            <div class="imgs-copyright">
+                <img src="{{asset('assets/img/cash-color.svg')}}" width="50">
+                <img src="{{asset('assets/img/mastercard-color.svg')}}" width="50">
+                <img src="{{asset('assets/img/visa-color-v2.png')}}" width="50">
+            </div>
+        </div>
+    </div>
+</div>

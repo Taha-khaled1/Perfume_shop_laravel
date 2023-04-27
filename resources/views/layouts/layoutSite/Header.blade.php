@@ -114,7 +114,9 @@
                                    <span class="d-block text-light">{{__('user')}}</span>
                                </a>
                                <a href="{{route('cart.index')}}">
-                                   <i class="text-light pe-7s-cart bg-white text-dark rounded-circle p-2 cart-icon"></i>
+                                   <i class="text-light pe-7s-cart bg-white text-dark rounded-circle p-2 cart-icon position-relative">
+                                    <span class="cart-count position-absolute rounded-circle" style="bottom: 32px">99</span>
+                                   </i>
                                    <span class="d-block text-light" style="transform: translateY(-2px);">{{__('Cart')}}</span>
                                 </a>
                                <a href="{{route('wishlist')}}">
@@ -468,8 +470,11 @@
                         </div>
                     </li>
                     <li>
-                        <a href="{{route('cart.index')}}">
-                            <i class="text-dark pe-7s-shopbag fs-4 ms-4"></i>
+                        <a href="{{route('cart.index')}}" class="">
+                            <i class="text-dark pe-7s-shopbag fs-4 ms-4 position-relative">
+                                <span class="cart-count position-absolute rounded-circle">99</span>
+
+                            </i>
                         </a>
                     </li>
                 </ul>

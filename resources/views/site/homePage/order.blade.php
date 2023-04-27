@@ -1,5 +1,5 @@
 @extends('layouts.layoutSite.SitePage')
-<link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('/assets/css/style.css')}}"> --}}
 
 @section('content')
 <!-- start breadcrumb -->
@@ -16,7 +16,7 @@
           @endauth
           @guest
           <p class="h4"> 
-            يجب تسجيل الدخولا اولا لاتمام الطلب 
+            يجب <a href="{{route('login')}}">تسجيل الدخول</a> اولا لاتمام الطلب 
              </p>
           @endguest
             <br>
