@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rules;
+use GuzzleHttp\Client;
 
 class AdminsController extends Controller
 {
@@ -52,21 +53,81 @@ class AdminsController extends Controller
     public function sendWhatsAppMessage()
     {
       
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . '121|TDdDdLoQ3TQlHpXmx21cHDtzhky0pcYmLPq7lUw5',
-            'Accept' => 'application/json',
-        ])->timeout(5)->post('https://whatsapp.aq-apps.xyz/api/v2/messages/send-message', [
-            'session_uuid' => '9907f8d1-e548-44f5-887d-a7fa06bb22c6',
-            'phone' => '201288964270',
-            'message' => 'YOUR OTP IS 1234',
-            'schedule_at' => now(),
-            'type' => 'TEXT',
+
+
+
+        $client = new Client();
+
+        $response = $client->request('POST', 'https://api.smsglobal.com/http-api.php', [
+            'query' => [
+                'action' => 'sendsms',
+                'user' => 'YOUR_USERNAME',
+                'password' => 'YOUR_PASSWORD',
+                'from' => 'YOUR_SENDER_ID',
+                'to' => '201113051656',
+                'text' => 'YOUR_MESSAGE',
+                'maxsplit' => 5,
+            ]
         ]);
+    
+        $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+    
+        // You can parse the response body and handle the response accordingly
+    
+        return response()->json([
+            'status' => $statusCode,
+            'response' => $body,
+        ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // $response = Http::withHeaders([
+        //     'Content-Type' => 'application/json',
+        //     'Authorization' => 'Bearer ' . '121|TDdDdLoQ3TQlHpXmx21cHDtzhky0pcYmLPq7lUw5',
+        //     'Accept' => 'application/json',
+        // ])->timeout(5)->post('https://whatsapp.aq-apps.xyz/api/v2/messages/send-message', [
+        //     'session_uuid' => '9907f8d1-e548-44f5-887d-a7fa06bb22c6',
+        //     'phone' => '201288964270',
+        //     'message' => 'YOUR OTP IS 1234',
+        //     'schedule_at' => now(),
+        //     'type' => 'TEXT',
+        // ]);
         
         // Handle the response here
         
-        return $response;
+        // return $response;
         // // Set the required parameters
         // $senderID = '102950242754753'; // Your WhatsApp Business Account phone number, including the country code
         // $receiver = '201113051656'; // The recipient's phone number, including the country code
