@@ -194,7 +194,7 @@
                 @error('area')
                             <small class="form-text text-danger">{{$message}}</small>
                             @enderror
-                            <select name="area"  >
+                            <select name="area"  class="form-control" >
                                                      
                                                      @if( old('area') )
                                                      <option value="{{old('area')}}" selected>{{old('area')}}</option>@endif
@@ -227,7 +227,7 @@
                 @enderror
             <input type="text" class="form-control" name="phone" value="{{old('phone')}}" placeholder="{{__('Mobile number')}} " maxlength="100" required >
           </div><br>
-          <input type="submit" class="btn btn-sqr" value=" {{__('Add an address')}}  ">
+          <input type="submit" class="btn btn-primary" value=" {{__('Add an address')}}  ">
 
 </form>
                                                      
@@ -289,7 +289,7 @@
                                <input type="password" class="form-control" class="form-control" name="password_confirmation" aria-label="user-password" aria-describedby="user-password" placeholder=" {{__('Confirm password')}} ">
                            </div>
                         </div><br>
-                        <button id="learner_security_btn" class="btn btn-sqr"> {{__('Save changes')}}  </button>
+                        <button id="learner_security_btn" class="btn btn-primary"> {{__('Save changes')}}  </button>
 
                    </div>
                   </form>

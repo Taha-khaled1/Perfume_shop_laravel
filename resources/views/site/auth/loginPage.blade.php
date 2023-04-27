@@ -60,7 +60,7 @@
         </div>
             <div class="text-center"><p class="h6 pb-10 my-4"> {{__('or')}} </p></div>
             <div class="text-center">
-            <a href="{{route('register')}}" class="h5 text-dark"> {{__('Register')}}</a>
+            <a href="{{route('register')}}" class="h5 text-dark text-decoration-none"> {{__('Registration')}}</a>
             
                 </div>
             

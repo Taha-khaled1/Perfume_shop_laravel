@@ -242,12 +242,6 @@
                             </p>
                         @else
                             <p class="my-3" dir="rtl">
-
-
-
-
-
-
                                 {{ strip_tags($section5_details_en) }}  
                         @endif
 

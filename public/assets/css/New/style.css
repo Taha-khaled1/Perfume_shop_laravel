@@ -62,9 +62,9 @@
     .logo-sm{
         display: block;
     }
-    .nav{
+    /* .nav{
         display: none !important;
-    }
+    } */
   }
 .header .nav input{
     background-color: transparent;
