@@ -1,6 +1,10 @@
 @extends('layouts.layoutSite.SitePage')
 @section('content')
- 
+ <style>
+    #gtx-trans{
+        display: none !important;
+    }
+ </style>
 <!-- breadcrumb area start --><br>
 <div class="breadcrumb-area" >
             <div class="container">
