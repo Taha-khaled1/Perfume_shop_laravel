@@ -23,9 +23,13 @@
              @foreach($categores as $ca)
              <div class="col-lg-3 col-6 mb-3">
                  <div class="d-flex flex-column item">
-                
+                 {{-- @if($ca->img) --}}
                 <div class="sort text-center">
+                    @if($ca->img)
                     <img src="{{asset('/storage/property/'.$ca->img)}}" alt="" class="custom-imgg">
+                    @else
+                    <img src="{{asset('storage/users/'. $header_logo )}}" alt="" class="custom-imgg">
+                    @endif
                     <a href="{{route('category_property',$ca->id)}}">
                     @if($ca->name_en != null)
                         @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
@@ -38,7 +42,7 @@
 
                     </a>
                 </div>
-                                
+                 {{-- @endif                 --}}
                 </div>
                </div>
              @endforeach
