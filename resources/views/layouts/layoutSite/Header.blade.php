@@ -115,7 +115,7 @@
                                </a>
                                <a href="{{route('cart.index')}}">
                                    <i class="text-light pe-7s-cart bg-white text-dark rounded-circle p-2 cart-icon position-relative">
-                                    <span class="cart-count position-absolute rounded-circle" style="bottom: 32px">99</span>
+                                    <span class="cart-count position-absolute rounded-circle d-none" style="bottom: 32px;">99</span>
                                    </i>
                                    <span class="d-block text-light" style="transform: translateY(-2px);">{{__('Cart')}}</span>
                                 </a>
@@ -472,7 +472,7 @@
                     <li>
                         <a href="{{route('cart.index')}}" class="">
                             <i class="text-dark pe-7s-shopbag fs-4 ms-4 position-relative">
-                                <span class="cart-count position-absolute rounded-circle">99</span>
+                                <span class="cart-count position-absolute rounded-circle d-none">99</span>
 
                             </i>
                         </a>
