@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Contact;
+use App\Models\Notfication;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -23,13 +24,14 @@ class HomeController extends Controller
         $prductsem = Product::where('quantity',0.00)->get()->count();
         $users = User::get()->count();
         $webclose=Website::first(); 
+        $n=   Notfication::all();
         return view('admin.home.index', [
             'orders' => $orders,       
             'orderstoday' => $orderstoday,       
             'orderssh' => $orderssh,       
             'prducts' => $prducts,       
             'users' => $users,
-            'prductsem' => $prductsem,  
+            'prductsem' => $prductsem,  'notf'=>$n,
             'webclose'=>$webclose     
         ]); 
     }

@@ -420,6 +420,55 @@ input[type="date"] {
   font-size: 16px;
   color: #333;
 }
+.notification-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.notification-icon i {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.notification-icon .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #f00;
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  display: none;
+}
+
+.notification-icon .notification-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 200px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  display: none;
+}
+
+.notification-icon .notification-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-icon .notification-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.notification-icon .notification-list li:last-child {
+  border-bottom: none;
+}
 
 /* Add a custom background and border to the input field */
 input[type="date"]:focus {

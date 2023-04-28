@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notfication;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -47,7 +48,14 @@ class AdminsController extends Controller
 
 
 
-
+    public function get_notfication()
+    {
+     $n=   Notfication::all();
+        return view('',['notf'=>$n]);
+    }
+    
+    
+    
 
 
     public function sendWhatsAppMessage()
@@ -79,10 +87,6 @@ class AdminsController extends Controller
             'status' => $statusCode,
             'response' => $body,
         ]);
-
-
-
-
 
 
 

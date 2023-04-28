@@ -84,10 +84,24 @@
                                 </div> -->
                             </div>
                             <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
+                                <div class="notification-icon">
+                                    <i class="fa fa-bell"></i>
+                                    <span class="badge"></span>
+                                    <div class="notification-dropdown">
+                                      <ul class="notification-list">
+                                        <!-- Notification items will be added dynamically here -->
+                                      </ul>
+                                    </div>
+                                  </div>
                                 <div class="u-info me-2">
+
                                     <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">{{auth()->user()->fname ?? 'OUDZ'}} </span></p>
-                                  
+                                   
+                               
+                                      
                                 </div>
+                                
+
                                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
                                     <img class="avatar lg rounded-circle img-thumbnail" src="{{ url('/') }}/cp/assets/images/profile_av.svg" alt="profile">
                                 </a>

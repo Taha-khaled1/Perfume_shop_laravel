@@ -211,6 +211,7 @@ Route::prefix("admin")->group(function () {
       
         //////////////// admins /////////////////
         Route::get('sendsms' , [App\Http\Controllers\Admin\AdminsController::class , 'sendsms'])->name('sendsms');
+        Route::get('get_notfication' , [App\Http\Controllers\Admin\AdminsController::class , 'get_notfication'])->name('get_notfication');
 
         Route::get('add/admin' , [App\Http\Controllers\Admin\AdminsController::class , 'add'])->name('admin.admin.add');
         Route::get('admin/list' , [App\Http\Controllers\Admin\AdminsController::class , 'admins_list'])->name('admin.admin');
