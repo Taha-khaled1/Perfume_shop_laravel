@@ -38,7 +38,7 @@
                 <input type="email" name="email" class="form-control" id="email-address" value="@if($add == 1) {{$address->email}} @else {{old('email')}}  @endif" maxlength="100" required>
               </div>
               <div class="my-3">
-                <label for="choose-region"  > {{__('Region')}}</label><br>
+                <label for="choose-region"  > {{__('Principality')}}</label><br>
                 @error('area')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
@@ -58,10 +58,10 @@
                         @enderror
                 <input type="text" name="street" class="form-control" id="street" placeholder="أدخل اسم الشارع" value="@if($add == 1) {{$address->street}} @else {{old('street')}} @endif" maxlength="100"   >
               </div> --}}
-              {{-- <div class="mb-3">
-                <label for="District"  > {{__('Blvd')}}</label>
+              <div class="mb-3">
+                <label for="District"  > {{__('Region')}}</label>
                 <input type="text" name="Blve" class="form-control" id="أدخل رقم الجادة" value="@if($add == 1) {{$address->Blve}} @else {{old('Blve')}}  @endif">
-              </div> --}}
+              </div>
               {{-- <div class="mb-3">
                 <label for="flat"  > {{__('Apartment/House')}}</label>
                 <input type="text" name="house" class="form-control" id="flat" placeholder="أدخل رقم/اسم الشقة/المنزل" value="@if($add == 1) {{$address->house}} @else {{old('house')}}  @endif" maxlength="100"  >
