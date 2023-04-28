@@ -1,5 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
-@section('content')
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])@section('content')
  
 <!-- breadcrumb area start --><br>
 <div class="breadcrumb-area" >

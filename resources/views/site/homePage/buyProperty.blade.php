@@ -1,5 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
-@section('title','عقارات للبيع')
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])@section('title','عقارات للبيع')
 @section('content')
 
 

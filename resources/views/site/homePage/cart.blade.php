@@ -1,5 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
- 
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()]) 
 {{-- <link rel="stylesheet" href="{{asset('/assets/css/style.css')}}"> --}}
 @section('content')
 

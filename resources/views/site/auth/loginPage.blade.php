@@ -1,4 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()]) 
 @section('title', 'تسجيل الدخول')
 @section('content')
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\Cart\CartRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,15 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
+
+     protected $cart;
+     public function __construct(CartRepository $cart)
+     {
+         $this->cart = $cart;
+     }
     public function create()
     {
-        return view('site.auth.registerPage');
+        return view('site.auth.registerPage',['cart' => $this->cart]);
     }
 
     /**

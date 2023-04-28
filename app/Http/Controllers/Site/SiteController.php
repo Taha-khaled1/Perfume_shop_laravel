@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\Setting;
@@ -19,7 +20,12 @@ use App\Models\Slide;
 use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
-{
+{   protected $cart;
+
+    public function __construct(CartRepository $cart)
+    {
+        $this->cart = $cart;
+    }
     public function viewMyAccountPage()
     {
        $cities = City::get();
@@ -42,7 +48,7 @@ class SiteController extends Controller
         $url = $setting->where('key', 'section1_url')->first()->value;
         $data=  Slide::all();
         // $toppro=Product::where('istop', 1)->limit(12)->get();
-        return view('site.homePage.catogery_view', ['ispro'=>$p,'categories'=>$categories ] , ['products'=> $products])->with('categores',$categores)
+        return view('site.homePage.catogery_view', ['ispro'=>$p,'categories'=>$categories,   'cart' => $this->cart, ] , ['products'=> $products])->with('categores',$categores)
         ->with('title',$title)
         ->with('text',$text)
         ->with('img',$img)
@@ -52,7 +58,7 @@ class SiteController extends Controller
     {
         $products[] = auth()->user()->products;
 
-        return view('site.userPages.wishlist', ['products'=> $products ]);
+        return view('site.userPages.wishlist', ['products'=> $products,'cart' => $this->cart, ]);
     }
     
     public function viewHomePage()
@@ -68,7 +74,7 @@ class SiteController extends Controller
         $url = $setting->where('key', 'section1_url')->first()->value;
         $data=  Slide::all();
         // $toppro=Product::where('istop', 1)->limit(12)->get();
-        return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories,'ispro'=>$p ] , ['products'=> $products])->with('categores',$categores)
+        return view('site.homePage.homePage', ['carousels'=> $carousels,'images'=>$data,'categories'=>$categories,'ispro'=>$p,'cart' => $this->cart, ] , ['products'=> $products])->with('categores',$categores)
         ->with('title',$title)
         ->with('text',$text)
         ->with('img',$img)
@@ -102,7 +108,7 @@ class SiteController extends Controller
     public function viewContact()
     {
        
-        return view('site.homePage.contact');
+        return view('site.homePage.contact',['cart' => $this->cart,]);
     }
 
     public function viewAboutUs()
@@ -110,7 +116,7 @@ class SiteController extends Controller
         $data = Setting::all()->where('key', 'section5_details')->first()->value;
         $data_en = Setting::all()->where('key', 'section5_details_en')->first()->value;
 
-        return view('site.homePage.about')->with('data_en',$data_en)->with('data',$data);
+        return view('site.homePage.about',['cart' => $this->cart,])->with('data_en',$data_en)->with('data',$data);
     }
 
     public function Shipping()
@@ -118,28 +124,28 @@ class SiteController extends Controller
         $data = Setting::all()->where('key', 'section2_details')->first()->value;
         $data_en = Setting::all()->where('key', 'section2_details_en')->first()->value;
 
-        return view('site.homePage.Shipping')->with('data',$data)->with('data_en',$data_en);
+        return view('site.homePage.Shipping',['cart' => $this->cart,])->with('data',$data)->with('data_en',$data_en);
     }
     public function questions()
     {  
         $data = Setting::all()->where('key', 'section4_details')->first()->value;
         $data_en = Setting::all()->where('key', 'section4_details_en')->first()->value;
 
-        return view('site.homePage.questions')->with('data',$data)->with('data_en',$data_en);
+        return view('site.homePage.questions',['cart' => $this->cart,])->with('data',$data)->with('data_en',$data_en);
     }
     public function conditions()
     {
         $data = Setting::all()->where('key', 'section3_details')->first()->value;
         $data_en = Setting::all()->where('key', 'section3_details_en')->first()->value;
 
-        return view('site.homePage.conditions')->with('data',$data)->with('data_en',$data_en);
+        return view('site.homePage.conditions',['cart' => $this->cart,])->with('data',$data)->with('data_en',$data_en);
     }
     public function policy()
     { 
         $data = Setting::all()->where('key', 'section1_details')->first()->value;
         $data_en = Setting::all()->where('key', 'section1_details_en')->first()->value;
 
-        return view('site.homePage.policy')->with('data',$data)->with('data_en',$data_en);
+        return view('site.homePage.policy',['cart' => $this->cart,])->with('data',$data)->with('data_en',$data_en);
     }
 
     public function products()
@@ -148,6 +154,6 @@ class SiteController extends Controller
       $products = Product::where('quantity', '>=', 1)->latest()->paginate(15);
         
        
-      return view('site.homePage.products', compact('products'));
+      return view('site.homePage.products', ['cart' => $this->cart,'products' => $products,]);
     }
 }

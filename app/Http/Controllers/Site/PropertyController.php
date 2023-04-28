@@ -12,17 +12,25 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Album;
 
+use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
-{
+{ 
+  
+  protected $cart;
+
+  public function __construct(CartRepository $cart)
+  {
+      $this->cart = $cart;
+  }
     public function viewBuyProperty()
     {
         $properties = Properity::where('category_id', 1)->latest()->paginate(10);
         $types = Type::get();
         $categories = Category::get();
-        return view('site.homePage.buyProperty', compact('properties','types','categories'));
+        return view('site.homePage.buyProperty',['cart' => $this->cart,'properties' => $properties,'types' => $types,'categories' => $categories,] );
     }
 
     public function viewSaleProperty()
@@ -31,7 +39,8 @@ class PropertyController extends Controller
         $countries = Country::get();
         $cities = City::get();
         $properties = Properity::where('category_id', 1)->latest()->paginate(10); 
-        return view('site.homePage.saleProperty', compact('properties','types','cities','countries'));
+        $cart= $this->cart;
+        return view('site.homePage.saleProperty', compact('properties','types','cities','countries','cart'));
     }
 
     public function viewRentProperty()
@@ -39,12 +48,12 @@ class PropertyController extends Controller
         $properties = Properity::where('category_id', 2)->latest()->paginate(10);
         $types = Type::get();
         $categories = Category::get();
-
-        return view('site.homePage.rentProperty', compact('properties','types','categories'));
+        $cart= $this->cart;
+        return view('site.homePage.rentProperty', compact('properties','types','categories','cart'));
     }
     
     public function search_property(Request $request)
-    {
+    {     $cart= $this->cart;
      
       $title = $request->title;
       $types = Type::get();
@@ -58,12 +67,12 @@ class PropertyController extends Controller
                 }) ->latest()->paginate(12);
         
        
-      return view('site.homePage.searchProperty', compact('products','types','categories'));
+      return view('site.homePage.searchProperty', compact('products','types','categories','cart'));
 
     }
 
     public function category_property($id)
-    {
+    {$cart= $this->cart;
       $categories = Category::get();
       $ispro=DB::table('websits')->first();
        $category = Category::find($id);
@@ -77,7 +86,7 @@ class PropertyController extends Controller
                   }) 
                  ->paginate(12);
              
-        return view('site.homePage.category_product', compact('products','category','categories','ispro'));
+        return view('site.homePage.category_product', compact('products','category','categories','ispro','cart'));
       }else{
         return redirect()->back();
       }
@@ -123,8 +132,8 @@ class PropertyController extends Controller
                                       ->paginate(10);
      
         $categories = Category::get();
-        
-      return view('site.homePage.searchProperty', compact('products' ,'categories'));
+        $cart= $this->cart;
+      return view('site.homePage.searchProperty', compact('products' ,'categories','cart'));
 
     }
 
@@ -132,13 +141,13 @@ class PropertyController extends Controller
     {
         $product = Product::find($id);
         // $property = Properity::where('id', $id)->with('user')->first();
-        
+        $cart= $this->cart;
         if($product ){
           $types = Type::get();
 
          $category = $product->category_id;
         $products = Product::where('category_id', $category)->latest()->limit(4)->get();
-        return view('site.homePage.propertyDetails',compact('product','products','types'));
+        return view('site.homePage.propertyDetails',compact('product','products','types','cart'));
     }
        return redirect()->back();
     }
@@ -347,12 +356,13 @@ class PropertyController extends Controller
 
     
     public function update_property($id)
-    {
+    { 
+        $cart = $this->cart;
         $property = Properity::find($id);
         $types = Type::get();
         $countries = Country::get();
         $cities = City::get();
-        return view('site.homePage.update_property', compact('property','types','cities','countries'));
+        return view('site.homePage.update_property', compact('property','types','cities','countries','cart'));
     }
     public function delete_album(Request $request)
     {  

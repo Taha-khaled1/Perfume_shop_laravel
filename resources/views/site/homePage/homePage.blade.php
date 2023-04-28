@@ -1,4 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])
 
 @section('content')
 
@@ -109,6 +109,7 @@
                                                     @if ($product->name_en != null)
                                                         @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                                                             {{ $product->name }}
+                                                  
                                                         @else
                                                             {{ $product->name_en }}
                                                         @endif
@@ -402,8 +403,8 @@
                 },
                 dataType: 'json', // let's set the expected response format
                 success: function(data) {
-                    flashBox('success', '{{ __('Added to cart') }}');
-
+                    // flashBox('success', '{{ __('Added to cart') }}');
+                    location.reload();
                 },
                 error: function(err) {
                     if (err.status == 422) { // when status code is 422, it's a validation issue

@@ -1,5 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
-@section('title','نتائج البحث')
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])@section('title','نتائج البحث')
 <link rel="stylesheet" href="{{asset('/assets/css/New/mens.css')}}">
 @section('content')
  <!-- breadcrumb area start --><br>

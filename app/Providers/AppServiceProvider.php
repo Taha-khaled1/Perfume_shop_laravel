@@ -3,6 +3,8 @@
 namespace App\Providers;
 use App\Models\Setting;
 use App\Models\Category;
+use App\Repositories\Cart\CartModelRepository;
+use App\Repositories\Cart\CartRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +12,13 @@ use App\Models\Order;
 
 
 class AppServiceProvider extends ServiceProvider
-{
+{ 
+    public $cart;
+
+    // public function __construct(CartRepository $cart)
+    // {
+    //     $this->cart = $cart;
+    // }
     /**
      * Register any application services.
      *
@@ -18,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+     
     }
 
     /**
@@ -26,8 +34,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot(CartRepository $cart)
+
+    {   
+        //  protected $cart;
+
         view()->composer('layouts.layoutSite.Footer', function ($view) {
             $setting = Setting::all();
             $header_logo = $setting->where('key', 'header_logo')->first()->value;
@@ -38,6 +49,9 @@ class AppServiceProvider extends ServiceProvider
             $footer_about = $setting->where('key', 'footer_about')->first()->value;
             $facebook_link = $setting->where('key', 'facebook_link')->first()->value;
             $instagram_link = $setting->where('key', 'instagram_link')->first()->value;
+            // $cart =$this->cart = $cart;
+            // $cartCount = $this->cart->get()->count() ;
+
             $youtube_link = $setting->where('key', 'youtube_link')->first()->value; 
             $section5_details = $setting->where('key', 'section5_details')->first()->value??"man";
             $section5_details_en = $setting->where('key', 'section5_details_en')->first()->value??"man";

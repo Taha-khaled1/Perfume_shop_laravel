@@ -19,12 +19,9 @@ use Illuminate\Support\Facades\Notification;
 use App\Models\OrderItem;
 use App\Models\Address; 
 use App\Models\Setting; 
-use AymanElmalah\MyFatoorah\Facades\MyFatoorah;
 
-use App\Repositories\Cart\CartModelRepository;
 use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class OrderController extends Controller
 {
@@ -66,7 +63,7 @@ class OrderController extends Controller
                 'rate' =>  $rate,
                 'offer' =>  $offer,
                 'cities' =>  $cities,
-
+                
             ]);
         }
        

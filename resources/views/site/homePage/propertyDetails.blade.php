@@ -1,4 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])
  @section('content')
  <link rel="stylesheet" href="{{asset('/assets/css/New/card-product.css')}}">
  <div class="breadcrumb-area" >
@@ -452,7 +452,7 @@ $('.liked').click(function(anyothername) {
                      "quantity" : 1},
                     dataType: 'json',              // let's set the expected response format
                     success: function (data) {
-                      flashBox('success', 'تمت الاضافة الى السلة');
+                        location.reload();
                        
                     },
                     error: function (err) {

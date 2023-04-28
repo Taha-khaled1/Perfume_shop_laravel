@@ -1,4 +1,4 @@
-@extends('layouts.layoutSite.SitePage')
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])
 @section('title','نتائج البحث')
 
 @section('content')
@@ -262,7 +262,7 @@ $('.add_cart').on("click", function (e) {
                      "quantity" : 1},
                     dataType: 'json',              // let's set the expected response format
                     success: function (data) {
-                      flashBox('success', 'تمت الاضافة الى السلة');
+                        location.reload();
                        
                     },
                     error: function (err) {

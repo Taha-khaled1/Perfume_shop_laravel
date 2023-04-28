@@ -4,12 +4,18 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class ConfirmablePasswordController extends Controller
-{
+{  
+     protected $cart;
+    public function __construct(CartRepository $cart)
+    {
+        $this->cart = $cart;
+    }
     /**
      * Show the confirm password view.
      *
@@ -17,7 +23,9 @@ class ConfirmablePasswordController extends Controller
      */
     public function show()
     {
-        return view('auth.confirm-password');
+        return view('auth.confirm-password',['cart' => $this->cart]);
+
+        
     }
 
     /**
