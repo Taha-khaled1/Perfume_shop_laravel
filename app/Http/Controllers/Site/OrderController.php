@@ -189,7 +189,7 @@ class OrderController extends Controller
         $order = Order::find($id);
         if($order){
             return view('site.homePage.ordershow', [
-                 'order' =>  $order, 
+                 'order' =>  $order, 'cart' => $this->cart,
             ]);
         }else{
             return redirect()->back();
@@ -278,7 +278,7 @@ class OrderController extends Controller
           $order = Order::where('number', $request->number)->first();
           if($order){
             return view('site.homePage.ordershow', [
-                 'order' =>  $order, 
+                 'order' =>  $order, 'cart' => $this->cart,
             ]);
         }else{
             notify()->error( __('Verify the order number'));
