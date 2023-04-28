@@ -50,12 +50,12 @@
                                     <a href="{{ route('orderss.exportProducts') }}">
                                         <button class="button primary">تصدير المنتجات</button>
                                     </a>
-                                    <a href="{{ route('orderss_print_all') }}">
+                                    {{-- <a href="{{ route('orderss_print_all') }}">
                                         <button class="button primary">تحديد الجميع والطباعه</button>
                                     </a>
                                     <a href="#">
                                         <button class="button secondary">طباعة الذي تم تحديده</button>
-                                    </a>
+                                    </a> --}}
                                 </div>
                                 <div class="tab-content">
                                     <div class="tab-pane p-3 active" id="Post" role="tabpanel">
