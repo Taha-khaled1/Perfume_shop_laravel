@@ -58,26 +58,24 @@ class OrderController extends Controller
     public function orderss_print_all()
     {
         $orders = Order::where('status', '2')->with('address')->get();
-        $order = $orders[0]; 
+
+        foreach ($orders as $order) {
+            $pdf = PDF::loadView('admin.print', compact('order'));
     
-        // Load the Arabic font file
-        $font = public_path('fonts/DroidArabicNaskh-Regular.ttf');
+            // Optional: Set paper size and orientation
+            $pdf->setPaper('A4', 'portrait');
     
-        // Set the font for the PDF document
-        PDF::setFont($font);
+            // Optional: Set the download filename and disposition
+            $filename = 'invoice-' . $order->id . '.pdf';
+            $headers = [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+            ];
     
-        // Generate the PDF document
-        $pdf = PDF::loadView('admin.print', compact('order'));
-    
-        // Set the download filename and headers
-        $filename = 'invoice-' . $order->id . '.pdf';
-        $headers = [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
-        ];
-    
-        // Return the PDF as a response
-        return $pdf->download($filename, $headers);
+            // Return the PDF as a response
+             $pdf->download($filename, $headers);
+        }
+        return back();
     }
 
  
