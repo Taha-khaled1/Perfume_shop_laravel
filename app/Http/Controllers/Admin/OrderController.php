@@ -52,32 +52,41 @@ class OrderController extends Controller
                 }
                 return redirect()->back();
     }
+
+
+
     public function orderss_print_all()
     {
-        $order = Order::where('status', '2')->with('address')->get();
+        $orders = Order::where('status', '2')->with('address')->get();
+        $order = $orders[0]; 
+        // foreach ($orders as $order) {
+            $pdf = \Pdf::loadView('admin.print', compact('order'));
     
-        // Initialize an empty PDF object
-        $pdf = PDF::loadView('admin.print', compact('order'));
+            // Optional: Set paper size and orientation
+            // $pdf->setPaper('A4', 'portrait');
     
-        // Optional: Set paper size and orientation
-        $pdf->setPaper('A4', 'portrait');
-        
-        // Loop through the orders and append them to the PDF object
-        foreach ($order as $order) {
-            $pdf->addPage(view('admin.print', compact('order')));
-        }
-        
-        // Optional: Set the download filename and disposition
-        $filename = 'invoices.pdf';
-        $headers = [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
-        ];
+            // Optional: Set the download filename and disposition
+            $filename = 'invoice-' . $order->id . '.pdf';
+            $headers = [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+            ];
+    
             // Return the PDF as a response
-            return  $pdf->download($filename, $headers);
-        
+            return $pdf->download($filename, $headers);
+
+        // }
         // return "done";
     }
+
+ 
+
+
+
+
+
+
+
     public function orderss_list()
     {
         $orders = Order::where('status','2')->with('address')->latest()->get();
