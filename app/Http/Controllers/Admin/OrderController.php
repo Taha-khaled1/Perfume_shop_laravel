@@ -73,7 +73,7 @@ class OrderController extends Controller
             ];
     
             // Return the PDF as a response
-             $pdf->download($filename, $headers);
+            return $pdf->download($filename, $headers);
         }
         return back();
     }
