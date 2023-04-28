@@ -166,8 +166,18 @@
 
 $(document).on("click", ".deletem_b", function (e) {
         e.preventDefault();
-        if(confirm( `  Are you sure? ` )){
-            var deletem_b = $(this).attr("deletem_b");
+        Swal.fire({
+            title: 'هل أنت متأكد?',
+            text: "لن تتمكن من التراجع عن هذا!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'حذف!',
+            cancelButtonText: 'إلفاء!',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var deletem_b = $(this).attr("deletem_b");
         $.ajax({
             type: "post",
             url: "{{route('admin.country.delete')}}",
@@ -186,7 +196,15 @@ $(document).on("click", ".deletem_b", function (e) {
             },
             error: function (reject) {},
         });
-        }
+
+
+                Swal.fire(
+                'تم الحذف!',
+                'تم الحذف بنجاح.',
+                'success'
+                )
+            }
+            })
        
     });
     </script>

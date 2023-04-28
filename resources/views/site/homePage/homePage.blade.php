@@ -99,7 +99,7 @@
                                 @foreach ($category->product as $product)
                                     <div class="col-lg-3 col-6 mb-3">
 
-                                        <div class="d-flex flex-column item">
+                                        <div class="d-flex flex-column item position-relative">
                                             <a href="{{ route('viewProperty', $product->id) }}"
                                                 class="bg-transparent p-0"><img
                                                     src="{{ asset('/storage/property/' . $product->image) }}" alt=""
@@ -119,8 +119,10 @@
                                                 </h4>
                                                 <h6 class="text-center py-2">{{ $product->price }} {{ __('AED') }}
                                                 </h6>
-                                                <a class="btn btn-primary add_cart border-0"
-                                                    product_id="{{ $product->id }}">{{ __('Add to cart') }}</a>
+                                                <div class="position-absolute product-buttons">
+                                                    <a class="add_cart border-0" product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                                                    <a class="liked border-0" product_id="{{ $product->id }}"><i class="pe-7s-like fw-bold fs-4"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -144,19 +146,6 @@
         @endif
 
     @endif
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -370,7 +359,7 @@
                 },
                 dataType: 'json', // let's set the expected response format
                 success: function(data) {
-
+                    console.log(data)
                 },
                 error: function(err) {
                     if (err.status == 422) { // when status code is 422, it's a validation issue

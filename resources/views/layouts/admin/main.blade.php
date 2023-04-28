@@ -7,6 +7,7 @@
     <title>  a elle :: dashboard  </title>
     <link rel="icon" href="{{ url('/') }}/cp/favicon.ico" type="image/x-icon"> <!-- Favicon-->
     @notifyCss
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
     <style>
       body {
@@ -492,6 +493,7 @@ label[for="date"] {
     @notifyJs
 
         @stack('js')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 
     @include('layouts.admin.footer')
     

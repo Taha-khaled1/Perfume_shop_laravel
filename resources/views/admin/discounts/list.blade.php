@@ -148,8 +148,18 @@ $('.deletem_b').on("click", function (e) {
                
          var id = $(this).attr('deletem_b');
          
-         
-         $.ajax({
+         Swal.fire({
+            title: 'هل أنت متأكد?',
+            text: "لن تتمكن من التراجع عن هذا!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'حذف!',
+            cancelButtonText: 'إلفاء!',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
                 type: "post",
                 url: "{{ route('delete_discount') }}",
                 data: { _token: '{{ csrf_token() }}',
@@ -167,7 +177,14 @@ $('.deletem_b').on("click", function (e) {
 
                         }
                     }
-                });   
+                });                   Swal.fire(
+                'تم الحذف!',
+                'تم الحذف بنجاح.',
+                'success'
+                )
+            }
+            })
+
           
     });
  </script>

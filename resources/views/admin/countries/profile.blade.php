@@ -114,7 +114,7 @@
                                                                     <td>{{ $c->id }}</td>
                                                                     <td>{{ $c->name }} </td>
                                                                     <td>{{ $c->price }} </td>
-                                                                    <td> <span> <a href="#!" class="deletem_b" deletem_b="{{$c->id}}">Delete</a></span></td>
+                                                                    <td> <span> <a href="#!" class="deletem_b" deletem_b="{{$c->id}}"><i class="fa fa-trash text-danger"></i></a></span></td>
 
                                                                 </tr>
                                                             @endforeach
@@ -214,8 +214,18 @@ $('.deletem_b').on("click", function (e) {
                
          var id = $(this).attr('deletem_b');
          
-         
-         $.ajax({
+         Swal.fire({
+            title: 'هل أنت متأكد?',
+            text: "لن تتمكن من التراجع عن هذا!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'حذف!',
+            cancelButtonText: 'إلفاء!',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
                 type: "post",
                 url: "{{ route('delete_city') }}",
                 data: { _token: '{{ csrf_token() }}',
@@ -234,7 +244,14 @@ $('.deletem_b').on("click", function (e) {
 
                         }
                     }
-                });   
+                });                   Swal.fire(
+                'تم الحذف!',
+                'تم الحذف بنجاح.',
+                'success'
+                )
+            }
+            })
+
           
     });
  </script>

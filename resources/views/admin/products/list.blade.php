@@ -76,7 +76,32 @@
     <script src=" /cp/assets/plugins/datatables/datatables_advanced.js"></script>
 
     <script>
-        
+        function delete_product(e){
+            // e.target.preventDefault();
+
+            console.log("asd")
+                Swal.fire({
+            title: 'هل أنت متأكد?',
+            text: "لن تتمكن من التراجع عن هذا!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'حذف!',
+            cancelButtonText: 'إلفاء!',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var route = $(e).data('delete');
+                window.location.href = $(e).data('delete')
+                Swal.fire(
+                'تم الحذف!',
+                'تم الحذف بنجاح.',
+                'success'
+                )
+            }
+            })
+        }
+
        $(document).ready(function(){
 
 

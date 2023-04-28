@@ -95,12 +95,12 @@ class ProductController extends Controller
                 "image" => '<img src="/storage/property/'.$image.'"  width="80">   ',
                 "actions" => '
                 <a href="' . route('admin.product.profile', [$record->id]) . '"><i class="icofont-eye  text-secondary font-20"></i></a>&nbsp;&nbsp;
-                <a href="' . route('admin.product.delete', [$record->id]) . ' "  onclick=" return confirm( `  Are you sure? ` )"><i class="icofont-trash text-danger  "></i></a>
+                <a href="#"  data-delete="'. route('admin.product.delete', [$record->id]) .'"  data-id="'. $record->id .'" class="delete_product" onclick="delete_product(this)"><i class="icofont-trash text-danger  "></i></a>
 '
 
             );
         }
-
+        // ' . route('admin.product.delete', [$record->id]) . ' 
         $response = array(
             "draw" => intval($draw),
             "iTotalRecords" => $totalRecords,

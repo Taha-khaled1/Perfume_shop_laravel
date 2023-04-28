@@ -41,7 +41,7 @@
                                         <td>{{$user->email}} </td>
                                         <td>@if($user->city){{$user->city->name}}@endif </td>
                                         <td>  <a href="{{ route('admin.user.profile', $user->id)}}"><i class="icofont-edit  text-secondary font-20"></i></a>
-                                        <a  href=" " class="deletem_b" onclick=" return confirm( `  Are you sure? ` )" deletem_b="{{$user->id}}"> <i class="icofont-trash text-danger font-20"></i></a>
+                                        <a  href=" " class="deletem_b" deletem_b="{{$user->id}}"> <i class="icofont-trash text-danger font-20"></i></a>
                                         </td>
                                         </tr>
                                         @endif
@@ -79,7 +79,18 @@
 $(document).on("click", ".deletem_b", function (e) {
         e.preventDefault();
         var deletem_b = $(this).attr("deletem_b");
-        $.ajax({
+        Swal.fire({
+            title: 'هل أنت متأكد?',
+            text: "لن تتمكن من التراجع عن هذا!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'حذف!',
+            cancelButtonText: 'إلفاء!',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
             type: "post",
             url: "{{route('admin.user.delete')}}",
             data: {
@@ -96,7 +107,14 @@ $(document).on("click", ".deletem_b", function (e) {
                 $(".R_user" + data.id).remove();
             },
             error: function (reject) {},
-        });
+        });                Swal.fire(
+                'تم الحذف!',
+                'تم الحذف بنجاح.',
+                'success'
+                )
+            }
+            })
+
     });
     </script>
     @endpush

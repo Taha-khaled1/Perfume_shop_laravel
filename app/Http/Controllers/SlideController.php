@@ -145,7 +145,7 @@ class SlideController extends Controller
             unlink($file_path);
         }
         $sections->delete();
-        session()->flash('delete','تم حذف القسم بنجاح');
+        session()->flash('delete','تم الحذف بنجاح');
         return back();
     }
 }

@@ -69,9 +69,10 @@
                                         @if( $products->count() == 0 ) <h3 class="mb-30 text-center">    {{__('This section does not currently contain items.')}} </h3>@endif
                                             @foreach($products as $product)
                                                 <div class="col-lg-3 col-md-6 mb-3 col-6 text-center">
-                                                    <div class="product">
+                                                    <div class="product item position-relative">
+                                                        <a href="{{route('viewProperty',$product->id)}}" class="border-0 text-dark text-decoration-none">
                                                         <img class="mb-3" src="{{asset('/storage/property/'.$product->image)}}">
-                                                        <a href="{{route('viewProperty',$product->id)}}" style="background-color:transparent" class="border-0 text-dark">
+                                                        
                                                         @if($product->name_en != null)
                                                                                 @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                                                                                 {{$product->name}}
@@ -80,10 +81,16 @@
                                                                                 @endif @else
                                                                                 {{$product->name}}
                                                                                 @endif
-                                                        </a>
+                                                        
                                                         <p class="fs-5 mt-2">120$</p>
-                                                        <a class="btn btn-cart add_cart mb-2" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</a>
+                                                        </a>
+                                                        <div class="position-absolute product-buttons">
+                                                            <a class="add_cart border-0 bg-none" product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                                                            <a class="liked border-0 bg-none" product_id="{{ $product->id }}"><i class="pe-7s-like fw-bold fs-4"></i></a>
+                                                        </div>
+                                                    
                                                     </div>
+                                                    
                                                 </div>
                                             @endforeach
                                         </div>

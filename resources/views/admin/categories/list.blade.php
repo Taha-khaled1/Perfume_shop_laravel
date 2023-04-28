@@ -1,5 +1,4 @@
 @extends('layouts.admin.main')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
 @section('content')
 
 
@@ -147,8 +146,6 @@
 
 @endsection
 @push('js')
-<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 <script>
 $('.deletem_b').on("click", function (e) {
             e.preventDefault();
@@ -187,7 +184,7 @@ $('.deletem_b').on("click", function (e) {
                 });   
             Swal.fire(
             'تم الحذف!',
-            'تم حذف القسم بنجاح.',
+            'تم الحذف بنجاح.',
             'success'
             )
         }
