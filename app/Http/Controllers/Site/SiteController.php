@@ -33,7 +33,7 @@ class SiteController extends Controller
         $properties = Properity::where('user_id', $id)->latest()->get() ;
         $countries = Country::get();
         $mailings = Mailing::where('user_id', $id)->latest()->get() ;
-        return view('site.userPages.myAccount', ['properties'=> $properties , 'cities'=> $cities , 'mailings'=> $mailings]);
+        return view('site.userPages.myAccount', ['properties'=> $properties , 'cities'=> $cities , 'mailings'=> $mailings,'cart' => $this->cart,]);
     }
     public function viewMyAccountcatogery()
     {   $p=DB::table('websits')->first();
