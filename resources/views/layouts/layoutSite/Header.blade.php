@@ -114,10 +114,9 @@
                                    <span class="d-block text-light">{{__('user')}}</span>
                                </a>
                                {{-- <p>{{session()->has('cart') ? count(session()->get('cart')) : 0}}</p>     --}}
-                               <p>{{$cartcount}}</p>
                                <a href="{{route('cart.index')}}">
                                    <i class="text-light pe-7s-cart bg-white text-dark rounded-circle p-2 cart-icon position-relative">
-                                    <span class="cart-count position-absolute rounded-circle d-none" style="bottom: 32px;">{{session()->has('cart') ? count(session()->get('cart')) : 0}}</span>
+                                    <span class="cart-count position-absolute rounded-circle" style="bottom: 32px;">{{$cartcount}}</span>
                                    </i>
                                    <span class="d-block text-light" style="transform: translateY(-2px);">{{__('Cart')}}</span>
                                 </a>
@@ -474,7 +473,7 @@
                     <li>
                         <a href="{{route('cart.index')}}" class="">
                             <i class="text-dark pe-7s-shopbag fs-4 ms-4 position-relative">
-                                <span class="cart-count position-absolute rounded-circle d-none">99</span>
+                                <span class="cart-count position-absolute rounded-circle">{{$cartcount}}</span>
 
                             </i>
                         </a>
