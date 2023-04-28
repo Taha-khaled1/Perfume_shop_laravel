@@ -84,21 +84,21 @@
                   $dir = 'end-0';
               @endphp
           @endif
-          <label for="user-mobile" class="form-label"> {{__('Mobile number')}}</label>
+          <label for="user-mobile" class="form-label"> {{__('Mobile number')}}</label> 
 
         <div class="mb-3 position-relative">
             @error('phone')
                 <small class="form-text text-danger">{{$message}}</small>
                 @enderror
             <input type="text" name="phone"  class="form-control" id="user-mobile"  value="{{old('phone')}}"> 
-            <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" type="button" style="background-color: var(--main-color);">{{ __('Send') }}</button>
+            {{-- <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" type="button" style="background-color: var(--main-color);">{{ __('Send') }}</button> --}}
           </div>
-          <label for="user-mobile" class="form-label">{{ __('Code') }}</label>
+          {{-- <label for="user-mobile" class="form-label">{{ __('Code') }}</label>
           <div class="form-group position-relative">
             <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone"
         >
             <button class="btn btn-sqr position-absolute {{$dir}} top-0 text-light custom-button" type="button" style="background-color: var(--main-color);">{{ __('Submit') }}</button>
-        </div>
+        </div> --}}
           <div class="mb-3">
             <label for="user-password" class="form-label"> {{__('Password')}}</label>
             @error('password')
