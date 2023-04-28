@@ -55,9 +55,9 @@ class OrderController extends Controller
 
 
 
-    public function orderss_print_all()
+    public function orderss_print_all(Request $request)
     {
-        $orders = Order::with('address')->get();
+        $orders = Order::find($request->id)->with('address')->get();
 
         foreach ($orders as $order) {
             $pdf = PDF::loadView('admin.print', compact('order'));

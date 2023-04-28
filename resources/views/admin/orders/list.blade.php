@@ -238,7 +238,13 @@
 
 
                                                         </td>
-                                                        <td><input type="checkbox" class="form-check-input" name="order[]" value="{{ $c->id }}"></td>
+                                                        <td>
+                                                            
+                                                            <a href="{{ route('print', $c->id)}}">
+                                                                <button class="button primary">طباعه</button>
+                                                            </a>
+                                                        
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                                     @else

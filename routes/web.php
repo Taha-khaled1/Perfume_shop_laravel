@@ -3,6 +3,7 @@
 use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\PropertyController;
 use App\Http\Controllers\Site\SiteController;
+use App\Models\OrderAddress;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Site\PaymentsController;
@@ -85,7 +86,24 @@ Route::post('/update.order/{id}/{status}', function($id, $status) {
 
 
 
+Route::get('/print{id}', function($id) {
+    $order = Order::find($id);
+    $address = OrderAddress::where('order_id', $order->id )->first();
+    // $pdf = PDF::loadView('print',[
+    //     'order' => $order,  
+    //     'address' => $address, 
+    //  ]);
 
+    // return $pdf->download('bill.pdf');
+
+        return view('admin.print', [
+            'order' => $order,  
+            'address' => $address, 
+         ]);   
+     
+  
+// return what you want
+})->name('print');
 
 
 
