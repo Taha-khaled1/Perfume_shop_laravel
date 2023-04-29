@@ -170,16 +170,7 @@ class OrderController extends Controller
 
 
                 $data->phone = $request->phone;
-            $data->save();
-
-            notify()->success('تم اضافة العنوان !');
-            
-
-
-        } 
-
-
-
+                $data->save();
                 $noty = new Notfication();
 
                 $noty->title="طلب جديد";
@@ -190,6 +181,17 @@ class OrderController extends Controller
                 }else{
                     $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
                 }
+            // notify()->success('تم اضافة العنوان !');
+            
+
+
+        } 
+
+
+
+          
+
+             
              
                 $this->cart->empty();
                 $email = $address->email;

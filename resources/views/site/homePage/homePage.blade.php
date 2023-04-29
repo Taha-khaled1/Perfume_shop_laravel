@@ -126,13 +126,11 @@
                                                     <a class="add_cart border-0"  product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
                                                     @endif
                                                     <a>
-                                                    <form action="{{ route('favorites.add', $product->id) }}" method="POST">
+                                                        <button class="add-to-favorites" data-product-id="{{ $product->id }}">
+                                                            <i class="pe-7s-like fw-bold fs-4"></i>
+                                                        </button>
                                                         
-                                                            @csrf
-                                                            <input type="hidden" name="_method" value="POST">
-                                                            <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
                                                         
-                                                    </form>
                                                     </a>
                                                 </div>
                                             </div>
@@ -356,6 +354,28 @@
 
 @push('js')
     <script>
+
+$(document).ready(function() {
+    $('.add-to-favorites').on('click', function(event) {
+        event.preventDefault();
+        
+        var productId = $(this).data('product-id');
+        var url = "{{ route('favorites.add', ':id') }}".replace(':id', productId);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {_token: '{{ csrf_token() }}'},
+            success: function(data) {
+                alert('Added to favorites');
+            },
+            error: function(xhr, status, error) {
+                alert('An error occurred while adding to favorites');
+            }
+        });
+    });
+});
+
         $('.liked').click(function(anyothername) {
             //  e.preventDefault();
 
