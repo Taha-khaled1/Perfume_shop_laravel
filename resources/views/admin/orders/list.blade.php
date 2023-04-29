@@ -50,10 +50,10 @@
                                     <a href="{{ route('orderss.exportProducts') }}">
                                         <button class="button primary">تصدير المنتجات</button>
                                     </a>
-                                    {{-- <a href="{{ route('orderss_print_all') }}">
+                                    <a href="{{ route('printll') }}">
                                         <button class="button primary">تحديد الجميع والطباعه</button>
                                     </a>
-                                    <a href="#">
+                                    {{-- <a href="#">
                                         <button class="button secondary">طباعة الذي تم تحديده</button>
                                     </a> --}}
                                 </div>

@@ -83,7 +83,24 @@ class OrderController extends Controller
 
 
 
+public function printll()
+{
+    $orders = Order::all();
 
+// Loop through the orders and generate an invoice for each
+foreach ($orders as $order) {
+    // Generate the invoice PDF using a package like dompdf or snappy
+    $invoice = PDF::loadView('admin.print', compact('order'));
+
+    // Save the PDF file to disk
+    $filename = 'invoice-' . $order->id . '.pdf';
+    $invoice->save(public_path('storage/property/' . $filename));
+
+    // Print the invoice using a package like Google Cloud Print or CUPS
+    // This can be automated using a cron job or triggered manually by the user
+    Printer::print(public_path('storage/property/' . $filename));
+  }
+}
 
 
 

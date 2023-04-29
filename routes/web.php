@@ -353,6 +353,15 @@ Route::prefix("admin")->group(function () {
  Route::get('orderss.list' , [App\Http\Controllers\Admin\OrderController::class , 'orderss_list'])->name('orderss.list');
  Route::get('orderss_print_all' , [App\Http\Controllers\Admin\OrderController::class , 'orderss_print_all'])->name('orderss_print_all');
 
+
+ 
+
+ Route::get('printll' , [App\Http\Controllers\Admin\OrderController::class , 'printll'])->name('printll');
+
+
+
+
+
  Route::get('orderss.exportProducts' , [App\Http\Controllers\Admin\OrderController::class , 'exportProducts'])->name('orderss.exportProducts');
 
 
