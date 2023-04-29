@@ -246,7 +246,7 @@ class ProductController extends Controller
              
         
 
-        //     // foreach ($request->color as $xc) {
+        //     // foreach ($request->color as $xc) { 
         //     //     if( $xc != null){   
         //     //         $c =new Color();
         //     //         $c->product_id = $product->id;              
@@ -440,6 +440,18 @@ class ProductController extends Controller
     //    $product->price_alternative = $request->price_alternative; 
        $product->quantity = $request->quantity; 
        $product->status =  $request->status; 
+       if ($request->topproduct == '1') {
+        $product->istop = 1;
+       } else if($request->topproduct == '2'){
+        $product->istop= 2 ;
+       } else if($request->topproduct == '3'){
+        $product->istop = 3 ;
+       }
+        
+       $product->save();  
+
+       
+       
        $product->save(); 
 
        

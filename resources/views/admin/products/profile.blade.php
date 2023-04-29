@@ -277,6 +277,56 @@
                                                             </tr> @endforeach
                                                         </table></div>
                                         </div>  --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <div class="mb-3 row">
+                                            <label   class="col-sm-3 col-form-label text-end">حالة الدفع</label>
+                                            <div class="col-sm-9">
+                                          
+                                                <select class="form-control"  name="topproduct">
+                                                     
+                                                     
+                                                    <option value="1"> تفعيل الدفع الكتروني </option>
+                                         
+                                                     <option value="2">تفعيل الدفع نقدا</option>
+                                                     
+                                                     <option value="3">تفعيل الدفع نقدا و الكتروني</option>
+                                                 </select>        
+                                           </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         <br>
                                          <div class="mb-3 row">
                                             <label   class="col-sm-3 col-form-label text-end">الحالة</label>

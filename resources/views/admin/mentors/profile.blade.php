@@ -138,6 +138,10 @@
                                                                     @error('country_id')
                                                             <small class="form-text text-danger">{{$message}}</small>
                                                             @enderror
+
+
+
+
                                                                     <select class="form-control"  id="country_id" name="country_id" required>
                                                                             <option>الدولة</option>
                                                                             @foreach($countries as $co)
@@ -145,9 +149,17 @@
                                                                             {{ $mentor->country_id == $co->id ? 'selected' : '' }}  >{{$co->name}}</option>
                                                                             
                                                                             @endforeach
-                                                                        </select>        
+                                                                        </select> 
+                                                                        
+
+
+                                                                        
+                                                                        
                                                                     </div>
                                                                 </div> 
+
+
+
                                                                 <div class="mb-3 row">
                                                                     <label   class="col-sm-3 col-form-label text-end">المدينة</label>
                                                                     <div class="col-sm-9">
@@ -159,7 +171,9 @@
                                                                             <option value="{{$mentor->city_id}}" selected>{{$mentor->city->name}}</option>@endif
                                                                         </select>       
                                                                     </div>
-                                                                </div>  
+                                                                </div>
+                                                                
+                                                                
                                                             <div class="form-group mb-3 row">
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">العنوان</label>
                                                             <div class="col-lg-9 col-xl-8">
@@ -283,6 +297,8 @@
 
 <!-- get cities -->
 <script>
+
+    
     $(document).ready(function () {
         $('select[name="country_id"]').on('change', function () {
             var country = $(this).val();
@@ -307,5 +323,6 @@
             }
         });
     });
+    
 </script>
 @endpush

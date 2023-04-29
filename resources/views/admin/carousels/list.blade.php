@@ -100,7 +100,7 @@
                                                 <input class="form-control" name="title" type="text" value="{{old('title')}}" id="example-text-input" maxlength="50">
                                             </div>
                                         </div>
-                                        <div class="mb-4 row">
+                                        {{-- <div class="mb-4 row">
                                             <label for="example-text-input" class="col-sm-1 col-form-label text-end"> العنوان باللغة الانجليزية </label>
                                             <div class="col-sm-6"> 
                                                 <input class="form-control" name="title_en" type="text" value="{{old('title_en')}}" id="example-text-input" maxlength="50">
@@ -121,7 +121,7 @@
                                          
                                                 <input class="form-control" name="subtitle_en" type="text" value="{{old('subtitle_en')}}" id="example-text-input" maxlength="50">
                                             </div>
-                                        </div>
+                                        </div> --}}
                                            <div class="mb-4 row">
                                             <label for="example-text-input" class="col-sm-1 col-form-label text-end">  رابط تسوق الان   </label>
                                             <div class="col-sm-6">
@@ -139,13 +139,13 @@
                                         <textarea class="form-control" name="text" rows="5" maxlength="300" >{{old('text')}}</textarea>                                            </div>
                                     </div> 
 
-                                        <div class="mb-3 row">
+                                        {{-- <div class="mb-3 row">
                                         
                                         <label   class="col-sm-1 col-form-label text-end">الوصف باللغة الانجليزية</label>
                                         <div class="col-sm-9">
                                       
                                         <textarea class="form-control" name="text_en" rows="5" maxlength="300" >{{old('text_en')}}</textarea>                                            </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="mb-3 row" id="aa" style="display:none">
                                        
