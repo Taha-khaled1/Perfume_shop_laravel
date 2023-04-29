@@ -332,16 +332,19 @@
                         @endif
                     </h4>
                     <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
-                    <div class="position-absolute product-buttons">
+                    <div class="product-buttons d-flex justify-content-center text-center">
                         @if ($product->quantity != 0)
-                        <a class="add_cart border-0"  product_id="{{ $product->id }}"   ><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                        <a class="add_cart border-0"  product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
                         @endif
-                       
+                        <a>
                         <form action="{{ route('favorites.add', $product->id) }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="_method" value="POST">
-                            <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
+                            
+                                @csrf
+                                <input type="hidden" name="_method" value="POST">
+                                <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
+                            
                         </form>
+                        </a>
                     </div>
                  </div>
                </div>
