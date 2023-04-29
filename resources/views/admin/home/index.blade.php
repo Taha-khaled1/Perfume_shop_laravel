@@ -91,6 +91,7 @@
                                                     @csrf
                                                     <div class="form-group">
                                                         <input class="form-check-input" type="checkbox" value="true" name="maintenance_mode" id="maintenance_mode" {{ $webclose->actv==1  ? 'checked' : '' }}>
+
                                                         <label class="form-check-label" for="maintenance_mode">
                                                             الغاء تفعيل المنتجات
                                                         </label>

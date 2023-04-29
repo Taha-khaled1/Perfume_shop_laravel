@@ -67,9 +67,14 @@ class HomeController extends Controller
     } else {
         $website->actv = 0;
     }
-    $website->Description_ar = $request->description_ar;
-    $website->Description_en = $request->description_en;
-    $website->data_time = $request->data_time;
+    $website->Description_ar = $request->description_ar??"";
+    $website->Description_en = $request->description_en??"";
+    // if (has) {
+        $website->data_time = $request->data_time??"2023-04-30T01:54";
+    // } else {
+    //     # code...
+    // }
+    
     $website->save();
     return redirect()->route('admin.home');
 }
