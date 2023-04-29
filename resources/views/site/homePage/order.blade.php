@@ -123,7 +123,10 @@
         <div class="col-md-2 payment-details"></div>
         <div class="col-md-4 do-you-have-discount-code  bg-gray">
       
-            
+            @php
+                  $xpayonline=0;
+                  $xpaycach=0;
+            @endphp
             <div class="cart-sum my-5">
                 <p class="h5 my-3 text-center" >{{__('Shopping cart')}}</p>
                 
@@ -133,7 +136,7 @@
                                         <th class="pro-thumbnail">{{__('Image')}}</th>
                                             <th class="pro-title">{{__('Product')}}</th>
                                             <th class="pro-price">{{__('Price')}}</th> 
-                                            <th class="pro-price">{{__('Quantity')}}</th> 
+                                            <th class="pro-quantity">{{__('Quantity')}}</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -142,8 +145,27 @@
                                             <td class="pro-thumbnail"><a href="{{route('viewProperty',$item->product->id)}}"><img class="img-fluid" src="{{asset('/storage/property/'.$item->product->image)}}" alt="Product" width="100"/></a></td>
                                             <td class="pro-title"><a href="{{route('viewProperty',$item->product->id)}}"> {{$item->product->name }}  </a></td>
                                             <td class="pro-price"><span>{{ $item->product->price }}  {{__('AED')}}</span></td>
-                                            <td class="pro-price"><span>{{$item->quantity}}</span></td>
+                                            <td class="pro-quantity"><span>{{$item->quantity}}</span></td>
+                                            @php
+                                              
+                                        
+                                              
+                                                
 
+
+
+                                                if ($item->product->istop == 1 ) {
+                                                 $xpayonline ++;
+                                                } else if ($item->product->istop == 2 ){
+                                                    $xpaycach ++;
+                                                }
+
+
+
+
+
+                                         
+                                            @endphp
                                          </tr>
                                         @endforeach
                                     </tbody>
@@ -195,31 +217,108 @@
                 
                 </div>
                 
-                <div class="mb-3 form-check">
-                    @error('payment_method')
-                        <small class="form-text text-danger">{{$message}}</small>
-                    @enderror
-                    <input name="payment_method" class="form-check-input" type="radio" checked value="cash" id="buy-cash" >
-                    <label class="form-check-label" for="buy-cash">
-                        <img src="{{asset('images/cach.png')}}" width="50px" height="20px" alt="buy cash">
-                             {{__('Cash on delivery')}}
-                    </label>
-                  </div>
+
+
+
+
+
+
+                {{-- <p>{{$xpayonline}} {{ $xpaycach}}</p> --}}
+
+
+
+
+                            @if ($xpayonline > 0)
+
+
+
+
+                            <div class="mb-3 form-check">
+                                @error('payment_method')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror
+                                <input name="payment_method" class="form-check-input" type="radio" value="check" id="buy-check" checked>
+                                <label class="form-check-label" for="buy-check">
+                                    <img src="{{asset('images/chech.png')}}" width="60px" height="10px" alt="buy cash">
+                                    {{__('Pay by credit card')}}
+                                </label>
+                              </div>
+
+
+
+
+                            @elseif($xpaycach > 0)
+
+
+
+
+                            <div class="mb-3 form-check">
+                                @error('payment_method')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror
+                                <input name="payment_method" class="form-check-input" type="radio" checked value="cash" id="buy-cash" >
+                                <label class="form-check-label" for="buy-cash">
+                                    <img src="{{asset('images/cach.png')}}" width="50px" height="20px" alt="buy cash">
+                                         {{__('Cash on delivery')}}
+                                </label>
+                              </div>
+
+
+
+
+
+                            @else
+
+
+
+
+                            <div class="mb-3 form-check">
+                                @error('payment_method')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror
+                                <input name="payment_method" class="form-check-input" type="radio" value="check" id="buy-check" checked>
+                                <label class="form-check-label" for="buy-check">
+                                    <img src="{{asset('images/chech.png')}}" width="60px" height="10px" alt="buy cash">
+                                    {{__('Pay by credit card')}}
+                                </label>
+                              </div>
+
+
+
+                            <div class="mb-3 form-check">
+                                @error('payment_method')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror
+                                <input name="payment_method" class="form-check-input" type="radio" checked value="cash" id="buy-cash" >
+                                <label class="form-check-label" for="buy-cash">
+                                    <img src="{{asset('images/cach.png')}}" width="50px" height="20px" alt="buy cash">
+                                         {{__('Cash on delivery')}}
+                                </label>
+                              </div>
+
+
+
+                            @endif
+
+
+               
                   {{-- @if ()
                       
                   @endif --}}
 
-                  <div class="mb-3 form-check">
-                    @error('payment_method')
-                        <small class="form-text text-danger">{{$message}}</small>
-                    @enderror
-                    <input name="payment_method" class="form-check-input" type="radio" value="check" id="buy-check" checked>
-                    <label class="form-check-label" for="buy-check">
-                        <img src="{{asset('images/chech.png')}}" width="60px" height="10px" alt="buy cash">
-                        {{__('Pay by credit card')}}
-                    </label>
-                  </div>
+              
                    
+
+
+
+
+
+
+
+
+
+
+
                   <input type="text"  name="total" value="@if(isset($rate))  @if(isset($address)) {{$cart->total() - ($cart->total() * $rate) + $address->Shipping }} @else {{$cart->total() - ($cart->total() * $rate) }} @endif @else @if(isset($address)) {{$cart->total() + $address->Shipping }} @else {{$cart->total() }} @endif @endif" style="display:none"   >
                   <input type="text" value="@if(isset($rate)) {{$cart->total() * $rate}} @else 0 @endif" name="discount" style="display:none" >
                      @if($offer >= 1 && $offer <= $cart->total())

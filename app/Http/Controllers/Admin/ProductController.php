@@ -217,12 +217,12 @@ class ProductController extends Controller
         //    $product->price_alternative = $request->price_alternative??1; 
            $product->quantity = $request->quantity??0; 
            $product->status =  $request->status??1;
-           if ($request->topproduct=='1') {
-            $product->istop=1;
-           } else if($request->topproduct=='2'){
-            $product->istop=2;
-           } else if($request->topproduct=='3'){
-            $product->istop=3;
+           if ($request->topproduct == '1') {
+            $product->istop = 1;
+           } else if($request->topproduct == '2'){
+            $product->istop= 2 ;
+           } else if($request->topproduct == '3'){
+            $product->istop = 3 ;
            }
             
            $product->save();  

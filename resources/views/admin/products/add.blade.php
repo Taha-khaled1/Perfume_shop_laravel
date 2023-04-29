@@ -365,7 +365,8 @@
                                                             <option value="1"> تفعيل الدفع الكتروني </option>
                                                  
                                                              <option value="2">تفعيل الدفع نقدا</option>
-                                                             <option value="2">تفعيل الدفع نقدا و الكتروني</option>
+                                                             
+                                                             <option value="3">تفعيل الدفع نقدا و الكتروني</option>
                                                          </select>        
                                                    </div>
                                                 </div>
