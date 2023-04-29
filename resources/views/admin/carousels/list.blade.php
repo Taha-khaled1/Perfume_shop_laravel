@@ -110,7 +110,7 @@
                                             <label for="example-text-input" class="col-sm-1 col-form-label text-end"> عنوان فرعي  </label>
                                             <div class="col-sm-6">
                                             @error('subtitle')
-                                        <small class="form-text text-danger">{{$message}}</small>
+                                        <small class="form-text text-danger">{{$message}}</small> 
                                         @enderror
                                                 <input class="form-control" name="subtitle" type="text" value="{{old('subtitle')}}" id="example-text-input" maxlength="50">
                                             </div>
@@ -147,19 +147,33 @@
                                         <textarea class="form-control" name="text_en" rows="5" maxlength="300" >{{old('text_en')}}</textarea>                                            </div>
                                     </div> --}}
 
-                                    <div class="mb-3 row" id="aa" style="display:none">
+                                    <div class="mb-3 row">
                                        
-                                            <label   class="col-sm-1 col-form-label text-end">الصورة الرئيسية</label>
-                                            <div class="col-sm-9">
-                                            @error('image')
-                                            <small class="form-text text-danger">{{$message}}</small>
-                                            @enderror
-                                            <input type="file" name="image" class="form-control" value="{{old('image')}}" />
-                                           <small class="form-text"> عند اضافة صورة للعرض سيظهر في الصفحة الرئيسية على شكل سلايدر</small>
-
-                                             </div>
-                                        </div> 
+                                        <label   class="col-sm-1 col-form-label text-end">الصورة الرئيسية</label>
+                                        <div class="col-sm-9">
+                                        @error('image')
+                                        <small class="form-text text-danger">{{$message}}</small>
+                                        @enderror
+                                        <input type="file" name="image" class="form-control"   />   
+                                         </div>
+                                    </div> 
                                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
                                         </div><!--end row-->
                                         <div class="form-group mb-3 row">
                                         <div class="col-lg-9 col-xl-8 offset-lg-3">
