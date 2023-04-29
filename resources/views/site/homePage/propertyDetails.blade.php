@@ -36,24 +36,24 @@
                 </div> --}}
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'ltr')
                 @php
-                    $dir = 'order-1';
-                    $text = 'text-end';
-                    $justify = 'justify-content-end';
-
-                    $text_sm_ltr = 'left';
-                    $justify_sm_ltr = 'start';
-                    $direction_rtl = 'ltr';
-
-                @endphp
-            @else
-                @php
                     $dir = 'order-0';
                     $text = 'text-start';
                     $justify = 'justify-content-start';
 
-                    $text_sm_rtl = 'right';
-                    $justify_sm_rtl = 'end';
-                    $direction_ltr = 'rtl';
+                    $text_sm_ltr = 'right';
+                    $justify_sm_ltr = 'end';
+                    $direction_rtl = 'rtl';
+
+                @endphp
+            @else
+                @php
+                    $dir = 'order-1';
+                    $text = 'text-end';
+                    $justify = 'justify-content-end';
+
+                    $text_sm_rtl = 'left';
+                    $justify_sm_rtl = 'start';
+                    $direction_ltr = 'ltr';
 
                 @endphp
             @endif
@@ -66,7 +66,7 @@
                         text-align: {{ isset($text_sm_ltr) ? $text_sm_ltr . '!important' : $text_sm_rtl . '!important' }};
                     }
                     .quantity-buttons{
-                        justify-content: start !important;
+                        justify-content: end !important;
                     }
                     .product .row{
                         direction: {{ isset($direction_ltr) ? $direction_ltr : $direction_rtl}}
@@ -132,9 +132,15 @@
                <h1>{{__('No stock available') }}</h1>
                 @else
 
-                <button class="btn btn-primary add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>   
+                    <button class="btn btn-primary me-2 add_cart h-100 p-2" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>   
                 @endif
-
+                <form action="{{ route('favorites.add', $product->id) }}" method="POST">
+                                
+                        @csrf
+                        <input type="hidden" name="_method" value="POST">
+                        <button type="submit" class="liked mt-1 h-100" style="transform: translateY(4px)"><i class="pe-7s-like fw-bold fs-4 text-white bg-danger p-2"></i></button>
+                    
+                </form>
                {{-- @if ($product->quantity != 0)
                <button class="btn btn-danger add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>
                @endif --}}
@@ -155,8 +161,11 @@
                     @endif</span>   @endif </li>
                     </ul>
                 <div class="like-icon">
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/') }}/property/{{$product->id}}&display=popup" target="_blank"><i class="fa fa-facebook"></i></a>
-                    <a class="twitter" href="https://twitter.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/') }}/property/{{$product->id}}&display=popup" target="_blank"><i class="text-dark fs-5 me-2 fa fa-facebook"></i></a>
+                    <a class="twitter" href="https://twitter.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="text-dark fs-5 me-2 fa fa-twitter"></i></a>
+                    <a class="whatsapp" href="https://whatsapp.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="text-dark fs-5 me-2 fa fa-whatsapp"></i></a>
+                    <a class="instagram" href="https://whatsapp.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="text-dark fs-5 me-2 fa fa-instagram"></i></a>
+
                 </div>
             </div>
         </div>
