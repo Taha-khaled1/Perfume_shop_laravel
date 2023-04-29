@@ -52,10 +52,12 @@
     @endforeach
         </div>
     </section> -->
-    <div class="hero text-center rounded m-1">
-        <video src="{{ asset('storage/property/' . $carousel->image) }}" muted autoplay loop class="w-100 h-100"
-            style="object-fit: cover;"></video>
-    </div>
+   @if ($carousel->image != null)
+   <div class="hero text-center rounded m-1">
+    <video src="{{ asset('storage/property/' . $carousel->image) }}" muted autoplay loop class="w-100 h-100"
+        style="object-fit: cover;"></video>
+</div>
+   @endif
 
 
 
