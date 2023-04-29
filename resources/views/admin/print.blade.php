@@ -109,6 +109,20 @@ th {
     <div class="container">
         <h1>فاتورة</h1>
         <h2>تفاصيل الفاتورة</h2>
+<br>
+<br>
+
+<div class="address">
+            <p><strong>اسم العميل:</strong> {{$order->address->name}}</p>
+            <p><strong>البريد الاكتروني:</strong> {{$order->address->email}}</p>
+            <p><strong>الاماره:</strong> {{$order->address->area}}</p>
+            <p><strong>الشارع:</strong> {{$order->address->street}}</p>
+            <p><strong>الجادة:</strong> {{$order->address->Blvd}}</p>
+            <p><strong>رقم الهاتف:</strong> {{$order->address->phone}}  </p>
+        </div>
+
+        <br>
+
         <table>
             <thead>
                 <tr>
@@ -135,31 +149,11 @@ th {
             @foreach($order->items as $item)
             <tr  >
                 <td>{{$item->product_name}} </td> 
-            
-               
-               
                 <td>{{$item->quantity}} </td>
                 <td>{{$item->product->price}}</td>
                 <td>{{$item->product->price * $item->quantity}} </td>
-                {{-- <td>  {{$item->options}}  </td> --}}
-            
-                 
                 </tr>
                 @endforeach
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <tfoot>
                 <tr class="total">
                     <td colspan="3" class="text-right">المجموع الفرعي</td>
@@ -181,49 +175,27 @@ th {
         </table>
         <div class="invoice-details">
             <p><strong>طريقة الدفع  : . </strong>  
-            
-            
-            
-            
-            
                 @if($order->payment_method == "cash")
                 الدفع عند الاستلام
                 @else
                 بطاقة ائتمان
                 @if($order->payment )
-@if($order->payment->status == 'pending' )                                                                              
-<span class="badge bg-primary"> في انتظار الدفع</span>
-@elseif($order->payment->status == 'completed')
-<span class="badge bg-success">  تم الدفع</span>
-@elseif($order->payment->status == 'failed')
-<span class="badge bg-danger"> تم الغاء الدفع</span>
-@else
-<span class="badge bg-danger"> فشل الدفع</span>
-@endif
-@endif  @endif
+                @if($order->payment->status == 'pending' )                                                                              
+                <span class="badge bg-primary"> في انتظار الدفع</span>
+                @elseif($order->payment->status == 'completed')
+                <span class="badge bg-success">  تم الدفع</span>
+                @elseif($order->payment->status == 'failed')
+                <span class="badge bg-danger"> تم الغاء الدفع</span>
+                @else
+                <span class="badge bg-danger"> فشل الدفع</span>
+                @endif
+                @endif  
+                @endif
             
-            
-            
-            
-            
-            
-            
-            
+        
             
             
             </p>
-
-
-
-            <div class="address">
-                <p><strong>اسم العميل:</strong> {{$order->address->name}}</p>
-                <p><strong>البريد الاكتروني:</strong> {{$order->address->email}}</p>
-                <p><strong>الاماره:</strong> {{$order->address->area}}</p>
-                <p><strong>الشارع:</strong> {{$order->address->street}}</p>
-                <p><strong>الجادة:</strong> {{$order->address->Blvd}}</p>
-                <p><strong>رقم الهاتف:</strong> {{$order->address->phone}}  </p>
-            </div>
-
 
 
         </div>

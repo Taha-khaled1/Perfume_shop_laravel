@@ -78,14 +78,14 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        $user=    User::where('email',$request->email)->first();
+        // $user=    User::where('email',$request->email)->first();
 
-        $noty = new Notfication();
+        // $noty = new Notfication();
 
-         $noty->title="تم انشاء حساب جديد ";
-         $noty->message="تم انشاء حساب جديد بواسطة ".$user->fname ??"لم يتم ادخال الاسم" ;
+        //  $noty->title="تم انشاء حساب جديد ";
+        //  $noty->message="تم انشاء حساب جديد بواسطة ".$user->fname ??"لم يتم ادخال الاسم" ;
 
-         $noty->save();
+        //  $noty->save();
         Auth::login($user);
         notify()->success('  ');
         return redirect(RouteServiceProvider::HOME);

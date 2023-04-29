@@ -43,14 +43,14 @@ class AuthenticatedSessionController extends Controller
 
           $request->session()->regenerate();
 
-          $user=    User::where('email',$request->email)->first();
+        //   $user=    User::where('email',$request->email)->first();
 
-           $noty = new Notfication();
+        //    $noty = new Notfication();
 
-            $noty->title="تسجيل الدخول";
-            $noty->message=" تم تسجيل الدخول بواسطة المستخدم ".$user->fname ;
+        //     $noty->title="تسجيل الدخول";
+        //     $noty->message=" تم تسجيل الدخول بواسطة المستخدم ".$user->fname ;
 
-            $noty->save();
+        //     $noty->save();
 
             return redirect()->intended(RouteServiceProvider::HOME);
     }
