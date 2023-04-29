@@ -45,10 +45,15 @@
                                         <tr id="a{{$item->id }}">
                                             <td class="pro-thumbnail"><a href="{{route('viewProperty',$item->product->id)}}"><img class="img-fluid" src="{{asset('/storage/property/'.$item->product->image)}}" alt="Product" /></a></td>
                                             <td class="pro-title"><a href="{{route('viewProperty',$item->product->id)}}"> {{$item->product->name }}  </a></td>
+                                           
                                             <td class="pro-price"><span>{{ $item->product->price }}  {{__('AED')}}</span></td>
+                                           
+                                           
                                             <td class="pro-quantity">
                                                 <div class="pro-qty"><input type="text" class="item-quantity" product_id="{{$item->product->id}}" dataa_id="{{ $item->id }}" dataa_total="{{ $item->quantity * $item->product->price }}" dataa_price="{{ $item->product->price }}"  value="{{ $item->quantity }}"></div>
                                             </td>
+
+
                                              <td class="pro-remove"><a class="remove-item" data_id="{{ $item->id }}"  href="javascript:void(0)"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
                                         @endforeach
@@ -176,23 +181,19 @@
 
     
     $('.item-quantity').on("change", function (e) {
-              //  e.preventDefault();
-               
-         var id = $(this).attr('dataa_id');
-         var product_id = $(this).attr('product_id');
-         var total = $(this).attr('dataa_total') + $(this).attr('dataa_price');
-         
+    var id = $(this).attr('dataa_id');
+    var product_id = $(this).attr('product_id');
+    var quantity = $(this).val();
 
-         
-         $.ajax({
-                type: "post",
-                url: "/cart/" + id,
-                method: "put",
-                data: { _token: '{{ csrf_token() }}',
-                quantity: $(this).val(),
-                product_id: product_id,
-                xx: 'x',
-                     },
+    $.ajax({
+        type: "put",
+        url: "/cart/" + id,
+        data: {
+            _token: '{{ csrf_token() }}',
+            quantity: quantity,
+            product_id: product_id,
+            xx: 'x',
+        },
                                // let's set the expected response format
                     success: function (data) {
                         if(data.message == 1){
@@ -220,6 +221,10 @@
                 });   
           
     });
+
+
+
+
     $(document).ready(function () {
         $('input[name="code"]').on('change', function () {
             var code = $(this).val();

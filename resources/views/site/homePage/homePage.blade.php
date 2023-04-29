@@ -120,7 +120,10 @@
                                                 <h6 class="text-center py-2">{{ $product->price }} {{ __('AED') }}
                                                 </h6>
                                                 <div class="position-absolute product-buttons">
-                                                    <a class="add_cart border-0" product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                                                    @if ($product->quantity != 0)
+                                                    <a class="add_cart border-0"  product_id="{{ $product->id }}"   ><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                                                    @endif
+                                                   
                                                     <a class="liked border-0" product_id="{{ $product->id }}"><i class="pe-7s-like fw-bold fs-4"></i></a>
                                                 </div>
                                             </div>
@@ -380,7 +383,7 @@
             e.preventDefault();
 
             var id = $(this).attr('product_id');
-
+            
 
             $.ajax({
                 type: "post",

@@ -51,7 +51,10 @@
                         @endif
                     </h4>
                     <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
+                    @if ($product->quantity != 0)
                     <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
+                    @endif
+                   
                  </div>
                </div>
              @endforeach
@@ -253,13 +256,14 @@ $('.add_cart').on("click", function (e) {
                
          var id = $(this).attr('product_id');
          
-         
+      
          $.ajax({
                 type: "post",
                 url: "{{ route('cart.store') }}",
                 data: { _token: '{{ csrf_token() }}',
                      "product_id" : id,
-                     "quantity" : 1},
+                     "quantity" : 1
+                    },
                     dataType: 'json',              // let's set the expected response format
                     success: function (data) {
                         location.reload();

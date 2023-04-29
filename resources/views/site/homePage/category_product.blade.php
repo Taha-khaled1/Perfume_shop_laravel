@@ -300,7 +300,7 @@ $('.add_cart').on("click", function (e) {
             e.preventDefault();
                
          var id = $(this).attr('product_id');
-         
+        //  var quantity = $(this).attr('quantity');
          
          $.ajax({
                 type: "post",

@@ -92,12 +92,21 @@
                         <h3>{{__('Number') }}</h3>
                     </div>
                 </div>
-                <button class="btn btn-danger add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>
+                @if ($product->quantity == 0)
+               <h1>{{__('No stock available') }}</h1>
+                @else
+
+                <button class="btn btn-danger add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>   
+                @endif
+
+               {{-- @if ($product->quantity != 0)
+               <button class="btn btn-danger add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>
+               @endif --}}
                 </form>
                 <ul class="p-0 mt-4">
-                    @if($product->sku) <li><span>SKU</span> : <span>{{$product->sku}}</span></li>@endif
+                    {{-- @if($product->sku) <li><span>SKU</span> : <span>{{$product->sku}}</span></li>@endif --}}
                     @if($product->code)  <li><span>  {{__('Item code')}}</span> : <span>{{$product->code}}</span></li>@endif
-                    @if($product->guarantee)<li><span> {{__('Guarantee')}}</span> : <span>{{$product->guarantee}}</span></li>@endif
+                    @if($product->quantity)<li><span> {{__('Quantity')}}</span> : <span>{{$product->quantity}}</span></li>@endif
                     <!--<li><span>سومو</span> :<span> </span></li>-->
                     <li> @if($product->category)<span> {{__('Category')}}
                         @if($product->category->name_en != null)
@@ -117,6 +126,8 @@
         </div>
     </div>
 </div>
+
+{{-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --}}
   <!-- <div class="shop-main-wrapper section-padding pb-0">
             <div class="container">
                 <div class="row">
@@ -159,7 +170,7 @@
                                               @endif</h3>
                                          
                                         <div class="price-box">
-                                            <span class="price-regular"><sapn>{{$product->price}}</sapn> {{__('AED')}}</span>
+                                            <span class="price-regular"><sapn>{{$product->price}}</sapn> {{__('AED')}}</span> 
                                          </div>
                                          
                                         <p class="pro-desc">@if($product->description_en != null)
@@ -443,13 +454,15 @@ $('.liked').click(function(anyothername) {
     });
     $('.add_cart').on("click", function (e) {
         e.preventDefault();
-         var id = $(this).attr('product_id');
+         var id = $(this).attr('product_id');  
+          var quantity = $('.num').text();
          $.ajax({
                 type: "post",
                 url: "{{ route('cart.store') }}",
                 data: { _token: '{{ csrf_token() }}',
                      "product_id" : id,
-                     "quantity" : 1},
+                     "quantity" : quantity??1
+                    },
                     dataType: 'json',              // let's set the expected response format
                     success: function (data) {
                         location.reload();
