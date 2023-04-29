@@ -37,23 +37,23 @@
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'ltr')
                 @php
                     $dir = 'order-0';
-                    $text = 'text-start';
-                    $justify = 'justify-content-start';
+                    $text = 'text-end';
+                    $justify = 'justify-content-end';
 
-                    $text_sm_ltr = 'right';
-                    $justify_sm_ltr = 'end';
-                    $direction_rtl = 'rtl';
+                    $text_sm_ltr = 'left';
+                    $justify_sm_ltr = 'start';
+                    $direction_rtl = 'ltr';
 
                 @endphp
             @else
                 @php
                     $dir = 'order-1';
-                    $text = 'text-end';
-                    $justify = 'justify-content-end';
+                    $text = 'text-start';
+                    $justify = 'justify-content-start';
 
-                    $text_sm_rtl = 'left';
-                    $justify_sm_rtl = 'start';
-                    $direction_ltr = 'ltr';
+                    $text_sm_rtl = 'right';
+                    $justify_sm_rtl = 'end';
+                    $direction_ltr = 'rtl';
 
                 @endphp
             @endif
