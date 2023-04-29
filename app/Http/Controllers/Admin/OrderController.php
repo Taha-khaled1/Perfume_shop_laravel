@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Dompdf\Dompdf;
 use App\Http\Controllers\Controller;
  use App\Models\Notfication;
 use App\Models\Order;
@@ -20,6 +20,7 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PDF;
+use ZipArchive;
 class OrderController extends Controller
 {
     public function orders_list()
@@ -86,20 +87,38 @@ class OrderController extends Controller
 public function printll()
 {
     $orders = Order::all();
+    $zip = new ZipArchive();
+    $zipname = 'invoices.zip';
 
-// Loop through the orders and generate an invoice for each
-foreach ($orders as $order) {
-    // Generate the invoice PDF using a package like dompdf or snappy
-    $invoice = PDF::loadView('admin.print', compact('order'));
+    if ($zip->open($zipname, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+        foreach ($orders as $order) {
+            $dompdf = new Dompdf();
 
-    // Save the PDF file to disk
-    $filename = 'invoice-' . $order->id . '.pdf';
-    $invoice->save(public_path('storage/property/' . $filename));
+            // Render the view to HTML
+            $html = view('admin.print', compact('order'))->render();
+            
+            // Load HTML into Dompdf
+            $dompdf->loadHtml($html);
+            
+            // (Optional) Set the paper size and orientation
+            $dompdf->setPaper('A4', 'portrait');
+            
+            // Render the PDF
+            $dompdf->render();
+            
+            // Save the PDF to a file on disk
+            $filename = 'invoice-' . $order->id . '.pdf';
+            $file_path = public_path('storage/property/' . $filename);
+            file_put_contents($file_path, $dompdf->output());
 
-    // Print the invoice using a package like Google Cloud Print or CUPS
-    // This can be automated using a cron job or triggered manually by the user
-    Printer::print(public_path('storage/property/' . $filename));
-  }
+            // Add the file to the zip archive
+            $zip->addFile($file_path, $filename);
+        }
+        $zip->close();
+
+        // Download the zip archive
+        return response()->download($zipname, $zipname);
+    }
 }
 
 

@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.7",
+        "mike42/escpos-php": "^2.2",
         "stripe/stripe-php": "^10.4",
         "vonage/client": "^4.0"
     },
