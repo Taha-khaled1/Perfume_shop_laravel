@@ -107,7 +107,7 @@ class OrderController extends Controller
         if($order ){
             return view('admin.orders.profile', [
                 'order' => $order,  
-                'address' => $address, ,'notf'=>$n
+                'address' => $address ,'notf'=>$n
              ]);   
          }
         return redirect()->back();

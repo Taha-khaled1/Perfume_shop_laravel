@@ -109,15 +109,15 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            @foreach($country->cities as $c)
+                                                                @foreach($country->cities->sortBy('name') as $c)
                                                                 <tr class="R_city{{$c->id}}">
                                                                     <td>{{ $c->id }}</td>
                                                                     <td>{{ $c->name }} </td>
                                                                     <td>{{ $c->price }} </td>
                                                                     <td> <span> <a href="#!" class="deletem_b" deletem_b="{{$c->id}}"><i class="fa fa-trash text-danger"></i></a></span></td>
-
                                                                 </tr>
                                                             @endforeach
+                                                            
                                                             </tbody>
                                                         </table><!--end /table-->
                                                     </div>

@@ -25,7 +25,7 @@ class ProductController extends Controller
     { $n = Notfication::all();
         $category = Category::get();
         return view('admin.products.add', [
-            'category' => $category,['notf'=>$n]
+            'category' => $category,'notf'=>$n
          ]);   
     }
     
