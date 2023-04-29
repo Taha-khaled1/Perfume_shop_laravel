@@ -87,7 +87,7 @@
                                                                 <th scope="col"> {{__('Total')}}</th>
                                                                 <th scope="col"> {{__('Quantity')}} </th>
                                                                 <th scope="col"> {{__('Status')}} </th>
-                                                                <th scope="col"> {{__('Cancel order')}}</th>
+                                                                <th scope="col"> {{__('Edit order')}}</th>
                                                                 <th scope="col"> {{__('Payment status')}}</th>
                                                                 <th scope="col"> {{__('View')}}</th>
                                                                 
@@ -100,8 +100,16 @@
                                                               <td>  {{$order->total}}  {{__('AED')}}</td>
                                                               <td>    {{$order->items->count()}} </td>
                                                                 
-                                                                <th > @if($order->status == 0) {{__('Rejected')}}@endif @if($order->status == 1) {{__('Requested')}} @endif @if($order->status == 2)  {{__('is shipped')}} @endif @if($order->status == 3) {{__('Delivered')}} @endif </th>
-                                                                <th> @if($order->payment_method == "cash") @if($order->status == 1)<a href="" class="deletem_order" deletem_order="{{$order->id}}" > {{__('cancel')}}</a>@endif @endif</th>
+                                                              
+                                                              <th > @if($order->status == 0) {{__('Rejected')}}@endif @if($order->status == 1) {{__('Requested')}} @endif @if($order->status == 2)  {{__('is shipped')}} @endif @if($order->status == 3) {{__('Delivered')}} @endif </th>
+                                                               
+                                                              
+                                                              <th><a href="{{route('viewHomePage')}}" class="delr" > {{__('Edit')}}</a> </th>
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
                                                                 <td>    @if($order->payment_method == "cash")
                                                                         الدفع عند الاستلام
                                                                         @else
@@ -190,7 +198,7 @@
                 <input type="text" class="form-control" name="email"  value="{{old('email')}}" placeholder="{{__('Email')}}" maxlength="100" required>
               </div><br>
          <div >
-            <p style="color:red">* <label style="color:black" >  {{__('Region')}} </label></p> 
+            <p style="color:red">* <label style="color:black" >  {{__('Principality')}} </label></p> 
                 @error('area')
                             <small class="form-text text-danger">{{$message}}</small>
                             @enderror
@@ -210,11 +218,16 @@
                             @enderror
                 <input type="text" class="form-control" name="street"  value="{{old('street')}}" placeholder=" {{__('Street')}}   " maxlength="100" required>
               </div><br>
+
+
               <div class="pb-8">
-             <label style="color:black" >  {{__('Add an address')}} </label><br>
+             {{-- <label style="color:black" >  {{__('Add an address')}} </label><br> --}}
           
-                <input type="text" class="form-control" name="Blvd"  value="{{old('Blvd')}}" placeholder=" {{__('Blvd')}}   " maxlength="100"  ><br>
+                <input type="text" class="form-control" name="Blvd"  value="****" placeholder=" {{__('Blvd')}}   " maxlength="100" hidden ><br>
               </div><br>
+
+
+
               <div class="pb-8">
             <label style="color:black" > {{__('Apartment/House')}}  </label> 
                
