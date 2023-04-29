@@ -62,6 +62,10 @@ class User extends Authenticatable
             return asset('storage/'.$this->image);
         }
     }
+    public function favorites()
+{
+    return $this->hasMany(Favorite::class);
+}
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');

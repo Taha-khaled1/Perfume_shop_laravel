@@ -165,8 +165,10 @@ Route::group(['middleware'=>'auth'],function (){
 
 
 
-
-
+    Route::get('/favorites/index',[App\Http\Controllers\FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/favorites/add/{id}',[App\Http\Controllers\FavoriteController::class, 'addFavorite'])->name('favorites.add');
+    Route::post('/favorites/remove/{id}',[App\Http\Controllers\FavoriteController::class, 'removeFavorite'] )->name('favorites.remove');
+    
 
 
 

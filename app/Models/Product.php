@@ -25,7 +25,10 @@ class Product extends Model
     {
         return $this->hasMany(Album::class);
     }
- 
+ public function favorites()
+{
+    return $this->hasMany(Favorite::class);
+}
     public function color()
     {
         return $this->hasMany(Color::class);
