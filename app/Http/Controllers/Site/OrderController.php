@@ -96,14 +96,14 @@ class OrderController extends Controller
                 //'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 
             ] );
              
-            $user = User::create([
+            // $user = User::create([
                 
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'status' => '1',
-                'type' => '1'
-            ]); 
+            //     'phone' => $request->phone,
+            //     'email' => $request->email,
+            //     'password' => Hash::make($request->password),
+            //     'status' => '1',
+            //     'type' => '1'
+            // ]); 
         }
             try{
 
@@ -112,7 +112,7 @@ class OrderController extends Controller
         if ($data1) {
             // try {
                 if(auth()->user()){
-                    $userid = \auth()->user()->id;
+                    $userid = auth()->user()->id;
                     $data1->user_id = $userid;
                 }
                  if(isset($user)){
@@ -129,7 +129,7 @@ class OrderController extends Controller
                 $address = new OrderAddress();
             
                 $address->order_id = $data1->id;
-                $address->name = $request->name;
+                $address->name = $request->name??"null";
                 $address->email = $request->email;
                 $address->area = $request->area;
                 // $address->street = $request->street;
@@ -144,7 +144,7 @@ class OrderController extends Controller
                             
                     $item->order_id = $data1->id;
                     $item->product_id = $a->product->id;
-                    $item->product_name =$a->product->name;
+                    $item->product_name =$a->product->name??"null";
                     $item->price = $a->product->price;
                     $item->quantity = $a->quantity; 
                     $item->options = $a->options; 
@@ -154,16 +154,16 @@ class OrderController extends Controller
 
 
                 $user = auth()->user()->id;
-                $city = City::find($request->area);
-        $data = new Address();
+                $city = City::where('name',$request->area)->first();
+                $data = new Address();
         if ($data) {
             // try {
                 $data->user_id = $user;
-                $data->name = $request->name;
+                $data->name = $request->name??"null";
                 $data->email = $request->email;
-                $data->area = $city->name;
+                $data->area = $request->area;;
 
-                $data->Shipping = $city->price;
+                $data->Shipping = $city->price??"10";
                 $data->street = $request->street??"-";
                 $data->Blvd = $request->Blvd??"-";
                 $data->house = $request->house??"-";
@@ -173,7 +173,7 @@ class OrderController extends Controller
             $data->save();
 
             notify()->success('تم اضافة العنوان !');
-            return redirect()->back();
+            
 
 
         } 
