@@ -83,15 +83,25 @@
                                     </div>
                                 </div> -->
                             </div>
-                            <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
+                            <div class="dropdown ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
                                 <div class="notification-icon">
-                                    <i class="fa fa-bell"></i>
+                                    <i class="fa fa-bell fs-6 me-3" role="button" data-bs-toggle="dropdown" data-bs-display="static"></i>
                                     <span class="badge"></span>
-                                    <div class="notification-dropdown">
-                                      <ul class="notification-list">
-                                        <!-- Notification items will be added dynamically here -->
-                                      </ul>
+                                    <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation  p-2 m-0 notification-dropdown" style="width: 400px">
+                                        <div class="notification p-2 border-bottom">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <h6>العنوان هنا</h6>
+                                                <p class="m-0">الوصف هنا الوصف هنا الوصف هناالوصف هنا</p>
+                                            </a>
+                                        </div>
+                                        <div class="notification p-2 border-bottom">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <h6>العنوان هنا</h6>
+                                                <p class="m-0">الوصف هنا الوصف هنا الوصف هناالوصف هنا</p>
+                                            </a>
+                                        </div>
                                     </div>
+    
                                   </div>
                                 <div class="u-info me-2">
 

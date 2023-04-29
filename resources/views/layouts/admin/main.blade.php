@@ -97,11 +97,7 @@
       }
     </style>
     <!-- plugin css file  -->
-    <style>
-    
-    
-    
-    
+    <style> 
     .container {
   margin: 20px auto;
   padding: 20px;
@@ -109,7 +105,9 @@
   font-size: 16px;
   line-height: 1.5;
 }
-
+.notification:hover{
+  background-color: #e9e9e9;
+}
 .order-title {
   text-align: center;
   font-size: 24px;
@@ -344,8 +342,14 @@ input[type="text"], input[type="file"] {
 .btn-save:hover {
 	background-color: #666;
 }
-
-
+.notification-dropdown{
+  right: 0 !important;
+}
+@media(max-width:1300px){
+  .notification-dropdown{
+    left: 0 !important;
+  }
+}
 
 .image-container {
     display: flex;
@@ -446,7 +450,8 @@ input[type="date"] {
 .notification-icon .notification-dropdown {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: unset !important;
+  left: 0 !important;
   min-width: 200px;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -454,7 +459,13 @@ input[type="date"] {
   z-index: 1;
   display: none;
 }
-
+@media(max-width:1300px){
+  .notification-icon .notification-dropdown{
+    left: unset !important;
+  right: 0 !important;
+  width: 100% !important;
+  }
+}
 .notification-icon .notification-list {
   list-style: none;
   margin: 0;
