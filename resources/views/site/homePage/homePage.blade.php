@@ -124,8 +124,12 @@
                                                     <a class="add_cart border-0"  product_id="{{ $product->id }}"   ><i class="pe-7s-cart fw-bold fs-4"></i></a>
                                                     @endif
                                                    
-                                                    <a class="liked border-0" product_id="{{ $product->id }}"><i class="pe-7s-like fw-bold fs-4"></i></a>
-                                                </div>
+                                                    <form action="{{ route('favorites.add', $product->id) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="POST">
+                                                        <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
+                                                    </form>
+                                                                                                    </div>
                                             </div>
                                         </div>
                                     </div>

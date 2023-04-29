@@ -150,26 +150,30 @@
     <div class="container">
         <div class="products">
             <div class="row justify-content-center">
-                @if( Auth::user()->like->count() == 0)<h3 class="mb-30 text-center">    {{__('There are currently no favorite products')}} </h3>@endif
-                @foreach(Auth::user()->like as $like)
-                    <div class="col-lg-3 col-md-6 mb-3 col-6 text-center">
-                        <div class="product">
-                            <img class="mb-3" src="{{asset('/storage/property/'.$like->product->image)}}">
-                            <a href="{{route('viewProperty',$like->id)}}">
-                            @if($like->name_en != null)
-                                                    @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                                                    {{$like->name}}
-                                                    @else
-                                                    {{$like->name_en}}
-                                                    @endif @else
-                                                    {{$like->name}}
-                                                    @endif
-                            </a>
-                            <p class="fs-5 mt-2">120$</p>
-                            <button class="btn btn-cart add_cart" product_id="{{$like->product->id}}" href="#">{{__('Add to cart')}}</button>
-                        </div>
+                @if( $userFavorites->count() == 0)<h3 class="mb-30 text-center">    {{__('There are currently no favorite products')}} </h3>@endif
+
+                @foreach(Auth::user()->favorites as $favorite)
+                <div class="col-lg-3 col-md-6 mb-3 col-6 text-center">
+                    <div class="product">
+                        <img class="mb-3" src="{{asset('/storage/property/'.$favorite->product->image)}}">
+                        <a href="{{route('viewProperty',$favorite->product->id)}}">
+                            @if($favorite->product->name_en != null)
+                                @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                                    {{$favorite->product->name}}
+                                @else
+                                    {{$favorite->product->name_en}}
+                                @endif
+                            @else
+                                {{$favorite->product->name}}
+                            @endif
+                        </a>
+                        <p class="fs-5 mt-2">{{$favorite->product->price}} {{ __('AED') }}</p>
+                        <button class="btn btn-cart add_cart" product_id="{{$favorite->product->id}}" href="#">{{__('Add to cart')}}</button>
                     </div>
-                @endforeach
+                </div>
+            @endforeach
+
+
             </div>
         </div>
     </div>

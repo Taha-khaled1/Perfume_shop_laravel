@@ -57,8 +57,8 @@ class SiteController extends Controller
     public function wishlist()
     {
         $products[] = auth()->user()->products;
-
-        return view('site.userPages.wishlist', ['products'=> $products,'cart' => $this->cart, ]);
+        $userFavorites = auth()->user()->favorites()->with('product')->get();
+        return view('site.userPages.wishlist', ['products'=> $products,'cart' => $this->cart,'userFavorites'=> $userFavorites ]);
     }
     
     public function viewHomePage()
