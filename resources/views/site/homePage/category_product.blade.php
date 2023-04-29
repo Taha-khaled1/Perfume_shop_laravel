@@ -1,5 +1,5 @@
 @extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])@section('title','نتائج البحث')
-<link rel="stylesheet" href="{{asset('/assets/css/New/mens.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('/assets/css/New/mens.css')}}"> --}}
 @section('content')
  <!-- breadcrumb area start --><br>
          <div class="breadcrumb-area" >
@@ -84,7 +84,7 @@
                                                         
                                                         <p class="fs-5 mt-2">120$</p>
                                                         </a>
-                                                        <div class="position-absolute product-buttons">
+                                                        <div class="product-buttons d-flex justify-content-center mt-3">
                                                             <a class="add_cart border-0 bg-none" product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
                                                             <a class="liked border-0 bg-none" product_id="{{ $product->id }}"><i class="pe-7s-like fw-bold fs-4"></i></a>
                                                         </div>

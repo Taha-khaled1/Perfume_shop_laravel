@@ -363,14 +363,15 @@ text-decoration: underline;
   color: #000;
   width: 39px;
   height: 39px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-decoration: none !important;
   margin-bottom: 5px;
+  line-height: 49px;
 }
 .product-buttons a:hover{
   background-color: var(--main-color);
+  color: #fff;
+}
+.product-buttons a:hover i{
   color: #fff;
 }
 /****************************************************  end last-product seller  **********************************************************/
