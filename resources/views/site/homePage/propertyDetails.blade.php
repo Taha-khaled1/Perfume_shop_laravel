@@ -318,7 +318,7 @@
              <div class="swiper-wrapper">
              @if( $products->count() == 0 ) <h3 class="mb-30 text-center">    {{__('No results found.')}} </h3>@endif
              @foreach( $products as $product)
-             <div class="swiper-slide d-flex flex-column item">
+             <div class="swiper-slide d-flex flex-column item position-relative">
                  <a href="{{route('viewProperty',$product->id)}}" class="bg-transparent p-0"><img src="{{asset('/storage/property/'.$product->image)}}" alt="" style="width:100%;height: 320px;"></a>
                  <div>
                     <h4 class="mt-2">
@@ -332,7 +332,17 @@
                         @endif
                     </h4>
                     <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
-                    <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
+                    <div class="position-absolute product-buttons">
+                        @if ($product->quantity != 0)
+                        <a class="add_cart border-0"  product_id="{{ $product->id }}"   ><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                        @endif
+                       
+                        <form action="{{ route('favorites.add', $product->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="_method" value="POST">
+                            <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
+                        </form>
+                    </div>
                  </div>
                </div>
              @endforeach
