@@ -92,7 +92,12 @@ public function printll()
 
     if ($zip->open($zipname, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
         foreach ($orders as $order) {
-            $dompdf = new Dompdf();
+            $dompdf = new Dompdf([
+                'default_font' => 'arabic',
+                'font_dir' => public_path('assets/fonts/Cairo-Regular.ttf/'),
+                'font_cache' => storage_path('app/dompdf'),
+                'font_cache_ttl' => 86400
+            ]);
 
             // Render the view to HTML
             $html = view('admin.print', compact('order'))->render();
