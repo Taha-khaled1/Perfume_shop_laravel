@@ -148,10 +148,47 @@
     <!--== End Product Area Wrapper ==-->
     @endif --}}
     <div class="container">
-        <div class="products">
+        <div class="cart-main-wrapper section-padding">
+            <div class="container">
+                <div class="section-bg-color">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @if( $userFavorites->count() == 0)<h3 class="mb-30 text-center">    {{__('There are currently no favorite products')}}   
+                            @else
+                            <div class="cart-table table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="pro-thumbnail">{{__('Image')}}</th>
+                                            <th class="pro-title">{{__('Product')}}</th>
+                                            <th class="pro-price">{{__('Price')}}</th>
+                                             <th class="pro-remove">{{__('Remove')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach(Auth::user()->favorites as $favorite)
+                                        <tr id="a{{$favorite->id }}">
+                                            <td class="pro-thumbnail"><a href="{{route('viewProperty',$favorite->product->id)}}"><img class="img-fluid" src="{{asset('/storage/property/'.$favorite->product->image)}}" alt="Product" /></a></td>
+                                            <td class="pro-title"><a href="{{route('viewProperty',$favorite->product->id)}}"> {{$favorite->product->name }}  </a></td>
+                                           
+                                            <td class="pro-price"><span>{{ $favorite->product->price }}  {{__('AED')}}</span></td>
+                                            <td class="pro-remove"><a class="remove-favorite" data_id="{{ $favorite->id }}"  href="javascript:void(0)"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                     
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="products">
             <div class="row justify-content-center">
                 @if( $userFavorites->count() == 0)<h3 class="mb-30 text-center">    {{__('There are currently no favorite products')}} </h3>@endif
-
                 @foreach(Auth::user()->favorites as $favorite)
                 <div class="col-lg-3 col-md-6 mb-3 col-6 text-center">
                     <div class="product">
@@ -175,7 +212,7 @@
 
 
             </div>
-        </div>
+        </div> --}}
     </div>
  <!-- end boards -->
 @stop
@@ -183,6 +220,33 @@
 @push('js') 
 
   <script>
+
+$('.remove-favorite').on("click", function (e) {
+    var id = $(this).attr('data_id');
+    $.ajax({
+        type: "post",
+        url: "/favorites/" + id,
+        method: "delete",
+        data: { _token: '{{ csrf_token() }}'
+                },
+            dataType: 'json',              // let's set the expected response format
+            success: function (data) {
+                $("#a"+ id).remove();
+                $("#totals").remove();
+                $("#totalq").fadeIn().html( '<span id="totals">' + data.totala +'</span> {{__('AED')}}' );
+                $("#totals1").remove();
+                $("#totalq1").fadeIn().html( '<span id="totals1">' + data.totala +'</span> {{__('AED')}}' );
+            },
+            error: function (err) {
+                if (err.status == 422) { // when status code is 422, it's a validation issue
+                    console.log(err.responseJSON);
+                    $('#axaa').fadeIn().html('<div class="alert alert-danger border-0 alert-dismissible">' + err.responseJSON.message +'</div>');
+
+
+                }
+            }
+        });   
+    });
 $('.liked').click(function(anyothername) {
               //  e.preventDefault();
                

@@ -129,7 +129,7 @@
                                                         <input type="hidden" name="_method" value="POST">
                                                         <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
                                                     </form>
-                                                                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -381,14 +381,9 @@
             });
 
         });
-
-
         $('.add_cart').on("click", function(e) {
             e.preventDefault();
-
             var id = $(this).attr('product_id');
-            
-
             $.ajax({
                 type: "post",
                 url: "{{ route('cart.store') }}",

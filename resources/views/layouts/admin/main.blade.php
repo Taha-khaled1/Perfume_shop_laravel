@@ -459,6 +459,11 @@ input[type="date"] {
   z-index: 1;
   display: none;
 }
+.bell-notification{
+  width: 7px;
+  height: 7px;
+  right: 0
+}
 @media(max-width:1300px){
   .notification-icon .notification-dropdown{
     left: unset !important;
