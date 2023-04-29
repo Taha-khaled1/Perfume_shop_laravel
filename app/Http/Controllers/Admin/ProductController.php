@@ -126,7 +126,8 @@ class ProductController extends Controller
         $n = Notfication::all();
         if($product ){
             return view('admin.products.profile', [
-                'product' => $product, 'notf'=>$n, 
+                'product' => $product,
+                 'notf'=>$n, 
                 'category' => $category, 
                 'cities' => $cities, 
              ]);   
@@ -379,12 +380,14 @@ class ProductController extends Controller
 
 
     public function product_edit(Request $request)
-    { $request->validate([
+    { 
+        
+        $request->validate([
         'name' => 'required|max:100',
         'code' => 'required|max:100',
         'description' => 'required|max:300',
         'category_id' => 'required',
-        'main_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
+        // 'main_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048', 
         'price' => 'required|numeric',
        
           ],$messages = [
@@ -399,15 +402,34 @@ class ProductController extends Controller
           
         $product =  Product::find($request->id);
 
-       if (request()->main_image != null) {
-           $main_image = $this->uploadImage('property', $request->file('main_image'));
-           $product->image =  $main_image;
-       }
+        if (request()->main_image != null) {
+            $image = $request->file('main_image');
+            $input['main_image'] = time().'.'.$image->getClientOriginalExtension();
+            $imgFile = Image::make($image->getRealPath());
+            $watermark = Image::make(public_path('assets/img/logom.png'))->resize(100, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imgFile->insert($watermark, 'bottom-right', 10, 10)
+                ->text('© 2016-2023 OUDZ.ae - All Rights Reserved', 120, 100, function($font) { 
+                    $font->size(35);  
+                    $font->color('#ffffff');  
+                    $font->align('center');  
+                    $font->valign('bottom');  
+                    $font->angle(90);  
+                })
+                ->save(public_path('storage/property').'/'.$input['main_image']);
+            $product->image = $input['main_image'];
+        }
+        
+
+
+
+           
        $product->name =  $request->name;
        $product->description = $request->description;
        $product->name_en=  $request->name_en;
     //    $product->description_en = $request->description_en;
-       $product->category_id = implode(' ',$request->category_id);
+       $product->category_id = $request->category_id[0];
        $product->quantity = $request->quantity;
        $product->code =  $request->code;
        $product->size =$request->size;
