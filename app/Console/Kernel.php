@@ -16,19 +16,25 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
        
-            $schedule->call(function () {
-                // تحديث حالة الموقع
-                $webclose = Website::first();
+        $schedule->call(function () {
+            $webclose = Website::first(); // Get the Webclose model instance
+            $maintenanceModeValue = 'true'; // The value to set for the maintenance_mode checkbox
+        
+            // Check if the current time has passed the specified data_time
+            if (time() >= strtotime($webclose->data_time)) {
+                // Update the Webclose model instance with the new value for maintenance_mode
                 $webclose->actv = 1;
                 $webclose->save();
         
-                // أرسل رسالة إشعار أو قم بأي إجراء آخر هنا
-            })->when(function () {
-                // تحديد الوقت الذي يجب فيه تشغيل الدالة
-                $webclose = Website::first();
-                return $webclose->data_time <= now();
-            });
-        
+                // Send a POST request to the admin.updatewebsite route with the maintenance_mode value
+                $client = new \GuzzleHttp\Client();
+                $response = $client->request('POST', route('admin.updatewebsite'), [
+                    'form_params' => [
+                        'maintenance_mode' => $maintenanceModeValue,
+                    ],
+                ]);
+            }
+        })->everyMinute();
     }
 
     /**
