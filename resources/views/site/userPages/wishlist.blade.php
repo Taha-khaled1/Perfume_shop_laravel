@@ -225,7 +225,7 @@ $('.remove-favorite').on("click", function (e) {
     var id = $(this).attr('data_id');
     $.ajax({
         type: "post",
-        url: "/favorites/" + id,
+        url: "/favorites/remove/" + id,
         method: "delete",
         data: { _token: '{{ csrf_token() }}'
                 },

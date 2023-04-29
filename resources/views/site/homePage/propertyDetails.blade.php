@@ -142,7 +142,7 @@
                 <ul class="p-0 mt-4">
                     {{-- @if($product->sku) <li><span>SKU</span> : <span>{{$product->sku}}</span></li>@endif --}}
                     @if($product->code)  <li><span>  {{__('Item code')}}</span> : <span>{{$product->code}}</span></li>@endif
-                    @if($product->quantity)<li><span> {{__('Quantity')}}</span> : <span>{{$product->quantity}}</span></li>@endif
+                    {{-- @if($product->quantity)<li><span> {{__('Quantity')}}</span> : <span>{{$product->quantity}}</span></li>@endif --}}
                     <!--<li><span>سومو</span> :<span> </span></li>-->
                     <li> @if($product->category)<span> {{__('Category')}}
                         @if($product->category->name_en != null)
