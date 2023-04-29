@@ -96,7 +96,7 @@ Route::get('/print{id}', function($id) {
 
     // return $pdf->download('bill.pdf');
 
-        return view('admin.print', [
+        return view('admin.printt', [
             'order' => $order,  
             'address' => $address, 
          ]);   

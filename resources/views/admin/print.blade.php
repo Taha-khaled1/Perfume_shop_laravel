@@ -112,6 +112,21 @@ th {
  <div class="container">
     <h1>فاتورة</h1>
     <h2>تفاصيل الفاتورة</h2>
+
+    <span>
+        <img src="{{asset('assets/img/logom.png')}}" alt="logo-small" width="180px" height="100px">
+    </span>
+    <div class="address">
+        <p><strong>اسم العميل:</strong> {{$order->address->name}}</p>
+        <p><strong>البريد الاكتروني:</strong> {{$order->address->email}}</p>
+        <p><strong>الاماره:</strong> {{$order->address->area}}</p>
+        <p><strong>الشارع:</strong> {{$order->address->street}}</p>
+        <p><strong>الجادة:</strong> {{$order->address->Blvd}}</p>
+        <p><strong>رقم الهاتف:</strong> {{$order->address->phone}}  </p>
+    </div>
+
+   
+
     <table>
         <thead>
             <tr>
@@ -227,14 +242,7 @@ th {
 
 
 
-        <div class="address">
-            <p><strong>اسم العميل:</strong> {{$order->address->name}}</p>
-            <p><strong>البريد الاكتروني:</strong> {{$order->address->email}}</p>
-            <p><strong>الاماره:</strong> {{$order->address->area}}</p>
-            <p><strong>الشارع:</strong> {{$order->address->street}}</p>
-            <p><strong>الجادة:</strong> {{$order->address->Blvd}}</p>
-            <p><strong>رقم الهاتف:</strong> {{$order->address->phone}}  </p>
-        </div>
+       
 
 
 
@@ -246,9 +254,7 @@ th {
     <br>
     <br>
     <br>
-    <span>
-        <img src="{{assets('assets/img/logom.png')}}" alt="logo-small" width="180px" height="100px">
-    </span>
+  
 </div>
 
 <p style="page-break-before: always">
