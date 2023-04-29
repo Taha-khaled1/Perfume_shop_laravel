@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
                                         <a class="card-footer text-center border-top-0" href="#"> View all notifications</a>
-                                    </div>
+                                    </div> 
                                 </div> -->
                             </div>
                             <div class="dropdown ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
@@ -88,18 +88,17 @@
                                     <i class="fa fa-bell fs-6 me-3" role="button" data-bs-toggle="dropdown" data-bs-display="static"></i>
                                     <span class="badge"></span>
                                     <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation  p-2 m-0 notification-dropdown" style="width: 400px">
+
+                                        @foreach ($notf as $item)
                                         <div class="notification p-2 border-bottom">
                                             <a href="#" class="text-decoration-none text-dark">
-                                                <h6>العنوان هنا</h6>
-                                                <p class="m-0">الوصف هنا الوصف هنا الوصف هناالوصف هنا</p>
+                                                <h6>{{$item->title}}</h6>
+                                                <p class="m-0">{{$item->message}}</p>
                                             </a>
                                         </div>
-                                        <div class="notification p-2 border-bottom">
-                                            <a href="#" class="text-decoration-none text-dark">
-                                                <h6>العنوان هنا</h6>
-                                                <p class="m-0">الوصف هنا الوصف هنا الوصف هناالوصف هنا</p>
-                                            </a>
-                                        </div>
+                                        @endforeach
+                                   
+                                      
                                     </div>
     
                                   </div>
