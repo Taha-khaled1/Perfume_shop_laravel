@@ -107,7 +107,7 @@
                                                     src="{{ asset('/storage/property/' . $product->image) }}" alt=""
                                                     class="custom-imgg"></a>
                                             <div class="text-center p-2">
-                                                <h4 class="mt-2">
+                                                <h4 class="mt-2 mb-0">
                                                     @if ($product->name_en != null)
                                                         @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                                                             {{ $product->name }}
@@ -119,9 +119,9 @@
                                                         {{ $product->name }}
                                                     @endif
                                                 </h4>
-                                                <h6 class="text-center py-2">{{ $product->price }} {{ __('AED') }}
+                                                <h6 class="text-center py-2 mb-0">{{ $product->price }} {{ __('AED') }}
                                                 </h6>
-                                                <div class="product-buttons d-flex justify-content-center">
+                                                <div class="product-buttons d-flex justify-content-center mb-0">
                                                     @if ($product->quantity != 0)
                                                     <a class="add_cart border-0"  product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
                                                     @endif
