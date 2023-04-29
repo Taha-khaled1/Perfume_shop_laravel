@@ -239,7 +239,11 @@
 
                 {{-- <p>{{$xpayonline}} {{ $xpaycach}}</p> --}}
 
-
+{{-- @if ($xpayonline > 0)
+    <input type="text" name="" hidden>
+@else
+    
+@endif --}}
 
 
                             @if ($xpayonline > 0)

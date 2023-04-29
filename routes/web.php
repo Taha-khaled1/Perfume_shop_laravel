@@ -210,7 +210,8 @@ Route::get('searcha_property', [PropertyController::class, 'searcha_property'])-
 Route::get('/category_property/{id}', [PropertyController::class,'category_property'])->name('category_property');
 
 Route::get('/', [SiteController::class,'viewHomePage'])->name('viewHomePage');
-Route::get('/home', [SiteController::class,'viewHomePage'])->name('viewHomePage');Route::get('/viewMyAccountcatogery', [SiteController::class,'viewMyAccountcatogery'])->name('viewMyAccountcatogery');
+Route::get('/home', [SiteController::class,'viewHomePage'])->name('viewHomePage');
+Route::get('/viewMyAccountcatogery', [SiteController::class,'viewMyAccountcatogery'])->name('viewMyAccountcatogery');
 Route::get('/buy-property', [PropertyController::class,'viewBuyProperty'])->name('buyProperty');
 Route::get('/rent-property', [PropertyController::class,'viewRentProperty'])->name('rentProperty');
 Route::get('/property/{id}', [PropertyController::class,'viewProperty'])->name('viewProperty');

@@ -106,48 +106,49 @@ th {
 </head>
 
 <body>
-    <div class="container">
-        <h1>فاتورة</h1>
-        <h2>تفاصيل الفاتورة</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>اسم المنتج</th>
-                    <th>الكميه</th>
-                    <th>السعر</th>
-                    <th>المجموع</th>
-                </tr>
-            </thead>
+ @foreach ($order as $order)
+     
+
+ <div class="container">
+    <h1>فاتورة</h1>
+    <h2>تفاصيل الفاتورة</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>اسم المنتج</th>
+                <th>الكميه</th>
+                <th>السعر</th>
+                <th>المجموع</th>
+            </tr>
+        </thead>
 
 
 
 
 
-            {{-- <tbody>
-                <tr>
-                    <td>Product 1</td>
-                    <td>1</td>
-                    <td>290 AED</td>
-                    <td>290 AED</td>
-                </tr>
-            </tbody> --}}
+        {{-- <tbody>
+            <tr>
+                <td>Product 1</td>
+                <td>1</td>
+                <td>290 AED</td>
+                <td>290 AED</td>
+            </tr>
+        </tbody> --}}
 
-            @foreach($order->items as $item)
-            <tr  >
-                <td>{{$item->product_name}} </td> 
-            
-               
-               
-                <td>{{$item->quantity}} </td>
-                <td>{{$item->product->price}}</td>
-                <td>{{$item->product->price * $item->quantity}} </td>
-                {{-- <td>  {{$item->options}}  </td> --}}
-            
-                 
-                </tr>
-                @endforeach
-
-
+        @foreach($order->items as $item)
+        <tr  >
+            <td>{{$item->product_name}} </td> 
+        
+           
+           
+            <td>{{$item->quantity}} </td>
+            <td>{{$item->product->price}}</td>
+            <td>{{$item->product->price * $item->quantity}} </td>
+            {{-- <td>  {{$item->options}}  </td> --}}
+        
+             
+            </tr>
+            @endforeach
 
 
 
@@ -160,38 +161,49 @@ th {
 
 
 
-            <tfoot>
-                <tr class="total">
-                    <td colspan="3" class="text-right">المجموع الفرعي</td>
-                    <td> {{ $order->total + $order->discount - $order->shipping}} AED</td>
-                </tr>
-                <tr class="total">
-                    <td colspan="3" class="text-right">شحن</td>
-                    <td>{{$order->shipping}} AED</td>
-                </tr>
-                <tr class="total">
-                    <td colspan="3" class="text-right">الخصم</td>
-                    <td>{{ $order->discount}}  AED</td>
-                </tr>
-                <tr class="total">
-                    <td colspan="3" class="text-right">المجموع الإجمالي</td>
-                    <td>{{ $order->total}} AED</td>
-                </tr>
-            </tfoot>
-        </table>
-        <div class="invoice-details">
-            <p><strong>طريقة الدفع  : . </strong>  
-            
-            
-            
-            
-            
-                @if($order->payment_method == "cash")
-                الدفع عند الاستلام
-                @else
-                بطاقة ائتمان
-                @if($order->payment )
-@if($order->payment->status == 'pending' )                                                                              
+
+
+        <tfoot>
+            <tr class="total">
+                <td colspan="3" class="text-right">المجموع الفرعي</td>
+                <td> {{ $order->total + $order->discount - $order->shipping}} AED</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="text-right">شحن</td>
+                <td>{{$order->shipping}} AED</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="text-right">الخصم</td>
+                <td>{{ $order->discount}}  AED</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="text-right">المجموع الإجمالي</td>
+                <td>{{ $order->total}} AED</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="invoice-details">
+        <p><strong>طريقة الدفع  : . </strong>  
+        
+        
+        
+        
+        
+            @if($order->payment_method == "cash")
+            الدفع عند الاستلام
+            @else
+            بطاقة ائتمان
+            @if($order->payment )
+
+
+
+
+
+
+
+
+
+            @if($order->payment->status == 'pending' )                                                                              
 <span class="badge bg-primary"> في انتظار الدفع</span>
 @elseif($order->payment->status == 'completed')
 <span class="badge bg-success">  تم الدفع</span>
@@ -201,39 +213,50 @@ th {
 <span class="badge bg-danger"> فشل الدفع</span>
 @endif
 @endif  @endif
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            </p>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </p>
 
 
 
-            <div class="address">
-                <p><strong>اسم العميل:</strong> {{$order->address->name}}</p>
-                <p><strong>البريد الاكتروني:</strong> {{$order->address->email}}</p>
-                <p><strong>الاماره:</strong> {{$order->address->area}}</p>
-                <p><strong>الشارع:</strong> {{$order->address->street}}</p>
-                <p><strong>الجادة:</strong> {{$order->address->Blvd}}</p>
-                <p><strong>رقم الهاتف:</strong> {{$order->address->phone}}  </p>
-            </div>
-
-
-
+        <div class="address">
+            <p><strong>اسم العميل:</strong> {{$order->address->name}}</p>
+            <p><strong>البريد الاكتروني:</strong> {{$order->address->email}}</p>
+            <p><strong>الاماره:</strong> {{$order->address->area}}</p>
+            <p><strong>الشارع:</strong> {{$order->address->street}}</p>
+            <p><strong>الجادة:</strong> {{$order->address->Blvd}}</p>
+            <p><strong>رقم الهاتف:</strong> {{$order->address->phone}}  </p>
         </div>
-        <br>
-        <br>
-        <br>
-        <span>
-            <img src="{{ public_path('assets/img/logom.png') }}" alt="logo-small" width="180px" height="100px">
-        </span>
+
+
+
     </div>
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <span>
+        <img src="{{assets('assets/img/logom.png')}}" alt="logo-small" width="180px" height="100px">
+    </span>
+</div>
+
+<p style="page-break-before: always">
+
+ @endforeach
+
+
+
     <script>
       window.print();
     </script>

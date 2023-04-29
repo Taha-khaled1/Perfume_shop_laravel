@@ -59,25 +59,14 @@ class OrderController extends Controller
 
     public function orderss_print_all(Request $request)
     {
-        $orders = Order::find($request->id)->with('address')->get();
-
-        foreach ($orders as $order) {
-            $pdf = PDF::loadView('admin.print', compact('order'));
+        $order = Order::with('address')->get();
+        // $address = OrderAddress::where('order_id', $order->id )->first();
+        
     
-            // Optional: Set paper size and orientation
-            $pdf->setPaper('A4', 'portrait');
-    
-            // Optional: Set the download filename and disposition
-            $filename = 'invoice-' . $order->id . '.pdf';
-            $headers = [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="' . $filename . '"',
-            ];
-    
-            // Return the PDF as a response
-            return $pdf->download($filename, $headers);
-        }
-        return back();
+            return view('admin.print', compact('order'));   
+          
+      
+     
     }
     // where('status', '2')->
  
