@@ -72,13 +72,18 @@ class OrderController extends Controller
 
     public function orderss_print_ids(Request $request)
     {
-      
         $ids = $request->input('vehicle', []);
+        if ($ids > 0 &&$ids!=null&& $ids != []) {
+            
         $order = Order::whereIn('id', $ids)
                        ->with('address')
                        ->get();
 
-            return view('admin.printtt', compact('order'));   
+            return view('admin.printtt', compact('order'));  
+        } else {
+           return back();
+        }
+         
    
      
     }
