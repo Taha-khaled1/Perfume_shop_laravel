@@ -130,8 +130,60 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/update_property/{id}', [PropertyController::class,'update_property'])->name('update_property');
     Route::post('/edit_property', [PropertyController::class,'edit_property'])->name('edit_property');
     Route::post('/securitysettings', [App\Http\Controllers\UserController::class, 'security_settings'])->name('user.settings_security.save');
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
     Route::post('/location', [App\Http\Controllers\UserController::class, 'location'])->name('user.location.save');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Route::post('/like', [App\Http\Controllers\LikeController::class, 'like'])->name('property.like');
+
     Route::get('/wishlist', [SiteController::class,'wishlist'])->name('wishlist');
     Route::post('address/delete' , [App\Http\Controllers\UserController::class , 'delete_address'])->name('delete_address');
     Route::post('order/delete' , [App\Http\Controllers\Site\OrderController::class , 'delete_order'])->name('delete_order');

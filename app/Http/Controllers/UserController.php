@@ -180,6 +180,8 @@ class UserController extends Controller
     }
 
 
+
+
     public function location(Request $request)
     {
 
@@ -197,7 +199,7 @@ class UserController extends Controller
             'area.required' => ' الاماره مطلوب   !',
             'name.required' => ' الاسم مطلوب   !', ]);
             try{
-                $user = \auth()->user()->id;
+                $user = auth()->user()->id;
                 $city = City::find($request->area);
         $data = new Address();
         if ($data) {
@@ -227,6 +229,12 @@ class UserController extends Controller
         
 
     }
+
+
+
+
+
+
 
     
     public function delete_address(Request $request)

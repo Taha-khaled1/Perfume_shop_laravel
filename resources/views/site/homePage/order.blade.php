@@ -37,6 +37,10 @@
                         @enderror
                 <input type="email" name="email" class="form-control" id="email-address" value="@if($add == 1) {{$address->email}} @else {{old('email')}}  @endif" maxlength="100" required>
               </div>
+
+
+
+              
               <div class="my-3">
                 <label for="choose-region"  > {{__('Principality')}}</label><br>
                 @error('area')
@@ -51,6 +55,10 @@
                 @endforeach
               </select> <br>
             </div>
+
+
+
+
             {{-- <div class="mb-3">
                 <label for="street"   > {{__('Street')}}</label>
                 @error('street')

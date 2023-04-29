@@ -131,9 +131,9 @@ class OrderController extends Controller
                 $address->order_id = $data1->id;
                 $address->name = $request->name;
                 $address->email = $request->email;
-                // $address->area = $request->area;
+                $address->area = $request->area;
                 // $address->street = $request->street;
-                // $address->Blvd = $request->Blvd;
+                $address->Blvd = $request->Blvd;
                 // $address->house = $request->house;
                 $address->phone = $request->phone;
                     $address->save();
@@ -151,6 +151,35 @@ class OrderController extends Controller
                     $item->color = $a->color; 
                         $item->save();
                 }
+
+
+                $user = auth()->user()->id;
+                $city = City::find($request->area);
+        $data = new Address();
+        if ($data) {
+            // try {
+                $data->user_id = $user;
+                $data->name = $request->name;
+                $data->email = $request->email;
+                $data->area = $city->name;
+
+                $data->Shipping = $city->price;
+                $data->street = $request->street??"-";
+                $data->Blvd = $request->Blvd??"-";
+                $data->house = $request->house??"-";
+
+
+                $data->phone = $request->phone;
+            $data->save();
+
+            notify()->success('تم اضافة العنوان !');
+            return redirect()->back();
+
+
+        } 
+
+
+
                 $noty = new Notfication();
 
                 $noty->title="طلب جديد";
