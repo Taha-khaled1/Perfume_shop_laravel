@@ -89,7 +89,7 @@
                         <h2 class="minus">-</h2>
                     </div>
                     <div class="align-self-center">
-                        <h3>{{__('Number') }}</h3>
+                        <h3>{{__('Quantity')}}</h3>
                     </div>
                 </div>
                 @if ($product->quantity == 0)
