@@ -93,8 +93,8 @@ public function printll()
     if ($zip->open($zipname, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
         foreach ($orders as $order) {
             $dompdf = new Dompdf([
-                'default_font' => 'arabic',
-                'font_dir' => public_path('assets/fonts/Cairo-Regular.ttf/'),
+                'default_font' => 'Cairo-Regular',
+                'font_dir' => public_path('assets/fonts/'),
                 'font_cache' => storage_path('app/dompdf'),
                 'font_cache_ttl' => 86400
             ]);
