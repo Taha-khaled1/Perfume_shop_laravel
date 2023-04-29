@@ -16,14 +16,14 @@ class AdminsController extends Controller
     //
    
     public function admins_list()
-    {
+    {$n=   Notfication::all();
         $admins = User::where('is_admin', 1)->get();
-        return view('admin.admins.index')->with('admins', $admins);
+        return view('admin.admins.index',['notf'=>$n])->with('admins', $admins);
     }
     
     public function add()
-    {  
-         return view('admin.admins.add') ;
+    {  $n=   Notfication::all();
+         return view('admin.admins.add',['notf'=>$n]) ;
     }
 
     public function sendsms()

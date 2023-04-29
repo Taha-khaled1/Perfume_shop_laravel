@@ -4,27 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Notfication;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function categories_list()
-    {
+    {$n=   Notfication::all();
         $categories = Category::orderBy('ord', 'ASC')->get();
         return view('admin.categories.list', [
-            'categories' => $categories,       
+            'categories' => $categories,       'notf'=>$n,
         ]);
     }
 
    
     public function category_profile($id)
-    {  
+    {  $n=   Notfication::all();
         $categories = Category::all();
 
         $category = Category::find($id);
         if($category ){
             return view('admin.categories.profile', [
-                'category' => $category,       
+                'category' => $category,     'notf'=>$n,  
                 'categories' => $categories,       
             ]);    }
         return redirect()->back();

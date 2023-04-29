@@ -5,25 +5,26 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Carousel;
 
+use App\Models\Notfication;
 use Illuminate\Http\Request;
 
 class CarouselController extends Controller
 {
     public function carousels_list()
-    {
+    {$n=   Notfication::all();
         $carousels = Carousel::all();
         return view('admin.carousels.list', [
-            'carousels' => $carousels,       
+            'carousels' => $carousels,'notf'=>$n,         
         ]);
     }
 
    
     public function carousel_profile($id)
-    {
+    {$n=   Notfication::all();
         $carousel = Carousel::find($id);
         if($carousel ){
             return view('admin.carousels.profile', [
-                'carousel' => $carousel,       
+                'carousel' => $carousel, 'notf'=>$n,        
             ]);   
          }
         return redirect()->back();
