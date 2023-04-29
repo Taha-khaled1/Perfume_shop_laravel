@@ -163,8 +163,8 @@
                 <div class="like-icon">
                     <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/') }}/property/{{$product->id}}&display=popup" target="_blank"><i class="text-dark fs-5 me-2 fa fa-facebook"></i></a>
                     <a class="twitter" href="https://twitter.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="text-dark fs-5 me-2 fa fa-twitter"></i></a>
-                    <a class="whatsapp" href="https://whatsapp.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="text-dark fs-5 me-2 fa fa-whatsapp"></i></a>
-                    <a class="instagram" href="https://whatsapp.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="text-dark fs-5 me-2 fa fa-instagram"></i></a>
+                    <a class="whatsapp" href="https://whatsapp.com" target="_blank"><i class="text-dark fs-5 me-2 fa fa-whatsapp"></i></a>
+                    <a class="instagram" href="https://instagram.com" target="_blank"><i class="text-dark fs-5 me-2 fa fa-instagram"></i></a>
 
                 </div>
             </div>
