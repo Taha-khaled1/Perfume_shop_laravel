@@ -126,7 +126,7 @@ class ProductController extends Controller
         $n = Notfication::all();
         if($product ){
             return view('admin.products.profile', [
-                'product' => $product, ['notf'=>$n], 
+                'product' => $product, 'notf'=>$n, 
                 'category' => $category, 
                 'cities' => $cities, 
              ]);   
