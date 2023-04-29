@@ -228,8 +228,11 @@
                 <input type="submit" class="btn text-white d-block" style="background-color:#563e32;" value=" {{__('Confirmation')}} ">
                 @endauth
 
-        </div> </form> 
-    </div>
+        </div> 
+    
+    </form> 
+    
+</div>
 </section>
 @stop
 

@@ -204,7 +204,7 @@ Route::prefix("admin")->group(function () {
       
         //////////////// users /////////////////
         Route::get('user/list' , [App\Http\Controllers\Admin\UsersController::class , 'users_list'])->name('admin.user');
-        Route::get('user/profile/{id}' , [App\Http\Controllers\Admin\UsersController::class , 'user_profile'])->name('admin.user.profile');
+        Route::get('user/profile/{id}' , [App\Http\Controllers\Admin\UsersController::class , 'user_profile'])->name('admin.user.profile'); 
         Route::post('user/save/{id}' , [App\Http\Controllers\Admin\UsersController::class , 'user_save'])->name('admin.user.save');
         Route::post('user/delete' , [App\Http\Controllers\Admin\UsersController::class , 'user_delete'])->name('admin.user.delete');
 

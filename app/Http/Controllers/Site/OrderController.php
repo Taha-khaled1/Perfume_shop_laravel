@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notfication;
 use App\Models\Product;
 use App\Models\City;
 use App\Models\Order;
@@ -150,7 +151,17 @@ class OrderController extends Controller
                     $item->color = $a->color; 
                         $item->save();
                 }
-              
+                $noty = new Notfication();
+
+                $noty->title="طلب جديد";
+                $user = auth()->user();
+                if ($user) {
+                    $name = $user->fname;
+                    $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
+                }else{
+                    $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
+                }
+             
                 $this->cart->empty();
                 $email = $address->email;
                 if($email){

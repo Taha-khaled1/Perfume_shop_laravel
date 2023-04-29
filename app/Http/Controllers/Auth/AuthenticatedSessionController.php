@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Notfication;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
@@ -37,11 +39,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+          $request->authenticate();
 
-        $request->session()->regenerate();
+          $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+          $user=    User::where('email',$request->email)->first();
+
+           $noty = new Notfication();
+
+            $noty->title="تسجيل الدخول";
+            $noty->message=" تم تسجيل الدخول بواسطة المستخدم ".$user->fname ;
+
+            $noty->save();
+
+            return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

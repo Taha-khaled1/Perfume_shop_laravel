@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notfication;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Repositories\Cart\CartRepository;
@@ -62,11 +63,12 @@ class RegisteredUserController extends Controller
         );
          
         $email = $request['email'];
-        list($username, $domain) = explode('@', $email);
+        list($username, $domain) = explode('@', $email); 
 
         if (checkdnsrr($domain, 'MX')) {
         $user = User::create([
-            
+            'fname' => $request->fname,
+            'lname' => $request->lname,
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -76,6 +78,14 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        $user=    User::where('email',$request->email)->first();
+
+        $noty = new Notfication();
+
+         $noty->title="تم انشاء حساب جديد ";
+         $noty->message="تم انشاء حساب جديد بواسطة ".$user->fname ??"لم يتم ادخال الاسم" ;
+
+         $noty->save();
         Auth::login($user);
         notify()->success('  ');
         return redirect(RouteServiceProvider::HOME);
