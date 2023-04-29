@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Console;
-
+use App\Models\Website;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +15,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+       
+            $schedule->call(function () {
+                // تحديث حالة الموقع
+                $webclose = Website::first();
+                $webclose->actv = true;
+                $webclose->save();
+        
+                // أرسل رسالة إشعار أو قم بأي إجراء آخر هنا
+            })->when(function () {
+                // تحديد الوقت الذي يجب فيه تشغيل الدالة
+                $webclose = Website::first();
+                return $webclose->data_time <= now();
+            });
+        
     }
 
     /**
