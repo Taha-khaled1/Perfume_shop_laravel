@@ -94,7 +94,7 @@ public function printll()
         foreach ($orders as $order) {
             $dompdf = new Dompdf([
                 'default_font' => 'Cairo-Regular',
-                'font_dir' => public_path('assets/fonts/'),
+                'font_dir' => public_path('assets/fonts/Cairo-Regular.ttf/'),
                 'font_cache' => storage_path('app/dompdf'),
                 'font_cache_ttl' => 86400
             ]);

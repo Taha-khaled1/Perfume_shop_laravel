@@ -231,7 +231,7 @@ th {
         <br>
         <br>
         <span>
-            <img src="{{ asset('assets/img/logom.png') }}" alt="logo-small" width="180px" height="100px">
+            <img src="{{ public_path('assets/img/logom.png') }}" alt="logo-small" width="180px" height="100px">
         </span>
     </div>
     <script>
