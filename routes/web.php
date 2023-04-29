@@ -355,7 +355,7 @@ Route::prefix("admin")->group(function () {
  Route::get('orderss_print_all' , [App\Http\Controllers\Admin\OrderController::class , 'orderss_print_all'])->name('orderss_print_all');
 
 
- 
+ Route::get('orderss_print_ids' , [App\Http\Controllers\Admin\OrderController::class , 'orderss_print_ids'])->name('orderss_print_ids');
 
  Route::get('printll' , [App\Http\Controllers\Admin\OrderController::class , 'printll'])->name('printll');
 

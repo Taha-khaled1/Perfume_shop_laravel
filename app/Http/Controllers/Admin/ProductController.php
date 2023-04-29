@@ -411,7 +411,7 @@ class ProductController extends Controller
             });
             $imgFile->insert($watermark, 'bottom-right', 10, 10)
                 ->text('© 2016-2023 OUDZ.ae - All Rights Reserved', 120, 100, function($font) { 
-                    $font->size(35);  
+                    $font->size(60);  
                     $font->color('#ffffff');  
                     $font->align('center');  
                     $font->valign('bottom');  
@@ -452,7 +452,7 @@ class ProductController extends Controller
 
        
        
-       $product->save(); 
+   
 
        
     //    $name[] = $request->file('album');

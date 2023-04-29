@@ -68,6 +68,20 @@ class OrderController extends Controller
       
      
     }
+
+
+    public function orderss_print_ids(Request $request)
+    {
+      
+        $ids = $request->input('vehicle', []);
+        $order = Order::whereIn('id', $ids)
+                       ->with('address')
+                       ->get();
+
+            return view('admin.printtt', compact('order'));   
+   
+     
+    }
     // where('status', '2')->
  
 
