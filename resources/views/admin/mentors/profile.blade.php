@@ -300,6 +300,28 @@
 
     
     $(document).ready(function () {
+        $('select[name="country_id"]')
+        const selectBox = document.getElementById("country_id");
+        const searchValue = "الإمارات";
+        for (let i = 0; i < selectBox.options.length; i++) {
+        if (selectBox.options[i].outerText === searchValue) {
+            selectBox.selectedIndex = i;
+            $.ajax({
+                url: "{{ URL::to('get_cities') }}/" + selectBox.options[i].value,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('select[name="city_id"]').empty();
+                    $('select[name="city_id"]').append('<option selected disabled value="" >اختار مدينة</option>');
+                    $.each(data, function (key, value) {
+                        $('select[name="city_id"]').append('<option value="' + key + '">' + value + '</option>');
+                    });
+
+                },
+            });
+            break;
+        }
+        }
         $('select[name="country_id"]').on('change', function () {
             var country = $(this).val();
             if (country) {
