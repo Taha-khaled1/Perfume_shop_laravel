@@ -49,12 +49,14 @@ class CountryController extends Controller
         $country->save();
 
         $name = $request->city;
+        $nameen = $request->cityen;
         for($i = 0; $i < count($name); $i++)
           {
            if( $name[$i] == ""){}else{
            $city =new City();
            $city->country_id = $country->id;
            $city->name =$name[$i] ;  
+           $city->name_en =$nameen[$i] ;  
            $city->price =$request->price[$i] ;          
            $city->save();
             }

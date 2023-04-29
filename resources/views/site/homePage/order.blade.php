@@ -49,9 +49,23 @@
               <select name="area" class="form-control" id="choose-region" aria-label="Default select example" maxlength="100" required 
               @if(isset($rate))  @if(isset($address)) total= "{{$cart->total() - ($cart->total() * $rate) + $address->Shipping }}" shipping="{{$address->Shipping }}" @else total=" {{$cart->total() - ($cart->total() * $rate) }}" shipping="0" @endif @else @if(isset($address)) total=" {{$cart->total() + $address->Shipping }}" shipping="{{$address->Shipping }}" @else total="{{$cart->total() }}" shipping="0" @endif @endif>
               <option value=""> {{__('Choose the region')}}</option>  
-              <option selected value="@if($add == 1) {{$address->area}} @else {{old('area')}} @endif">    @if($add == 1) {{$address->area}} @else {{old('area')}}  @endif </option>
+              {{-- <option selected value="@if($add == 1) {{$address->area}} @else {{old('area')}} @endif">    @if($add == 1) {{$address->area}} @else {{old('area')}}  @endif </option> --}}
                 @foreach($cities as $ca)
+
+
+
+                {{-- <option value="{{$ca->name}}"> {{$ca->name}}</option> --}}
+
+
+
+                @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                 <option value="{{$ca->name}}"> {{$ca->name}}</option>
+      
+            @else
+            <option value="{{$ca->name_en}}"> {{$ca->name_en}}</option>
+            @endif
+
+
                 @endforeach
               </select> <br>
             </div>
