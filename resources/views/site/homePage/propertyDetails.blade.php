@@ -66,7 +66,7 @@
                         text-align: {{ isset($text_sm_ltr) ? $text_sm_ltr . '!important' : $text_sm_rtl . '!important' }};
                     }
                     .quantity-buttons{
-                        justify-content: end !important;
+                        justify-content: start !important;
                     }
                     .product .row{
                         direction: {{ isset($direction_ltr) ? $direction_ltr : $direction_rtl}}
@@ -132,13 +132,13 @@
                <h1>{{__('No stock available') }}</h1>
                 @else
 
-                    <button class="btn btn-primary me-2 add_cart h-100 p-2" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>   
+                    <button class="btn btn-primary me-2 add_cart h-100 p-2" product_id="{{$product->id}}">{{__('Add to cart')}}</button>   
                 @endif
                 <form action="{{ route('favorites.add', $product->id) }}" method="POST">
                                 
                         @csrf
                         <input type="hidden" name="_method" value="POST">
-                        <button type="submit" class="liked mt-1 h-100" style="transform: translateY(4px)"><i class="pe-7s-like fw-bold fs-4 text-white bg-danger p-2"></i></button>
+                        <button type="button" class="liked mt-1 h-100" style="transform: translateY(4px)"><i class="pe-7s-like fw-bold fs-4 text-white bg-danger p-2"></i></button>
                     
                 </form>
                {{-- @if ($product->quantity != 0)
