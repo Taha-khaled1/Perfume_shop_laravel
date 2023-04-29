@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
             $schedule->call(function () {
                 // تحديث حالة الموقع
                 $webclose = Website::first();
-                $webclose->actv = true;
+                $webclose->actv = 1;
                 $webclose->save();
         
                 // أرسل رسالة إشعار أو قم بأي إجراء آخر هنا
