@@ -100,7 +100,7 @@ public function printll()
             ]);
 
             // Render the view to HTML
-            $html = view('admin.print', compact('order'))->render();
+            $html = view('admin.printt', compact('order'))->render();
             
             // Load HTML into Dompdf
             $dompdf->loadHtml($html);
