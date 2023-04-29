@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notfication;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -10,20 +11,20 @@ use Illuminate\Support\Facades\Storage;
 class TypeController extends Controller
 {
     public function types_list()
-    {
+    { $n = Notfication::all();
         $types = Type::all();
         return view('admin.types.list', [
-            'types' => $types,       
+            'types' => $types,['notf'=>$n]       
         ]);
     }
 
    
     public function type_profile($id)
-    {
+    {$n = Notfication::all();
         $type = Type::find($id);
         if($type ){
             return view('admin.types.profile', [
-                'type' => $type,       
+                'type' => $type,  ['notf'=>$n]           
             ]);   
          }
         return redirect()->back();

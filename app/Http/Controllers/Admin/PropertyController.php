@@ -9,14 +9,14 @@ use App\Models\Country;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\Album;
-
+use App\Models\Notfication;
 
 class PropertyController extends Controller
 {
       public function properties_list()
     {
-       
-        return view('admin.properties.list');
+        $n = Notfication::all();
+        return view('admin.properties.list',['notf'=>$n]);
     }
     public function propertiesajax(Request $request)
     {
@@ -110,11 +110,11 @@ class PropertyController extends Controller
     {
          $types = Type::get();
         $countries = Country::get();
-        $cities = City::get();
+        $cities = City::get();$n = Notfication::all();
         $property = Properity::find($id);
         if($property ){
             return view('admin.properties.profile', [
-                'property' => $property,  
+                'property' => $property,  'notf'=>$n,
                 'countries' => $countries, 
                 'cities' => $cities, 
                 'types' => $types,      

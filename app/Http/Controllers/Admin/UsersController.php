@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\Notfication;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -18,15 +19,16 @@ class UsersController extends Controller
    
     public function users_list()
     {
-        $mentors = User::get();
-        return view('admin.mentors.index')->with('mentors', $mentors);
+        $mentors = User::get();  $n=   Notfication::all();
+        return view('admin.mentors.index',['notf'=>$n])->with('mentors', $mentors);
     }
 
     public function user_profile($id)
-    {
+    {   
+        $n = Notfication::all();
         $mentors = User::where('id', $id)->first(); 
         $countries = Country::get();
-        return view('admin.mentors.profile')->with('mentor', $mentors)->with('countries', $countries);
+        return view('admin.mentors.profile',['notf'=>$n] )->with('mentor', $mentors)->with('countries', $countries);
     }
 
     public function user_save(Request $request, $id)

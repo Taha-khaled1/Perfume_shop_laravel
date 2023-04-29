@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
- use App\Models\Order;
+ use App\Models\Notfication;
+use App\Models\Order;
 use App\Models\OrderAddress;
 use App\Models\Product;
 use App\Notifications\AcceptRequest;
@@ -22,33 +23,33 @@ use PDF;
 class OrderController extends Controller
 {
     public function orders_list()
-    {
+    {$n = Notfication::all();
         $orders = Order::where('status','1')->with('address')->latest()->get();
         $a = 0;
         if($orders ){
-        return view('admin.orders.list')->with('orders', $orders)->with('a', $a);
+        return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
                 }
                 return redirect()->back();
     }
 
     public function sh_orders_list()
-    {
+    {$n = Notfication::all();
         $orders = Order::where('status','3')->with('address')->orderBy('id','desc')->get();
         $a = 1;
 
         if($orders ){
-        return view('admin.orders.list')->with('orders', $orders)->with('a', $a);
+        return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
                 }
                 return redirect()->back();
     }
  
     public function shs_orders_list()
-    {
+    {$n = Notfication::all();
         $orders = Order::where('status','0')->with('address')->orderBy('id','desc')->get();
         $a = 1;
 
         if($orders ){
-        return view('admin.orders.list')->with('orders', $orders)->with('a', $a);
+        return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
                 }
                 return redirect()->back();
     }
@@ -88,23 +89,25 @@ class OrderController extends Controller
 
     public function orderss_list()
     {
+        $n = Notfication::all();
         $orders = Order::where('status','2')->with('address')->latest()->get();
         $a = 0;
         if($orders ){
-        return view('admin.orders.list')->with('orders', $orders)->with('a', $a);
+        return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
                 }
                 return redirect()->back();
     }
 
     public function order_profile($id)
     {
+        $n = Notfication::all();
          
         $order = Order::find($id);
         $address = OrderAddress::where('order_id', $order->id )->first();
         if($order ){
             return view('admin.orders.profile', [
                 'order' => $order,  
-                'address' => $address, 
+                'address' => $address, ,'notf'=>$n
              ]);   
          }
         return redirect()->back();

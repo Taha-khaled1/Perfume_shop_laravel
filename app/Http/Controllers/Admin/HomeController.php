@@ -38,9 +38,9 @@ class HomeController extends Controller
     public function contact(){
         
         $contact = Contact::latest()->get();
-
+        $n=   Notfication::all();
         return view('admin.contact.index', [
-            'contact' => $contact,       
+            'contact' => $contact,  'notf'=>$n,     
         ]);
     }
     public function delete_contact(Request $request){

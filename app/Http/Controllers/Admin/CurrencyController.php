@@ -4,25 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
+use App\Models\Notfication;
 use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
 {  
     public function currencies_list()
-    {
+    { $n=   Notfication::all(); 
         $currencies = Currency::all();
         return view('admin.currencies.list', [
-            'currencies' => $currencies,       
+            'currencies' => $currencies, 'notf'=>$n,      
         ]);
     }
 
    
     public function currency_profile($id)
-    {
+    { $n=   Notfication::all(); 
         $currency = Currency::find($id);
         if($currency ){
             return view('admin.currencies.profile', [
-                'currency' => $currency,       
+                'currency' => $currency,    'notf'=>$n,     
             ]);   
          }
         return redirect()->back();

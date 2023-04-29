@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notfication;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\City;
@@ -17,14 +18,14 @@ class ProductController extends Controller
 {
       public function products_list()
     {
-       
-        return view('admin.products.list');
+        $n = Notfication::all();
+        return view('admin.products.list',['notf'=>$n]);
     }
     public function product_add()
-    {
+    { $n = Notfication::all();
         $category = Category::get();
         return view('admin.products.add', [
-            'category' => $category,
+            'category' => $category,['notf'=>$n]
          ]);   
     }
     
@@ -122,10 +123,10 @@ class ProductController extends Controller
         $product = Product::find($id);
         
          
-
+        $n = Notfication::all();
         if($product ){
             return view('admin.products.profile', [
-                'product' => $product,  
+                'product' => $product, ['notf'=>$n], 
                 'category' => $category, 
                 'cities' => $cities, 
              ]);   

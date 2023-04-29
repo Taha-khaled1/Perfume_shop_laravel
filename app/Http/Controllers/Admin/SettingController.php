@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
- use App\Models\Setting;
+ use App\Models\Notfication;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -10,12 +11,12 @@ class SettingController extends Controller
 
     
     public function index(){
-
+        $n = Notfication::all();
         $collection = Setting::all();
         $setting['setting'] = $collection->flatMap(function ($collection) {
             return [$collection->key => $collection->value];
         });
-        return view('admin.settings.index', $setting);
+        return view('admin.settings.index',['notf'=>$n,], $setting,);
     }
 
     public function update(Request $request){

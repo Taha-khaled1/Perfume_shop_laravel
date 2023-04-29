@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\City;
 
+use App\Models\Notfication;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -16,20 +17,20 @@ class CountryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function countries_list()
-    {
+    {$n=   Notfication::all(); 
         $countries = Country::all();
         return view('admin.countries.list', [
-            'countries' => $countries,       
+            'countries' => $countries,     'notf'=>$n,        
         ]);
     }
 
    
     public function country_profile($id)
-    {
+    {$n=   Notfication::all(); 
         $country = Country::find($id);
         if($country ){
             return view('admin.countries.profile', [
-                'country' => $country,       
+                'country' => $country,  'notf'=>$n,           
             ]);    }
         return redirect()->back();
     }

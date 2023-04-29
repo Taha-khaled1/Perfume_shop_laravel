@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Discount;
 
+use App\Models\Notfication;
 use Illuminate\Http\Request;
 
 class DiscountController extends Controller
@@ -12,19 +13,19 @@ class DiscountController extends Controller
     public function discounts_list()
     {
         $discounts = Discount::all();
-        $cato=Category::all();
+        $cato=Category::all();        $n=   Notfication::all(); 
         return view('admin.discounts.list', [
-            'discounts' => $discounts,        'catogerys' => $cato,     
+            'discounts' => $discounts,        'catogerys' => $cato,  'notf'=>$n,   
         ]);
     }
 
    
     public function discount_profile($id)
     {
-        $discount = Discount::find($id);     $cato=Category::all();
+        $discount = Discount::find($id);     $cato=Category::all();        $n=   Notfication::all();
         if($discount ){
             return view('admin.discounts.profile', [
-                'discount' => $discount,        'catogerys' => $cato,     
+                'discount' => $discount,        'catogerys' => $cato,  'notf'=>$n,   
             ]);   
          }
         return redirect()->back();
