@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rules;
 use GuzzleHttp\Client;
 
-class AdminsController extends Controller
+class AdminsController extends Controller 
 {
     //
    

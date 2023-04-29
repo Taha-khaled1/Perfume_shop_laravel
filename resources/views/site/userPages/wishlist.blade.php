@@ -172,7 +172,20 @@
                                             <td class="pro-title"><a href="{{route('viewProperty',$favorite->product->id)}}"> {{$favorite->product->name }}  </a></td>
                                            
                                             <td class="pro-price"><span>{{ $favorite->product->price }}  {{__('AED')}}</span></td>
-                                            <td class="pro-remove"><a class="remove-favorite" data_id="{{ $favorite->id }}"  href="javascript:void(0)"><i class="fa fa-trash-o"></i></a></td>
+                                         
+                                            <td class="pro-remove">
+
+                                                <form action="{{route('favorites.remove',$favorite->product->id)}}" method="POST">
+                                                    @csrf
+                                                    <!-- Form fields here -->
+                                                    <button type="submit" class="btn btn-link text-danger">
+                                                        <i class="fa fa-heart"></i>
+                                                        {{-- Add to Favorites --}}
+                                                    </button>
+                                                </form>
+                                            
+                                            </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>
