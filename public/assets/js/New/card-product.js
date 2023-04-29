@@ -17,14 +17,21 @@ let minus = document.querySelector(".minus");
 x = 1 ;
 
 plus.addEventListener("click",()=>{
-    num.innerHTML = x++ ;
-    quantity.value = x
+    if (x < $(num).data("max")) { // Check if x is less than the maximum value
+        x++;
+        num.innerHTML = x;
+        quantity.value = x;
+      } else {
+        num.innerHTML = $(num).data("max");
+        quantity.value = $(num).data("max");
+      }
+    
 })
 
 minus.addEventListener("click",()=>{
     quantity.value = x
-    if(x===0){
-        num.innerHTML = 0;
+    if(x===1){
+        num.innerHTML = 1;
     }else{
         x--
         num.innerHTML = x ;

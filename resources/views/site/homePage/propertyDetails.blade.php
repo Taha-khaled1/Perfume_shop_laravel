@@ -33,24 +33,60 @@
                 @foreach($product->album as $a)
                     <img src="{{asset('/storage/property/'.$a->name)}}" alt="">
                 @endforeach
-            </div> --}}
-            <div class="main-image col-lg-5 col-md-6 col-sm-8 col-8">
+                </div> --}}
+            @if (LaravelLocalization::getCurrentLocaleDirection() == 'ltr')
+                @php
+                    $dir = 'order-1';
+                    $text = 'text-end';
+                    $justify = 'justify-content-end';
+
+                    $text_sm_ltr = 'left';
+                    $justify_sm_ltr = 'start';
+                    $direction_rtl = 'ltr';
+
+                @endphp
+            @else
+                @php
+                    $dir = 'order-0';
+                    $text = 'text-start';
+                    $justify = 'justify-content-start';
+
+                    $text_sm_rtl = 'right';
+                    $justify_sm_rtl = 'end';
+                    $direction_ltr = 'rtl';
+
+                @endphp
+            @endif
+            <style>
+                @media(max-width:767px){
+                    .main-image{
+                        order: 0 !important;
+                    }
+                    .product-details{
+                        text-align: {{ isset($text_sm_ltr) ? $text_sm_ltr . '!important' : $text_sm_rtl . '!important' }};
+                    }
+                    .quantity-buttons{
+                        justify-content: start !important;
+                    }
+                    .product .row{
+                        direction: {{ isset($direction_ltr) ? $direction_ltr : $direction_rtl}}
+                    }
+                }
+             </style>
+            <div class="main-image col-lg-5 col-md-6 col-sm-8 col-8 {{$dir}}">
                 <img src="{{asset('/storage/property/'.$product->image)}}" alt="product-details" />
             </div>
-            <div class="product-details col-lg-5 col-md-4 col-sm-12">
+            <div class="product-details col-lg-5 col-md-4 col-sm-12 {{$text}}">
                 <h1>@if($product->name_en != null)
-                                              @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                                              {{$product->name}}
-                                              @else
-                                              {{$product->name_en}}
-                                              @endif @else
-                                              {{$product->name}}
-                                              @endif
-                                            </h1>
-  {{-- ///////////////////////////// ////////////////////////// /////////////////////////////// ////////////////////////////////////// /////////////////// ////////////////////////// /////////////////////////// /////////////--}}
+                    @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                    {{$product->name}}
+                    @else
+                    {{$product->name_en}}
+                    @endif @else
+                    {{$product->name}}
+                    @endif
+                </h1>
   <h5><span id="product-price">{{$product->price}}</span> {{__('AED')}}</h5>
-
- {{-- ///////////////////////////// ////////////////////////// /////////////////////////////// ////////////////////////////////////// /////////////////// ////////////////////////// /////////////////////////// /////////////--}}
                 <p class="mt-3">@if($product->description_en != null)
                                                   @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                                                   {{$product->description}}
@@ -81,11 +117,11 @@
 
 
           
-                <div class="d-flex gap-4 mb-3">
+                <div class="d-flex gap-4 mb-3 {{$justify}} quantity-buttons">
                     <input type="hidden" name="quantity" id="quantity" value="1">
                     <div class="d-flex">
                         <h2 class="plus">+</h2>
-                        <h1 class="num mx-3 align-self-center">1</h1>
+                        <h1 class="num mx-3 align-self-center" data-max="{{$product->quantity}}">1</h1>
                         <h2 class="minus">-</h2>
                     </div>
                     <div class="align-self-center">
@@ -96,7 +132,7 @@
                <h1>{{__('No stock available') }}</h1>
                 @else
 
-                <button class="btn btn-danger add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>   
+                <button class="btn btn-primary add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>   
                 @endif
 
                {{-- @if ($product->quantity != 0)
@@ -282,7 +318,7 @@
              <div class="swiper-wrapper">
              @if( $products->count() == 0 ) <h3 class="mb-30 text-center">    {{__('No results found.')}} </h3>@endif
              @foreach( $products as $product)
-             <div class="swiper-slide d-flex flex-column item">
+             <div class="swiper-slide d-flex flex-column item position-relative">
                  <a href="{{route('viewProperty',$product->id)}}" class="bg-transparent p-0"><img src="{{asset('/storage/property/'.$product->image)}}" alt="" style="width:100%;height: 320px;"></a>
                  <div>
                     <h4 class="mt-2">
@@ -296,7 +332,17 @@
                         @endif
                     </h4>
                     <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
-                    <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
+                    <div class="position-absolute product-buttons">
+                        @if ($product->quantity != 0)
+                        <a class="add_cart border-0"  product_id="{{ $product->id }}"   ><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                        @endif
+                       
+                        <form action="{{ route('favorites.add', $product->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="_method" value="POST">
+                            <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
+                        </form>
+                    </div>
                  </div>
                </div>
              @endforeach
@@ -370,11 +416,7 @@
 
 @push('js') 
     <script src="{{asset('/assets/js/New/card-product.js' )}}"></script>
-  
-  
-  
-  
-  
+
   
     {{-- <script>
 

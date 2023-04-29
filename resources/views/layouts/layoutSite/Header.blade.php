@@ -478,6 +478,19 @@
                             </i>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('viewMyAccount')}}" class="">
+                            <i class="text-dark pe-7s-user fs-4 ms-4 position-relative">
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('wishlist')}}" class="">
+                            <i class="text-dark pe-7s-like fs-4 ms-4 position-relative">
+                                {{-- <span class="cart-count position-absolute rounded-circle">{{$cartcount}}</span> --}}
+                            </i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

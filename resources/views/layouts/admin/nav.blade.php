@@ -85,7 +85,9 @@
                             </div>
                             <div class="dropdown ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
                                 <div class="notification-icon">
-                                    <i class="fa fa-bell fs-6 me-3" role="button" data-bs-toggle="dropdown" data-bs-display="static"></i>
+                                    <i class="fa fa-bell fs-6 me-3 position-relative" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                                        <span class="position-absolute bg-danger rounded-circle top-0 bell-notification"></span>
+                                    </i>
                                     <span class="badge"></span>
                                     <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation  p-2 m-0 notification-dropdown" style="width: 400px">
 
