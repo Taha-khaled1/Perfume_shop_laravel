@@ -461,9 +461,7 @@
 			$this.html(event.strftime('<div class="single-countdown"><span class="single-countdown__time">%D</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">%H</span><span class="single-countdown__text">Hours</span></div><div class="single-countdown"><span class="single-countdown__time">%M</span><span class="single-countdown__text">Mins</span></div><div class="single-countdown"><span class="single-countdown__time">%S</span><span class="single-countdown__text">Secs</span></div>'));
 		});
 	});
-	if($(".cart-count")[0].innerHTML === "0"){
-		localStorage.removeItem('cartItems')
-	}
+
 
 	// quantity change js
     $('.pro-qty').prepend('<span class="dec qtybtn">-</span>');
