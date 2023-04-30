@@ -148,61 +148,13 @@
     </label>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @else
-
-
-
-
-
-
-<p>HERE SLECTED BOX</p>
-
-
-
-
-
-
-
+<div class="bg-light p-2 border mb-2">
+    <input type="radio" name="address">
+    <span>الجيزة,الدقي, 15615</span>
+</div>
 @endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           
-            @endauth
-               
-           
+@endauth
         </div>
         <div class="col-md-2 payment-details"></div>
         <div class="col-md-4 do-you-have-discount-code  bg-gray">
