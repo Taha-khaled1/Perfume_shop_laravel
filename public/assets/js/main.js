@@ -462,6 +462,7 @@
 		});
 	});
 
+
 	// quantity change js
     $('.pro-qty').prepend('<span class="dec qtybtn">-</span>');
     $('.pro-qty').append('<span class="inc qtybtn">+</span>');

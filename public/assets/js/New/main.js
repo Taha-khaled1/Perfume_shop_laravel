@@ -1,4 +1,7 @@
 /****************************************************  start swiper  **********************************************************/
+if($(".cart-count")[0].innerHTML === "0"){
+  localStorage.removeItem('cartItems')
+}
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 10,
