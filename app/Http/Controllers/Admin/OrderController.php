@@ -192,7 +192,7 @@ public function printll()
         $products = Product::select('products.name',DB::raw('SUM(order_items.quantity) as total_quantity') , 'products.shope_name')
             ->join('order_items', 'products.id', '=', 'order_items.product_id')
             ->join('orders', 'order_items.order_id', '=', 'orders.id')
-            ->where('orders.status', 1)
+            ->where('orders.status', 1)->orwhere('orders.status',2)
             ->groupBy('products.name', 'products.shope_name')     ->orderBy('products.shope_name') 
             ->get();
 
