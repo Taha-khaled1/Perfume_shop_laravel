@@ -367,7 +367,7 @@ $(document).ready(function() {
             url: url,
             data: {_token: '{{ csrf_token() }}'},
             success: function(data) {
-                alert('Added to favorites');
+                flashBox('success', '{{ __('Added to favorite') }}');
             },
             error: function(xhr, status, error) {
                 alert('An error occurred while adding to favorites');
@@ -406,6 +406,17 @@ $(document).ready(function() {
             });
 
         });
+        if($(".cart-count")[0].innerHTML === "0"){
+            localStorage.removeItem('cartItems')
+        }
+        let cartCount = 0;
+        const storedCartItems = localStorage.getItem('cartItems');
+        const cartItems = storedCartItems ? storedCartItems : [];
+        if (storedCartItems) {
+            cartItems = JSON.parse(storedCartItems);
+            cartCount = cartItems.length;
+            $(".cart-count").html(cartCount);
+        }
         $('.add_cart').on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('product_id');
@@ -419,8 +430,17 @@ $(document).ready(function() {
                 },
                 dataType: 'json', // let's set the expected response format
                 success: function(data) {
-                    // flashBox('success', '{{ __('Added to cart') }}');
-                    location.reload();
+                    flashBox('success', '{{ __('Added to cart') }}');
+                    const productIndex = cartItems.findIndex(item => item.id === id);
+                    if (productIndex >= 0) {
+                        alert('This product is already in your cart!');
+                        return;
+                    }
+
+                    cartItems.push({ id });
+                    cartCount++;
+                    $(".cart-count").html(cartCount);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
                 },
                 error: function(err) {
                     if (err.status == 422) { // when status code is 422, it's a validation issue
