@@ -26,6 +26,14 @@ class OrderController extends Controller
     public function orders_list()
     {$n = Notfication::all();
         $orders = Order::where('status','1')->with('address')->latest()->get();
+        $orderss = Order::where('status','5')->get();
+foreach ($orderss as  $o) {
+    
+    if ($o->payment->status=='completed') {
+        $r=Order::find($o->id);
+        $r->status=1;
+    }
+}
         $a = 0;
         if($orders ){
         return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
@@ -36,6 +44,15 @@ class OrderController extends Controller
     public function sh_orders_list()
     {$n = Notfication::all();
         $orders = Order::where('status','3')->with('address')->orderBy('id','desc')->get();
+        $orderss = Order::where('status','5')->get();
+        foreach ($orderss as  $o) {
+            
+            if ($o->payment->status=='completed') {
+                $r=Order::find($o->id);
+                $r->status=1;
+            }
+        }
+          
         $a = 1;
 
         if($orders ){
@@ -48,7 +65,15 @@ class OrderController extends Controller
     {$n = Notfication::all();
         $orders = Order::where('status','0')->with('address')->orderBy('id','desc')->get();
         $a = 1;
-
+        $orderss = Order::where('status','5')->get();
+foreach ($orderss as  $o) {
+    
+    if ($o->payment->status=='completed') {
+        $r=Order::find($o->id);
+        $r->status=1;
+    }
+}
+  
         if($orders ){
         return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
                 }
