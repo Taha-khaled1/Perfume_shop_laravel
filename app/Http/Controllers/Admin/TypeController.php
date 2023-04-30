@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class TypeController extends Controller
 {
     public function types_list()
-    { $n = Notfication::all();
+    { $n=Notfication::where('read','0')->get();
         $types = Type::all();
         return view('admin.types.list', [
             'types' => $types,['notf'=>$n]       
@@ -20,7 +20,7 @@ class TypeController extends Controller
 
    
     public function type_profile($id)
-    {$n = Notfication::all();
+    {$n=Notfication::where('read','0')->get();
         $type = Type::find($id);
         if($type ){
             return view('admin.types.profile', [

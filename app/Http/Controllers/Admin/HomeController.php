@@ -46,7 +46,8 @@ class HomeController extends Controller
                 $noty->save();
               
             }
-        }   $n=Notfication::where('read','0')->get();
+        }  
+         $n=Notfication::where('read','0')->get();
         return view('admin.home.index', [
             'orders' => $orders,       
             'orderstoday' => $orderstoday,       

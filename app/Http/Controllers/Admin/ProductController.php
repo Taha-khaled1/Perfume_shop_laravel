@@ -18,11 +18,11 @@ class ProductController extends Controller
 {
       public function products_list()
     {
-        $n = Notfication::all();
+        $n=Notfication::where('read','0')->get();
         return view('admin.products.list',['notf'=>$n]);
     }
     public function product_add()
-    { $n = Notfication::all();
+    { $n=Notfication::where('read','0')->get();
         $category = Category::get();
         return view('admin.products.add', [
             'category' => $category,'notf'=>$n
@@ -123,7 +123,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         
          
-        $n = Notfication::all();
+        $n=Notfication::where('read','0')->get();
         if($product ){
             return view('admin.products.profile', [
                 'product' => $product,

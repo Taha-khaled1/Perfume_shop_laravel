@@ -11,7 +11,7 @@ class SettingController extends Controller
 
     
     public function index(){
-        $n = Notfication::all();
+        $n=Notfication::where('read','0')->get();
         $collection = Setting::all();
         $setting['setting'] = $collection->flatMap(function ($collection) {
             return [$collection->key => $collection->value];

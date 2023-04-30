@@ -15,7 +15,7 @@ class PropertyController extends Controller
 {
       public function properties_list()
     {
-        $n = Notfication::all();
+        $n=Notfication::where('read','0')->get();
         return view('admin.properties.list',['notf'=>$n]);
     }
     public function propertiesajax(Request $request)
@@ -110,7 +110,7 @@ class PropertyController extends Controller
     {
          $types = Type::get();
         $countries = Country::get();
-        $cities = City::get();$n = Notfication::all();
+        $cities = City::get();$n=Notfication::where('read','0')->get();
         $property = Properity::find($id);
         if($property ){
             return view('admin.properties.profile', [

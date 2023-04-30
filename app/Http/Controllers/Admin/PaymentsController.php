@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\App;
 class PaymentsController extends Controller
 {
     public function index()
-    {     $n = Notfication::all();
+    {     $n=Notfication::where('read','0')->get();
         $payments = Payment::all();
         return view('admin.payment.index', [
             'payments' => $payments,    ,['notf'=>$n]   

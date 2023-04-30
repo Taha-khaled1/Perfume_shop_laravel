@@ -23,8 +23,8 @@ use PDF;
 use ZipArchive;
 class OrderController extends Controller
 {
-    public function orders_list()
-    {$n = Notfication::all();
+    public function orders_list() 
+    {   $n=Notfication::where('read','0')->get();
         $orders = Order::where('status','1')->with('address')->latest()->get();
 
         $a = 0;
@@ -35,7 +35,7 @@ class OrderController extends Controller
     }
 
     public function sh_orders_list()
-    {$n = Notfication::all();
+    {$n=Notfication::where('read','0')->get();
         $orders = Order::where('status','3')->with('address')->orderBy('id','desc')->get();
         // $orderss = Order::where('status','5')->get();
         // foreach ($orderss as  $o) {
@@ -56,7 +56,7 @@ class OrderController extends Controller
     }
  
     public function shs_orders_list()
-    {$n = Notfication::all();
+    {$n=Notfication::where('read','0')->get();
         $orders = Order::where('status','0')->with('address')->orderBy('id','desc')->get();
         $a = 1;
 //         $orderss = Order::where('status','5')->get();
@@ -158,7 +158,7 @@ public function printll()
 
     public function orderss_list()
     {
-        $n = Notfication::all();
+        $n=Notfication::where('read','0')->get();
         $orders = Order::where('status','2')->with('address')->latest()->get();
         $a = 0;
         if($orders ){
@@ -169,7 +169,7 @@ public function printll()
 
     public function order_profile($id)
     {
-        $n = Notfication::all();
+        $n=Notfication::where('read','0')->get();
          
         $order = Order::find($id);
         $address = OrderAddress::where('order_id', $order->id )->first();

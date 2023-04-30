@@ -25,7 +25,7 @@ class UsersController extends Controller
 
     public function user_profile($id)
     {   
-        $n = Notfication::all();
+        $n=Notfication::where('read','0')->get();
         $mentors = User::where('id', $id)->first(); 
         $countries = Country::get();
         return view('admin.mentors.profile',['notf'=>$n] )->with('mentor', $mentors)->with('countries', $countries);
