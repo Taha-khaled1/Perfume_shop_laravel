@@ -24,7 +24,29 @@ class HomeController extends Controller
         $prductsem = Product::where('quantity',0.00)->get()->count();
         $users = User::get()->count();
         $webclose=Website::first(); 
-        $n=   Notfication::all();
+     
+        $orderss = Order::where('status','5')->get();
+        foreach ($orderss as  $o) {
+            
+            if ($o->payment->status=='completed') {
+                $r=Order::find($o->id);
+                $r->status=1;
+                $r->save();
+        
+                $noty = new Notfication();
+        
+                $noty->title="طلب جديد";
+                $user = auth()->user();
+                if ($user) {
+                    $name = $user->fname;
+                    $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
+                }else{
+                    $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
+                }
+                $noty->save();
+              
+            }
+        }   $n=   Notfication::all();
         return view('admin.home.index', [
             'orders' => $orders,       
             'orderstoday' => $orderstoday,       

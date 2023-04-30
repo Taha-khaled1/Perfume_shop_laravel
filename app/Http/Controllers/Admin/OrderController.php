@@ -26,28 +26,7 @@ class OrderController extends Controller
     public function orders_list()
     {$n = Notfication::all();
         $orders = Order::where('status','1')->with('address')->latest()->get();
-        $orderss = Order::where('status','5')->get();
-foreach ($orderss as  $o) {
-    
-    if ($o->payment->status=='completed') {
-        $r=Order::find($o->id);
-        $r->status=1;
-        $r->save();
 
-        $noty = new Notfication();
-
-        $noty->title="طلب جديد";
-        $user = auth()->user();
-        if ($user) {
-            $name = $user->fname;
-            $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
-        }else{
-            $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
-        }
-        $noty->save();
-      
-    }
-}
         $a = 0;
         if($orders ){
         return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
@@ -58,15 +37,15 @@ foreach ($orderss as  $o) {
     public function sh_orders_list()
     {$n = Notfication::all();
         $orders = Order::where('status','3')->with('address')->orderBy('id','desc')->get();
-        $orderss = Order::where('status','5')->get();
-        foreach ($orderss as  $o) {
+        // $orderss = Order::where('status','5')->get();
+        // foreach ($orderss as  $o) {
             
-            if ($o->payment->status=='completed') {
-                $r=Order::find($o->id);
-                $r->status=1;
-                $r->save();
-            }
-        }
+        //     if ($o->payment->status=='completed') {
+        //         $r=Order::find($o->id);
+        //         $r->status=1;
+        //         $r->save();
+        //     }
+        // }
           
         $a = 1;
 
@@ -80,15 +59,15 @@ foreach ($orderss as  $o) {
     {$n = Notfication::all();
         $orders = Order::where('status','0')->with('address')->orderBy('id','desc')->get();
         $a = 1;
-        $orderss = Order::where('status','5')->get();
-foreach ($orderss as  $o) {
+//         $orderss = Order::where('status','5')->get();
+// foreach ($orderss as  $o) {
     
-    if ($o->payment->status=='completed') {
-        $r=Order::find($o->id);
-        $r->status=1;
-        $r->save();
-    }
-}
+//     if ($o->payment->status=='completed') {
+//         $r=Order::find($o->id);
+//         $r->status=1;
+//         $r->save();
+//     }
+// }
   
         if($orders ){
         return view('admin.orders.list',['notf'=>$n])->with('orders', $orders)->with('a', $a);
