@@ -103,7 +103,7 @@
   </div> --}}
   <div class="mb-3">
     <label for="District"  > {{__('Region')}}</label>
-    <input type="text" name="Blve" class="form-control" id="أدخل رقم الجادة" value="@if($add == 1) {{$address->Blve}} @else {{old('Blve')}}  @endif">
+    <input type="text" name="Blvd" class="form-control" id="أدخل رقم الجادة" value="@if($add == 1) {{$address->Blvd}} @else {{old('Blvd')}}  @endif">
   </div>
   <div class="mb-3">
     <label for="flat"  > {{__('Apartment/House')}}</label>
@@ -145,24 +145,21 @@
   
 
 @else
-
 @foreach ($adrees as $item)
-<div class="bg-light p-2 border mb-2">
-    <input type="radio" name="address" value="{{$item->id}}">
-
-    <span>{{$item->area}},{{$item->Blvd}},{{$item->house}}, {{$item->phone}}</span>
-</div>
-<input type="text" name="readio" value="yesss" hidden>
-<input type="text" name="name" value="{{$item->name}}" hidden>
-<input type="text" name="email" value="{{$item->email}}" hidden>
-<input type="text" name="area" value="{{$item->area}}" hidden>
-<input type="text" name="Blve" value="{{$item->Blvd}}" hidden>
-<input type="text" name="house" value="{{$item->house}}" hidden>
-<input type="text" name="phone" value="{{$item->phone}}" hidden>
+    <div class="bg-light p-2 border mb-2">
+        <input type="radio" name="address" value="{{$item->id}}" data-name="{{$item->name}}"
+               data-email="{{$item->email}}" data-area="{{$item->area}}" data-blvd="{{$item->Blvd}}"
+               data-house="{{$item->house}}" data-phone="{{$item->phone}}">
+        <span>{{$item->area}},{{$item->Blvd}},{{$item->house}}, {{$item->phone}}</span>
+    </div>
 @endforeach
 
-
-
+<input type="hidden" name="name" id="name" value="">
+<input type="hidden" name="email" id="email" value="">
+<input type="hidden" name="area" id="area" value="">
+<input type="hidden" name="Blvd" id="Blvd" value="">
+<input type="hidden" name="house" id="house" value="">
+<input type="hidden" name="phone" id="phone" value="">
 @endif
 
 
@@ -419,6 +416,33 @@
 @stop
 
 @push('js')  
+
+
+
+
+
+
+<script>
+    const addressInputs = document.querySelectorAll('input[name="address"]');
+
+    addressInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            document.getElementById('name').value = input.dataset.name;
+            document.getElementById('email').value = input.dataset.email;
+            document.getElementById('area').value = input.dataset.area;
+            document.getElementById('Blvd').value = input.dataset.blvd;
+            document.getElementById('house').value = input.dataset.house;
+            document.getElementById('phone').value = input.dataset.phone;
+        });
+    });
+</script>
+
+
+
+
+
+
+
 <script>   
      
    $('.remove-item').on("click", function (e) {

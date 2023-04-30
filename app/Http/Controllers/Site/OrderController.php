@@ -161,7 +161,7 @@ class OrderController extends Controller
                 $address->email = $request->email;
                 $address->area = $request->area;
                 // $address->street = $request->street;
-                $address->Blvd = $request->Blve;
+                $address->Blvd = $request->Blvd;
                 $address->house = $request->house ?? "house";
                 $address->phone = $request->phone;
                     $address->save();
@@ -194,7 +194,7 @@ if ($request->readio != "yesss") {
 
             $data->Shipping = $city->price??"10";
             $data->street = $request->street??"-";
-            $data->Blvd = $request->Blve??"-";
+            $data->Blvd = $request->Blvd??"-";
             $data->house = $request->house??"-";
 
 
