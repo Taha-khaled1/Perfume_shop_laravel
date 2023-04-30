@@ -32,6 +32,8 @@ foreach ($orderss as  $o) {
     if ($o->payment->status=='completed') {
         $r=Order::find($o->id);
         $r->status=1;
+        $r->save();
+      
     }
 }
         $a = 0;
@@ -50,6 +52,7 @@ foreach ($orderss as  $o) {
             if ($o->payment->status=='completed') {
                 $r=Order::find($o->id);
                 $r->status=1;
+                $r->save();
             }
         }
           
@@ -71,6 +74,7 @@ foreach ($orderss as  $o) {
     if ($o->payment->status=='completed') {
         $r=Order::find($o->id);
         $r->status=1;
+        $r->save();
     }
 }
   
