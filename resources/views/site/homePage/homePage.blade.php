@@ -122,10 +122,13 @@
                                                 <h6 class="text-center py-2 mb-0">{{ $product->price }} {{ __('AED') }}
                                                 </h6>
                                                 <div class="product-buttons d-flex justify-content-center mb-0">
+
                                                     @if ($product->quantity != 0)
                                                     <a class="add_cart border-0"  product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
                                                     @endif
                                                     <a>
+
+
                                                         <button class="add-to-favorites" data-product-id="{{ $product->id }}">
                                                             <i class="pe-7s-like fw-bold fs-4"></i>
                                                         </button>
@@ -376,6 +379,9 @@ $(document).ready(function() {
     });
 });
 
+<<<<<<< HEAD
+       
+=======
         $('.liked').click(function(anyothername) {
             //  e.preventDefault();
 
@@ -417,6 +423,7 @@ $(document).ready(function() {
             cartCount = cartItems.length;
             $(".cart-count").html(cartCount);
         }
+>>>>>>> 46815d8b77719348eeafb66e776b703fcd72bdb0
         $('.add_cart').on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('product_id');
@@ -455,5 +462,7 @@ $(document).ready(function() {
             });
 
         });
+
+        
     </script>
 @endpush
