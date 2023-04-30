@@ -5,28 +5,16 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Payment;
-use App\Models\Setting;
-use App\Repositories\Cart\CartRepository;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class PaymentsController extends Controller
 {
-    protected $cart;
-  
-    public function __construct(CartRepository $cart)
-    {
-        $this->cart = $cart;
-    }
     public function create(Order $order)
     {
-        $value = Setting::where('key', 'public_key')->first();
         return view('site.payments.create', [
             'order' => $order,
-            'value' => $value,
-            'cart' => $this->cart,
-
         ]);
     }
 
@@ -39,9 +27,8 @@ class PaymentsController extends Controller
         /**
          * @var \Stripe\StripeClient
          */
-        $sss= Setting::where('key', 'Secrt_key')->first();
          $amount =$request->total * 100 ;
-         $stripe = new \Stripe\StripeClient($sss??'');
+         $stripe = new \Stripe\StripeClient(config('services.stripe.secret_key'));
          $paymentIntent = $stripe->paymentIntents->create([
              'amount' => $amount, 
              'currency' => 'aed',
@@ -76,8 +63,7 @@ class PaymentsController extends Controller
         /**
          * @var \Stripe\StripeClient
          */
-        $sss= Setting::where('key', 'Secrt_key')->first();
-        $stripe = new \Stripe\StripeClient($sss??'');
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret_key'));
 
         $paymentIntent = $stripe->paymentIntents->retrieve(
             $request->query('payment_intent'),
@@ -107,7 +93,7 @@ class PaymentsController extends Controller
         notify()->error('');
         return redirect()->route('orders.payments.create', [
             'order' => $order->id,
-            'status' => $paymentIntent->status,'cart' => $this->cart,
+            'status' => $paymentIntent->status,
         ]);
         
     }
