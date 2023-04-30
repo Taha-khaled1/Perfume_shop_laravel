@@ -29,7 +29,7 @@
                                         <th>الايميل</th>
                                         <th>المدينة</th>
                                         <th>العمليات</th>
-                                        
+                                        {{--resources\views\admin\admins\profile.blade.php  --}}
                                     </tr>
                                     </thead>
                                     <tbody>

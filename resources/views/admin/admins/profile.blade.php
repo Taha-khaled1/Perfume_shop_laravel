@@ -124,9 +124,12 @@
                                                     </div>
                                                 </div>
                                             </div> <!--end col-->
+
+
+
                                             <div class="col-lg-6 col-xl-6">
                                                 <div class="card">
-                                                <form name="" method="post" action="{{ route('admin.admin.password') }}">
+                                                <form method="POST" action="{{ route('admin.admin.password') }}">
                                                             @csrf
                                                             <input  type="text" value="{{$mentor->id}}" name="id" style="display:none" >
                                                     <div class="card-header">
@@ -163,6 +166,14 @@
                                                 </div><!--end card-->
                                                  
                                             </div> <!-- end col -->
+
+
+
+
+
+
+
+
                                         </div><!--end row-->
                                     </div>
                                 </div>

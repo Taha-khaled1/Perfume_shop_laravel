@@ -202,7 +202,10 @@
                                                     </div>
                                                 </div>
                                             </div> <!--end col-->
-                                            <div class="col-lg-6 col-xl-6">
+
+
+
+                                            {{-- <div class="col-lg-6 col-xl-6">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h4 class="card-title">   تغيير كلمة السر</h4>
@@ -232,6 +235,75 @@
                                                 </div><!--end card-->
                                                  
                                             </div> <!-- end col -->
+
+
+
+
+ --}}
+
+
+
+
+                                            <div class="col-lg-6 col-xl-6">
+                                                <div class="card">
+                                                <form method="POST" action="{{ route('admin.admin.password') }}">
+                                                            @csrf
+                                                            <input  type="text" value="{{$mentor->id}}" name="id" style="display:none" >
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">   تغيير كلمة السر</h4>
+                                                    </div><!--end card-header-->
+                                                    <div class="card-body">
+                                                        <div class="form-group mb-3 row">
+                                                            <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">كلمة السر الجديدة</label>
+                                                            <div class="col-lg-9 col-xl-8">
+                                                            @error('new_password')
+                                                                    <small class="form-text text-danger">{{$message}}</small>
+                                                                    @enderror
+                                                                <input class="form-control" type="password" maxlength="100" name="new_password"
+                                                                       placeholder="New Password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mb-3 row">
+                                                            <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">تأكيد كلمة السر</label>
+                                                            <div class="col-lg-9 col-xl-8">
+                                                            @error('password_confirmation')
+                                                                    <small class="form-text text-danger">{{$message}}</small>
+                                                                    @enderror
+                                                                <input class="form-control" type="password" maxlength="100" name="password_confirmation"
+                                                                       placeholder="Re-Password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mb-3 row">
+                                                            <div class="col-lg-9 col-xl-8 offset-lg-3">
+                                                                <button type="submit" class="btn btn-primary">تغيير كلمة السر  </button>
+                                                                 
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end card-body-->
+                                                </div><!--end card-->
+                                                 
+                                            </div> <!-- end col -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         </div><!--end row-->
                                     </div>
                                 </div>
