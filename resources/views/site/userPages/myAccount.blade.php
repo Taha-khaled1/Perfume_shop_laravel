@@ -104,7 +104,7 @@
                                                               <th > @if($order->status == 0) {{__('Rejected')}}@endif @if($order->status == 1) {{__('Requested')}} @endif @if($order->status == 2)  {{__('is shipped')}} @endif @if($order->status == 3) {{__('Delivered')}} @endif </th>
                                                                
                                                               
-                                                              <th><a href="{{route('viewHomePage')}}" class="delr" > {{__('Edit')}}</a> </th>
+                                                              <th><a href="{{route('products')}}" class="delr" > {{__('Edit')}}</a> </th>
                                                                 
                                                                 
                                                                 
