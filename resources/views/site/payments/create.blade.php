@@ -40,13 +40,13 @@
     <br>
     @stop
 
-@push('js') 
+    @push('js') 
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         // This is your test publishable API key.
-        const stripe = Stripe("pk_live_51Mz31gBNzJDMeBWsXtlSJh5fUvW6pZhfBbhmQ8kSJ2RvgmrEyFKX2629zq3TdWA6H0gcYxZ8SYVQgp4PzuKpFxNX00P8A3U2Or");
-        console.log(stripe)
+        const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
+
         let elements;
 
         initialize();
