@@ -105,11 +105,6 @@
                                                                
                                                               
                                                               <th><a href="{{route('products')}}" class="delr" > {{__('Edit')}}</a> </th>
-                                                                
-                                                                
-                                                                
-                                                                
-                                                                
                                                                 <td>    @if($order->payment_method == "cash")
                                                                         الدفع عند الاستلام
                                                                         @else

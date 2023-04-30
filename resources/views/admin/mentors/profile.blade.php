@@ -122,8 +122,6 @@
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">الايميل</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <div class="input-group">
-                                                                    <span class="input-group-text"><i
-                                                                                class="las la-at"></i></span>
                                                                     <input type="text" class="form-control"
                                                                            value="{{ $mentor->email }}" name="email"
                                                                            placeholder="Email" maxlength="100"
@@ -131,10 +129,21 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                         
+                                                        <div class="form-group mb-3 row">
+                                                            <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">الامارة</label>
+                                                            <div class="col-lg-9 col-xl-8">
+                                                                <input class="form-control" type="text" value="{{ $mentor->phone_number }}" maxlength="100" name="address">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mb-3 row">
+                                                            <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">المنطقة</label>
+                                                            <div class="col-lg-9 col-xl-8">
+                                                                <input class="form-control" type="text" value="{{ $mentor->phone_number }}" maxlength="100" name="address">
+                                                            </div>
+                                                        </div>
                                                         <div class="mb-3 row">
                                                                     <label   class="col-sm-3 col-form-label text-end">الدولة</label>
-                                                                    <div class="col-sm-9">
+                                                                    <div class="col-lg-9 col-xl-8">
                                                                     @error('country_id')
                                                             <small class="form-text text-danger">{{$message}}</small>
                                                             @enderror
@@ -162,7 +171,7 @@
 
                                                                 <div class="mb-3 row">
                                                                     <label   class="col-sm-3 col-form-label text-end">المدينة</label>
-                                                                    <div class="col-sm-9">
+                                                                    <div class="col-lg-9 col-xl-8">
                                                                     @error('city_id')
                                                             <small class="form-text text-danger">{{$message}}</small>
                                                             @enderror
@@ -179,6 +188,12 @@
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <input class="form-control" type="text" value="{{ $mentor->address }}" maxlength="100" name="address">
                                                             </div>
+                                                            </div>
+                                                            <div class="form-group mb-3 row">
+                                                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">رقم الهاتف</label>
+                                                                <div class="col-lg-9 col-xl-8">
+                                                                    <input class="form-control" type="text" value="{{ $mentor->phone_number }}" maxlength="100" name="address">
+                                                                </div>
                                                             </div>
                                                             <div class="form-group mb-3 row">
                                                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Status</label>
@@ -372,28 +387,30 @@
 
     
     $(document).ready(function () {
-        $('select[name="country_id"]')
-        const selectBox = document.getElementById("country_id");
-        const searchValue = "الإمارات";
-        for (let i = 0; i < selectBox.options.length; i++) {
-        if (selectBox.options[i].outerText === searchValue) {
-            selectBox.selectedIndex = i;
-            $.ajax({
-                url: "{{ URL::to('get_cities') }}/" + selectBox.options[i].value,
-                type: "GET",
-                dataType: "json",
-                success: function (data) {
-                    $('select[name="city_id"]').empty();
-                    $('select[name="city_id"]').append('<option selected disabled value="" >اختار مدينة</option>');
-                    $.each(data, function (key, value) {
-                        $('select[name="city_id"]').append('<option value="' + key + '">' + value + '</option>');
-                    });
+        // setTimeout(() => {
+        //     $('select[name="country_id"]')
+        // const selectBox = document.getElementById("country_id");
+        // const searchValue = "الإمارات";
+        // for (let i = 0; i < selectBox.options.length; i++) {
+        // if (selectBox.options[i].outerText === searchValue) {
+        //     selectBox.selectedIndex = i;
+        //     $.ajax({
+        //         url: "{{ URL::to('get_cities') }}/" + selectBox.options[i].value,
+        //         type: "GET",
+        //         dataType: "json",
+        //         success: function (data) {
+        //             $('select[name="city_id"]').empty();
+        //             $('select[name="city_id"]').append('<option selected disabled value="" >اختار مدينة</option>');
+        //             $.each(data, function (key, value) {
+        //                 $('select[name="city_id"]').append('<option value="' + key + '">' + value + '</option>');
+        //             });
 
-                },
-            });
-            break;
-        }
-        }
+        //         },
+        //     });
+        //     break;
+        // }
+        // }
+        // }, 5000);
         $('select[name="country_id"]').on('change', function () {
             var country = $(this).val();
             if (country) {
