@@ -53,6 +53,8 @@
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
+
+
         // This is your test publishable API key.
         const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
 
@@ -80,6 +82,7 @@
                     "id": "{{$order->id}}"
                 }),
             }).then((r) => r.json());
+            localStorage.setItem('clientSecret', clientSecret);
 
             elements = stripe.elements({
                 clientSecret
