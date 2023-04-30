@@ -409,7 +409,7 @@ $(document).ready(function() {
                     // flashBox('success', '{{ __('Added to cart') }}');
                     const productIndex = cartItems.findIndex(item => item.id === id);
                     if (productIndex >= 0) {
-                        alert('This product is already in your cart!');
+                        // alert('This product is already in your cart!');
                         return;
                     }
 

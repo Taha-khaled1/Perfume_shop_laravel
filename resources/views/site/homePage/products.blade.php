@@ -52,7 +52,21 @@
                     </h4>
                     <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}           </h6>
                     @if ($product->quantity != 0)
-                    <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
+                    <div class="product-buttons d-flex text-center justify-content-center mb-0">
+
+                        @if ($product->quantity != 0)
+                        <a class="add_cart border-0"  product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
+                        @endif
+                        <a>
+
+
+                            <button class="add-to-favorites" data-product-id="{{ $product->id }}">
+                                <i class="pe-7s-like fw-bold fs-4"></i>
+                            </button>
+                            
+                            
+                        </a>
+                    </div>
                     @endif
                    
                  </div>
@@ -251,35 +265,58 @@ $('.liked').click(function(anyothername) {
     });
 
     
-$('.add_cart').on("click", function (e) {
+    if($(".cart-count")[0].innerHTML === "0"){
+            localStorage.removeItem('cartItems')
+        }
+        let cartCount = 0;
+        const storedCartItems = localStorage.getItem('cartItems');
+        const cartItems = JSON.parse(storedCartItems) ? JSON.parse(storedCartItems) : [];
+        if (storedCartItems) {
+            //cartItems = JSON.parse(storedCartItems);
+            cartCount = cartItems.length;
+            $(".cart-count").html(cartCount);
+        }
+        $('.add_cart').on("click", function(e) {
             e.preventDefault();
-               
-         var id = $(this).attr('product_id');
-         
-      
-         $.ajax({
+            var id = $(this).attr('product_id');
+            console.log(cartItems)
+
+            $.ajax({
                 type: "post",
                 url: "{{ route('cart.store') }}",
-                data: { _token: '{{ csrf_token() }}',
-                     "product_id" : id,
-                     "quantity" : 1
-                    },
-                    dataType: 'json',              // let's set the expected response format
-                    success: function (data) {
-                        location.reload();
-                       
-                    },
-                    error: function (err) {
-                        if (err.status == 422) { // when status code is 422, it's a validation issue
-                            console.log(err.responseJSON);
-                            $('#success_message_notifications').fadeIn().html('<div class="alert alert-danger border-0 alert-dismissible">' + err.responseJSON.message +'</div>');
-
-
-                        }
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    "product_id": id,
+                    "quantity": 1
+                },
+                dataType: 'json', // let's set the expected response format
+                success: function(data) {
+                    // flashBox('success', '{{ __('Added to cart') }}');
+                    const productIndex = cartItems.findIndex(item => item.id === id);
+                    if (productIndex >= 0) {
+                        // alert('This product is already in your cart!');
+                        return;
                     }
-                });   
-          
-    });
+
+                    cartItems.push({ id });
+                    cartCount++;
+                    $(".cart-count").html(cartCount);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                },
+                error: function(err) {
+                    if (err.status == 422) { // when status code is 422, it's a validation issue
+                        console.log(err.responseJSON);
+                        $('#success_message_notifications').fadeIn().html(
+                            '<div class="alert alert-danger border-0 alert-dismissible">' + err
+                            .responseJSON.message + '</div>');
+
+
+                    }
+                }
+            });
+
+        });
+
 </script>
 @endpush
 
