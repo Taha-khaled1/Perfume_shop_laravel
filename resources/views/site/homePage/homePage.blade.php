@@ -115,7 +115,7 @@
                                                         @else
                                                             {{ $product->name_en }}
                                                         @endif
-                                                    @else
+                                                    @else 
                                                         {{ $product->name }}
                                                     @endif
                                                 </h4>
@@ -379,51 +379,10 @@ $(document).ready(function() {
     });
 });
 
-<<<<<<< HEAD
+
        
-=======
-        $('.liked').click(function(anyothername) {
-            //  e.preventDefault();
-
-            var id = $(this).attr('property');
-            var val = $(this).val();
-
-            $.ajax({
-                type: "post",
-                url: "{{ route('property.like') }}",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    "id": id
-                },
-                dataType: 'json', // let's set the expected response format
-                success: function(data) {
-                    console.log(data)
-                },
-                error: function(err) {
-                    if (err.status == 422) { // when status code is 422, it's a validation issue
-                        console.log(err.responseJSON);
-                        $('#success_message_notifications').fadeIn().html(
-                            '<div class="alert alert-danger border-0 alert-dismissible">' + err
-                            .responseJSON.message + '</div>');
 
 
-                    }
-                }
-            });
-
-        });
-        if($(".cart-count")[0].innerHTML === "0"){
-            localStorage.removeItem('cartItems')
-        }
-        let cartCount = 0;
-        const storedCartItems = localStorage.getItem('cartItems');
-        const cartItems = storedCartItems ? storedCartItems : [];
-        if (storedCartItems) {
-            cartItems = JSON.parse(storedCartItems);
-            cartCount = cartItems.length;
-            $(".cart-count").html(cartCount);
-        }
->>>>>>> 46815d8b77719348eeafb66e776b703fcd72bdb0
         $('.add_cart').on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('product_id');
@@ -463,6 +422,6 @@ $(document).ready(function() {
 
         });
 
-        
+
     </script>
 @endpush
