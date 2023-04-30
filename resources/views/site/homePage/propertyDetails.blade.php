@@ -506,33 +506,55 @@ $('.liked').click(function(anyothername) {
                 });   
           
     });
-    $('.add_cart').on("click", function (e) {
-        e.preventDefault();
-         var id = $(this).attr('product_id');  
-          var quantity = $('.num').text();
-         $.ajax({
+    if($(".cart-count")[0].innerHTML === "0"){
+            localStorage.removeItem('cartItems')
+        }
+        let cartCount = 0;
+        const storedCartItems = localStorage.getItem('cartItems');
+        const cartItems = storedCartItems ? storedCartItems : [];
+        if (storedCartItems) {
+            cartItems = JSON.parse(storedCartItems);
+            cartCount = cartItems.length;
+            $(".cart-count").html(cartCount);
+        }
+        $('.add_cart').on("click", function(e) {
+            e.preventDefault();
+            var id = $(this).attr('product_id');
+            $.ajax({
                 type: "post",
                 url: "{{ route('cart.store') }}",
-                data: { _token: '{{ csrf_token() }}',
-                     "product_id" : id,
-                     "quantity" : quantity??1
-                    },
-                    dataType: 'json',              // let's set the expected response format
-                    success: function (data) {
-                        location.reload();
-                       
-                    },
-                    error: function (err) {
-                        if (err.status == 422) { // when status code is 422, it's a validation issue
-                            console.log(err.responseJSON);
-                            $('#success_message_notifications').fadeIn().html('<div class="alert alert-danger border-0 alert-dismissible">' + err.responseJSON.message +'</div>');
-
-
-                        }
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    "product_id": id,
+                    "quantity": 1
+                },
+                dataType: 'json', // let's set the expected response format
+                success: function(data) {
+                    flashBox('success', '{{ __('Added to cart') }}');
+                    const productIndex = cartItems.findIndex(item => item.id === id);
+                    if (productIndex >= 0) {
+                        alert('This product is already in your cart!');
+                        return;
                     }
-                });   
-          
-    });
+
+                    cartItems.push({ id });
+                    cartCount++;
+                    $(".cart-count").html(cartCount);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                },
+                error: function(err) {
+                    if (err.status == 422) { // when status code is 422, it's a validation issue
+                        console.log(err.responseJSON);
+                        $('#success_message_notifications').fadeIn().html(
+                            '<div class="alert alert-danger border-0 alert-dismissible">' + err
+                            .responseJSON.message + '</div>');
+
+
+                    }
+                }
+            });
+
+        });
 </script>
 @endpush
 
