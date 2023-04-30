@@ -53,6 +53,20 @@
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
+        if (Notification.permission !== "granted") {
+        Notification.requestPermission().then(function (permission) {
+            if (permission === "granted") {
+            // User granted permission, set cookies here
+            }
+        });
+        } else {
+        // Cookies have already been granted, set cookies here
+        }
+
+
+
+
+
 
 
         // This is your test publishable API key.
