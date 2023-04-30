@@ -302,7 +302,6 @@ $('.add_cart').on("click", function (e) {
                      "quantity" : 1},
                     dataType: 'json',              // let's set the expected response format
                     success: function (data) {
-                      flashBox('success', 'تمت الاضافة الى السلة');
                        
                     },
                     error: function (err) {
