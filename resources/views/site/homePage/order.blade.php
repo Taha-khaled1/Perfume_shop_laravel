@@ -105,10 +105,10 @@
     <label for="District"  > {{__('Region')}}</label>
     <input type="text" name="Blve" class="form-control" id="أدخل رقم الجادة" value="@if($add == 1) {{$address->Blve}} @else {{old('Blve')}}  @endif">
   </div>
-  {{-- <div class="mb-3">
+  <div class="mb-3">
     <label for="flat"  > {{__('Apartment/House')}}</label>
     <input type="text" name="house" class="form-control" id="flat" placeholder="أدخل رقم/اسم الشقة/المنزل" value="@if($add == 1) {{$address->house}} @else {{old('house')}}  @endif" maxlength="100"  >
-  </div> --}}
+  </div>
   <div class="mb-3">
     <label for="mobile-number"  > {{__('Mobile number')}}</label>
     @error('phone')
@@ -149,12 +149,15 @@
 @foreach ($adrees as $item)
 <div class="bg-light p-2 border mb-2">
     <input type="radio" name="address" value="{{$item->id}}">
+
     <span>{{$item->area}},{{$item->Blvd}},{{$item->house}}, {{$item->phone}}</span>
 </div>
-<input type="text" name="namdfdfe" value="{{$item->name}}" hidden>
+<input type="text" name="readio" value="yesss" hidden>
+<input type="text" name="name" value="{{$item->name}}" hidden>
 <input type="text" name="email" value="{{$item->email}}" hidden>
 <input type="text" name="area" value="{{$item->area}}" hidden>
 <input type="text" name="Blve" value="{{$item->Blvd}}" hidden>
+<input type="text" name="house" value="{{$item->house}}" hidden>
 <input type="text" name="phone" value="{{$item->phone}}" hidden>
 @endforeach
 

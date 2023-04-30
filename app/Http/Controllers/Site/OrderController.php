@@ -78,16 +78,16 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => ['required'],
-            'name' => ['required'],
+            'email' => 'required',
+            'name' => 'required',
             // 'area' => ['required'],
-            'phone' => ['required' , 'numeric'],
+            'phone' => 'required',
             // 'street' => ['required'],
-           'payment_method' => ['required'],
+           'payment_method' => 'required',
 
         ] );
             
-
+        $userId = auth()->user()->id;
 
 
 
@@ -119,7 +119,7 @@ class OrderController extends Controller
         if ($data1) {
             // try {
                 if(auth()->user()){
-                    $userid = auth()->user()->id;
+                    $userid = $userId;
                     $data1->user_id = $userid;
                 }
                  if(isset($user)){
@@ -156,12 +156,13 @@ class OrderController extends Controller
                 $address = new OrderAddress();
             
                 $address->order_id = $data1->id;
+                $address->user_id = $userId;
                 $address->name = $request->name??"null";
                 $address->email = $request->email;
                 $address->area = $request->area;
                 // $address->street = $request->street;
                 $address->Blvd = $request->Blvd;
-                // $address->house = $request->house;
+                $address->house = $request->house ?? "house";
                 $address->phone = $request->phone;
                     $address->save();
                 // return $this->cart->get();
@@ -180,30 +181,32 @@ class OrderController extends Controller
                 }
 
 
-                $user = auth()->user()->id;
+                
                 $city = City::where('name',$request->area)->first();
-                $data = new Address();
-        if ($data) {
-            // try {
-                $data->user_id = $user;
-                $data->name = $request->name??"null";
-                $data->email = $request->email;
-                $data->area = $request->area;;
+if ($request->readio != "yesss") {
+    $data = new Address();
+    if ($data) {
+        // try {
+            $data->user_id = $userId;
+            $data->name = $request->name??"null";
+            $data->email = $request->email;
+            $data->area = $request->area;
 
-                $data->Shipping = $city->price??"10";
-                $data->street = $request->street??"-";
-                $data->Blvd = $request->Blvd??"-";
-                $data->house = $request->house??"-";
+            $data->Shipping = $city->price??"10";
+            $data->street = $request->street??"-";
+            $data->Blvd = $request->Blve??"-";
+            $data->house = $request->house??"-";
 
 
-                $data->phone = $request->phone;
-                $data->save();
+            $data->phone = $request->phone;
+            $data->save();
+    
+        // notify()->success('تم اضافة العنوان !');
         
-            // notify()->success('تم اضافة العنوان !');
-            
 
 
-        } 
+    } 
+}
 
                $data8 = new Payment();
       
