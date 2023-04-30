@@ -145,11 +145,11 @@
                                                              <tr>
                                                               <th scope="col"> {{__('Name')}} </th>
                                                               <th scope="col">   {{__('Email')}} </th>
-                                                              <th scope="col">   {{__('Region')}}</th>
-                                                              <th scope="col"> {{__('Street')}}</th>
+                                                              <th scope="col">   {{__('Principality')}}</th>
+                                                              {{-- <th scope="col"> {{__('Street')}}</th> --}}
                                                               <th scope="col"> {{__('Mobile number')}}</th>
                                                               <th scope="col"> {{__('Apartment/House')}} </th>
-                                                              <th scope="col">  {{__('Blvd')}} </th>
+                                                              <th scope="col">  {{__('Region')}} </th>
                                                               <th scope="col">  {{__('delete')}} </th>
                                                             </tr>
                                                           </thead>
@@ -159,7 +159,7 @@
                                                             <th scope="row">{{$address->name}}</th>
                                                               <td>{{$address->email}}</td>
                                                               <td >{{$address->area}}</td>
-                                                              <th >{{$address->street}}</th>
+                                                              {{-- <th >{{$address->street}}</th> --}}
                                                               <td>{{$address->phone}}</td>
                                                               <td>{{$address->house}}</td>
                                                               <td>{{$address->Blvd}}</td>
@@ -216,14 +216,14 @@
                 @error('street')
                             <small class="form-text text-danger">{{$message}}</small>
                             @enderror
-                <input type="text" class="form-control" name="street"  value="{{old('street')}}" placeholder=" {{__('Region')}}   " maxlength="100" required>
+                <input type="text" class="form-control" name="Blvd"  value="{{old('Blvd')}}" placeholder=" {{__('Region')}}   " maxlength="100" required>
               </div><br>
 
 
               <div class="pb-8">
              {{-- <label style="color:black" >  {{__('Add an address')}} </label><br> --}}
           
-                <input type="text" class="form-control" name="Blvd"  value="****" placeholder=" {{__('Blvd')}}   " maxlength="100" hidden ><br>
+                <input type="text" class="form-control" name="street"  value="****" placeholder=" {{__('street')}}   " maxlength="100" hidden ><br>
               </div><br>
 
 

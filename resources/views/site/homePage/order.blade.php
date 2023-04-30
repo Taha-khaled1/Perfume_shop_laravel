@@ -40,6 +40,9 @@
 
             
 @if (count($adrees) <= 0 )
+
+
+
 <div class="mb-3">
     <label for="full-name" class="form-label"> {{__('Full Name')}}</label>
     @error('name')
@@ -84,7 +87,8 @@
 
 
     @endforeach
-  </select> <br>
+  </select>
+   <br>
 </div>
 
 
@@ -136,25 +140,53 @@
      <input type="password" class="form-control" name="password_confirmation" aria-label="user-password" aria-describedby="user-password">
     </div></div>
     @endif --}}
-  <div class="mb-3">
+
+
+  
+
+@else
+
+@foreach ($adrees as $item)
+<div class="bg-light p-2 border mb-2">
+    <input type="radio" name="address" value="{{$item->id}}">
+    <span>{{$item->area}},{{$item->Blvd}},{{$item->house}}, {{$item->phone}}</span>
+</div>
+<input type="text" name="namdfdfe" value="{{$item->name}}" hidden>
+<input type="text" name="email" value="{{$item->email}}" hidden>
+<input type="text" name="area" value="{{$item->area}}" hidden>
+<input type="text" name="Blve" value="{{$item->Blvd}}" hidden>
+<input type="text" name="phone" value="{{$item->phone}}" hidden>
+@endforeach
+
+
+
+@endif
+
+
+<div class="mb-3">
     <label for="add-nots"  > {{__('Notes with the order')}}</label>
     <textarea class="form-control" name="nots" id="add-nots" cols="10" maxlength="300"  rows="5"></textarea>
   </div>
 
-  <div class="mb-1  ">
+  
+<div class="mb-1  ">
     <input class="form-check-input" type="checkbox" value="" id="accept-terms"  required >
     <label for="accept-terms">
              {{__('I agree to the terms and conditions')}}
     </label>
   </div>
-
-@else
-<div class="bg-light p-2 border mb-2">
-    <input type="radio" name="address">
-    <span>الجيزة,الدقي, 15615</span>
-</div>
-@endif
 @endauth
+
+
+
+
+
+
+
+
+
+
+
         </div>
         <div class="col-md-2 payment-details"></div>
         <div class="col-md-4 do-you-have-discount-code  bg-gray">
