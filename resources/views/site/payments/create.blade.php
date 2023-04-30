@@ -71,7 +71,8 @@
             } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "same-origin"
                 },
                 body: JSON.stringify({
                     "_token": "{{ csrf_token() }}",
