@@ -379,9 +379,7 @@ $(document).ready(function() {
     });
 });
 
-<<<<<<< HEAD
        
-=======
         $('.liked').click(function(anyothername) {
             //  e.preventDefault();
 
@@ -397,7 +395,7 @@ $(document).ready(function() {
                 },
                 dataType: 'json', // let's set the expected response format
                 success: function(data) {
-                    console.log(data)
+                    flashBox('success', '{{ __('Added to favorite') }}');
                 },
                 error: function(err) {
                     if (err.status == 422) { // when status code is 422, it's a validation issue
@@ -423,7 +421,6 @@ $(document).ready(function() {
             cartCount = cartItems.length;
             $(".cart-count").html(cartCount);
         }
->>>>>>> 46815d8b77719348eeafb66e776b703fcd72bdb0
         $('.add_cart').on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('product_id');
