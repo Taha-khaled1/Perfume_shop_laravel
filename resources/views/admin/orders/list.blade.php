@@ -177,13 +177,13 @@
                                                                                 type="button" id="statusDropdown"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                @if ($c->payment_method == 'pending')
+                                                                                @if ($c->payment->status == 'pending')
                                                                                     <span class="badge bg-info">في انتظار
                                                                                         الدفع</span>
-                                                                                @elseif($c->payment_method == 'completed')
+                                                                                @elseif($c->payment->status== 'completed')
                                                                                     <span class="badge bg-primary">تم
                                                                                         الدفع</span>
-                                                                                @elseif($c->payment_method == 'failed')
+                                                                                @elseif($c->ppayment->status == 'failed')
                                                                                     <span class="badge bg-success">تم الغاء
                                                                                         الدفع</span>
                                                                                 @else

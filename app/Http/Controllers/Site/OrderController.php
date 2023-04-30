@@ -18,7 +18,8 @@ use App\Models\OrderAddress;
 use App\Notifications\OrderRequest;
 use Illuminate\Support\Facades\Notification;
 use App\Models\OrderItem;
-use App\Models\Address; 
+use App\Models\Address;
+use App\Models\Payment;
 use App\Models\Setting; 
 
 use App\Repositories\Cart\CartRepository;
@@ -105,11 +106,7 @@ class OrderController extends Controller
             try{
 
                 
-if ($request->payment_method == "check") {
-    # code...
-} else {
-    # code...
-}
+
 
 
 
@@ -131,6 +128,21 @@ if ($request->payment_method == "check") {
                 $data1->payment_method = $request->payment_method;
                 $data1->shipping = $request->shipping;
                 $data1->total = $request->total;
+                if ($request->payment_method == "check") {
+                    $data1->status = 5;
+                } else{
+                    $noty = new Notfication();
+
+                    $noty->title="طلب جديد";
+                    $user = auth()->user();
+                    if ($user) {
+                        $name = $user->fname;
+                        $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
+                    }else{
+                        $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
+                    }
+                    $noty->save();
+                }
                 $data1->save();
 
                 $address = new OrderAddress();
@@ -178,24 +190,32 @@ if ($request->payment_method == "check") {
 
                 $data->phone = $request->phone;
                 $data->save();
-                $noty = new Notfication();
-
-                $noty->title="طلب جديد";
-                $user = auth()->user();
-                if ($user) {
-                    $name = $user->fname;
-                    $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
-                }else{
-                    $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
-                }
-                $noty->save();
+        
             // notify()->success('تم اضافة العنوان !');
             
 
 
         } 
 
+               $data8 = new Payment();
+      
+            // try {
+                $data8->order_id = $data1->id;
+                $data8->amount = "5";
+                $data8->currency = "USD";
+               
+                $data8->method = $request->payment_method;
 
+                $data8->status = "pending";
+                $data8->transaction_id = "1";
+                $data8->transaction_data = "1";
+       
+                $data8->save();
+            // notify()->success('تم اضافة العنوان !');
+            
+
+
+      
 
           
 
