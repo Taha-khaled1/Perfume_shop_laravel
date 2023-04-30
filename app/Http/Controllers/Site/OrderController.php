@@ -119,11 +119,11 @@ class OrderController extends Controller
         if ($data1) {
             // try {
                 if(auth()->user()){
-                    $userid = $userId;
-                    $data1->user_id = $userid;
+                    $userid = auth()->user()->id;
+                    $data1->user_id = auth()->user()->id;
                 }
                  if(isset($user)){
-                    $data1->user_id = $user->id;
+                    $data1->user_id = auth()->user()->id;
                 }
                 
                 $data1->nots = $request->nots;
@@ -156,7 +156,7 @@ class OrderController extends Controller
                 $address = new OrderAddress();
             
                 $address->order_id = $data1->id;
-                $address->user_id = $userId;
+                $address->user_id = auth()->user()->id;
                 $address->name = $request->name??"null";
                 $address->email = $request->email;
                 $address->area = $request->area;
@@ -187,7 +187,7 @@ if ($request->readio != "yesss") {
     $data = new Address();
     if ($data) {
         // try {
-            $data->user_id = $userId;
+            $data->user_id = auth()->user()->id;
             $data->name = $request->name??"null";
             $data->email = $request->email;
             $data->area = $request->area;
