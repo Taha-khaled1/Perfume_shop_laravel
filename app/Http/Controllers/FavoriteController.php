@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Favorite;
 use App\Models\Notfication;
 use App\Models\Product;
@@ -83,8 +85,13 @@ class FavoriteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {$n=Notfication::where('read','0')->get(); 
+        $city = City::find($id);
+     return view('admin.countries.profileedit',
+     
+     [ 'city' => $city,     'notf'=>$n,    ]
+    
+    );
     }
 
     /**
@@ -93,9 +100,15 @@ class FavoriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $city = City::find($request->id);
+        // $city->country_id = $country->id;
+        $city->name = $request->city ;  
+        $city->name_en = $request->cityen ;  
+        $city->price = $request->price ;          
+        $city->save();
+        return back();
     }
 
     /**

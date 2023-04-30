@@ -36,37 +36,30 @@
                                            aria-selected="true">  تعديل</a>
                                     </li>
                                     
-                                    <li class="nav-item"> 
-                                        <a class="nav-link" data-bs-toggle="tab" href="#Settings" role="tab"
-                                           aria-selected="false">  مناطق الدولة</a>
-                                    </li>
+                                
                                 </ul>
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane p-3 active" id="Post" role="tabpanel">
-                                     <form name="" method="post" action="{{ route('admin.country.edit') }}"   enctype= "multipart/form-data" >
+                                     <form name="" method="post" action="{{ route('favorites.edit') }}"   enctype= "multipart/form-data" >
                                      @csrf
-                                     <input   type="text" name="id" value="{{$country->id}}"  style="display:none;">
+                                    
 
                                         <div class="row">
-                                        <div class="mb-3 row">
-                                            <label for="example-text-input" class="col-sm-1 col-form-label text-end">اسم الدولة</label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control" name="name" type="text" value="{{$country->name}}" id="example-text-input">
-                                            </div>
-                                        </div>
+                                    
                                         <div class="col-sm-9 col-lg-9">
                                              <label for="example-text-input" class="col-sm-1 col-form-label text-end">اضافة مناطق</label>
                                                 <div id="myRepeatingFields">
                                                     <div class="entry input-group col-xs-3">
                                                         <table class="table meeting-table class-table">
                                                             <tr>
-                                                                <td><input type="text" name="city[]" maxlength="100" class="form-control" placeholder="اسم المدينة بالعربي"/></td> 
-                                                                <td><input type="text" name="cityen[]" maxlength="100" class="form-control" placeholder="اسم المدينة بلانجليزي"/></td>
-                                                                    <td><input type="number" name="price[]" maxlength="10" class="form-control" placeholder="سعر المدينة"/></td> 
+                                                                <input type="text" value="{{$city->id}}" name="id" hidden>
+                                                                <td><input type="text" name="city" maxlength="100" class="form-control" value="{{$city->name}}" placeholder="اسم المدينة بالعربي"/></td> 
+                                                                <td><input type="text" name="cityen" maxlength="100" class="form-control" value="{{$city->name_en}}" placeholder="اسم المدينة بلانجليزي"/></td>
+                                                                    <td><input type="number" name="price" maxlength="10" class="form-control" value="{{$city->price}}" placeholder="سعر المدينة"/></td> 
                                                                     <td>  <button type="button" class="btn btn-lg btn-add">
-                                                                <span class="glyphicon glyphicon-plus" aria-hidden="true">+</span>
+                                                              
                                                             </button></td>
                                                             </tr>
                                                         </table>
@@ -94,42 +87,7 @@
                                         </div><!--end row-->
 
                                     </div>
-                                    <div class="tab-pane p-3" id="Settings" role="tabpanel">
-                                        <div class="row">
-                                        <div class="card">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-striped">
-                                                            <thead class="thead-light">
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>المدينة</th>
-                                                                <th>سعر التوصيل</th>
-                                                                <th>Action</th>
-                                                                
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach($country->cities->sortBy('name') as $c)
-                                                                <tr class="R_city{{$c->id}}">
-                                                                    <td>{{ $c->id }}</td>
-                                                                    <td>{{ $c->name }} </td>
-                                                                    <td>{{ $c->price }} </td>
-
-                                                                    <td> 
-                                                                        <span>  <a href="{{ route('favorites.show',$c->id)}}"><i class="icofont-edit  text-secondary font-20"></i></a></span>
-                                                                        <span> <a href="#!" class="deletem_b" deletem_b="{{$c->id}}"><i class="fa fa-trash text-danger"></i></a></span></td>
-                                                                    
-                                                                </tr>
-                                                            @endforeach
-                                                            
-                                                            </tbody>
-                                                        </table><!--end /table-->
-                                                    </div>
-                                                </div>
-
-                                            </div><!--end col-->
-                                        </div><!--end row-->
-                                    </div>
+                                    
                                 </div>
                             </div> <!--end card-body-->
                         </div><!--end card-->
@@ -189,74 +147,5 @@
 
 @endsection
 @push('js')
-<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
-<script> 
- 
- 
-  $(function () {
-        $(document)
-            .on("click", ".btn-add", function (e) {
-                e.preventDefault();
-                var controlForm = $("#myRepeatingFields:first"),
-                    currentEntry = $(this).parents(".entry:first"),
-                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
-                newEntry.find("input").val("");
-                controlForm.find(".entry:not(:last) .btn-add").removeClass("btn-add").addClass("btn-remove").removeClass("btn-success").addClass("btn-danger").html("-");
-            })
-            .on("click", ".btn-remove", function (e) {
-                e.preventDefault();
-                $(this).parents(".entry:first").remove();
-                return false;
-            });
-    });
-
-</script>
-<script>
-$('.deletem_b').on("click", function (e) {
-              //  e.preventDefault();
-               
-         var id = $(this).attr('deletem_b');
-         
-         Swal.fire({
-            title: 'هل أنت متأكد?',
-            text: "لن تتمكن من التراجع عن هذا!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'حذف!',
-            cancelButtonText: 'إلفاء!',
-            }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                type: "post",
-                url: "{{ route('delete_city') }}",
-                data: { _token: '{{ csrf_token() }}',
-                     "id" : id },
-                    dataType: 'json',              // let's set the expected response format
-                    success: function (data) {
-                        $(".R_city"+ data.id).remove();
-                        flashBox('success', ' تم الحذف');
-
-                    },
-                    error: function (err) {
-                        if (err.status == 422) { // when status code is 422, it's a validation issue
-                            console.log(err.responseJSON);
-                            $('#success_message_notifications').fadeIn().html('<div class="alert alert-danger border-0 alert-dismissible">' + err.responseJSON.message +'</div>');
-
-
-                        }
-                    }
-                });                   Swal.fire(
-                'تم الحذف!',
-                'تم الحذف بنجاح.',
-                'success'
-                )
-            }
-            })
-
-          
-    });
- </script>
 @endpush
