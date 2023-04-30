@@ -161,7 +161,7 @@ class OrderController extends Controller
                 $address->email = $request->email;
                 $address->area = $request->area;
                 // $address->street = $request->street;
-                $address->Blvd = $request->Blvd;
+                $address->Blvd = $request->Blve;
                 $address->house = $request->house ?? "house";
                 $address->phone = $request->phone;
                     $address->save();
