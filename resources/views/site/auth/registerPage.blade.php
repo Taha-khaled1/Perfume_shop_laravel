@@ -63,6 +63,9 @@
                                         @endif
                             <input type="text" name="lname" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
                             </div>
+
+
+                            
             <div class="mb-3">
                 <label for="user-name-or-email" class="form-label">  {{__('Email')}} </label>
                 @error('email')

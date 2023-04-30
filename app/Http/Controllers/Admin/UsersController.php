@@ -37,7 +37,9 @@ class UsersController extends Controller
         if ($mentor) {
             $mentor->fname = $request->first_name;
             $mentor->lname = $request->last_name;
-            $mentor->address = $request->address;
+            $mentor->address = $request->address;         
+             $mentor->Blvd = $request->Blvd;
+            $mentor->phone = $request->phone;
             $mentor->country_id = $request->country_id;
             $mentor->city_id = $request->city_id;
             $mentor->email = $request->email ;

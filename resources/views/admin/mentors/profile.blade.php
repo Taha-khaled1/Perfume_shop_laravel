@@ -103,12 +103,14 @@
                                                         </div>  <!--end row-->
                                                     </div><!--end card-header-->
                                                     <div class="card-body">
+
                                                         <form name="" method="post" action="{{ route('admin.user.save',[$mentor->id]) }}">
+
                                                             @csrf
                                                         <div class="form-group mb-3 row">
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">الاسم الاول</label>
                                                             <div class="col-lg-9 col-xl-8">
-                                                                <input class="form-control" type="text" value="{{ $mentor->fname }}" maxlength="100" name="first_name">
+                                                                <input class="form-control" type="text" value="{{ $mentor->fname }}" maxlength="100" name="first_name"> 
                                                             </div>
                                                         </div>
                                                         <div class="form-group mb-3 row">
@@ -129,18 +131,26 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group mb-3 row">
+
+
+
+                                                        {{-- <div class="form-group mb-3 row">
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">الامارة</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <input class="form-control" type="text" value="{{ $mentor->phone_number }}" maxlength="100" name="address">
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
+
                                                         <div class="form-group mb-3 row">
+                                                            @php
+                                                                     $p=   $mentor->Blvd??"لم يتم اضافة منطقه";
+                                                            @endphp
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">المنطقة</label>
                                                             <div class="col-lg-9 col-xl-8">
-                                                                <input class="form-control" type="text" value="{{ $mentor->phone_number }}" maxlength="100" name="address">
+                                                                <input class="form-control" type="text" value="{{ $p}}" maxlength="100" name="Blvd">
                                                             </div>
                                                         </div>
+
                                                         <div class="mb-3 row">
                                                                     <label   class="col-sm-3 col-form-label text-end">الدولة</label>
                                                                     <div class="col-lg-9 col-xl-8">
@@ -170,7 +180,7 @@
 
 
                                                                 <div class="mb-3 row">
-                                                                    <label   class="col-sm-3 col-form-label text-end">المدينة</label>
+                                                                    <label   class="col-sm-3 col-form-label text-end">الامارة</label>
                                                                     <div class="col-lg-9 col-xl-8">
                                                                     @error('city_id')
                                                             <small class="form-text text-danger">{{$message}}</small>
@@ -186,13 +196,16 @@
                                                             <div class="form-group mb-3 row">
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">العنوان</label>
                                                             <div class="col-lg-9 col-xl-8">
-                                                                <input class="form-control" type="text" value="{{ $mentor->address }}" maxlength="100" name="address">
+                                                                @php
+                                                                 $x=   $mentor->address??"لم يتم اضافة عنوان";
+                                                                @endphp
+                                                                <input class="form-control" type="text" value="{{ $x }}" maxlength="100" name="address">
                                                             </div>
                                                             </div>
                                                             <div class="form-group mb-3 row">
                                                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">رقم الهاتف</label>
                                                                 <div class="col-lg-9 col-xl-8">
-                                                                    <input class="form-control" type="text" value="{{ $mentor->phone_number }}" maxlength="100" name="address">
+                                                                    <input class="form-control" type="text" value="{{ $mentor->phone }}" maxlength="100" name="phone">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group mb-3 row">

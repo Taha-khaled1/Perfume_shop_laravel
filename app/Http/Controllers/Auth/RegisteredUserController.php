@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Notfication;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -27,8 +29,9 @@ class RegisteredUserController extends Controller
          $this->cart = $cart;
      }
     public function create()
-    {
-        return view('site.auth.registerPage',['cart' => $this->cart]);
+    {   $countries =Country::all();
+        $city=City::all();
+        return view('site.auth.registerPage',['cart' => $this->cart,'countries'=>$countries ,'city'=>$city]);
     }
 
     /**
@@ -64,11 +67,13 @@ class RegisteredUserController extends Controller
          
         $email = $request['email'];
         list($username, $domain) = explode('@', $email); 
-
+          $cuntryId=Country::first();
         if (checkdnsrr($domain, 'MX')) {
         $user = User::create([
             'fname' => $request->fname,
             'lname' => $request->lname,
+            "country_id"=>$cuntryId->id,
+            'Blvd' => $request->Blvd??"لم يتم كتابة المنطقه",
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
