@@ -212,11 +212,11 @@
                                                      @endforeach
                                                  </select>               </div><br><br>
               <div class="pb-8">
-            <p style="color:red">* <label style="color:black" > {{__('Street')}} </label></p> 
+            <p style="color:red">* <label style="color:black" > {{__('Region')}} </label></p> 
                 @error('street')
                             <small class="form-text text-danger">{{$message}}</small>
                             @enderror
-                <input type="text" class="form-control" name="street"  value="{{old('street')}}" placeholder=" {{__('Street')}}   " maxlength="100" required>
+                <input type="text" class="form-control" name="street"  value="{{old('street')}}" placeholder=" {{__('Region')}}   " maxlength="100" required>
               </div><br>
 
 
