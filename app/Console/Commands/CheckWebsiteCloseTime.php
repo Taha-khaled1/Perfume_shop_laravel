@@ -42,13 +42,14 @@ class CheckWebsiteCloseTime extends Command
         $closeTime = $webclose->close_time;
         $now = Carbon::now();
         echo $closeTime . $now ;
-        if ($closeTime->format('Y-m-d H:i') === $now->format('Y-m-d H:i')) {
+        if ($closeTime->format('Y-m-d H:i') == $now->format('Y-m-d H:i')) {
             $webclose->actv = 1;
             $webclose->save();
-
             $this->info('Website is now closed.');
+            echo "Website is now closed. Close Time: $closeTime, Now: $now";
         } else {
             $this->info('Website is still open.');
+            echo "Website is still open. Close Time: $closeTime, Now: $now";
         }
     }
 }
