@@ -143,11 +143,11 @@
 
                                                         <div class="form-group mb-3 row">
                                                             @php
-                                                                     $p=   $mentor->Blvd??"لم يتم اضافة منطقه";
+                                                                $p=$mentor->Blvd??"";
                                                             @endphp
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">المنطقة</label>
                                                             <div class="col-lg-9 col-xl-8">
-                                                                <input class="form-control" type="text" value="{{ $p}}" maxlength="100" name="Blvd">
+                                                                <input class="form-control" type="text" value="{{$p}}" maxlength="100" name="Blvd">
                                                             </div>
                                                         </div>
 
@@ -197,7 +197,7 @@
                                                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">العنوان</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 @php
-                                                                 $x=   $mentor->address??"لم يتم اضافة عنوان";
+                                                                 $x=   $mentor->address??"";
                                                                 @endphp
                                                                 <input class="form-control" type="text" value="{{ $x }}" maxlength="100" name="address">
                                                             </div>
@@ -400,30 +400,39 @@
 
     
     $(document).ready(function () {
-        // setTimeout(() => {
-        //     $('select[name="country_id"]')
-        // const selectBox = document.getElementById("country_id");
-        // const searchValue = "الإمارات";
-        // for (let i = 0; i < selectBox.options.length; i++) {
-        // if (selectBox.options[i].outerText === searchValue) {
-        //     selectBox.selectedIndex = i;
-        //     $.ajax({
-        //         url: "{{ URL::to('get_cities') }}/" + selectBox.options[i].value,
-        //         type: "GET",
-        //         dataType: "json",
-        //         success: function (data) {
-        //             $('select[name="city_id"]').empty();
-        //             $('select[name="city_id"]').append('<option selected disabled value="" >اختار مدينة</option>');
-        //             $.each(data, function (key, value) {
-        //                 $('select[name="city_id"]').append('<option value="' + key + '">' + value + '</option>');
-        //             });
+            $('select[name="country_id"]')
+        const selectBox = document.getElementById("country_id");
+        const searchValue = "الإمارات";
+        for (let i = 0; i < selectBox.options.length; i++) {
+        if (selectBox.options[i].outerText === searchValue) {
+            selectBox.selectedIndex = i;
+            $.ajax({
+                url: "{{ URL::to('get_cities') }}/" + selectBox.options[i].value,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    // $('select[name="city_id"]').empty();
+                    console.log()
+                    $('select[name="city_id"]').append('<option selected disabled value="" >اختار مدينة</option>');
 
-        //         },
-        //     });
-        //     break;
-        // }
-        // }
-        // }, 5000);
+                    $.each(data, function (key, value) {
+                        if($('select[name="city_id"] option').val() == key){
+                            $('select[name="city_id"] option:nth-child(2)').remove()
+                            return
+                            // break;
+                        }else{
+                            $('select[name="city_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        }
+                        
+                        
+                    });
+                    console.log()
+
+                },
+            });
+            break;
+        }
+        }
         $('select[name="country_id"]').on('change', function () {
             var country = $(this).val();
             if (country) {
