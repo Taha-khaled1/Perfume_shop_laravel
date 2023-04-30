@@ -183,6 +183,7 @@ class OrderController extends Controller
 
                 
                 $city = City::where('name',$request->area)->first();
+                
 if ($request->readio != "yesss") {
     $data = new Address();
     if ($data) {

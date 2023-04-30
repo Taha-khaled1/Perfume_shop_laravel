@@ -152,8 +152,8 @@
                data-house="{{$item->house}}" data-phone="{{$item->phone}}">
         <span>{{$item->area}},{{$item->Blvd}},{{$item->house}}, {{$item->phone}}</span>
     </div>
-@endforeach
-
+@endforeach 
+<input type="hidden" name="readio" id="readio" value="yesss" hidden>
 <input type="hidden" name="name" id="name" value="">
 <input type="hidden" name="email" id="email" value="">
 <input type="hidden" name="area" id="area" value="">
