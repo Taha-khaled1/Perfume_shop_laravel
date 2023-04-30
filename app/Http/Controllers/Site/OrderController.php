@@ -83,6 +83,10 @@ class OrderController extends Controller
 
         ] );
             
+
+
+
+
             if($this->cart->total() == 0){
                 // notify()->error( __('The cart is empty'));
     
@@ -96,18 +100,21 @@ class OrderController extends Controller
                 //'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 
             ] );
              
-            // $user = User::create([
-                
-            //     'phone' => $request->phone,
-            //     'email' => $request->email,
-            //     'password' => Hash::make($request->password),
-            //     'status' => '1',
-            //     'type' => '1'
-            // ]); 
+           
         }
             try{
 
                 
+if ($request->payment_method == "check") {
+    # code...
+} else {
+    # code...
+}
+
+
+
+
+
         $data1 = new Order();
         if ($data1) {
             // try {
@@ -181,6 +188,7 @@ class OrderController extends Controller
                 }else{
                     $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
                 }
+                $noty->save();
             // notify()->success('تم اضافة العنوان !');
             
 
