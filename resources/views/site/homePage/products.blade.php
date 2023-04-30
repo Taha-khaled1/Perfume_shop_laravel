@@ -50,7 +50,7 @@
                         {{$product->name}}
                         @endif
                     </h4>
-                    <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}</h6>
+                    <h6 class="text-center py-2">{{$product->price}} {{__('AED')}}           </h6>
                     @if ($product->quantity != 0)
                     <a class="btn btn-primary add_cart border-0" product_id="{{$product->id}}" >{{__('Add to cart')}}</a>
                     @endif

@@ -111,7 +111,7 @@
                                                     @if ($product->name_en != null)
                                                         @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                                                             {{ $product->name }}
-                                                  
+                                                            {{getcwd()}}
                                                         @else
                                                             {{ $product->name_en }}
                                                         @endif
