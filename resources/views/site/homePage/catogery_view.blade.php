@@ -24,7 +24,7 @@
                  <div class="d-flex flex-column item">
                  {{-- @if($ca->img) --}}
                 <div class="sort text-center">
-                    <a href="{{route('category_property',$ca->id)}}">
+                    <a href="{{route('category_property',$ca->id)}}" class="text-decoration-none">
                     @if($ca->img)
                     <img src="{{asset('/storage/property/'.$ca->img)}}" alt="" class="custom-imgg">
                     @else
