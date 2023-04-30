@@ -9,7 +9,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Site\PaymentsController;
 use App\Http\Controllers\SlideController;
 use App\Models\Order;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -132,7 +132,25 @@ Route::group(['middleware'=>'auth'],function (){
     Route::post('/securitysettings', [App\Http\Controllers\UserController::class, 'security_settings'])->name('user.settings_security.save');
 
 
-
+    Route::post('/update-payment-status', function (Request $request) {
+        $paymentIntentId = $request->input('paymentIntentId');
+        $orderId = $request->input('orderId');
+    
+        // Get the payment intent from Stripe
+        $paymentIntent = \Stripe\PaymentIntent::retrieve($paymentIntentId);
+    
+        // Update the payment status in your database
+        $order = Order::find($orderId);
+        $order->payment_method = 'completed';
+        $order->status = 1;
+        $order->save();
+    
+        // Update the order status in your database
+        // ...
+        
+        return response()->json(['success' => true]);
+    })->name('update-payment-status');
+    
 
 
 

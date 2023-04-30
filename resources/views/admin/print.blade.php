@@ -218,16 +218,16 @@ th {
 
 
 
-            @if($order->payment->status == 'pending' )                                                                              
-<span class="badge bg-primary"> في انتظار الدفع</span>
-@elseif($order->payment->status == 'completed')
-<span class="badge bg-success">  تم الدفع</span>
-@elseif($order->payment->status == 'failed')
-<span class="badge bg-danger"> تم الغاء الدفع</span>
-@else
-<span class="badge bg-danger"> فشل الدفع</span>
-@endif
-@endif  @endif
+                     @if($order->payment->status == 'pending' )                                                                              
+                    <span class="badge bg-primary"> في انتظار الدفع</span>
+                    @elseif($order->payment->status == 'completed')
+                    <span class="badge bg-success">  تم الدفع</span>
+                    @elseif($order->payment->status == 'failed')
+                    <span class="badge bg-danger"> تم الغاء الدفع</span>
+                    @else
+                    <span class="badge bg-danger"> فشل الدفع</span>
+                    @endif
+                    @endif  @endif
         
         
         

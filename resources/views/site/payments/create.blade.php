@@ -106,6 +106,34 @@
                 },
             });
 
+
+
+                if (error) {
+                showMessage(error.message);
+                setLoading(false);
+                return;
+            }
+
+            // Payment succeeded, update the payment status and order status
+            const orderId = {{$order->id}};
+            const token = "{{ csrf_token() }}";
+
+            // Make an AJAX request to update the order status
+            const response = await  fetch("{{ route('update-payment-status') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-Token": token
+                },
+                body: JSON.stringify({
+                    payment_status: 1,
+                    status: 1,
+                    paymentIntentId: paymentIntent.id,
+                    orderId: {{$order->id}},
+                }),
+            });
+
+
             // This point will only be reached if there is an immediate error when
             // confirming the payment. Otherwise, your customer will be redirected to
             // your `return_url`. For some payment methods like iDEAL, your customer will
