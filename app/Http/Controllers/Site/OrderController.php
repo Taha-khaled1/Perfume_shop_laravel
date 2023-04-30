@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\City;
 use App\Models\Order;
 use App\Models\User;
+use App\Notifications\InvoicePaid;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -131,6 +132,11 @@ class OrderController extends Controller
                 if ($request->payment_method == "check") {
                     $data1->status = 5;
                 } else{
+                    $user=User::all();
+                
+                    $userid = auth()->user()->id;
+                    Notfication::send($user , new InvoicePaid($userid) );
+
                     $noty = new Notfication();
 
                     $noty->title="طلب جديد";

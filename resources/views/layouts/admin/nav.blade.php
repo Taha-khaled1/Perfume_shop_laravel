@@ -83,6 +83,16 @@
                                     </div> 
                                 </div> -->
                             </div>
+                            @php
+                        //     $latestNotf = \App\Models\Notification::latest()->first();
+
+                        // foreach ($notf as $item) {
+                        //     if ($item->created_at > $latestNotf->created_at) {
+                        //         return `<span class="position-absolute bg-danger rounded-circle top-0 bell-notification"></span>`;
+                        //     }
+                        //     // ... your existing code to display the notification
+                        // }   
+                     @endphp  
                             <div class="dropdown ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
                                 <div class="notification-icon">
                                     <i class="fa fa-bell fs-6 me-3 position-relative" role="button" data-bs-toggle="dropdown" data-bs-display="static">
@@ -92,14 +102,7 @@
                                             
                                         @endif
                                         
-                                        {{-- // $latestNotf = \App\Models\Notification::latest()->first();
-
-                                        // foreach ($notf as $item) {
-                                        //     if ($item->created_at > $latestNotf->created_at) {
-                                        //         return `<span class="position-absolute bg-danger rounded-circle top-0 bell-notification"></span>`;
-                                        //     }
-                                        //     // ... your existing code to display the notification
-                                        // }                                             --}}
+                                                                         
                                         
                                     </i>
                                     <span class="badge"></span>
