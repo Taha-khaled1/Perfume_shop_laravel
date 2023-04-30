@@ -45,8 +45,8 @@ class OrderController extends Controller
         }
         $offer = Setting::where('key', 'main_title')->first()->value;;
         $rate = $request->rate;
-        $id = auth()->user()->id;
-        $adrees = Address::where('user_id',$id )->get();
+     
+        $adrees = Address::where('user_id',auth()->user()->id)->get();
         $cities = City::get();
          if($request->address_id){
            $this->address = Address::find($request->address_id);
