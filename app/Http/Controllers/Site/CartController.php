@@ -57,7 +57,7 @@ class CartController extends Controller
                 'message' => 'Item added to cart!',
             ], 201);
         }
-        notify()->success(__('Added successfully'));
+        // notify()->success(__('Added successfully'));
         return redirect()->route('cart.index')
             ->with('success', 'Product added to cart!');
     }
