@@ -76,7 +76,7 @@ class OrderController extends Controller
 
     
     public function store(Request $request)
-    {return $request;
+    {
         $this->validate($request, [
             'email' => ['required'],
             'name' => ['required'],
