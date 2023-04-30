@@ -91,6 +91,16 @@
                                         @else
                                             
                                         @endif
+                                        
+                                        {{-- // $latestNotf = \App\Models\Notification::latest()->first();
+
+                                        // foreach ($notf as $item) {
+                                        //     if ($item->created_at > $latestNotf->created_at) {
+                                        //         return `<span class="position-absolute bg-danger rounded-circle top-0 bell-notification"></span>`;
+                                        //     }
+                                        //     // ... your existing code to display the notification
+                                        // }                                             --}}
+                                        
                                     </i>
                                     <span class="badge"></span>
                                     <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation  p-2 m-0 notification-dropdown" style="width: 400px">
