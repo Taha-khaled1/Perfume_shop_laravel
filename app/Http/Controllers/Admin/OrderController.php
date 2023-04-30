@@ -88,7 +88,7 @@ foreach ($orderss as  $o) {
 
     public function orderss_print_all(Request $request)
     {
-        $order = Order::with('address')->get();
+        $order = Order::where('status','!=','5')->with('address')->get();
         // $address = OrderAddress::where('order_id', $order->id )->first();
         
     
