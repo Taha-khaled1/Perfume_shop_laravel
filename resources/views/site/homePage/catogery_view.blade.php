@@ -24,12 +24,13 @@
                  <div class="d-flex flex-column item">
                  {{-- @if($ca->img) --}}
                 <div class="sort text-center">
+                    <a href="{{route('category_property',$ca->id)}}" class="text-decoration-none">
                     @if($ca->img)
                     <img src="{{asset('/storage/property/'.$ca->img)}}" alt="" class="custom-imgg">
                     @else
                     <img src="{{asset('assets/img/New/9jBoZTrvMNDfqb8ISPRPSAB5W200JUMSLyzdxjaU.png')}}" alt="" class="custom-imgg">
                     @endif
-                    <a href="{{route('category_property',$ca->id)}}">
+                    
                     @if($ca->name_en != null)
                         @if( LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
                         {{$ca->name}}
