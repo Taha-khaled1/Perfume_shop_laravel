@@ -17,7 +17,7 @@ class CountryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function countries_list()
-    {    $n=   Notfication::all(); 
+    {    $n=Notfication::where('read','0')->get(); 
         $countries = Country::all();
         return view('admin.countries.list', [
             'countries' => $countries,     'notf'=>$n,        
@@ -26,7 +26,7 @@ class CountryController extends Controller
 
    
     public function country_profile($id)
-    {    $n=   Notfication::all(); 
+    {    $n=Notfication::where('read','0')->get(); 
         $country = Country::find($id);
         if($country ){
             return view('admin.countries.profile', [

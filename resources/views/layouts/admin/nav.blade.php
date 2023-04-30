@@ -94,20 +94,23 @@
                         // }   
                      @endphp  
                             <div class="dropdown ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
+
+
+
+
+
                                 <div class="notification-icon">
-                                    <i class="fa fa-bell fs-6 me-3 position-relative" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                                    <a class="fa fa-bell fs-6 me-3 position-relative"  role="button" data-bs-toggle="dropdown" data-bs-display="static">
                                         @if (count($notf)>0)
                                         <span class="position-absolute bg-danger rounded-circle top-0 bell-notification"></span>
                                         @else
-                                            
                                         @endif
-                                        
-                                                                         
-                                        
-                                    </i>
+                                    </a>
                                     <span class="badge"></span>
-                                    <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation  p-2 m-0 notification-dropdown" style="width: 400px">
-
+                                    <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation p-2 m-0 notification-dropdown" style="width: 400px">
+                                        <div class="text-end">
+                                            <a href="{{route('favorites.create')}}" class="btn btn-primary mb-2">تعليم الجميع مقروء</a>
+                                        </div>
                                         @foreach ($notf as $item)
                                         <div class="notification p-2 border-bottom">
                                             <a href="#" class="text-decoration-none text-dark">
@@ -116,11 +119,12 @@
                                             </a>
                                         </div>
                                         @endforeach
-                                   
-                                      
                                     </div>
-    
-                                  </div>
+                                </div>
+
+
+
+                                
                                 <div class="u-info me-2">
 
                                     <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">{{auth()->user()->fname ?? 'OUDZ'}} </span></p>

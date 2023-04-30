@@ -46,7 +46,7 @@ class HomeController extends Controller
                 $noty->save();
               
             }
-        }   $n=   Notfication::all();
+        }   $n=Notfication::where('read','0')->get();
         return view('admin.home.index', [
             'orders' => $orders,       
             'orderstoday' => $orderstoday,       
@@ -60,7 +60,7 @@ class HomeController extends Controller
     public function contact(){
         
         $contact = Contact::latest()->get();
-        $n=   Notfication::all();
+        $n=Notfication::where('read','0')->get();
         return view('admin.contact.index', [
             'contact' => $contact,  'notf'=>$n,     
         ]);

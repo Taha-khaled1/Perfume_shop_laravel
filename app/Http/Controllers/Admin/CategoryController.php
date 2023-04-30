@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function categories_list()
-    {$n=   Notfication::all();
+    {$n=Notfication::where('read','0')->get();
         $categories = Category::orderBy('ord', 'ASC')->get();
         return view('admin.categories.list', [
             'categories' => $categories,       'notf'=>$n,
@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
    
     public function category_profile($id)
-    {  $n=   Notfication::all();
+    {  $n=Notfication::where('read','0')->get();
         $categories = Category::all();
 
         $category = Category::find($id);

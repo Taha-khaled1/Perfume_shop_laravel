@@ -19,7 +19,7 @@ class UsersController extends Controller
    
     public function users_list()
     {
-        $mentors = User::get();  $n=   Notfication::all();
+        $mentors = User::get();  $n=Notfication::where('read','0')->get();
         return view('admin.mentors.index',['notf'=>$n])->with('mentors', $mentors);
     }
 

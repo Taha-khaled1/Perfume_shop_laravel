@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Favorite;
+use App\Models\Notfication;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,13 @@ class FavoriteController extends Controller
      */
     public function create()
     {
-        //
+        $not=Notfication::where('read','0')->get();
+        foreach ($not as $n) {
+           $t=Notfication::find($n->id);
+            $t->read=1;
+            $t->save();
+        }
+         return back();
     }
 
     /**

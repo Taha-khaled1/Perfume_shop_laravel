@@ -16,13 +16,13 @@ class AdminsController extends Controller
     //
    
     public function admins_list()
-    {$n=   Notfication::all();
+    {    $n=Notfication::where('read','0')->get();
         $admins = User::where('is_admin', 1)->get();
         return view('admin.admins.index',['notf'=>$n])->with('admins', $admins);
     }
     
     public function add()
-    {  $n=   Notfication::all();
+    {  $n=Notfication::where('read','0')->get();
          return view('admin.admins.add',['notf'=>$n]) ;
     }
 
@@ -50,7 +50,7 @@ class AdminsController extends Controller
 
     public function get_notfication()
     {
-     $n=   Notfication::all();
+     $n=Notfication::where('read','0')->get();
         return view('',['notf'=>$n]);
     }
     

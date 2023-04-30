@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CarouselController extends Controller
 {
     public function carousels_list()
-    {$n=   Notfication::all();
+    {$n=Notfication::where('read','0')->get();
         $carousels = Carousel::all();
         return view('admin.carousels.list', [
             'carousels' => $carousels,'notf'=>$n,         
@@ -20,7 +20,7 @@ class CarouselController extends Controller
 
    
     public function carousel_profile($id)
-    {$n=   Notfication::all();
+    {$n=Notfication::where('read','0')->get();
         $carousel = Carousel::find($id);
         if($carousel ){
             return view('admin.carousels.profile', [

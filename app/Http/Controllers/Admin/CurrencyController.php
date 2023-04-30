@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CurrencyController extends Controller
 {  
     public function currencies_list()
-    { $n=   Notfication::all(); 
+    { $n=Notfication::where('read','0')->get(); 
         $currencies = Currency::all();
         return view('admin.currencies.list', [
             'currencies' => $currencies, 'notf'=>$n,      
@@ -19,7 +19,7 @@ class CurrencyController extends Controller
 
    
     public function currency_profile($id)
-    { $n=   Notfication::all(); 
+    { $n=Notfication::where('read','0')->get(); 
         $currency = Currency::find($id);
         if($currency ){
             return view('admin.currencies.profile', [

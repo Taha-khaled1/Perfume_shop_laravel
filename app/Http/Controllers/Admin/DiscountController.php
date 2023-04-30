@@ -13,7 +13,7 @@ class DiscountController extends Controller
     public function discounts_list()
     {
         $discounts = Discount::all();
-        $cato=Category::all();        $n=   Notfication::all(); 
+        $cato=Category::all();        $n=Notfication::where('read','0')->get(); 
         return view('admin.discounts.list', [
             'discounts' => $discounts,        'catogerys' => $cato,  'notf'=>$n,   
         ]);
@@ -22,7 +22,7 @@ class DiscountController extends Controller
    
     public function discount_profile($id)
     {
-        $discount = Discount::find($id);     $cato=Category::all();        $n=   Notfication::all();
+        $discount = Discount::find($id);     $cato=Category::all();        $n=Notfication::where('read','0')->get();
         if($discount ){
             return view('admin.discounts.profile', [
                 'discount' => $discount,        'catogerys' => $cato,  'notf'=>$n,   

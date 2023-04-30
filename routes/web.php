@@ -181,7 +181,7 @@ Route::group(['middleware'=>'auth'],function (){
 
 
 
-
+    Route::get('/favorites/create',[App\Http\Controllers\FavoriteController::class, 'create'])->name('favorites.create');
 
     Route::get('/favorites/index',[App\Http\Controllers\FavoriteController::class, 'index'])->name('favorites.index');
     Route::post('/favorites/add/{id}',[App\Http\Controllers\FavoriteController::class, 'addFavorite'])->name('favorites.add');
