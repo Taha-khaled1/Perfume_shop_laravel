@@ -42,7 +42,7 @@ class FavoriteController extends Controller
         $favorite = Favorite::where('user_id', $user->id)->where('product_id', $product->id)->firstOrFail();
         $favorite->delete();
     
-        return redirect()->route('favorites.index')->with('success', 'Removed from favorites');
+        return back();
     }
 
 
