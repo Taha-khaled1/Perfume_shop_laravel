@@ -46,7 +46,7 @@
     <script>
         // This is your test publishable API key.
         const stripe = Stripe("{{ $value }}");
-
+        console.log(stripe)
         let elements;
 
         initialize();
