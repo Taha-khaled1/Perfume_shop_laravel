@@ -163,8 +163,8 @@
                 <div class="like-icon">
                     <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/') }}/property/{{$product->id}}&display=popup" target="_blank"><i class="text-dark fs-5 me-2 fa fa-facebook"></i></a>
                     <a class="twitter" href="https://twitter.com/intent/tweet?url={{ url('/') }}/property/{{$product->id}}" target="_blank"><i class="text-dark fs-5 me-2 fa fa-twitter"></i></a>
-                    <a class="whatsapp" href="https://whatsapp.com" target="_blank"><i class="text-dark fs-5 me-2 fa fa-whatsapp"></i></a>
-                    <a class="instagram" href="https://instagram.com" target="_blank"><i class="text-dark fs-5 me-2 fa fa-instagram"></i></a>
+                    <a class="" href="whatsapp://send?text={{url('/property/' . $product->id)}} أود مشاركة هذا المنتج معك" data-action="share/whatsapp/share" target="_blank"><i class="text-dark fs-5 me-2 fa fa-whatsapp"></i></a>
+                    {{-- <a class="instagram" href="instagram://share?text={{url('/property/' . $product->id)}} أود مشاركة هذا المنتج معك" data-action="share/instagram/share" target="_blank"><i class="text-dark fs-5 me-2 fa fa-instagram"></i></a> --}}
 
                 </div>
             </div>
@@ -479,6 +479,14 @@
   
   
   <script>
+    $(".whatsapp")[0].addEventListener('click', () => {
+  const productName = 'Example Product'; // Replace with the actual product name
+  const productUrl = 'https://example.com/product'; // Replace with the actual product URL
+  const message = `Check out ${productName} at ${productUrl}`;
+
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl);
+});
 $('.liked').click(function(anyothername) {
               //  e.preventDefault();
                
