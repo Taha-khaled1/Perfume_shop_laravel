@@ -37,23 +37,23 @@
             @if (LaravelLocalization::getCurrentLocaleDirection() == 'ltr')
                 @php
                     $dir = 'order-0';
-                    $text = 'text-end';
-                    $justify = 'justify-content-end';
+                    $text = 'text-start';
+                    $justify = 'justify-content-start';
 
                     $text_sm_ltr = 'left';
-                    $justify_sm_ltr = 'start';
-                    $direction_rtl = 'ltr';
+                    $justify_sm_ltr = 'end';
+                    $direction_rtl = 'rtl';
 
                 @endphp
             @else
                 @php
                     $dir = 'order-1';
-                    $text = 'text-start';
-                    $justify = 'justify-content-start';
+                    $text = 'text-end';
+                    $justify = 'justify-content-end';
 
                     $text_sm_rtl = 'right';
-                    $justify_sm_rtl = 'end';
-                    $direction_ltr = 'rtl';
+                    $justify_sm_rtl = 'start';
+                    $direction_ltr = 'ltr';
 
                 @endphp
             @endif
@@ -66,7 +66,7 @@
                         text-align: {{ isset($text_sm_ltr) ? $text_sm_ltr . '!important' : $text_sm_rtl . '!important' }};
                     }
                     .quantity-buttons{
-                        justify-content: start !important;
+                        justify-content: end !important;
                     }
                     .product .row{
                         direction: {{ isset($direction_ltr) ? $direction_ltr : $direction_rtl}}
@@ -511,15 +511,17 @@ $('.liked').click(function(anyothername) {
         }
         let cartCount = 0;
         const storedCartItems = localStorage.getItem('cartItems');
-        const cartItems = storedCartItems ? storedCartItems : [];
+        const cartItems = JSON.parse(storedCartItems) ? JSON.parse(storedCartItems) : [];
         if (storedCartItems) {
-            cartItems = JSON.parse(storedCartItems);
+            //cartItems = JSON.parse(storedCartItems);
             cartCount = cartItems.length;
             $(".cart-count").html(cartCount);
         }
         $('.add_cart').on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('product_id');
+            console.log(cartItems)
+
             $.ajax({
                 type: "post",
                 url: "{{ route('cart.store') }}",
@@ -530,10 +532,10 @@ $('.liked').click(function(anyothername) {
                 },
                 dataType: 'json', // let's set the expected response format
                 success: function(data) {
-                    flashBox('success', '{{ __('Added to cart') }}');
+                    // flashBox('success', '{{ __('Added to cart') }}');
                     const productIndex = cartItems.findIndex(item => item.id === id);
                     if (productIndex >= 0) {
-                        alert('This product is already in your cart!');
+                        // alert('This product is already in your cart!');
                         return;
                     }
 

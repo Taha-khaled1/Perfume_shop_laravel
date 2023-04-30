@@ -380,12 +380,22 @@ $(document).ready(function() {
 });
 
 
-       
-
-
+        if($(".cart-count")[0].innerHTML === "0"){
+            localStorage.removeItem('cartItems')
+        }
+        let cartCount = 0;
+        const storedCartItems = localStorage.getItem('cartItems');
+        const cartItems = JSON.parse(storedCartItems) ? JSON.parse(storedCartItems) : [];
+        if (storedCartItems) {
+            //cartItems = JSON.parse(storedCartItems);
+            cartCount = cartItems.length;
+            $(".cart-count").html(cartCount);
+        }
         $('.add_cart').on("click", function(e) {
             e.preventDefault();
             var id = $(this).attr('product_id');
+            console.log(cartItems)
+
             $.ajax({
                 type: "post",
                 url: "{{ route('cart.store') }}",
@@ -396,7 +406,7 @@ $(document).ready(function() {
                 },
                 dataType: 'json', // let's set the expected response format
                 success: function(data) {
-                    flashBox('success', '{{ __('Added to cart') }}');
+                    // flashBox('success', '{{ __('Added to cart') }}');
                     const productIndex = cartItems.findIndex(item => item.id === id);
                     if (productIndex >= 0) {
                         alert('This product is already in your cart!');
@@ -421,7 +431,6 @@ $(document).ready(function() {
             });
 
         });
-
 
     </script>
 @endpush

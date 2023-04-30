@@ -50,7 +50,7 @@
                                            
                                            
                                             <td class="pro-quantity">
-                                                <div class="pro-qty"><input type="text" class="item-quantity" product_id="{{$item->product->id}}" dataa_id="{{ $item->id }}" dataa_total="{{ $item->quantity * $item->product->price }}" dataa_price="{{ $item->product->price }}"  value="{{ $item->quantity }}"></div>
+                                                <div class="pro-qty"><input type="number" class="item-quantity" product_id="{{$item->product->id}}" dataa_id="{{ $item->id }}" dataa_total="{{ $item->quantity * $item->product->price }}" dataa_price="{{ $item->product->price }}"  value="{{ $item->quantity }}"></div>
                                             </td>
 
 
