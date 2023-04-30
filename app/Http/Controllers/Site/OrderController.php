@@ -132,10 +132,10 @@ class OrderController extends Controller
                 if ($request->payment_method == "check") {
                     $data1->status = 5;
                 } else{
-                    $user=User::all();
+                    // $user=User::all();
                 
-                    $userid = auth()->user()->id;
-                    Notfication::send($user , new InvoicePaid($userid) );
+                    // $userid = auth()->user()->id;
+                    // Notfication::send($user , new InvoicePaid($userid) );
 
                     $noty = new Notfication();
 

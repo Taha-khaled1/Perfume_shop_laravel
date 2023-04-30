@@ -33,6 +33,18 @@ foreach ($orderss as  $o) {
         $r=Order::find($o->id);
         $r->status=1;
         $r->save();
+
+        $noty = new Notfication();
+
+        $noty->title="طلب جديد";
+        $user = auth()->user();
+        if ($user) {
+            $name = $user->fname;
+            $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
+        }else{
+            $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
+        }
+        $noty->save();
       
     }
 }
