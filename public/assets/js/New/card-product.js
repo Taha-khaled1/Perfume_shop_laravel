@@ -16,7 +16,7 @@ let minus = document.querySelector(".minus");
 
 let counter = 1;
 let max = $(num).data("max");
-let count = () => max - counter + 1;
+let count = () => max - counter;
 
 plus.addEventListener("click", () => {
   if (counter < max) {
