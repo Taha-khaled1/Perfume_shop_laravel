@@ -58,9 +58,10 @@
     @endphp
 
     @if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
-        <div class="hero text-center rounded m-1">
-            <img src="{{ asset('storage/property/' . $carousel->image) }}" class="w-100 h-100" style="object-fit: cover;">
-        </div>
+    <div class="hero text-center rounded m-1" style=" margin-left: 20px; margin-right: 20px; border-radius: 20px; overflow: hidden;">
+        <img src="{{ asset('storage/property/' . $carousel->image) }}" class="w-100 h-100" style="object-fit: cover;">
+    </div>
+    
     @elseif (in_array($extension, ['mp4', 'webm', 'ogg']))
         <div class="hero text-center rounded m-1">
             <video src="{{ asset('storage/property/' . $carousel->image) }}" muted autoplay loop class="w-100 h-100" style="object-fit: cover;"></video>
