@@ -39,7 +39,7 @@ class CheckWebsiteCloseTime extends Command
     public function handle()
     {
         $webclose = Website::first();
-        $closeTime = $webclose->close_time;
+        $closeTime = $webclose->data_time;
         $now = Carbon::now();
         echo $closeTime . $now ;
         if ($closeTime->format('Y-m-d H:i') == $now->format('Y-m-d H:i')) {

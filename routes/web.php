@@ -25,6 +25,32 @@ use Illuminate\Http\Request;
 //     return view('welcome');
 // });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// maintenance
+
+
+
+
+Route::group(['middleware'=>'maintenance'],function (){
+
+
+
+
+
+
 Route::get('sendWhatsAppMessage' , [App\Http\Controllers\Admin\AdminsController::class , 'sendWhatsAppMessage'])->name('sendWhatsAppMessage');
 Route::get('slide' , [SlideController::class , 'index'])->name('admin.slide');
 Route::get('slidedestroy{id}' , [SlideController::class , 'destroy'])->name('admin.destroy');
@@ -260,6 +286,12 @@ Route::get('get_shipping/{name}', [App\Http\Controllers\Site\OrderController::cl
 Route::get('get_discount/{code}', [App\Http\Controllers\Site\OrderController::class, 'get_discount'])->name('get.discount');
 });
 // Admin Routes
+
+
+
+
+Route::group(['middleware'=>'my.middleware'],function (){
+
 Route::prefix("admin")->group(function () {
 
     Route::get('login' , [App\Http\Controllers\Admin\AuthController::class , 'login'])->name('admin.login');
@@ -399,7 +431,7 @@ Route::prefix("admin")->group(function () {
 
 ////////// Admins //////////////
 
- Route::get('myprofile' , [App\Http\Controllers\Admin\AdminController::class , 'profile'])->name('admin.profile');
+ Route::get('myprofile' , [App\Http\Controllers\Admin\AdminController::class , 'profile'])->name('admin.profile'); 
 
  ////////payments/////
  Route::get('payments' , [App\Http\Controllers\Admin\PaymentsController::class , 'index'])->name('payments.index');
@@ -410,4 +442,10 @@ Route::prefix("admin")->group(function () {
 
 });
 
+});
+
+
+
+
+});
 // });

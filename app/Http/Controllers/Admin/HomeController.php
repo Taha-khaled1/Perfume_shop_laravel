@@ -25,28 +25,7 @@ class HomeController extends Controller
         $users = User::get()->count();
         $webclose=Website::first(); 
      
-        $orderss = Order::where('status','5')->get();
-        foreach ($orderss as  $o) {
-            
-            if ($o->payment->status=='completed') {
-                $r=Order::find($o->id);
-                $r->status=1;
-                $r->save();
-        
-                $noty = new Notfication();
-        
-                $noty->title="طلب جديد";
-                $user = auth()->user();
-                if ($user) {
-                    $name = $user->fname;
-                    $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
-                }else{
-                    $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
-                }
-                $noty->save();
-              
-            }
-        }  
+
          $n=Notfication::where('read','0')->get();
         return view('admin.home.index', [
             'orders' => $orders,       
@@ -90,10 +69,14 @@ class HomeController extends Controller
     } else {
         $website->actv = 0;
     }
+    if ($website->data_time != $request->data_time) {
+        $website->data_time = $request->data_time??"2023-04-30T01:54";
+        $website->is_time = 0 ; // 
+    }
     $website->Description_ar = $request->description_ar??"";
     $website->Description_en = $request->description_en??"";
     // if (has) {
-        $website->data_time = $request->data_time??"2023-04-30T01:54";
+
     // } else {
     //     # code...
     // }
