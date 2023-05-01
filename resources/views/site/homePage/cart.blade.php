@@ -54,7 +54,7 @@
                                             </td>
 
 
-                                             <td class="pro-remove"><a class="remove-item" data_id="{{ $item->id }}"  href="javascript:void(0)"><i class="fa fa-trash-o"></i></a></td>
+                                             <td class="pro-remove"><a class="remove-item" data_id="{{ $item->id }}"  product_id="{{$item->product->id}}" href="javascript:void(0)"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -146,13 +146,17 @@
 
 @push('js')  
 <script>   
-     
+    var myArray = JSON.parse(localStorage.getItem('cartItems'));
+
+    if(myArray){
+        $('.cart-count').html(myArray.length)
+    }
    $('.remove-item').on("click", function (e) {
               //  e.preventDefault();
-               
          var id = $(this).attr('data_id');
-         
-         
+         var id_p = $(this).attr('product_id');
+
+
          $.ajax({
                 type: "post",
                 url: "/cart/" + id,
@@ -161,6 +165,17 @@
                      },
                     dataType: 'json',              // let's set the expected response format
                     success: function (data) {
+                        
+                        if(myArray){
+                            myArray.forEach(element => {
+                                if(element.id == id_p){
+                                    myArray.splice(element, 1);
+                                }
+                                
+                            });
+                            localStorage.setItem('cartItems', JSON.stringify(myArray));
+                            $('.cart-count').html(myArray.length)
+                        }
                         $("#a"+ id).remove();
                         $("#totals").remove();
                         $("#totalq").fadeIn().html( '<span id="totals">' + data.totala +'</span> {{__('AED')}}' );
