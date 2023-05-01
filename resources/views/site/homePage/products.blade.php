@@ -62,7 +62,7 @@
 
                             <button class="add-to-favorites" data-product-id="{{ $product->id }}">
                                 @if (Auth::user() && Auth::user()->favorites->contains('product_id', $product->id))
-                                    <i class="pe-7s-like fw-bold fs-4 favorite-icon" style="color: red;"></i>
+                                    <i class="fa fa-heart text-danger fw-bold fs-4 favorite-icon"></i>
                                 @else
                                     <i class="pe-7s-like fw-bold fs-4 favorite-icon"></i>
                                 @endif
@@ -240,7 +240,7 @@
 @push('js') 
 
   <script>
-    $(document).ready(function() {
+$(document).ready(function() {
     $('.add-to-favorites').on('click', function(event) {
         event.preventDefault();
         
@@ -253,11 +253,13 @@
             data: {_token: '{{ csrf_token() }}'},
             success: function(data) {
                 var icon = $('.add-to-favorites[data-product-id="' + productId + '"]').find('.favorite-icon');
-                if (icon.css('color') === 'rgb(255, 0, 0)') {
-                    icon.css('color', '');
+                if (icon.hasClass("fa fa-heart")) {
+                    icon.addClass("pe-7s-like").removeClass("fa fa-heart text-danger");
+
                     flashBox('success', '{{ __('Removed from favorite') }}');
                 } else {
-                    icon.css('color', 'red');
+                    icon.addClass("fa fa-heart text-danger").removeClass("pe-7s-like");
+
                     flashBox('success', '{{ __('Added to favorite') }}');
                 }
             },

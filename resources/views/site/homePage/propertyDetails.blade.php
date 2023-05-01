@@ -73,7 +73,7 @@
                     }
                 }
              </style>
-            <div class="main-image col-lg-5 col-md-6 col-sm-8 col-8 {{$dir}}">
+            <div class="main-image col-lg-5 col-md-6 col-12 {{$dir}}">
                 <img src="{{asset('/storage/property/'.$product->image)}}" alt="product-details" />
             </div>
             <div class="product-details col-lg-5 col-md-4 col-sm-12 {{$text}}">
@@ -132,7 +132,7 @@
                <h1>{{__('No stock available') }}</h1>
                 @else
 
-                    <button class="btn btn-primary me-2 add_cart h-100 p-2" product_id="{{$product->id}}">{{__('Add to cart')}}</button>   
+                    <button class="btn btn-primary me-2 add_cart h-100 p-2 addcart" product_id="{{$product->id}}">{{__('Add to cart')}}</button>   
                 @endif
              
              
@@ -140,9 +140,9 @@
              
                 <button class="add-to-favorites" data-product-id="{{ $product->id }}">
                     @if (Auth::user() && Auth::user()->favorites->contains('product_id', $product->id))
-                        <i class="pe-7s-like fw-bold fs-4 favorite-icon" style="color: red;"></i>
+                        <i class="fa fa-heart text-danger fw-bold fs-4 favorite-icon"></i>
                     @else
-                        <i class="pe-7s-like fw-bold fs-4 favorite-icon"></i>
+                        <i class="pe-7s-like text-dark fw-bold fs-4 favorite-icon"></i>
                     @endif
                 </button>
              
@@ -160,7 +160,7 @@
                 <ul class="p-0 mt-4">
                     {{-- @if($product->sku) <li><span>SKU</span> : <span>{{$product->sku}}</span></li>@endif --}}
                     @if($product->code)  <li><span>  {{__('Item code')}}</span> : <span>{{$product->code}}</span></li>@endif
-                    {{-- @if($product->quantity)<li><span> {{__('Quantity')}}</span> : <span>{{$product->quantity}}</span></li>@endif --}}
+                    @if($product->quantity)<li><span> {{__('Quantity Left')}}</span> : <span class="quantity_num">{{$product->quantity}}</span></li>@endif
                     <!--<li><span>سومو</span> :<span> </span></li>-->
                     <li> @if($product->category)<span> {{__('Category')}}
                         @if($product->category->name_en != null)
@@ -358,13 +358,13 @@
                         <a class="add_cart border-0"  product_id="{{ $product->id }}"><i class="pe-7s-cart fw-bold fs-4"></i></a>
                         @endif
                         <a>
-                        <form action="{{ route('favorites.add', $product->id) }}" method="POST">
-                            
-                                @csrf
-                                <input type="hidden" name="_method" value="POST">
-                                <button type="submit" class="liked"><i class="pe-7s-like fw-bold fs-4"></i></button>
-                            
-                        </form>
+                            <button class="add-to-favorites" data-product-id="{{ $product->id }}">
+                                @if (Auth::user() && Auth::user()->favorites->contains('product_id', $product->id))
+                                    <i class="fa fa-heart fw-bold fs-4 favorite-icon text-danger"></i>
+                                @else
+                                    <i class="pe-7s-like fw-bold fs-4 favorite-icon"></i>
+                                @endif
+                            </button>
                         </a>
                     </div>
                  </div>
@@ -458,11 +458,13 @@ $(document).ready(function() {
             data: {_token: '{{ csrf_token() }}'},
             success: function(data) {
                 var icon = $('.add-to-favorites[data-product-id="' + productId + '"]').find('.favorite-icon');
-                if (icon.css('color') === 'rgb(255, 0, 0)') {
-                    icon.css('color', '');
+                if (icon.hasClass("fa fa-heart")) {
+                    icon.addClass("pe-7s-like").removeClass("fa fa-heart text-danger text-dark");
+
                     flashBox('success', '{{ __('Removed from favorite') }}');
                 } else {
-                    icon.css('color', 'red');
+                    icon.addClass("fa fa-heart text-danger").removeClass("pe-7s-like text-dark");
+
                     flashBox('success', '{{ __('Added to favorite') }}');
                 }
             },
@@ -535,7 +537,49 @@ $('.add_cart').on("click", function(e) {
         }
     });
 
-});</script>
+});
+$('.addcart').on("click", function(e) {
+    e.preventDefault();
+    var id = $(this).attr('product_id');
+    console.log(cartItems)
+
+    $.ajax({
+        type: "post",
+        url: "{{ route('cart.store') }}",
+        data: {
+            _token: '{{ csrf_token() }}',
+            "product_id": id,
+            "quantity": $("#quantity").val()
+        },
+        dataType: 'json', // let's set the expected response format
+        success: function(data) {
+            // flashBox('success', '{{ __('Added to cart') }}');
+            const productIndex = cartItems.findIndex(item => item.id === id);
+            if (productIndex >= 0) {
+                // alert('This product is already in your cart!');
+                return;
+            }
+
+            cartItems.push({ id });
+            cartCount++;
+            $(".cart-count").html(cartCount);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        },
+        error: function(err) {
+            if (err.status == 422) { // when status code is 422, it's a validation issue
+                console.log(err.responseJSON);
+                $('#success_message_notifications').fadeIn().html(
+                    '<div class="alert alert-danger border-0 alert-dismissible">' + err
+                    .responseJSON.message + '</div>');
+
+
+            }
+        }
+    });
+
+});
+
+</script>
   
     {{-- <script>
 

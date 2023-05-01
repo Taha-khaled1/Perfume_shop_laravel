@@ -26,9 +26,9 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 26px;
 }
-.product .product-details i{
+/* .product .product-details i{
     color: rgb(241, 227, 28);
-}
+} */
 
 .product .product-details i.review{
     color: var(--main-color);
@@ -104,7 +104,7 @@
         height: 80px;
     }
     .product .main-image img{
-        height: 280px;
+        height: auto;
     }
 }
 /***************************************************  end product   ******************************************************/

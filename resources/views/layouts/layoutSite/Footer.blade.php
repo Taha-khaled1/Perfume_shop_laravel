@@ -3,12 +3,12 @@
         <img src="{{ asset('whatsapp.png') }}" alt="WhatsApp Icon">
     </a>
 </div>
-<!--
+
     <div class="scroll-top not-visible">
         <i class="fa fa-angle-up"></i>
     </div>
 
-    <footer class="footer-widget-area" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+    {{-- <footer class="footer-widget-area" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
         <div class="footer-top " style=" padding: 55px 40px;">
             <div class="container">
                 <div class="row">
@@ -84,7 +84,7 @@
             </div>
         </div>
          
-    </footer> -->
+    </footer>  --}}
 
 {{-- <footer>
     <div class="container">
@@ -143,9 +143,27 @@
 
 
 <div class="accordion footer-accordion" id="accordionExample">
+    @if (LaravelLocalization::getCurrentLocaleDirection() == 'ltr')
+        <?php
+            $row_reverse = 'flex-row-reverse';
+            $text = 'text-start';
+        ?>
+        <style>
+            .accordion-button::after{
+                margin-right: unset !important;
+                margin-left: auto !important;
+
+            }
+        </style>
+    @else
+    <?php
+        $row_reverse = 'flex-row';
+        $text = 'text-end'
+    ?>
+    @endif
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" dir="rtl" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed {{$row_reverse}}" type="button" dir="rtl" data-bs-toggle="collapse"
                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 {{ __('Customer Service') }}
             </button>
@@ -153,7 +171,7 @@
         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <ul class="list-unstyled mb-0" dir="rtl">
+                <ul class="list-unstyled mb-0 {{$text}}" dir="rtl">
                     <li><a class="text-dark" href="{{ route('questions') }}">{{ __('Common questions') }}</a></li>
                 </ul>
             </div>
@@ -161,7 +179,7 @@
     </div>
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed {{$row_reverse}}" dir="rtl" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 {{ __('For you') }}
             </button>
@@ -169,7 +187,7 @@
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body" dir="rtl">
-                <ul class="list-unstyled mb-0">
+                <ul class="list-unstyled mb-0 {{$text}}">
                     <li class="mb-3"><a class="text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     <li class="mb-3"><a class="text-dark" href="{{ route('login') }}">{{ __('Sign In') }}</a>
@@ -182,7 +200,7 @@
     </div>
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" dir="rtl" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed {{$row_reverse}}" dir="rtl" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 {{ __('Oudz') }}
             </button>
@@ -190,7 +208,7 @@
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
             data-bs-parent="#accordionExample">
             <div class="accordion-body" dir="rtl">
-                <ul class="list-unstyled mb-0">
+                <ul class="list-unstyled mb-0 {{$text}}">
                     {{-- <li class="mb-3"><a class="text-dark" href="{{route('about')}}">{{__('About Us')}}</a></li>  --}}
                     <li class="mb-3"><a class="text-dark"
                             href="{{ route('policy') }}">{{ __('Privacy policy') }}</a></li>
@@ -206,7 +224,6 @@
 <footer>
     <div class="container">
         <div class="custom">
-
             <div class="foot">
                 <div class="row">
                     <div class="col-lg-3 col-6 text-end order-lg-1 order-3 sm-footer">
@@ -237,11 +254,11 @@
                                     src="{{ asset('storage/users/' . $header_logo) }}" width="80"
                                     class="img-fluid" alt=" logo"></a></div>
                         @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
-                            <p class="my-3" dir="rtl">
+                            <p class="my-3 {{$text}}" dir="ltr">
                                 {{ strip_tags($section5_details) }}
                             </p>
                         @else
-                            <p class="my-3" dir="rtl">
+                            <p class="my-3 {{$text}}" dir="rtl">
                                 {{ strip_tags($section5_details_en) }}  
                         @endif
 
