@@ -52,12 +52,22 @@
     @endforeach
         </div>
     </section> -->
-   @if ($carousel->image != null)
-   <div class="hero text-center rounded m-1">
-    <video src="{{ asset('storage/property/' . $carousel->image) }}" muted autoplay loop class="w-100 h-100"
-        style="object-fit: cover;"></video>
-</div>
-   @endif
+    @if ($carousel->image != null)
+    @php
+        $extension = pathinfo($carousel->image, PATHINFO_EXTENSION);
+    @endphp
+
+    @if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
+        <div class="hero text-center rounded m-1">
+            <img src="{{ asset('storage/property/' . $carousel->image) }}" class="w-100 h-100" style="object-fit: cover;">
+        </div>
+    @elseif (in_array($extension, ['mp4', 'webm', 'ogg']))
+        <div class="hero text-center rounded m-1">
+            <video src="{{ asset('storage/property/' . $carousel->image) }}" muted autoplay loop class="w-100 h-100" style="object-fit: cover;"></video>
+        </div>
+    @endif
+@endif
+
 
 
 
