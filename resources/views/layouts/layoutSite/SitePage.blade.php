@@ -20,6 +20,13 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* .add-to-favorites i {
+    color: #fff;
+}
+
+.add-to-favorites.active i {
+    color: red;
+} */
 
 
 

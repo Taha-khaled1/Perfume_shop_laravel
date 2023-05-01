@@ -21,7 +21,7 @@ class FavoriteController extends Controller
     {
         $userFavorites = auth()->user()->favorites()->with('product')->get();
 
-    return view('user.favorites', compact('userFavorites'));
+         return view('user.favorites', compact('userFavorites'));
     }
 
     public function addFavorite($productId)
@@ -29,12 +29,23 @@ class FavoriteController extends Controller
         $user = Auth::user();
         $product = Product::findOrFail($productId);
     
-        $favorite = new Favorite();
-        $favorite->user_id = $user->id;
-        $favorite->product_id = $product->id;
-        $favorite->save();
+        // Check if the product already exists in the wishlist
+        $favorite = Favorite::where('user_id', $user->id)
+                            ->where('product_id', $product->id)
+                            ->first();
     
-        return redirect()->back()->with('success', 'Added to favorites');
+        if ($favorite) {
+            // If the product already exists in the wishlist, remove it
+            $favorite->delete();
+            return redirect()->back()->with('success', 'Removed from favorites');
+        } else {
+            // If the product does not exist in the wishlist, add it
+            $favorite = new Favorite();
+            $favorite->user_id = $user->id;
+            $favorite->product_id = $product->id;
+            $favorite->save();
+            return redirect()->back()->with('success', 'Added to favorites');
+        }
     }
     
     public function removeFavorite($productId)

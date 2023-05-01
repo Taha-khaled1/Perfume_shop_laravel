@@ -337,7 +337,7 @@
 <div class="container logo-sm bg-white py-2 shadow-sm">
     <div class=" text-center my-3 row align-items-center">
         <!-- <img src="{{asset('storage/users/'. $header_logo )}}" width="250" class="img-fluid" alt=" logo"> -->
-        <img src="{{asset('storage/users/'. $header_logo )}}" width="150" class="img-fluid col-6" alt=" logo">
+      <a  class="img-fluid col-6" alt="logo" href="{{ route('viewHomePage')}}"> <img src="{{asset('storage/users/'. $header_logo )}}" width="160" class="img-fluid col-6" alt=" logo"> </a> 
         <div class="header-top-settings col-6">
             <ul class="m-0">
                 <li class="language d-inline-block">

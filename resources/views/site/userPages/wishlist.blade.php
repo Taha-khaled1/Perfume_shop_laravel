@@ -168,9 +168,45 @@
                                     <tbody>
                                     @foreach(Auth::user()->favorites as $favorite)
                                         <tr id="a{{$favorite->id }}">
+                                            
                                             <td class="pro-thumbnail"><a href="{{route('viewProperty',$favorite->product->id)}}"><img class="img-fluid" src="{{asset('/storage/property/'.$favorite->product->image)}}" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="{{route('viewProperty',$favorite->product->id)}}"> {{$favorite->product->name }}  </a></td>
                                            
+                                           
+                                           
+
+
+
+
+                                           
+                                            <td class="pro-title"><a href="{{route('viewProperty',$favorite->product->id)}}"> 
+                                                @if ($favorite->product->name_en != null)
+                                                @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                                                    {{ $favorite->product->name }}
+                                                 
+                                                @else
+                                                    {{ $favorite->product->name_en }}
+                                                @endif
+                                            @else 
+                                                {{ $favorite->product->name }}
+                                            @endif
+
+                                               
+                                            {{-- {{$favorite->product->name_en }}  --}}
+                                            </a></td>
+                                           
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             <td class="pro-price"><span>{{ $favorite->product->price }}  {{__('AED')}}</span></td>
                                          
                                             <td class="pro-remove">

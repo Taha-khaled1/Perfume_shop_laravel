@@ -75,6 +75,13 @@
                                             </div>
                                             <!-- Single Tab Content End -->
 
+
+
+
+
+
+
+
                                             <!-- Single Tab Content Start -->
                                             <div class="tab-pane fade" id="orders" role="tabpanel">
                                                 <div class="myaccount-content">
@@ -87,7 +94,12 @@
                                                                 <th scope="col"> {{__('Total')}}</th>
                                                                 <th scope="col"> {{__('Quantity')}} </th>
                                                                 <th scope="col"> {{__('Status')}} </th>
+
+                                                       
+                                                            
                                                                 <th scope="col"> {{__('Edit order')}}</th>
+                                                             
+                                                                
                                                                 <th scope="col"> {{__('Payment status')}}</th>
                                                                 <th scope="col"> {{__('View')}}</th>
                                                                 
@@ -95,6 +107,17 @@
                                                             </thead>
                                                             <tbody>
                                                                 @foreach(\Illuminate\Support\Facades\Auth::user()->orders as $order)
+                                                                         
+                                                                @php
+                                                                $boll=true; // لسه معداش
+                                                            if ($order->created_at->diffInHours() > 12) {
+                                                                $boll=false;
+                                                            } else {
+                                                                $boll=true;
+                                                            }
+
+
+                                                                @endphp
                                                               <tr class="R_order{{$order->id}}">
                                                               <th scope="row">{{$order->id}}</th>
                                                               <td>  {{$order->total}}  {{__('AED')}}</td>
@@ -104,7 +127,17 @@
                                                               <th > @if($order->status == 0) {{__('Rejected')}}@endif @if($order->status == 1) {{__('Requested')}} @endif @if($order->status == 2)  {{__('is shipped')}} @endif @if($order->status == 3) {{__('Delivered')}} @endif </th>
                                                                
                                                               
+                                                              
+
+                                                              @if ($boll )
                                                               <th><a href="{{route('products')}}" class="delr" > {{__('Edit')}}</a> </th>
+                                                              @else
+                                                              <th><a class="delr" > {{__('Edit Expier')}}</a> </th>   
+                                                              @endif
+
+
+
+
                                                                 <td>    @if($order->payment_method == "cash")
                                                                         الدفع عند الاستلام
                                                                         @else
@@ -128,6 +161,25 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             <!-- Single Tab Content End -->
 
                                             <!-- Single Tab Content Start -->
