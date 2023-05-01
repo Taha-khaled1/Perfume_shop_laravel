@@ -134,13 +134,25 @@
 
                     <button class="btn btn-primary me-2 add_cart h-100 p-2" product_id="{{$product->id}}">{{__('Add to cart')}}</button>   
                 @endif
-                <form action="{{ route('favorites.add', $product->id) }}" method="POST">
+             
+             
+             
+             
+                <button class="add-to-favorites" data-product-id="{{ $product->id }}">
+                    @if (Auth::user() && Auth::user()->favorites->contains('product_id', $product->id))
+                        <i class="pe-7s-like fw-bold fs-4 favorite-icon" style="color: red;"></i>
+                    @else
+                        <i class="pe-7s-like fw-bold fs-4 favorite-icon"></i>
+                    @endif
+                </button>
+             
+                {{-- <form action="{{ route('favorites.add', $product->id) }}" method="POST">
                                 
                         @csrf
                         <input type="hidden" name="_method" value="POST">
                         <button type="button" class="liked mt-1 h-100" style="transform: translateY(4px)"><i class="pe-7s-like fw-bold fs-4 text-white bg-danger p-2"></i></button>
                     
-                </form>
+                </form> --}}
                {{-- @if ($product->quantity != 0)
                <button class="btn btn-danger add_cart" product_id="{{$product->id}}" href="#">{{__('Add to cart')}}</button>
                @endif --}}
@@ -428,7 +440,52 @@
 
 @push('js') 
     <script src="{{asset('/assets/js/New/card-product.js' )}}"></script>
-<script> if($(".cart-count")[0].innerHTML === "0"){
+<script> 
+
+
+
+
+$(document).ready(function() {
+    $('.add-to-favorites').on('click', function(event) {
+        event.preventDefault();
+        
+        var productId = $(this).data('product-id');
+        var url = "{{ route('favorites.add', ':id') }}".replace(':id', productId);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {_token: '{{ csrf_token() }}'},
+            success: function(data) {
+                var icon = $('.add-to-favorites[data-product-id="' + productId + '"]').find('.favorite-icon');
+                if (icon.css('color') === 'rgb(255, 0, 0)') {
+                    icon.css('color', '');
+                    flashBox('success', '{{ __('Removed from favorite') }}');
+                } else {
+                    icon.css('color', 'red');
+                    flashBox('success', '{{ __('Added to favorite') }}');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('An error occurred while adding to favorites');
+            }
+        });
+    });
+});
+    
+
+
+
+
+
+
+
+
+
+
+
+
+if($(".cart-count")[0].innerHTML === "0"){
     localStorage.removeItem('cartItems')
 }
 let cartCount = 0;

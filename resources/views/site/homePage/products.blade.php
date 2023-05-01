@@ -61,7 +61,11 @@
 
 
                             <button class="add-to-favorites" data-product-id="{{ $product->id }}">
-                                <i class="pe-7s-like fw-bold fs-4"></i>
+                                @if (Auth::user() && Auth::user()->favorites->contains('product_id', $product->id))
+                                    <i class="pe-7s-like fw-bold fs-4 favorite-icon" style="color: red;"></i>
+                                @else
+                                    <i class="pe-7s-like fw-bold fs-4 favorite-icon"></i>
+                                @endif
                             </button>
                             
                             
@@ -236,33 +240,60 @@
 @push('js') 
 
   <script>
-$('.liked').click(function(anyothername) {
-              //  e.preventDefault();
-               
-         var id = $(this).attr('property');
-         var val = $(this).val();
-         
-         $.ajax({
-                type: "post",
-                url: "{{ route('property.like') }}",
-                data: { _token: '{{ csrf_token() }}',
-                     "id" : id 
-                      },
-                    dataType: 'json',              // let's set the expected response format
-                    success: function (data) {
-                         
-                    },
-                    error: function (err) {
-                        if (err.status == 422) { // when status code is 422, it's a validation issue
-                            console.log(err.responseJSON);
-                            $('#success_message_notifications').fadeIn().html('<div class="alert alert-danger border-0 alert-dismissible">' + err.responseJSON.message +'</div>');
+    $(document).ready(function() {
+    $('.add-to-favorites').on('click', function(event) {
+        event.preventDefault();
+        
+        var productId = $(this).data('product-id');
+        var url = "{{ route('favorites.add', ':id') }}".replace(':id', productId);
 
-
-                        }
-                    }
-                });   
-          
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {_token: '{{ csrf_token() }}'},
+            success: function(data) {
+                var icon = $('.add-to-favorites[data-product-id="' + productId + '"]').find('.favorite-icon');
+                if (icon.css('color') === 'rgb(255, 0, 0)') {
+                    icon.css('color', '');
+                    flashBox('success', '{{ __('Removed from favorite') }}');
+                } else {
+                    icon.css('color', 'red');
+                    flashBox('success', '{{ __('Added to favorite') }}');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('An error occurred while adding to favorites');
+            }
+        });
     });
+});
+// $('.liked').click(function(anyothername) {
+//               //  e.preventDefault();
+               
+//          var id = $(this).attr('property');
+//          var val = $(this).val();
+         
+//          $.ajax({
+//                 type: "post",
+//                 url: "{{ route('property.like') }}",
+//                 data: { _token: '{{ csrf_token() }}',
+//                      "id" : id 
+//                       },
+//                     dataType: 'json',              // let's set the expected response format
+//                     success: function (data) {
+                         
+//                     },
+//                     error: function (err) {
+//                         if (err.status == 422) { // when status code is 422, it's a validation issue
+//                             console.log(err.responseJSON);
+//                             $('#success_message_notifications').fadeIn().html('<div class="alert alert-danger border-0 alert-dismissible">' + err.responseJSON.message +'</div>');
+
+
+//                         }
+//                     }
+//                 });   
+          
+//     });
 
     
     if($(".cart-count")[0].innerHTML === "0"){
