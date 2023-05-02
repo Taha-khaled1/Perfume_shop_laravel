@@ -54,10 +54,10 @@
                         </div>
 
 
-                        <div class="mb-3 row">
-                            <div class="col-lg-3 col-form-label text-end">{{__('Principality')}}</div>
-                            <div class="col-lg-9 col-xl-8">
-                              <select class="form-control" name="city_id" style="width: 100%;">
+                        <div class="mb-3">
+                            <div class="form-label">{{__('Principality')}}</div>
+                              <select class="form-control" name="city_id">
+                                <option selected disabled>{{__('Choose the region')}}</option>
                                 @foreach ($city as $item)
                                 <option value="{{ $item->id }}">
                                   @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
@@ -68,7 +68,6 @@
                                 </option>
                                 @endforeach
                               </select>
-                            </div>
                           </div>
                           
 
