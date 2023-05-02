@@ -1,5 +1,17 @@
-@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])
+
+
+
+
+
+
+
+
+
+
+ @extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])
 @section('content')
+ 
+
  <!-- breadcrumb area start --><br>
  <div class="breadcrumb-area" >
             <div class="container">
@@ -25,7 +37,7 @@
 
                     <form action="" method="post" id="payment-form">
                         <div id="payment-element"></div>
-                        <br><button type="submit" id="submit"  class="btn btn-primary" >
+                        <br><button type="submit" id="submit"  class="btn btn-sqr" >
                             <span id="button-text">{{__('Pay now')}}</span>
                             <span id="spinner" style="display: none;">Processing...</span>
                         </button>  
@@ -50,6 +62,13 @@
         } else {
         // Cookies have already been granted, set cookies here
         }
+
+
+
+
+
+
+
         // This is your test publishable API key.
         const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
 
@@ -63,55 +82,29 @@
 
         // Fetches a payment intent and captures the client secret
         async function initialize() {
-    const {
-        clientSecret
-    } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "same-origin"
-        },
-        body: JSON.stringify({
-            "_token": "{{ csrf_token() }}",
-            "total": "{{$order->total}}",
-            "id": "{{$order->id}}"
-        }),
-    }).then((r) => r.json());
-    localStorage.setItem('clientSecret', clientSecret);
+            const {
+                clientSecret
+            } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "same-origin"
+                },
+                body: JSON.stringify({
+                    "_token": "{{ csrf_token() }}",
+                    "total": "{{$order->total}}",
+                    "id": "{{$order->id}}"
+                }),
+            }).then((r) => r.json());
+            localStorage.setItem('clientSecret', clientSecret);
 
-    elements = stripe.elements({
-        clientSecret,
-        payment: {
-            card: {
-                // Only show the Visa card option
-                allowedCardNetworks: ['visa'],
-                // Customize the appearance of the card field
-                style: {
-                    base: {
-                        color: '#32325d',
-                        fontFamily: 'Arial, sans-serif',
-                        fontSmoothing: 'antialiased',
-                        fontSize: '16px',
-                        '::placeholder': {
-                            color: '#aab7c4'
-                        }
-                    },
-                    invalid: {
-                        color: '#fa755a',
-                        iconColor: '#fa755a'
-                    }
-                }
-            }
+            elements = stripe.elements({
+                clientSecret
+            });
+
+            const paymentElement = elements.create("payment");
+            paymentElement.mount("#payment-element");
         }
-    });
-
-    const paymentElement = elements.create("payment");
-    paymentElement.mount("#payment-element");
-       // Disable Google Pay button
-       const paymentElement = elements.getElement('payment');
-        paymentElement.update({ googlePay: false });
-}
-
 
         async function handleSubmit(e) {
             e.preventDefault();
@@ -153,6 +146,13 @@
                     orderId: {{$order->id}},
                 }),
             });
+
+
+            // This point will only be reached if there is an immediate error when
+            // confirming the payment. Otherwise, your customer will be redirected to
+            // your `return_url`. For some payment methods like iDEAL, your customer will
+            // be redirected to an intermediate site first to authorize the payment, then
+            // redirected to the `return_url`.
             if (error.type === "card_error" || error.type === "validation_error") {
                 showMessage(error.message);
             } else {
