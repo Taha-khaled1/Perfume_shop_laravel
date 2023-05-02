@@ -63,23 +63,23 @@
 
         // Fetches a payment intent and captures the client secret
         async function initialize() {
-            const {
-                clientSecret
-            } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "same-origin"
-                },
-                body: JSON.stringify({
-                    "_token": "{{ csrf_token() }}",
-                    "total": "{{$order->total}}",
-                    "id": "{{$order->id}}"
-                }),
-            }).then((r) => r.json());
-            localStorage.setItem('clientSecret', clientSecret);
+    const {
+        clientSecret
+    } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "same-origin"
+        },
+        body: JSON.stringify({
+            "_token": "{{ csrf_token() }}",
+            "total": "{{$order->total}}",
+            "id": "{{$order->id}}"
+        }),
+    }).then((r) => r.json());
+    localStorage.setItem('clientSecret', clientSecret);
 
-            elements = stripe.elements({
+    elements = stripe.elements({
         clientSecret,
         payment: {
             card: {
@@ -105,10 +105,10 @@
         }
     });
 
+    const paymentElement = elements.create("payment");
+    paymentElement.mount("#payment-element");
+}
 
-            const paymentElement = elements.create("payment");
-            paymentElement.mount("#payment-element");
-        }
 
         async function handleSubmit(e) {
             e.preventDefault();
