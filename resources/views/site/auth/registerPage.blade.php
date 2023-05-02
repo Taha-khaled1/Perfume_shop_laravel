@@ -37,8 +37,9 @@
                                     {{ \Session::get('error')}}
                                 </small>
                                 @endif
-                    <input type="text" name="fname" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
+                    <input type="text" name="fname" class="form-control" id="user-name-or-email"  value="{{old('fname')}}" >
                     </div>
+
                     <div class="mb-3">
                         <label for="user-name-or-email" class="form-label">  {{__('Second name')}} </label>
                         @error('email')
@@ -49,22 +50,38 @@
                                         {{ \Session::get('error')}}
                                     </small>
                                     @endif
-                        <input type="text" name="lname" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
+                        <input type="text" name="lname" class="form-control" id="user-name-or-email"  value="{{old('lname')}}" >
                         </div>
-                        <div class="mb-3">
-                            <label for="user-name-or-email" class="form-label">  {{__('الإمارة')}} </label>
-                            @error('email')
-                                        <small class="form-text text-danger">{{$message}}</small>
-                                        @enderror
-                                        @if (\Session::has('error'))
-                                        <small class="form-text text-danger">
-                                            {{ \Session::get('error')}}
-                                        </small>
-                                        @endif
-                            <input type="text" name="xxxx" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
+
+
+
+                        <div class="mb-3 row">
+                            <label   class="col-sm-3 col-form-label text-end"> {{__('Principality')}}</label>
+                            <div class="col-lg-9 col-xl-8">
+    
+                                <select class="form-control" name="city_id">
+                                    @foreach ($city as $item)
+                                        <option value="{{ $item->id }}">
+    
+                                            @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                                                {{ $item->name }}
+                                            @else
+                                                {{ $item->name_en }}
+                                            @endif
+                                        </option>
+                                    @endforeach
+    
+    
+    
+                                </select>
                             </div>
+                        </div>
 
 
+
+
+                        
+                   
                             
             <div class="mb-3">
                 <label for="user-name-or-email" class="form-label">  {{__('Email')}} </label>
