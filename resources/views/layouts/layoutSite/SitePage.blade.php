@@ -83,8 +83,8 @@
     margin-top: 100px;
 }
 .btn-blue {
-    background-color: blue;
-    color: white;
+    background-color: blue !important;
+  color: white !important;
 }
 .ltn__contact-address-item {
     text-align: center;
