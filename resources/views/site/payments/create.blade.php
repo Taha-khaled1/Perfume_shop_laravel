@@ -39,78 +39,79 @@
 
 @push('js') 
 
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-    if (Notification.permission !== "granted") {
-    Notification.requestPermission().then(function (permission) {
-        if (permission === "granted") {
-        // User granted permission, set cookies here
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        if (Notification.permission !== "granted") {
+        Notification.requestPermission().then(function (permission) {
+            if (permission === "granted") {
+            // User granted permission, set cookies here
+            }
+        });
+        } else {
+        // Cookies have already been granted, set cookies here
         }
-    });
-    } else {
-    // Cookies have already been granted, set cookies here
-    }
-    // This is your test publishable API key.
-    const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
+        // This is your test publishable API key.
+        const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
 
-    let elements;
+        let elements;
 
-    initialize();
+        initialize();
 
-    document
-        .querySelector("#payment-form")
-        .addEventListener("submit", handleSubmit);
+        document
+            .querySelector("#payment-form")
+            .addEventListener("submit", handleSubmit);
 
-    // Fetches a payment intent and captures the client secret
-    async function initialize() {
-        const {
-            clientSecret
-        } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "same-origin"
-            },
-            body: JSON.stringify({
-                "_token": "{{ csrf_token() }}",
-                "total": "{{$order->total}}",
-                "id": "{{$order->id}}"
-            }),
-        }).then((r) => r.json());
-        localStorage.setItem('clientSecret', clientSecret);
+        // Fetches a payment intent and captures the client secret
+        async function initialize() {
+    const {
+        clientSecret
+    } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "same-origin"
+        },
+        body: JSON.stringify({
+            "_token": "{{ csrf_token() }}",
+            "total": "{{$order->total}}",
+            "id": "{{$order->id}}"
+        }),
+    }).then((r) => r.json());
+    localStorage.setItem('clientSecret', clientSecret);
 
-        elements = stripe.elements({
-            clientSecret,
-            payment: {
-                card: {
-                    // Only show the Visa card option
-                    allowedCardNetworks: ['visa'],
-                    // Customize the appearance of the card field
-                    style: {
-                        base: {
-                            color: '#32325d',
-                            fontFamily: 'Arial, sans-serif',
-                            fontSmoothing: 'antialiased',
-                            fontSize: '16px',
-                            '::placeholder': {
-                                color: '#aab7c4'
-                            }
-                        },
-                        invalid: {
-                            color: '#fa755a',
-                            iconColor: '#fa755a'
+    elements = stripe.elements({
+        clientSecret,
+        payment: {
+            card: {
+                // Only show the Visa card option
+                allowedCardNetworks: ['visa'],
+                // Customize the appearance of the card field
+                style: {
+                    base: {
+                        color: '#32325d',
+                        fontFamily: 'Arial, sans-serif',
+                        fontSmoothing: 'antialiased',
+                        fontSize: '16px',
+                        '::placeholder': {
+                            color: '#aab7c4'
                         }
+                    },
+                    invalid: {
+                        color: '#fa755a',
+                        iconColor: '#fa755a'
                     }
                 }
             }
-        });
+        }
+    });
 
-        // Disable Google Pay button
-        const paymentElement = elements.getElement('payment');
+    const paymentElement = elements.create("payment");
+    paymentElement.mount("#payment-element");
+       // Disable Google Pay button
+       const paymentElement = elements.getElement('payment');
         paymentElement.update({ googlePay: false });
-    }
+}
 
-    
 
         async function handleSubmit(e) {
             e.preventDefault();
