@@ -61,7 +61,7 @@
                                             {{ \Session::get('error')}}
                                         </small>
                                         @endif
-                            <input type="text" name="lname" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
+                            <input type="text" name="xxxx" class="form-control" id="user-name-or-email"  value="{{old('email')}}" >
                             </div>
 
 

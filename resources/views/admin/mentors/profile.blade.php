@@ -101,7 +101,7 @@
                                                                 <h4 class="card-title"> معلومات المستخدم  </h4>
                                                             </div><!--end col-->
                                                         </div>  <!--end row-->
-                                                    </div><!--end card-header-->
+                                                    </div><!--end card-header--> 
                                                     <div class="card-body">
 
                                                         <form name="" method="post" action="{{ route('admin.user.save',[$mentor->id]) }}">
