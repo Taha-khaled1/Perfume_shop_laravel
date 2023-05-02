@@ -14,26 +14,30 @@ let plus = document.querySelector(".plus");
 let num = document.querySelector(".num");
 let minus = document.querySelector(".minus");
 
-x = 1 ;
+let counter = 1;
+let max = $(num).data("max");
+let count = () => max - counter;
 
-plus.addEventListener("click",()=>{
-    if (x < $(num).data("max")) { // Check if x is less than the maximum value
-        x++;
-        num.innerHTML = x;
-        quantity.value = x;
-      } else {
-        num.innerHTML = $(num).data("max");
-        quantity.value = $(num).data("max");
-      }
-    
-})
+plus.addEventListener("click", () => {
+  if (counter < max) {
+    counter++;
+    num.innerHTML = counter;
+    quantity.value = counter;
+    $(".quantity_num").html(count());
+  } else {
+    num.innerHTML = max;
+    quantity.value = max;
+  }
+});
 
-minus.addEventListener("click",()=>{
-    quantity.value = x
-    if(x===1){
-        num.innerHTML = 1;
-    }else{
-        x--
-        num.innerHTML = x ;
-    }
-})
+minus.addEventListener("click", () => {
+  if (counter > 1) {
+    counter--;
+    num.innerHTML = counter;
+    quantity.value = counter;
+    $(".quantity_num").html(count());
+  } else {
+    num.innerHTML = 1;
+    quantity.value = 1;
+  }
+});
