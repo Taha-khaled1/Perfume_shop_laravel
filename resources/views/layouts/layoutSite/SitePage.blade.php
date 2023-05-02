@@ -82,7 +82,10 @@
 .ltn__contact-address-area {
     margin-top: 100px;
 }
-
+.btn-blue {
+    background-color: blue;
+    color: white;
+}
 .ltn__contact-address-item {
     text-align: center;
     padding: 30px;

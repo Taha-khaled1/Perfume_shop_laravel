@@ -37,10 +37,13 @@
 
                     <form action="" method="post" id="payment-form">
                         <div id="payment-element"></div>
-                        <br><button type="submit" id="submit"  class="btn btn-sqr" >
+                        <br>
+                        <button type="submit" id="submit" class="btn btn-sqr btn-blue">
                             <span id="button-text">{{__('Pay now')}}</span>
                             <span id="spinner" style="display: none;">Processing...</span>
-                        </button>  
+                        </button>
+                         
+
                     </form>
                 </div>
             </div>
@@ -98,41 +101,12 @@
             }).then((r) => r.json());
             localStorage.setItem('clientSecret', clientSecret);
 
-           
-        elements = stripe.elements({
-            clientSecret,
-            payment: {
-                card: {
-                    // Only show the Visa card option
-                    allowedCardNetworks: ['visa'],
-                    // Customize the appearance of the card field
-                    style: {
-                        base: {
-                            color: '#32325d',
-                            fontFamily: 'Arial, sans-serif',
-                            fontSmoothing: 'antialiased',
-                            fontSize: '16px',
-                            '::placeholder': {
-                                color: '#aab7c4'
-                            }
-                        },
-                        invalid: {
-                            color: '#fa755a',
-                            iconColor: '#fa755a'
-                        }
-                    }
-                }
-            }
-        });
+            elements = stripe.elements({
+                clientSecret
+            });
 
             const paymentElement = elements.create("payment");
-            const paymentElement = elements.getElement('payment');
-            paymentElement.update({ googlePay: false });
-
             paymentElement.mount("#payment-element");
-
-            // const paymentElement = elements.getElement('payment');
-            //  paymentElement.update({ googlePay: false });
         }
 
         async function handleSubmit(e) {
