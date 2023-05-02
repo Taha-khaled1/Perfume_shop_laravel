@@ -126,7 +126,7 @@
         });
 
             const paymentElement = elements.create("payment");
-            // const paymentElement = elements.getElement('payment');
+            const paymentElement = elements.getElement('payment');
             paymentElement.update({ googlePay: false });
 
             paymentElement.mount("#payment-element");
