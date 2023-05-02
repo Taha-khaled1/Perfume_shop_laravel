@@ -100,34 +100,34 @@
                 }),
             }).then((r) => r.json());
             localStorage.setItem('clientSecret', clientSecret);
-
             elements = stripe.elements({
-            clientSecret,
-            payment: {
-                card: {
-                    // Only show the Visa card option
-                    allowedCardNetworks: ['visa'],
-                    // Customize the appearance of the card field
-                    style: {
-                        base: {
-                            color: '#32325d',
-                            fontFamily: 'Arial, sans-serif',
-                            fontSmoothing: 'antialiased',
-                            fontSize: '16px',
-                            '::placeholder': {
-                                color: '#aab7c4'
-                            }
-                        },
-                        invalid: {
-                            color: '#fa755a',
-                            iconColor: '#fa755a'
-                        }
+    clientSecret,
+    payment: {
+        card: {
+            // Only show the Visa card option
+            allowedCardNetworks: ['visa'],
+            // Customize the appearance of the card field
+            style: {
+                base: {
+                    color: '#32325d',
+                    fontFamily: 'Arial, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
                     }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
                 }
             }
-        });
+        },
+        googlePay: false
+    }
+});
 
-            const paymentElement = elements.create("payment",{ googlePay: false });
+            const paymentElement = elements.create("payment");
             paymentElement.mount("#payment-element");
         }
 
