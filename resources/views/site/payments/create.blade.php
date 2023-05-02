@@ -1,17 +1,5 @@
-
-
-
-
-
-
-
-
-
-
- @extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])
+@extends('layouts.layoutSite.SitePage',['cartcount'=>$cart->get()->count()])
 @section('content')
- 
-
  <!-- breadcrumb area start --><br>
  <div class="breadcrumb-area" >
             <div class="container">
@@ -62,13 +50,6 @@
         } else {
         // Cookies have already been granted, set cookies here
         }
-
-
-
-
-
-
-
         // This is your test publishable API key.
         const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
 
@@ -99,8 +80,31 @@
             localStorage.setItem('clientSecret', clientSecret);
 
             elements = stripe.elements({
-                clientSecret
-            });
+        clientSecret,
+        payment: {
+            card: {
+                // Only show the Visa card option
+                allowedCardNetworks: ['visa'],
+                // Customize the appearance of the card field
+                style: {
+                    base: {
+                        color: '#32325d',
+                        fontFamily: 'Arial, sans-serif',
+                        fontSmoothing: 'antialiased',
+                        fontSize: '16px',
+                        '::placeholder': {
+                            color: '#aab7c4'
+                        }
+                    },
+                    invalid: {
+                        color: '#fa755a',
+                        iconColor: '#fa755a'
+                    }
+                }
+            }
+        }
+    });
+
 
             const paymentElement = elements.create("payment");
             paymentElement.mount("#payment-element");
@@ -146,13 +150,6 @@
                     orderId: {{$order->id}},
                 }),
             });
-
-
-            // This point will only be reached if there is an immediate error when
-            // confirming the payment. Otherwise, your customer will be redirected to
-            // your `return_url`. For some payment methods like iDEAL, your customer will
-            // be redirected to an intermediate site first to authorize the payment, then
-            // redirected to the `return_url`.
             if (error.type === "card_error" || error.type === "validation_error") {
                 showMessage(error.message);
             } else {
