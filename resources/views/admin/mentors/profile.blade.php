@@ -67,6 +67,10 @@
                                     </thead>
                                     <tbody>
                                     @foreach($mentor->orders as $c)
+
+
+
+                                    @if ($c->status != 5)
                                     <tr  >
                                         <td>{{$c->id}} </td>
                                         <td>{{$c->total}}د.إ </td>
@@ -76,6 +80,15 @@
                                         <td>  <a href="{{ route('admin.order.profile', $c->id)}}"><i class="icofont-edit text-secondary font-20"></i></a>
                                          </td>
                                         </tr>
+                                    {{-- @else
+                                         --}}
+                                    @endif
+                                 
+
+
+
+
+
                                         @endforeach
                                     </tbody>
                                  </table>
