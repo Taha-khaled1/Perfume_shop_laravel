@@ -125,11 +125,13 @@
                                                                                 aria-labelledby="statusDropdown">
                                                                                 <li>
                                                                                     <form method="POST"
-                                                                                        action="{{ route('update.order', [$c->id, 1]) }}">
-                                                                                        @csrf <button type="submit"
-                                                                                            class="dropdown-item">طلب
-                                                                                            جديد</button>
-                                                                                    </form>
+                                                                                    action="{{ route('update.order', [$c->id, 1]) }}">
+                                                                                    @csrf <button type="submit"
+                                                                                        class="dropdown-item">طلب
+                                                                                        جديد</button>
+                                                                                </form>
+
+                                                                                 
                                                                                 </li>
                                                                                 <li>
                                                                                     <form method="POST"
