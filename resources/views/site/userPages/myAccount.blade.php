@@ -107,7 +107,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 @foreach(\Illuminate\Support\Facades\Auth::user()->orders as $order)
-                                                                         
+                                                                @if($user->id != 1)      
                                                                 @php
                                                                 $boll=true; // لسه معداش
                                                             if ($order->created_at->diffInHours() > 12) {
@@ -155,6 +155,7 @@
                                                                         @endif  @endif </td>
                                                                 <th ><a href="showorder/{{$order->id}}" > {{__('show')}}</a> </th>
                                                               </tr>
+                                                              @endif
                                                               @endforeach
                                                             </tbody>
                                                         </table>
