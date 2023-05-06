@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
+use Illuminate\Support\Facades\File;
 
-use App\Models\Discount;
-use App\Models\Notfication;
-use App\Models\Order;
+use App\Models\Setting;
+use Dotenv\Dotenv;
 use App\Models\Website;
 use Carbon\Carbon;
 use Closure;
@@ -26,6 +26,25 @@ class MaintenanceMode
     public function handle(Request $request, Closure $next)
     {       
        
+               $setting = Setting::all();
+                // Get the Stripe keys from the database
+                $public_key = $setting->where('key', 'public_key')->first()->value;
+                $secret_key = $setting->where('key', 'Secrt_key')->first()->value;
+         
+                putenv("STRIPE_PUBLISHABLE_KEY=$public_key");
+                putenv("STRIPE_SECRET_KEY=$secret_key");
+
+                // Read the contents of the .env file
+                $envFile = base_path('.env');
+                $envContents = File::get($envFile);
+
+                // Replace the corresponding lines
+                $envContents = preg_replace('/^STRIPE_PUBLISHABLE_KEY=.*$/m', "STRIPE_PUBLISHABLE_KEY=$public_key", $envContents);
+                $envContents = preg_replace('/^STRIPE_SECRET_KEY=.*$/m', "STRIPE_SECRET_KEY=$secret_key", $envContents);
+
+                // Save the updated contents back to the .env file
+                File::put($envFile, $envContents);
+        
         $p=DB::table('websits')->first();
         $closeTime = Carbon::parse($p->data_time);
         $now = Carbon::now();

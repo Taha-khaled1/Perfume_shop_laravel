@@ -22,7 +22,7 @@ use App\Models\OrderItem;
 use App\Models\Address;
 use App\Models\Payment;
 use App\Models\Setting; 
-
+use Illuminate\Support\Facades\File;
 use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
 
@@ -96,16 +96,7 @@ class OrderController extends Controller
     
                 return redirect()->route('viewHomePage');
             }
-             //register 
-            if(isset($request->make_user)){ 
-                $this->validate($request, [
-                'email' => ['required', 'string', 'email','email:rfc' , 'max:255', 'unique:users'],
-                'password' => ['required','confirmed', Rules\Password::defaults()],
-                //'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 
-            ] );
-             
-           
-        }
+   
             try{
 
                 
