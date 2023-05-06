@@ -235,9 +235,9 @@ if ($request->readio != "yesss") {
              
                 $this->cart->empty();
                 $email = $address->email;
-                if($email){
-                    Notification::route('mail' ,$email)->notify(new OrderRequest($data1));
-                }
+                // if($email){
+                //     Notification::route('mail' ,$email)->notify(new OrderRequest($data1));
+                // }
                 
                 if($request->payment_method == "check"){
                     $order= $data1;

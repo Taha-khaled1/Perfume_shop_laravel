@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notfication;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Repositories\Cart\CartRepository;
@@ -83,10 +84,37 @@ class PaymentsController extends Controller
             try {
                 // Update payment
                 $payment = Payment::where('order_id', $order->id)->first();
-                $payment->forceFill([
+                $payment->update([
                     'status' => 'completed',
                     'transaction_data' => json_encode($paymentIntent),
-                ])->save();
+                ]);
+
+
+
+
+
+                $r=Order::find($order->id)->first();
+                $r->status = 1;         
+                $r->save();
+
+                $noty = new Notfication();
+                $noty->title="طلب جديد";
+                $user = auth()->user();
+                if ($user) {
+                    $name = $user->fname;
+                    $noty->message="تم انشاء طلب جديد بواسطة ".$name ??"لم يتم ادخال الاسم" ;
+                }else{
+                    $noty->message="تم انشاء طلب جديد بواسطة "."لم يتم ادخال الاسم" ;
+                }
+
+                $noty->save();
+
+
+
+
+
+
+
 
             } catch (QueryException $e) {
                 echo $e->getMessage();

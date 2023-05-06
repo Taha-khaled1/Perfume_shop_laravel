@@ -107,7 +107,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 @foreach(\Illuminate\Support\Facades\Auth::user()->orders as $order)
-                                                                @if($order->status != 1)      
+                                                                @if($order->status != 5)      
                                                                 @php
                                                                 $boll=true; // لسه معداش
                                                             if ($order->created_at->diffInHours() > 12) {
