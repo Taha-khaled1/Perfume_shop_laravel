@@ -173,6 +173,7 @@ class OrderController extends Controller
                     $item->order_id = $data1->id;
                     $item->product_id = $a->product->id;
                     $item->product_name =$a->product->name??"null";
+                    $item->product_name_en =$a->product->name_en??"null";
                     $item->price = $a->product->price;
                     $item->quantity = $a->quantity; 
                     $item->options = $a->options; 
@@ -212,16 +213,19 @@ if ($request->readio != "yesss") {
                $data8 = new Payment();
       
             // try {
+            
+               
+
+          
                 $data8->order_id = $data1->id;
-                $data8->amount = "5";
-                $data8->currency = "USD";
+                $data8->amount = $request->total;
+                $data8->currency = "aed";
                
                 $data8->method = $request->payment_method;
-
+    
                 $data8->status = "pending";
                 $data8->transaction_id = "1";
                 $data8->transaction_data = "1";
-       
                 $data8->save();
             // notify()->success('تم اضافة العنوان !');
             

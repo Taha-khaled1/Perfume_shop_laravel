@@ -211,7 +211,11 @@
                                     @foreach($cart->get() as $item)
                                         <tr id="a{{$item->id }}">
                                             <td class="pro-thumbnail"><a href="{{route('viewProperty',$item->product->id)}}"><img class="img-fluid" src="{{asset('/storage/property/'.$item->product->image)}}" alt="Product" width="100"/></a></td>
-                                            <td class="pro-title"><a href="{{route('viewProperty',$item->product->id)}}"> {{$item->product->name }}  </a></td>
+                                            <td class="pro-title"><a href="{{route('viewProperty',$item->product->id)}}">   @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+                                                {{$item->product->name}} 
+                                             @else
+                                                 {{ $item->product->name_en??"name en" }}
+                                                 @endif  </a></td>
                                             <td class="pro-price"><span>{{ $item->product->price }}  {{__('AED')}}</span></td>
                                             <td class="pro-quantity"><span>{{$item->quantity}}</span></td>
                                             @php

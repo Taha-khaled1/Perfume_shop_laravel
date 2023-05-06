@@ -83,11 +83,14 @@ class PaymentsController extends Controller
         if ($paymentIntent->status == 'succeeded') {
             try {
                 // Update payment
-                $payment = Payment::where('order_id', $order->id)->first();
-                $payment->update([
-                    'status' => 'completed',
-                    'transaction_data' => json_encode($paymentIntent),
-                ]);
+                $payment = Payment::where('order_id', $order->id)->get();
+                foreach ($payment as $payment) {
+                    $payment->update([
+                        'status' => 'completed',
+                        'transaction_data' => json_encode($paymentIntent),
+                    ]);
+                }
+           
 
 
 
