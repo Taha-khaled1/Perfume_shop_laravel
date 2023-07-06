@@ -435,12 +435,12 @@
             </div>
             <div class="col-lg-6">
                 <ul class="list-unstyled d-flex justify-content-end align-items-center m-0 custom-list ">
-                    <li>
+                    {{-- <li>
                         <form action="{{ route('search_property')}}" method="GET">
                             <input type="text" name="title" placeholder="{{ __('Enter your search key ...') }}" class="text-end">
                             <button type="submit" class="search-btn"><i class="pe-7s-search"></i></button>
                         </form>
-                    </li>
+                    </li> --}}
                     <li class="">
                         <div class="header-top-settings">
                             <ul class="m-0">
@@ -470,6 +470,11 @@
                             </ul>
                         </div>
                     </li>
+
+
+
+
+                    
                     <li>
                         <a href="{{route('cart.index')}}" class="">
                             <i class="text-dark pe-7s-shopbag fs-4 ms-4 position-relative">
